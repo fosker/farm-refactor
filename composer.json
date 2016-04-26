@@ -1,0 +1,35 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "2.0.*",
+        "yiisoft/yii2-bootstrap": "2.0.*",
+        "yiisoft/yii2-jui": "2.0.*",
+        "kartik-v/yii2-widgets": "3.4.*",
+        "2amigos/yii2-ckeditor-widget" : "1.0.*",
+        "rmrevin/yii2-fontawesome": "2.8.*",
+        "wbraganca/yii2-dynamicform": "*",
+        "kartik-v/yii2-mpdf": "1.0.*",
+        "phpoffice/phpexcel":"1.8.*",
+        "yiisoft/yii2-swiftmailer": "2.0.*",
+        "yiisoft/yii2-imagine": "2.0.3",
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "kartik-v/yii2-field-range": "*",
+        "fzaninotto/faker": "^1.5",
+        "bryglen/yii2-apns-gcm": "1.0.3",
+        "kartik-v/yii2-nav-x": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
