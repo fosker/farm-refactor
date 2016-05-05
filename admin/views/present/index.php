@@ -46,36 +46,36 @@ $this->title = 'Подарки';
                 ])
             ],
             [
-                'label'=>'Для городов',
-                'value'=>'citiesView',
+                'label'=>'Для компаний',
+                'value'=>'companyView',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
-                    'data' => $cities,
-                    'attribute'=>'city_id',
+                    'data' => $companies,
+                    'attribute'=>'company_id',
                     'options' => [
-                        'placeholder' => 'Выберите города ...',
+                        'placeholder' => 'Выберите компании ...',
                         'multiple' => true,
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '175px'
+                        'width' => '150px'
                     ],
                 ])
             ],
             [
-                'label'=>'Для фирм',
-                'value'=>'firmsView',
+                'label'=>'Для аптек',
+                'value'=>'pharmaciesView',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
-                    'data' => $firms,
-                    'attribute'=>'firm_id',
+                    'data' => $pharmacies,
+                    'attribute'=>'pharmacy_id',
                     'options' => [
-                        'placeholder' => 'Выберите фирмы ...',
+                        'placeholder' => 'Выберите аптеки ...',
                         'multiple' => true,
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '175px'
+                        'width' => '150px'
                     ],
                 ])
             ],

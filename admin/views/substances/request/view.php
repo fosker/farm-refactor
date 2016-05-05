@@ -29,8 +29,8 @@ $this->title = $model->user->name." искал ".$model->substance->cyrillic;
                 'value'=>Html::a($model->user->name,['/user/view','id'=>$model->user_id]),
                 'format'=>'html',
             ],
-            'user.education.name',
-            'user.position.name',
+            'user.pharmacist.education.name',
+            'user.pharmacist.position.name',
             [
                 'attribute' => 'substance.cyrillic',
                 'value'=>Html::a($model->substance->cyrillic,['/substance/view','id'=>$model->substance->id]),

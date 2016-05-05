@@ -85,7 +85,7 @@ class Answer extends ActiveRecord
         $survey = $models[0]->question->survey;
 
         // Доступна ли анкета пользователю
-        if(survey::getOneForCurrentUser($survey->id)==null) {
+        if(Survey::getOneForCurrentUser($survey->id)==null) {
             throw new BadRequestHttpException('Вам недоступна эта анкета.');
         }
 

@@ -55,6 +55,57 @@ $this->title = 'Баннеры';
                 },
             ],
             [
+                'label'=>'Для компаний',
+                'value'=>'companyView',
+                'filter'=>Select2::widget([
+                    'model' => $searchModel,
+                    'data' => $companies,
+                    'attribute'=>'company_id',
+                    'options' => [
+                        'placeholder' => 'Выберите компании ...',
+                        'multiple' => true,
+                    ],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'width' => '150px'
+                    ],
+                ])
+            ],
+//            [
+//                'label'=>'Для аптек',
+//                'value'=>'pharmaciesView',
+//                'filter'=>Select2::widget([
+//                    'model' => $searchModel,
+//                    'data' => $pharmacies,
+//                    'attribute'=>'pharmacy_id',
+//                    'options' => [
+//                        'placeholder' => 'Выберите аптеки ...',
+//                        'multiple' => true,
+//                    ],
+//                    'pluginOptions' => [
+//                        'allowClear' => true,
+//                        'width' => '150px'
+//                    ],
+//                ])
+//            ],
+            [
+                'label'=>'Для типов',
+                'value'=>'typesView',
+                'filter'=>Select2::widget([
+                    'model' => $searchModel,
+                    'data' => $types,
+                    'attribute'=>'type_id',
+                    'options' => [
+                        'placeholder' => 'Выберите типы пользователей ...',
+                        'multiple' => true,
+                    ],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'width' => '150px'
+                    ],
+                ])
+            ],
+            [
                 'label'=>'Для образования',
                 'value'=>'educationsView',
                 'filter'=>Select2::widget([
@@ -63,40 +114,6 @@ $this->title = 'Баннеры';
                     'attribute'=>'education_id',
                     'options' => [
                         'placeholder' => 'Выберите группы ...',
-                        'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ])
-            ],
-            [
-                'label'=>'Для городов',
-                'value'=>'citiesView',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $cities,
-                    'attribute'=>'city_id',
-                    'options' => [
-                        'placeholder' => 'Выберите города ...',
-                        'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ])
-            ],
-            [
-                'label'=>'Для фирм',
-                'value'=>'firmsView',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $firms,
-                    'attribute'=>'firm_id',
-                    'options' => [
-                        'placeholder' => 'Выберите фирмы ...',
                         'multiple' => true,
                     ],
                     'pluginOptions' => [

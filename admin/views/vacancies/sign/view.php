@@ -27,7 +27,7 @@ $this->title = $model->user->name.' подал заявку на "'.$model->vaca
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            'date_add:text',
             [
                 'attribute'=>'user.name',
                 'value'=>Html::a($model->user->name, ['/user/view', 'id'=>$model->user_id]),
@@ -39,7 +39,7 @@ $this->title = $model->user->name.' подал заявку на "'.$model->vaca
                 'format'=>'html',
             ],
             'contact',
-            'date_add:text',
+
         ],
     ]) ?>
 

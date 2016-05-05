@@ -10,10 +10,10 @@ $this->title = 'Добавить вакансию';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'regions'=>$regions,
         'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
-        'vacancy_cities' => $vacancy_cities,
-        'vacancy_pharmacies' => $vacancy_pharmacies
+        'companies'=>$companies,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

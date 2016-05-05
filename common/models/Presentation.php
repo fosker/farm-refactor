@@ -7,15 +7,16 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\imagine\Image;
 use common\models\presentation\View;
-use common\models\presentation\City;
-use common\models\presentation\Education;
-use common\models\presentation\Pharmacy;
-use common\models\presentation\Question;
 use common\models\presentation\Slide;
-use common\models\location\City as C;
-use common\models\agency\Pharmacy as P;
-use common\models\profile\Education as E;
-use common\models\agency\Firm;
+use common\models\presentation\Question;
+use common\models\presentation\Comment;
+use common\models\presentation\Pharmacy as Presentation_Pharmacy;
+use common\models\presentation\Education as Presentation_Education;
+use common\models\presentation\Type as Presentation_Type;
+use common\models\company\Pharmacy;
+use common\models\Factory;
+use common\models\profile\Type;
+
 
 /**
  * This is the model class for table "presentations".
@@ -25,10 +26,12 @@ use common\models\agency\Firm;
  * @property string $description
  * @property integer $points
  * @property string $image
+ * @property integer $factory_id
  * @property string $thumbnail
  * @property integer $status
- * @property integer home
- * @property integer home_priority
+ * @property integer $home
+ * @property integer $home_priority
+ * @property integer $views_limit
  */
 class Presentation extends ActiveRecord
 {
@@ -56,8 +59,8 @@ class Presentation extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'points'], 'required'],
-            [['points', 'home_priority'], 'integer'],
+            [['title', 'description', 'points', 'factory_id'], 'required'],
+            [['points', 'home_priority', 'views_limit'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -65,7 +68,7 @@ class Presentation extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id'];
         return $scenarios;
     }
 
@@ -82,7 +85,9 @@ class Presentation extends ActiveRecord
             'thumbnail' => 'Превью',
             'status' => 'Статус',
             'home' => 'Отображать на главной',
-            'home_priority' => 'Приоритет'
+            'home_priority' => 'Приоритет',
+            'views_limit' => 'Ограничение просмотров',
+            'factory_id' => 'Фабрика Автор'
         ];
     }
 
@@ -107,19 +112,37 @@ class Presentation extends ActiveRecord
      */
     public static function getForCurrentUser()
     {
-        return static::find()
-            ->joinWith('cities')
-            ->joinWith('pharmacies')
-            ->joinWith('education')
-            ->andWhere([Education::tableName().'.education_id'=>Yii::$app->user->identity->education_id])
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
-            ->andWhere(['status'=>static::STATUS_ACTIVE])
-            ->orderBy(['id'=>SORT_DESC])
-            ->groupBy(static::tableName().'.id');
+        if(Yii::$app->user->identity->type_id == TYPE_PHARMACIST) {
+            return static::find()
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->joinWith('education')
+                ->joinWith('pharmacies')
+                ->joinWith('types')
+                ->andWhere([Presentation_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
+                ->andWhere([Presentation_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
+                ->andWhere([Presentation_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->andWhere(['!=', 'views_limit', '0'])
+                ->orderBy(['id'=>SORT_DESC])
+                ->groupBy(static::tableName().'.id');
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            return static::find()
+                ->joinWith('types')
+                ->where([
+                    'factory_id'=>Yii::$app->user->identity->agent->factory_id,
+                    Presentation_Type::tableName().'.type_id'=> Type::TYPE_PHARMACIST
+                ])
+                ->orWhere([
+                    Presentation_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
+                    'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
+                ])
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->orderBy(['id'=>SORT_DESC])
+                ->groupBy(static::tableName().'.id');
+        }
     }
 
-    public static function getNotViewedForCurrentUser() {
+    public static function getNotViewedForCurrentUser()
+    {
         return static::getForCurrentUser()
             ->andWhere([
                 'not exists',
@@ -128,7 +151,8 @@ class Presentation extends ActiveRecord
             ]);
     }
 
-    public static function getViewedForCurrentUser() {
+    public static function getViewedForCurrentUser()
+    {
         return static::getForCurrentUser()
             ->andWhere([
                 'exists',
@@ -142,35 +166,48 @@ class Presentation extends ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
-    public function getQuestions() {
+    public function getQuestions()
+    {
         return $this->hasMany(Question::className(), ['presentation_id' => 'id'])->orderBy('order_index');
     }
 
-    public function getSlides() {
+    public function getSlides()
+    {
         return Slide::find()->select('*')->from(Slide::tableName())->where(['presentation_id' => $this->id])->orderBy('order_index')->all();
     }
 
-    public function getCities() {
-        return $this->hasMany(City::className(), ['presentation_id' => 'id']);
+    public function getFactory()
+    {
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
     }
 
-    public function getPharmacies() {
-        return $this->hasMany(Pharmacy::className(), ['presentation_id' => 'id']);
+    public function getPharmacies()
+    {
+        return $this->hasMany(Presentation_Pharmacy::className(),['presentation_id'=>'id']);
     }
 
-    public function getEducation() {
-        return $this->hasMany(Education::className(),['presentation_id'=>'id']);
+    public function getTypes()
+    {
+        return $this->hasMany(Presentation_Type::className(),['presentation_id'=>'id']);
     }
 
-    public function getViews() {
+    public function getEducation()
+    {
+        return $this->hasMany(Presentation_Education::className(),['presentation_id'=>'id']);
+    }
+
+    public function getViews()
+    {
         return $this->hasMany(View::className(), ['presentation_id' => 'id']);
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return Yii::getAlias('@uploads_view/presentations/'.$this->image);
     }
 
-    public function getThumbPath() {
+    public function getThumbPath()
+    {
         return Yii::getAlias('@uploads_view/presentations/thumbs/'.$this->thumbnail);
     }
 
@@ -220,65 +257,15 @@ class Presentation extends ActiveRecord
         return [static::HOME_ACTIVE=>'да',static::HOME_HIDDEN=>'нет'];
     }
 
-    public function getCitiesView($isFull = false)
+    public function getEducationsView($isFull = false)
     {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(C::tableName().'.name')
-            ->joinWith('city')
-            ->asArray()
-            ->where(['presentation_id'=>$this->id])
-            ->all()),'name');
-        $string = "";
-        if(!$isFull) {
-            $limit = 5;
-            if (count($result) > $limit) {
-                for ($i = 0; $i < $limit; $i++) {
-                    $string .= $result[$i].", ";
-                }
-                $string .= "и ещё (".(count($result)-$limit).")";
-            } else
-                $string = implode(", ", $result);
-        } else
-            $string = implode(", ", $result);
-
-        return $string;
-    }
-
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
-            ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
-            ->distinct()
-            ->asArray()
-            ->where(['presentation_id' => $this->id])
-            ->all()),'name');
-        $string = "";
-        if(!$isFull) {
-            $limit = 5;
-            if (count($result) > $limit) {
-                for ($i = 0; $i < $limit; $i++) {
-                    $string .= $result[$i].", ";
-                }
-                $string .= "и ещё (".(count($result)-$limit).")";
-            } else
-                $string = implode(", ", $result);
-        } else
-            $string = implode(", ", $result);
-
-        return $string;
-    }
-
-    public function getEducationsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Education::find()
-            ->select(E::tableName().'.name')
+        $result = ArrayHelper::getColumn((Presentation_Education::find()
+            ->select('name')
             ->joinWith('education')
             ->asArray()
             ->where(['presentation_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -295,7 +282,89 @@ class Presentation extends ActiveRecord
         return $string;
     }
 
-    public function loadImage() {
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Presentation_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
+            ->asArray()
+            ->where(['presentation_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+
+    public function getTypesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Presentation_Type::find()
+            ->select('name')
+            ->joinWith('type')
+            ->asArray()
+            ->where(['presentation_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
+            ->join('LEFT JOIN', Pharmacy::tableName(),
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', Presentation_Pharmacy::tableName(),
+                Presentation_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->distinct()
+            ->asArray()
+            ->where(['presentation_id' => $this->id])
+            ->all()),'title');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function loadImage()
+    {
         if($this->imageFile) {
             $path = Yii::getAlias('@uploads/presentations/');
             if ($this->image && file_exists($path . $this->image))
@@ -309,7 +378,8 @@ class Presentation extends ActiveRecord
         }
     }
 
-    public function loadThumb() {
+    public function loadThumb()
+    {
         if($this->thumbFile) {
             $path = Yii::getAlias('@uploads/presentations/thumbs/');
             if ($this->thumbnail && file_exists($path . $this->thumbnail))
@@ -323,7 +393,8 @@ class Presentation extends ActiveRecord
         }
     }
 
-    public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
         if(parent::beforeSave($insert)) {
             $this->loadImage();
             $this->loadThumb();
@@ -331,23 +402,11 @@ class Presentation extends ActiveRecord
         } else return false;
     }
 
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->presentation_id = $this->id;
-                $city->save();
-            }
-        }
-    }
-
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Presentation_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->presentation_id = $this->id;
                 $pharmacy->save();
@@ -359,20 +418,32 @@ class Presentation extends ActiveRecord
     {
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Presentation_Education();
                 $education->education_id = $educations[$i];
                 $education->presentation_id = $this->id;
                 $education->save();
+            }
+        }
+    }
+
+    public function loadTypes($types)
+    {
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Presentation_Type();
+                $type->type_id = $types[$i];
+                $type->presentation_id = $this->id;
+                $type->save();
             }
         }
     }
 
     public function updateEducation($educations)
     {
-        Education::deleteAll(['presentation_id' => $this->id]);
+        Presentation_Education::deleteAll(['presentation_id' => $this->id]);
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Presentation_Education();
                 $education->education_id = $educations[$i];
                 $education->presentation_id = $this->id;
                 $education->save();
@@ -380,28 +451,28 @@ class Presentation extends ActiveRecord
         }
     }
 
-    public function updateCities($cities)
+    public function updatePharmacies($pharmacies)
     {
-        City::deleteAll(['presentation_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->presentation_id = $this->id;
-                $city->save();
+        Presentation_Pharmacy::deleteAll(['presentation_id' => $this->id]);
+        if($pharmacies) {
+            for ($i = 0; $i < count($pharmacies); $i++) {
+                $pharmacy = new Presentation_Pharmacy();
+                $pharmacy->pharmacy_id = $pharmacies[$i];
+                $pharmacy->presentation_id = $this->id;
+                $pharmacy->save();
             }
         }
     }
 
-    public function updatePharmacies($pharmacies)
+    public function updateTypes($types)
     {
-        Pharmacy::deleteAll(['presentation_id' => $this->id]);
-        if($pharmacies) {
-            for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
-                $pharmacy->pharmacy_id = $pharmacies[$i];
-                $pharmacy->presentation_id = $this->id;
-                $pharmacy->save();
+        Presentation_Type::deleteAll(['presentation_id' => $this->id]);
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Presentation_Type();
+                $type->type_id = $types[$i];
+                $type->presentation_id = $this->id;
+                $type->save();
             }
         }
     }
@@ -412,14 +483,15 @@ class Presentation extends ActiveRecord
             $question->delete();
         foreach($this->views as $view)
             $view->delete();
-        City::deleteAll(['presentation_id'=>$this->id]);
-        Pharmacy::deleteAll(['presentation_id'=>$this->id]);
-        Education::deleteAll(['presentation_id'=>$this->id]);
         foreach($this->slides as $slide)
         {
             if($slide->image) @unlink(Yii::getAlias('@uploads/presentations/slides/'.$slide->image));
             $slide->delete();
         }
+        Presentation_Education::deleteAll(['presentation_id'=>$this->id]);
+        Presentation_Pharmacy::deleteAll(['presentation_id'=>$this->id]);
+        Presentation_Type::deleteAll(['presentation_id'=>$this->id]);
+        Comment::deleteAll(['presentation_id'=>$this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/presentations/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/presentations/thumbs/'.$this->thumbnail));
         parent::afterDelete();

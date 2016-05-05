@@ -24,7 +24,6 @@ $this->title = $model->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'title',
             [
                 'attribute' => 'link',

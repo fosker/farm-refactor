@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Factory */
-
 $this->title = 'Редактирование данных: ' . ' ' . $model->title;
 ?>
 <div class="factory-update">

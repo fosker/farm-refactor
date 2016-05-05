@@ -26,16 +26,22 @@ $this->title = $model->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
+            [
+                'label'=>'Превью',
+                'value'=>'<div class="banner-preview position-'.$model->position.'" style="background: url('.$model->imagePath.') center;background-size: cover;"></div>',
+                'format'=>'raw'
+            ],
             [
                 'attribute'=>'image',
                 'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
+            'title',
             [
-                'label'=>'Превью',
-                'value'=>'<div class="banner-preview position-'.$model->position.'" style="background: url('.$model->imagePath.') center;background-size: cover;"></div>',
-                'format'=>'raw'
+                'label' => 'Фабрика',
+                'attribute' => 'factory.title',
+                'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
+                'format'=>'html',
             ],
             [
                 'attribute'=>'position',
@@ -47,16 +53,20 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             [
-                'label'=>'Для городов',
-                'value'=>$model->getCitiesView(true)
+                'label'=>'Для аптек',
+                'value'=>$model->getPharmaciesView(false)
             ],
             [
-                'label'=>'Для фирм',
-                'value'=>$model->getFirmsView(true)
-            ],
-            [
-                'label'=>'Для групп',
+                'label'=>'Для образования',
                 'value'=>$model->getEducationsView(true)
+            ],
+            [
+                'label'=>'Для компаний',
+                'value'=>$model->getCompanyView(true)
+            ],
+            [
+                'label'=>'Для типов пользователей',
+                'value'=>$model->getTypesView(true)
             ],
             [
                 'attribute'=>'status',

@@ -11,8 +11,8 @@ use yii\filters\auth\QueryParamAuth;
 use yii\rest\Controller;
 
 use common\models\Factory;
-use common\models\factory\Stock;
-use common\models\factory\Reply;
+use common\models\Stock;
+use common\models\stock\Reply;
 use common\models\factory\Product;
 use yii\web\UploadedFile;
 
@@ -42,7 +42,6 @@ class FactoryController extends Controller
     }
 
     public function actionIndex() {
-        // СПИСОК АКТИВНЫХ АКЦИЙ ДЛЯ ЭТОГО ПОЛЬЗОВАТЕЛЯ
         return new ActiveDataProvider([
             'query' => Factory::getForCurrentUser(),
         ]);

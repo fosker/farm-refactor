@@ -11,11 +11,11 @@ $this->title = 'Добавить баннер';
     <?= $this->render('_form', [
         'model' => $model,
         'education'=>$education,
+        'regions'=>$regions,
         'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
-        'banner_cities' => $banner_cities,
-        'banner_pharmacies' => $banner_pharmacies,
-        'banner_education' => $banner_education
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

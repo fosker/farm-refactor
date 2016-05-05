@@ -27,7 +27,7 @@ $this->title = $model->user->name.' записался на "'.$model->seminar->
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            'date_add:datetime',
             [
                 'attribute'=>'user.name',
                 'value'=>Html::a($model->user->name, ['/user/view', 'id'=>$model->user_id]),
@@ -39,7 +39,6 @@ $this->title = $model->user->name.' записался на "'.$model->seminar->
                 'format'=>'html',
             ],
             'contact',
-            'date_add:text',
         ],
     ]) ?>
 

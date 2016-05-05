@@ -4,10 +4,18 @@ namespace common\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\imagine\Image;
 
 use common\models\factory\Product;
-use common\models\factory\Stock;
-use yii\imagine\Image;
+use common\models\user\Agent;
+use common\models\Banner;
+use common\models\News;
+use common\models\Presentation;
+use common\models\Seminar;
+use common\models\Stock;
+use common\models\Survey;
+use common\models\Vacancy;
+
 
 /**
  * This is the model class for table "factories".
@@ -64,7 +72,7 @@ class Factory extends ActiveRecord
 
     public function extraFields() {
         return [
-            'description','image'=>'imagePath','products','stocks'
+            'description','image'=>'imagePath','products'
         ];
     }
 
@@ -79,9 +87,15 @@ class Factory extends ActiveRecord
 
     public function afterDelete()
     {
-        foreach($this->stocks as $stock)
-            $stock->delete();
-        Product::deleteAll(['factory_id'=>$this->id]);
+        foreach($this->agents as $agent)
+            $agent->delete();
+        Banner::deleteAll(['factory_id' => $this->id]);
+        News::deleteAll(['factory_id' => $this->id]);
+        Presentation::deleteAll(['factory_id' => $this->id]);
+        Stock::deleteAll(['factory_id' => $this->id]);
+        Survey::deleteAll(['factory_id' => $this->id]);
+        Seminar::deleteAll(['factory_id' => $this->id]);
+        Vacancy::deleteAll(['factory_id' => $this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/factories/'.$this->image));
         if($this->logo) @unlink(Yii::getAlias('@uploads/factories/logos'.$this->logo));
         parent::afterDelete();
@@ -122,6 +136,11 @@ class Factory extends ActiveRecord
         return $this->hasMany(Product::className(),['factory_id'=>'id']);
     }
 
+    public function getAgents()
+    {
+        return $this->hasMany(Agent::className(),['factory_id'=>'id']);
+    }
+
     public function getImagePath()
     {
         return Yii::getAlias('@uploads_view/factories/'.$this->image);
@@ -130,11 +149,6 @@ class Factory extends ActiveRecord
     public function getLogoPath()
     {
         return Yii::getAlias('@uploads_view/factories/logos/'.$this->logo);
-    }
-
-    public function getStocks()
-    {
-        return $this->hasMany(Stock::className(),['factory_id'=>'id']);
     }
 
     /**

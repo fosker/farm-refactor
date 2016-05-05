@@ -6,14 +6,17 @@ use backend\assets\AppAsset;
 use yii\widgets\Breadcrumbs;
 use backend\models\admin\Right;
 use backend\models\Admin;
-use common\models\profile\UpdateRequest;
+use common\models\profile\AgentUpdateRequest;
+use common\models\profile\PharmacistUpdateRequest;
 use kartik\nav\NavX;
 /**
  * @var $content string
  */
 
 AppAsset::register($this);
-$count = UpdateRequest::find()->count();
+
+$count_agents = AgentUpdateRequest::find()->count();
+$count_pharmacists = PharmacistUpdateRequest::find()->count();
 ?>
 
 <?php $this->beginPage() ?>
@@ -70,14 +73,34 @@ $count = UpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'city')
                             ],
                             [
-                                'label'=>'Фирмы',
-                                'url'=>['/firm'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'firm')
+                                'label' => 'Компании',
+                                'items' => [
+                                    [
+                                        'label' => 'Компании',
+                                        'url' => ['/company'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'company')
+                                    ],
+                                    [
+                                        'label' => 'Аптеки',
+                                        'url' => ['/pharmacy'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'pharmacy')
+                                    ],
+                                ]
                             ],
                             [
-                                'label'=>'Аптеки',
-                                'url'=>['/pharmacy'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'pharmacy')
+                                'label' => 'Фабрики',
+                                'items' => [
+                                    [
+                                        'label' => 'Фабрики',
+                                        'url' => ['/factory'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factory')
+                                    ],
+                                    [
+                                        'label' => 'Продукты',
+                                        'url' => ['/factories/product'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factories/product')
+                                    ],
+                                ]
                             ],
                             [
                                 'label'=>'Образование',
@@ -85,14 +108,19 @@ $count = UpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'education')
                             ],
                             [
+                                'label'=>'Типы пользователей',
+                                'url'=>['/type'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'type')
+                            ],
+                            [
                                 'label'=>'Должности',
                                 'url'=>['/position'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'position')
                             ],
                             [
-                                'label' => 'Баннеры',
-                                'url' => ['/banner'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'banner')
+                                'label'=>'Поставщики',
+                                'url'=>['/presents/vendor'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'presents/vendor')
                             ],
                             [
                                 'label' => 'Вещества',
@@ -110,14 +138,34 @@ $count = UpdateRequest::find()->count();
                     ['label' => 'Пользователи',
                         'items'=>[
                             [
-                                'label' => 'Пользователи',
-                                'url' => ['/user'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'user')
+                                'label' => 'Представители',
+                                'items' => [
+                                    [
+                                        'label' => 'Представители',
+                                        'url' => ['/user/agents'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'user/agents')
+                                    ],
+                                    [
+                                        'label' => 'Ожидают обновления' . Html::tag('span', $count_agents, ['class' => 'badge']),
+                                        'url' => ['/users/agent/update-request'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/agent/update-request')
+                                    ],
+                                ]
                             ],
                             [
-                                'label' => 'Ожидают обновления ' . Html::tag('span', $count, ['class' => 'badge']),
-                                'url' => ['/users/update-request'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/update-request')
+                                'label' => 'Фармацевты',
+                                'items' => [
+                                    [
+                                        'label' => 'Фармацевты',
+                                        'url' => ['/user/pharmacists'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'user/pharmacists')
+                                    ],
+                                    [
+                                        'label' => 'Ожидают обновления' . Html::tag('span', $count_pharmacists, ['class' => 'badge']),
+                                        'url' => ['/users/pharmacist/update-request'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/pharmacist/update-request')
+                                    ],
+                                ]
                             ],
                             [
                                 'label' => 'Подарки',
@@ -144,25 +192,10 @@ $count = UpdateRequest::find()->count();
                     ],
                     ['label' => 'Основное меню',
                         'items' => [
-                            ['label' => 'Страницы',
-                                'items'=>[
-                                    [
-                                        'label' => 'Страницы',
-                                        'url' => ['/block'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'block')
-                                    ],
-                                    [
-                                        'label' => 'Комментарии',
-                                        'url' => ['/blocks/comment'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'blocks/comment')
-                                    ],
-                                    [
-                                        'label' => 'Оценки',
-                                        'url' => ['/blocks/mark'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'blocks/mark')
-                                    ],
-                                ],
-                                'visible' => Admin::showBlock(Yii::$app->admin->id)
+                            [
+                                'label' => 'Баннеры',
+                                'url' => ['/banner'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'banner')
                             ],
                             ['label' => 'Новости',
                                 'items'=>[
@@ -229,30 +262,20 @@ $count = UpdateRequest::find()->count();
                                 ],
                                 'visible' => Admin::showPresentation(Yii::$app->admin->id)
                             ],
-                            ['label'=>'Фабрики',
+                            ['label'=>'Акции',
                                 'items'=>[
                                     [
-                                        'label'=>'Фабрики',
-                                        'url'=>['/factory'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factory')
-                                    ],
-                                    [
                                         'label'=>'Акции',
-                                        'url'=>['/factories/stock'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factories/stock')
-                                    ],
-                                    [
-                                        'label'=>'Продукты',
-                                        'url'=>['/factories/product'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factories/product')
+                                        'url'=>['/stock'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'stock')
                                     ],
                                     [
                                         'label'=>'Ответы',
-                                        'url'=>['/factories/stocks/answer'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factories/stocks/answer')
+                                        'url'=>['/stocks/answer'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'stocks/answer')
                                     ],
                                 ],
-                                'visible' => Admin::showFactory(Yii::$app->admin->id)
+                                'visible' => Admin::showStock(Yii::$app->admin->id)
                             ],
 
                             ['label'=>'Семинары',
@@ -276,21 +299,11 @@ $count = UpdateRequest::find()->count();
                                 'visible' => Admin::showSeminar(Yii::$app->admin->id)
                             ],
 
-                            ['label'=>'Подарки',
-                                'items'=>[
-                                    [
-                                        'label'=>'Подарки',
-                                        'url'=>['/present'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'present')
-                                    ],
-                                    [
-                                        'label'=>'Поставщики',
-                                        'url'=>['/presents/vendor'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'presents/vendor')
-                                    ],
+                                [
+                                    'label'=>'Подарки',
+                                    'url'=>['/present'],
+                                    'visible' => Right::HasAdmin(Yii::$app->admin->id, 'present')
                                 ],
-                                'visible' => Admin::showPresent(Yii::$app->admin->id)
-                            ],
                                     ],
                         'visible' => Admin::showContent(Yii::$app->admin->id)
                     ],

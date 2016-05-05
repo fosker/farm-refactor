@@ -34,14 +34,13 @@ class Position extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getUsers() {
-        return $this->hasMany(User::className(), ['education_id' => 'id']);
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(), ['position_id' => 'id']);
     }
 
     public function afterDelete()
     {
         parent::afterDelete();
-        foreach($this->users as $user)
-            $user->delete();
     }
 }

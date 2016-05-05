@@ -4,21 +4,21 @@ namespace common\models;
 
 use Yii;
 use yii\imagine\Image;
+use yii\helpers\ArrayHelper;
 
 use common\models\vacancy\Comment;
 use common\models\vacancy\Entry;
-use common\models\vacancy\City;
-use common\models\vacancy\Pharmacy;
-use common\models\location\City as Region_City;
-use common\models\agency\Pharmacy as P;
-use common\models\agency\Firm;
-use yii\helpers\ArrayHelper;
+use common\models\vacancy\Pharmacy as Vacancy_Pharmacy;
+use common\models\company\Pharmacy;
+use common\models\Factory;
+
 /**
  * This is the model class for table "vacancies".
  *
  * @property integer $id
  * @property string $image
  * @property string $thumbnail
+ * @property integer $factory_id
  * @property string $title
  * @property string $description
  * @property string $email
@@ -44,7 +44,7 @@ class Vacancy extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title','description','email'], 'required'],
+            [['title','description','email', 'factory_id'], 'required'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
             [['title', 'description'], 'string'],
             ['email', 'email'],
@@ -54,7 +54,7 @@ class Vacancy extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'email', 'imageFile','thumbFile'];
+        $scenarios['create'] = ['title', 'description', 'email', 'imageFile','thumbFile', 'factory_id'];
         return $scenarios;
     }
 
@@ -71,6 +71,7 @@ class Vacancy extends \yii\db\ActiveRecord
             'image' => 'Изображение',
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
+            'factory_id' => 'Фабрика Автор',
         ];
     }
 
@@ -96,10 +97,8 @@ class Vacancy extends \yii\db\ActiveRecord
     public static function getForCurrentUser()
     {
         return static::find()
-            ->joinWith('cities')
             ->joinWith('pharmacies')
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
+            ->andWhere([Vacancy_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
             ->andWhere(['status'=>static::STATUS_ACTIVE])
             ->orderBy(['id'=>SORT_DESC])
             ->groupBy(static::tableName().'.id');
@@ -110,23 +109,28 @@ class Vacancy extends \yii\db\ActiveRecord
         return static::getForCurrentUser()->andWhere([Pharmacy::tableName().'.vacancy_id'=>$id])->one();
     }
 
-    public function getCities() {
-        return $this->hasMany(City::className(), ['vacancy_id' => 'id']);
+    public function getFactory()
+    {
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
     }
 
-    public function getPharmacies() {
-        return $this->hasMany(Pharmacy::className(), ['vacancy_id' => 'id']);
+    public function getPharmacies()
+    {
+        return $this->hasMany(Vacancy_Pharmacy::className(),['vacancy_id'=>'id']);
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return Yii::getAlias('@uploads_view/vacancies/'.$this->image);
     }
 
-    public function getThumbPath() {
+    public function getThumbPath()
+    {
         return Yii::getAlias('@uploads_view/vacancies/thumbs/'.$this->thumbnail);
     }
 
-    public function isSignedByCurrentUser() {
+    public function isSignedByCurrentUser()
+    {
         return Entry::findOne(['vacancy_id'=>$this->id, 'user_id'=>Yii::$app->user->id]) !== null;
     }
 
@@ -135,13 +139,15 @@ class Vacancy extends \yii\db\ActiveRecord
         return [static::STATUS_ACTIVE=>'активный',static::STATUS_HIDDEN=>'скрытый'];
     }
 
-    public function getCitiesView($isFull = false) {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(Region_City::tableName().'.name')
-            ->joinWith('city')
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Vacancy_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
             ->asArray()
             ->where(['vacancy_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -158,18 +164,20 @@ class Vacancy extends \yii\db\ActiveRecord
         return $string;
     }
 
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
             ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', Vacancy_Pharmacy::tableName(),
+                Vacancy_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
             ->distinct()
             ->asArray()
             ->where(['vacancy_id' => $this->id])
-            ->all()),'name');
+            ->all()),'title');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -213,29 +221,16 @@ class Vacancy extends \yii\db\ActiveRecord
         parent::afterDelete();
         Comment::deleteAll(['vacancy_id'=>$this->id]);
         Entry::deleteAll(['vacancy_id'=>$this->id]);
-        City::deleteAll(['vacancy_id'=>$this->id]);
-        Pharmacy::deleteAll(['vacancy_id'=>$this->id]);
+        Vacancy_Pharmacy::deleteAll(['vacancy_id'=>$this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/vacancies/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/vacancies/thumbs/'.$this->thumbnail));
-    }
-
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->vacancy_id = $this->id;
-                $city->save();
-            }
-        }
     }
 
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Vacancy_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->vacancy_id = $this->id;
                 $pharmacy->save();
@@ -243,25 +238,12 @@ class Vacancy extends \yii\db\ActiveRecord
         }
     }
 
-    public function updateCities($cities)
-    {
-        City::deleteAll(['vacancy_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->vacancy_id = $this->id;
-                $city->save();
-            }
-        }
-    }
-
     public function updatePharmacies($pharmacies)
     {
-        Pharmacy::deleteAll(['vacancy_id' => $this->id]);
+        Vacancy_Pharmacy::deleteAll(['vacancy_id' => $this->id]);
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Vacancy_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->vacancy_id = $this->id;
                 $pharmacy->save();

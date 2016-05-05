@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-
 $this->title = $model->title;
 ?>
 <div class="factory-view">
@@ -27,13 +26,13 @@ $this->title = $model->title;
         'attributes' => [
             'id',
             [
-                'attribute'=>'image',
-                'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
+                'attribute'=>'logo',
+                'value'=>Html::img($model->logoPath, ['alt' => 'Лого', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
             [
-                'attribute'=>'logo',
-                'value'=>Html::img($model->logoPath, ['alt' => 'Лого', 'width' => '50%', 'height' => '200px']),
+                'attribute'=>'image',
+                'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
             'title',

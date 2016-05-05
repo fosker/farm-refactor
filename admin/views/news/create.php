@@ -11,12 +11,13 @@ $this->title = 'Добавить новость';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
         'education'=>$education,
-        'news_cities' => $news_cities,
-        'news_pharmacies' => $news_pharmacies,
-        'news_education' => $news_education
+        'regions'=>$regions,
+        'cities'=>$cities,
+        'companies'=>$companies,
+        'pharmacies'=>$pharmacies,
+        'types'=>$types,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

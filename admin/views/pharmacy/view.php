@@ -28,8 +28,8 @@ $this->title = $model->name;
             'name',
             'address',
             [
-                'attribute'=>'firm.name',
-                'value'=>Html::a($model->firm->name,['/firm/view','id'=>$model->firm_id]),
+                'attribute'=>'company.title',
+                'value'=>Html::a($model->company->title,['/company/view','id'=>$model->company_id]),
                 'format'=>'html',
             ],
             [

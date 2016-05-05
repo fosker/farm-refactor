@@ -70,6 +70,8 @@ class View extends ActiveRecord
         $view->user_id = Yii::$app->user->id;
         $view->presentation_id =reset($answers)->question->presentation_id;
         $view->save(false);
+        $presentation = Presentation::findOne($view->presentation_id);
+        $presentation->updateCounters(['views_limit' => -1]);
         foreach($answers as $answer) {
             $answer->view_id = $view->id;
             $answer->save(false);

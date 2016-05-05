@@ -7,14 +7,14 @@ use yii\db\ActiveRecord;
 use yii\helpers\Html;
 use yii\imagine\Image;
 use yii\helpers\ArrayHelper;
-use common\models\banner\City;
-use common\models\banner\Pharmacy;
-use common\models\banner\Education;
-use common\models\profile\Education as E;
-use common\models\location\City as C;
-use common\models\agency\Pharmacy as P;
-use common\models\agency\Firm;
-use common\models\factory\Stock;
+
+use common\models\banner\Pharmacy as Banner_Pharmacy;
+use common\models\banner\Education as Banner_Education;
+use common\models\banner\Type as Banner_Type;
+use common\models\company\Pharmacy;
+use common\models\Factory;
+use common\models\profile\Type;
+
 
 /**
  * This is the model class for table "banners".
@@ -25,6 +25,7 @@ use common\models\factory\Stock;
  * @property string $title
  * @property string $link
  * @property string $status
+ * @property integer $factory_id
  */
 class Banner extends ActiveRecord
 {
@@ -42,7 +43,8 @@ class Banner extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'position', 'link'], 'required'],
+            [['title', 'position', 'link', 'factory_id'], 'required'],
+            [['factory_id'], 'integer'],
             ['imageFile', 'required', 'on' => 'create']
         ];
     }
@@ -50,7 +52,7 @@ class Banner extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'position', 'link', 'imageFile'];
+        $scenarios['create'] = ['title', 'position', 'link', 'imageFile', 'factory_id'];
         return $scenarios;
     }
 
@@ -63,28 +65,44 @@ class Banner extends ActiveRecord
             'status' => 'Статус',
             'imageFile' => 'Изображение',
             'image' => 'Изображение',
-            'position' => 'Позиция'
+            'position' => 'Позиция',
+            'factory_id' => 'Фабрика Автор'
         ];
     }
 
     public function fields()
     {
         return [
-            'id', 'image' => 'imagePath', 'title', 'link', 'position',
+            'id', 'image' => 'imagePath', 'title', 'link', 'position'
         ];
     }
 
     public static function getForCurrentUser()
     {
-        $base = static::find()
-            ->andWhere(['status'=>static::STATUS_ACTIVE])
-            ->joinWith('cities')
-            ->joinWith('pharmacies')
-            ->joinWith('education')
-            ->andWhere([Education::tableName().'.education_id'=>Yii::$app->user->identity->education_id])
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
-            ->groupBy(static::tableName().'.id');
+        if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $base = static::find()
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->joinWith('education')
+                ->joinWith('pharmacies')
+                ->joinWith('types')
+                ->andWhere([Banner_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
+                ->andWhere([Banner_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
+                ->andWhere([Banner_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->groupBy(static::tableName().'.id');
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            $base = static::find()
+                ->joinWith('types')
+                ->where([
+                    'factory_id'=>Yii::$app->user->identity->agent->factory_id,
+                    Banner_Type::tableName().'.type_id'=> Type::TYPE_PHARMACIST
+                ])
+                ->orWhere([
+                    Banner_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
+                    'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
+                ])
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->groupBy(static::tableName().'.id');
+        }
 
         $banners = clone $base;
         $slider = clone $base;
@@ -99,18 +117,24 @@ class Banner extends ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
-    public function getCities()
+    public function getFactory()
     {
-        return $this->hasMany(City::className(),['banner_id'=>'id']);
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
     }
 
     public function getPharmacies()
     {
-        return $this->hasMany(Pharmacy::className(),['banner_id'=>'id']);
+        return $this->hasMany(Banner_Pharmacy::className(),['banner_id'=>'id']);
     }
 
-    public function getEducation() {
-        return $this->hasMany(Education::className(),['banner_id'=>'id']);
+    public function getTypes()
+    {
+        return $this->hasMany(Banner_Type::className(),['banner_id'=>'id']);
+    }
+
+    public function getEducation()
+    {
+        return $this->hasMany(Banner_Education::className(),['banner_id'=>'id']);
     }
 
     public function getImagePath()
@@ -121,7 +145,6 @@ class Banner extends ActiveRecord
     public static function pages()
     {
         return [
-            'block'=>'Страницы',
             'present'=>'Подарки',
             'survey'=>'Анкеты',
             'seminar'=>'Семинары',
@@ -160,10 +183,6 @@ class Banner extends ActiveRecord
         $name = '';
         $item = ['title'=>''];
         switch($path[0]) {
-            case 'block':
-                $item = Block::findOne($path[1]);
-                $name = 'Страница: ';
-                break;
             case 'present':
                 $item = Item::findOne($path[1]);
                 $name = 'Подарок: ';
@@ -188,37 +207,16 @@ class Banner extends ActiveRecord
         return $name.$item['title'];
     }
 
-    public function getCitiesView($isFull = false)
+
+    public function getEducationsView($isFull = false)
     {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(C::tableName().'.name')
-            ->joinWith('city')
-            ->asArray()
-            ->where(['banner_id'=>$this->id])
-            ->all()),'name');
-        $string = "";
-        if(!$isFull) {
-            $limit = 5;
-            if (count($result) > $limit) {
-                for ($i = 0; $i < $limit; $i++) {
-                    $string .= $result[$i].", ";
-                }
-                $string .= "и ещё (".(count($result)-$limit).")";
-            } else
-                $string = implode(", ", $result);
-        } else
-            $string = implode(", ", $result);
-
-        return $string;
-    }
-
-    public function getEducationsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Education::find()
+        $result = ArrayHelper::getColumn((Banner_Education::find()
             ->select('name')
             ->joinWith('education')
             ->asArray()
             ->where(['banner_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -235,18 +233,71 @@ class Banner extends ActiveRecord
         return $string;
     }
 
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Banner_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
+            ->asArray()
+            ->where(['banner_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+
+    public function getTypesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Banner_Type::find()
+            ->select('name')
+            ->joinWith('type')
+            ->asArray()
+            ->where(['banner_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
             ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', Banner_Pharmacy::tableName(),
+                Banner_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
             ->distinct()
             ->asArray()
             ->where(['banner_id' => $this->id])
-            ->all()),'name');
+            ->all()),'title');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -276,7 +327,8 @@ class Banner extends ActiveRecord
         $this->save(false);
     }
 
-    public function loadImage() {
+    public function loadImage()
+    {
         if($this->imageFile) {
 
             $one_one = [5,6,7];
@@ -310,31 +362,19 @@ class Banner extends ActiveRecord
         }
     }
 
-    public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
         if(parent::beforeSave($insert)) {
             $this->loadImage();
             return true;
         } else return false;
     }
 
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->banner_id = $this->id;
-                $city->save();
-            }
-        }
-    }
-
-
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Banner_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->banner_id = $this->id;
                 $pharmacy->save();
@@ -346,20 +386,32 @@ class Banner extends ActiveRecord
     {
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Banner_Education();
                 $education->education_id = $educations[$i];
                 $education->banner_id = $this->id;
                 $education->save();
+            }
+        }
+    }
+
+    public function loadTypes($types)
+    {
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Banner_Type();
+                $type->type_id = $types[$i];
+                $type->banner_id = $this->id;
+                $type->save();
             }
         }
     }
 
     public function updateEducation($educations)
     {
-        Education::deleteAll(['banner_id' => $this->id]);
+        Banner_Education::deleteAll(['banner_id' => $this->id]);
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Banner_Education();
                 $education->education_id = $educations[$i];
                 $education->banner_id = $this->id;
                 $education->save();
@@ -367,25 +419,12 @@ class Banner extends ActiveRecord
         }
     }
 
-    public function updateCities($cities)
-    {
-        City::deleteAll(['banner_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->banner_id = $this->id;
-                $city->save();
-            }
-        }
-    }
-
     public function updatePharmacies($pharmacies)
     {
-        Pharmacy::deleteAll(['banner_id' => $this->id]);
+        Banner_Pharmacy::deleteAll(['banner_id' => $this->id]);
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Banner_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->banner_id = $this->id;
                 $pharmacy->save();
@@ -393,11 +432,24 @@ class Banner extends ActiveRecord
         }
     }
 
+    public function updateTypes($types)
+    {
+        Banner_Type::deleteAll(['banner_id' => $this->id]);
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Banner_Type();
+                $type->type_id = $types[$i];
+                $type->banner_id = $this->id;
+                $type->save();
+            }
+        }
+    }
+
     public function afterDelete()
     {
-        Education::deleteAll(['banner_id'=>$this->id]);
-        City::deleteAll(['banner_id'=>$this->id]);
-        Pharmacy::deleteAll(['banner_id'=>$this->id]);
+        Banner_Education::deleteAll(['banner_id'=>$this->id]);
+        Banner_Pharmacy::deleteAll(['banner_id'=>$this->id]);
+        Banner_Type::deleteAll(['banner_id'=>$this->id]);
 
         if($this->image) @unlink(Yii::getAlias('@uploads/banners/'.$this->image));
         parent::afterDelete();

@@ -40,12 +40,12 @@ $this->title = 'Запросы по веществам';
                 ]),
             ],
             [
-                'attribute' => 'user.position_id',
-                'value'=>'user.position.name',
+                'attribute' => 'user.pharmacist.position_id',
+                'value'=>'user.pharmacist.position.name',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $positions,
-                    'attribute'=>'user.position_id',
+                    'attribute'=>'user.pharmacist.position_id',
                     'options' => [
                         'placeholder' => 'Выберите должность ...',
                     ],

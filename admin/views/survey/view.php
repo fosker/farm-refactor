@@ -53,20 +53,31 @@ $this->title = $model->title;
                 'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
+            [
+                'label' => 'Фабрика',
+                'attribute' => 'factory.title',
+                'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
+                'format'=>'html',
+            ],
             'title',
             'description:html',
             [
-                'label'=>'Для городов',
-                'value'=>$model->getCitiesView(true)
+                'label'=>'Для аптек',
+                'value'=>$model->getPharmaciesView(false)
             ],
             [
-                'label'=>'Для фирм',
-                'value'=>$model->getFirmsView(true)
-            ],
-            [
-                'label'=>'Для групп',
+                'label'=>'Для образования',
                 'value'=>$model->getEducationsView(true)
             ],
+            [
+                'label'=>'Для компаний',
+                'value'=>$model->getCompanyView(true)
+            ],
+            [
+                'label'=>'Для типов пользователей',
+                'value'=>$model->getTypesView(true)
+            ],
+            'views_limit',
             'points',
             [
                 'attribute'=>'status',

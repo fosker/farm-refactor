@@ -28,13 +28,13 @@ $this->title = $model->title;
         'attributes' => [
             'id',
             [
-                'attribute'=>'image',
-                'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
+                'attribute'=>'thumbnail',
+                'value'=>Html::img($model->thumbnailPath, ['alt' => 'Превью', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
             [
-                'attribute'=>'thumbnail',
-                'value'=>Html::img($model->thumbnailPath, ['alt' => 'Превью', 'width' => '50%', 'height' => '200px']),
+                'attribute'=>'image',
+                'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
             'title',

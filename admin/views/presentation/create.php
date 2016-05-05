@@ -13,12 +13,12 @@ $this->title = 'Добавить презентацию';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
         'education'=>$education,
-        'presentation_cities' => $presentation_cities,
-        'presentation_pharmacies' => $presentation_pharmacies,
-        'presentation_education' => $presentation_education
+        'regions'=>$regions,
+        'cities'=>$cities,
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

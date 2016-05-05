@@ -105,7 +105,7 @@ class FactoryController extends Controller
         if (($model = Factory::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('Р¤Р°Р±СЂРёРєР° РЅРµ РЅР°Р№РґРµРЅР°.');
         }
     }
 } 

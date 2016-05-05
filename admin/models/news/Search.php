@@ -7,9 +7,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\News;
 use common\models\news\View;
-use common\models\news\City;
 use common\models\news\Pharmacy;
 use common\models\news\Education;
+use common\models\news\Type;
 
 
 class Search extends News
@@ -20,18 +20,15 @@ class Search extends News
         return [
             [['id', 'views'], 'integer'],
             [['title', 'text', 'date'], 'string'],
-            [['city_id', 'firm_id', 'education_id'], 'safe']
+            [['company_id', 'education_id', 'type_id', 'pharmacy_id'], 'safe'],
         ];
     }
 
-    public function scenarios()
+    public function attributes()
     {
-        return Model::scenarios();
+        return array_merge(parent::attributes(),['city_id', 'company_id', 'education_id', 'type_id', 'pharmacy_id']);
     }
 
-    public function attributes() {
-        return array_merge(parent::attributes(),['city_id', 'firm_id', 'education_id']);
-    }
 
     public function search($params)
     {
@@ -73,19 +70,22 @@ class Search extends News
         }
 
 
-        if($this->getAttribute('city_id'))
-            $cities = City::find()->select('news_id')->where(['in', 'city_id', $this->getAttribute('city_id')]);
-        if($this->getAttribute('firm_id'))
-            $firms = Pharmacy::find()->select('news_id')->where(['in', 'firm_id', $this->getAttribute('firm_id')])
+        if($this->getAttribute('company_id'))
+            $companies = Pharmacy::find()->select('news_id')->where(['in', 'company_id', $this->getAttribute('company_id')])
                 ->joinWith('pharmacy');
         if($this->getAttribute('education_id'))
             $education = Education::find()->select('news_id')->andFilterWhere(['in', 'education_id', $this->getAttribute('education_id')]);
+        if($this->getAttribute('type_id'))
+            $types = Type::find()->select('news_id')->andFilterWhere(['in', 'type_id', $this->getAttribute('type_id')]);
+        if($this->getAttribute('pharmacy_id'))
+            $pharmacies = Pharmacy::find()->select('news_id')->andFilterWhere(['in', 'pharmacy_id', $this->getAttribute('pharmacy_id')]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'date', $this->date])
             ->andFilterWhere(['in', News::tableName().'.id', $education])
-            ->andFilterWhere(['in', News::tableName().'.id', $cities])
-            ->andFilterWhere(['in', News::tableName().'.id', $firms]);
+            ->andFilterWhere(['in', News::tableName().'.id', $companies])
+            ->andFilterWhere(['in', News::tableName().'.id', $types])
+            ->andFilterWhere(['in', News::tableName().'.id', $pharmacies]);
 
         return $dataProvider;
     }

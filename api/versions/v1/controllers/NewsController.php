@@ -44,13 +44,15 @@ class NewsController extends Controller
         ]);
     }
 
-    public function actionView($id) {
-        $view = new View();
-        $view->user_id = Yii::$app->user->id;
-        $view->news_id = $id;
-        if($view->save()) {
-            return News::getOneForCurrentUser($id);
+    public function actionView($id)
+    {
+        if(!View::find()->where(['user_id' => Yii::$app->user->id, 'news_id' => $id])->exists()) {
+            $view = new View();
+            $view->user_id = Yii::$app->user->id;
+            $view->news_id = $id;
+            $view->save();
         }
+        return News::getOneForCurrentUser($id);
     }
 
     public function actionComments($news_id) {

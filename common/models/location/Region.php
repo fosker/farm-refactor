@@ -38,6 +38,11 @@ class Region extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getCities()
+    {
+        return $this->hasMany(City::className(), ['region_id' => 'id']);
+    }
+
     public function afterDelete()
     {
         parent::afterDelete();

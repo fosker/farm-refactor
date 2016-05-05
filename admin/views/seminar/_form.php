@@ -1,5 +1,6 @@
 <?php
 
+use kartik\widgets\Select2;
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
@@ -7,7 +8,9 @@ use backend\components\Editor;
 use yii\bootstrap\Modal;
 use backend\components\CheckWidget;
 use common\models\location\Region;
-use common\models\agency\Firm;
+use common\models\Company;
+use common\models\profile\Education;
+use common\models\profile\Type;
 
 $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
@@ -18,17 +21,16 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?php
-    $regions = Region::find()->asArray()->all();
-    $firms = Firm::find()->asArray()->all();
-
     Modal::begin([
         'header' => '<h2>Выберите города</h2>',
-        'toggleButton' => ['label' => 'Для городов', 'class' => 'btn btn-primary'],
+        'toggleButton' => ['label' => 'Для городов', 'class' => 'btn btn-primary city'],
+        'id' => 'cities'
     ]);
 
-    echo $form->field($seminar_cities, 'cities')->widget(CheckWidget::className(), [
+    echo $form->field(new Region(), '_')->widget(CheckWidget::className(), [
         'parent_title' => 'regions',
         'parent' => $regions,
+        'parent_label' => 'name',
         'update' => $old_cities,
 
         'child_title' => 'cities',
@@ -37,33 +39,58 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     ]);
     Modal::end();
 
+    Modal::begin([
+        'header' => '<h2>Выберите компании</h2>',
+        'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary company'],
+        'id' => 'companies'
+    ]);
+
+    echo $form->field(new Company(), '_')->widget(CheckWidget::className(), [
+        'parent_title' => 'companies',
+        'parent' => $companies,
+        'parent_label' => 'title',
+        'update' => $old_companies,
+
+        'height' => '1px',
+    ]);
+    Modal::end();
+
 
     Modal::begin([
         'header' => '<h2>Выберите аптеки</h2>',
-        'toggleButton' => ['label' => 'Для аптек', 'class' => 'btn btn-primary'],
-    ]);
-    echo $form->field($seminar_pharmacies, 'pharmacies')->widget(CheckWidget::className(), [
-        'firms' => true,
-        'color' => 'green',
-        'parent_title' => 'firms',
-        'parent' => $firms,
-        'update' => $old_pharmacies,
-
-        'child_title' => 'pharmacies',
-        'child' => $pharmacies,
-        'relation' => 'firm_id'
-
+        'toggleButton' => ['label' => 'Для аптек', 'class' => 'btn btn-primary pharmacy'],
+        'id' => 'pharmacies'
     ]);
     Modal::end();
 
     Modal::begin([
-        'header' => '<h2>Выберите образования</h2>',
-        'toggleButton' => ['label' => 'Для образований', 'class' => 'btn btn-primary'],
+        'header' => '<h2>Выберите типы пользователей</h2>',
+        'toggleButton' => ['label' => 'Для типов пользователей', 'class' => 'btn btn-primary type'],
+        'id' => 'types'
     ]);
 
-    echo $form->field($seminar_education, 'education')->widget(CheckWidget::className(), [
+    echo $form->field(new Type, '_')->widget(CheckWidget::className(), [
+        'parent_title' => 'types',
+        'parent' => $types,
+        'parent_label' => 'name',
+
+        'update' => $old_types,
+        'height' => '10px'
+    ]);
+    Modal::end();
+
+
+    Modal::begin([
+        'header' => '<h2>Выберите образования</h2>',
+        'toggleButton' => ['label' => 'Для образований', 'class' => 'btn btn-primary education'],
+        'id' => 'education'
+    ]);
+
+    echo $form->field(new Education, '_')->widget(CheckWidget::className(), [
         'parent_title' => 'education',
         'parent' => $education,
+        'parent_label' => 'name',
+
         'update' => $old_education,
         'height' => '10px'
     ]);
@@ -71,6 +98,14 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
+        'data' => $factories,
+        'options' => ['placeholder' => 'Выберите фабрику ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],

@@ -7,6 +7,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\substance\Request;
 use common\models\User;
+use common\models\user\Pharmacist;
 use common\models\Substance;
 
 class Search extends Request
@@ -15,7 +16,7 @@ class Search extends Request
     public function rules()
     {
         return [
-            [['id', 'user.position_id'], 'integer'],
+            [['id', 'user.pharmacist.position_id'], 'integer'],
             [['user.name','substance.cyrillic', 'date_request'], 'string'],
         ];
     }
@@ -26,12 +27,12 @@ class Search extends Request
     }
 
     public function attributes() {
-        return array_merge(parent::attributes(),['user.position_id','user.name','substance.cyrillic']);
+        return array_merge(parent::attributes(),['user.pharmacist.position_id','user.name','substance.cyrillic']);
     }
 
     public function search($params)
     {
-        $query = Request::find()->joinWith(['user','substance']);
+        $query = Request::find()->joinWith(['user.pharmacist','substance']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -46,9 +47,9 @@ class Search extends Request
             'desc' => [User::tableName().'.name' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['user.position_id'] = [
-            'asc' => [User::tableName().'.position_id' => SORT_ASC],
-            'desc' => [User::tableName().'.position_id' => SORT_DESC],
+        $dataProvider->sort->attributes['user.pharmacist.position_id'] = [
+            'asc' => [Pharmacist::tableName().'.position_id' => SORT_ASC],
+            'desc' => [Pharmacist::tableName().'.position_id' => SORT_DESC],
         ];
 
         $dataProvider->sort->attributes['substance.cyrillic'] = [
@@ -65,7 +66,7 @@ class Search extends Request
 
         $query->andFilterWhere([
             Request::tableName().'.id' => $this->id,
-            User::tableName().'.position_id' => $this->getAttribute('user.position_id'),
+            Pharmacist::tableName().'.position_id' => $this->getAttribute('user.pharmacist.position_id'),
         ]);
         $query->andFilterWhere(['or',['like', Substance::tableName().'.cyrillic',$this->getAttribute('substance.cyrillic')],
             ['like',Substance::tableName().'.name',$this->getAttribute('substance.cyrillic')]])

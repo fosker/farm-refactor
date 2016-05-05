@@ -5,7 +5,7 @@ namespace backend\models\pharmacy;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\agency\Pharmacy;
+use common\models\company\Pharmacy;
 
 class Search extends Pharmacy
 {
@@ -13,7 +13,7 @@ class Search extends Pharmacy
     public function rules()
     {
         return [
-            [['id', 'city_id', 'firm_id'], 'integer'],
+            [['id', 'city_id', 'company_id'], 'integer'],
             [['address', 'name'], 'string']
         ];
     }
@@ -45,7 +45,7 @@ class Search extends Pharmacy
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'firm_id' => $this->firm_id,
+            'company_id' => $this->company_id,
             'city_id' => $this->city_id,
         ]);
 

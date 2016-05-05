@@ -6,7 +6,6 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Item;
-use common\models\shop\City;
 use common\models\shop\Pharmacy;
 
 class Search extends Item
@@ -17,13 +16,13 @@ class Search extends Item
         return [
             [['id', 'vendor_id','priority', 'status'], 'integer'],
             [['title'], 'string'],
-            [['city_id', 'firm_id'], 'safe'],
+            [['company_id', 'firm_id', 'pharmacy_id'], 'safe'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(),['city_id', 'firm_id']);
+        return array_merge(parent::attributes(),['firm_id', 'company_id', 'pharmacy_id']);
     }
 
 
@@ -59,13 +58,15 @@ class Search extends Item
             'status' => $this->status,
         ]);
 
-        $cities = City::find()->select('item_id')->andFilterWhere(['in', 'city_id', $this->getAttribute('city_id')]);
-        $firms = Pharmacy::find()->select('item_id')->andFilterWhere(['in', 'firm_id', $this->getAttribute('firm_id')])
-            ->joinWith('pharmacy');
+        if($this->getAttribute('company_id'))
+            $companies = Pharmacy::find()->select('item_id')->where(['in', 'company_id', $this->getAttribute('company_id')])
+                ->joinWith('pharmacy');
+        if($this->getAttribute('pharmacy_id'))
+            $pharmacies = Pharmacy::find()->select('item_id')->andFilterWhere(['in', 'pharmacy_id', $this->getAttribute('pharmacy_id')]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['in', Item::tableName().'.id', $cities])
-            ->andFilterWhere(['in', Item::tableName().'.id', $firms]);
+            ->andFilterWhere(['in', Item::tableName().'.id', $companies])
+            ->andFilterWhere(['in', Item::tableName().'.id', $pharmacies]);
 
         $query->groupBy(Item::tableName().'.id');
 

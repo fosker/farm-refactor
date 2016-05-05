@@ -8,7 +8,6 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use common\models\profile\Education;
 use common\models\profile\Position;
 use common\models\Substance;
 use common\models\User;
@@ -75,7 +74,7 @@ class RequestController extends Controller
         if (($model = Request::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('Р—Р°РїСЂРѕСЃ РЅРµ РЅР°Р№РґРµРЅ.');
         }
     }
 }

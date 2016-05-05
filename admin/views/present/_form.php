@@ -7,9 +7,10 @@ use kartik\widgets\FileInput;
 use backend\components\Editor;
 use backend\components\CheckWidget;
 use yii\bootstrap\Modal;
-use common\models\agency\Firm;
 use common\models\location\Region;
-$this->registerJsFile('backend/web/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+use common\models\Company;
+
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="item-form">
@@ -17,41 +18,47 @@ $this->registerJsFile('backend/web/js/checkWidget.js', ['depends' => [\yii\web\J
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data',]]); ?>
 
     <?php
-    $regions = Region::find()->asArray()->all();
-    $firms = Firm::find()->asArray()->all();
+        Modal::begin([
+            'header' => '<h2>Выберите города</h2>',
+            'toggleButton' => ['label' => 'Для городов', 'class' => 'btn btn-primary city'],
+            'id' => 'cities'
+        ]);
 
-    Modal::begin([
-        'header' => '<h2>Выберите города</h2>',
-        'toggleButton' => ['label' => 'Для городов', 'class' => 'btn btn-primary'],
-    ]);
+        echo $form->field(new Region(), '_')->widget(CheckWidget::className(), [
+            'parent_title' => 'regions',
+            'parent' => $regions,
+            'parent_label' => 'name',
+            'update' => $old_cities,
 
-    echo $form->field($item_cities, 'cities')->widget(CheckWidget::className(), [
-        'parent_title' => 'regions',
-        'parent' => $regions,
-        'update' => $old_cities,
+            'child_title' => 'cities',
+            'child' => $cities,
+            'relation' => 'region_id'
+        ]);
+        Modal::end();
 
-        'child_title' => 'cities',
-        'child' => $cities,
-        'relation' => 'region_id'
-    ]);
-    Modal::end();
+        Modal::begin([
+            'header' => '<h2>Выберите компании</h2>',
+            'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary company'],
+            'id' => 'companies'
+        ]);
+
+        echo $form->field(new Company(), '_')->widget(CheckWidget::className(), [
+            'parent_title' => 'companies',
+            'parent' => $companies,
+            'parent_label' => 'title',
+            'update' => $old_companies,
+
+            'height' => '1px',
+        ]);
+        Modal::end();
 
 
-    Modal::begin([
-        'header' => '<h2>Выберите аптеки</h2>',
-        'toggleButton' => ['label' => 'Для аптек', 'class' => 'btn btn-primary'],
-    ]);
-    echo $form->field($item_pharmacies, 'pharmacies')->widget(CheckWidget::className(), [
-        'parent_title' => 'firms',
-        'parent' => $firms,
-        'update' => $old_pharmacies,
-
-        'child_title' => 'pharmacies',
-        'child' => $pharmacies,
-        'relation' => 'firm_id'
-
-    ]);
-    Modal::end();
+        Modal::begin([
+            'header' => '<h2>Выберите аптеки</h2>',
+            'toggleButton' => ['label' => 'Для аптек', 'class' => 'btn btn-primary pharmacy'],
+            'id' => 'pharmacies'
+        ]);
+        Modal::end();
     ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>

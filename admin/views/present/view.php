@@ -46,12 +46,12 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             [
-                'label'=>'Для городов',
-                'value'=>$model->getCitiesView(true)
+                'label'=>'Для аптек',
+                'value'=>$model->getPharmaciesView(false)
             ],
             [
-                'label'=>'Для фирм',
-                'value'=>$model->getFirmsView(true)
+                'label'=>'Для компаний',
+                'value'=>$model->getCompanyView(true)
             ],
             'points',
             'description:html',

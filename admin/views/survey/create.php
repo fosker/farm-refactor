@@ -13,11 +13,11 @@ $this->title = 'Добавить анкету';
         'questions'=>$questions,
         'options'=>$options,
         'education'=>$education,
+        'regions'=>$regions,
         'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
-        'survey_cities' => $survey_cities,
-        'survey_pharmacies' => $survey_pharmacies,
-        'survey_education' => $survey_education
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

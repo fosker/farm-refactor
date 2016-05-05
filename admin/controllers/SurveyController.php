@@ -11,18 +11,21 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use common\models\Company;
 use common\models\Survey;
 use common\models\survey\Question;
 use common\models\survey\Option;
 use common\models\location\City;
-use common\models\agency\Pharmacy;
-use common\models\survey\City as Survey_City;
-use common\models\survey\Pharmacy as Survey_Pharmacy;
+use common\models\location\Region;
+use common\models\company\Pharmacy;
 use common\models\survey\Education as Survey_Education;
-use common\models\agency\Firm;
+use common\models\survey\Type as Survey_Type;
+use common\models\profile\Type;
+use common\models\profile\Education;
+use common\models\Factory;
 use backend\models\survey\Search;
 use backend\base\Model;
-use common\models\profile\Education;
+
 
 
 class SurveyController extends Controller
@@ -60,10 +63,11 @@ class SurveyController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'titles' => ArrayHelper::map(Survey::find()->asArray()->all(),'title','title'),
             'education' => ArrayHelper::map(Education::find()->asArray()->all(),'id','name'),
-            'firms' => ArrayHelper::map(Firm::find()->asArray()->all(),'id','name'),
-            'cities'=>ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
+            'pharmacies'=>ArrayHelper::map(Pharmacy::find()->asArray()->all(),'id','name'),
+            'types' => ArrayHelper::map(Type::find()->asArray()->all(),'id','name'),
+            'companies' => ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
+            'titles'=>ArrayHelper::map(Survey::find()->asArray()->all(), 'title','title'),
         ]);
     }
 
@@ -78,10 +82,6 @@ class SurveyController extends Controller
     {
         $model = new Survey();
         $model->scenario = 'create';
-
-        $survey_cities = new Survey_City();
-        $survey_pharmacies = new Survey_Pharmacy();
-        $survey_education = new Survey_Education();
 
         $questions = [new Question];
         $options = [[new Option]];
@@ -108,9 +108,9 @@ class SurveyController extends Controller
 
             if ($valid) {
                 if ($this->saveSurvey($model,$questions,$options)) {
-                    $model->loadCities(Yii::$app->request->post('cities'));
                     $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
                     $model->loadEducation(Yii::$app->request->post('education'));
+                    $model->loadTypes(Yii::$app->request->post('types'));
                     return $this->redirect(['view', 'id'=>$model->id]);
                 }
             }
@@ -121,37 +121,32 @@ class SurveyController extends Controller
             'model' => $model,
             'questions' => (empty($questions)) ? [new Question] : $questions,
             'options' => (empty($options)) ? [new Option] : $options,
-            'cities'=>City::find()->asArray()->all(),
-            'pharmacies'=>Pharmacy::find()->asArray()->all(),
             'education' => Education::find()->asArray()->all(),
-            'survey_cities' => $survey_cities,
-            'survey_pharmacies' => $survey_pharmacies,
-            'survey_education' => $survey_education
+            'regions'=>Region::find()->asArray()->all(),
+            'types'=>Type::find()->asArray()->all(),
+            'cities'=>City::find()->all(),
+            'companies'=>Company::find()->asArray()->all(),
+            'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
         ]);
     }
 
     public function actionUpdate($id)
     {
-
-        // retrieve existing Deposit data
         $model = $this->findModel($id);
 
-        $survey_cities = new Survey_City();
-        $survey_pharmacies = new Survey_Pharmacy();
-        $survey_education = new Survey_Education();
-
-        $old_cities = Survey_City::find()->select('city_id')->where(['survey_id' => $id])->asArray()->all();
-        $old_pharmacies = Survey_Pharmacy::find()->select('pharmacy_id')->where(['survey_id' => $id])->asArray()->all();
+        $old_cities = Pharmacy::find()->select('city_id')->joinWith('surveyPharmacies')
+            ->where(['survey_id' => $id])->asArray()->all();
+        $old_companies = Pharmacy::find()->select('company_id')->joinWith('surveyPharmacies')
+            ->where(['survey_id' => $id])->asArray()->all();
         $old_education = Survey_Education::find()->select('education_id')->where(['survey_id' => $id])->asArray()->all();
+        $old_types = Survey_Type::find()->select('type_id')->where(['survey_id' => $id])->asArray()->all();
 
-        // retrieve existing Question data
         $oldQuestionIds = Question::find()->select('id')
             ->where(['survey_id' => $id])->asArray()->all();
         $oldQuestionIds = ArrayHelper::getColumn($oldQuestionIds,'id');
         $questions = Question::findAll(['id' => $oldQuestionIds]);
         $questions = (empty($questions)) ? [new Question] : $questions;
 
-        // retrieve existing Options data
         $oldOptionIds = [];
         foreach ($questions as $i => $question) {
             $oldOptions = Option::findAll(['question_id' => $question->id]);
@@ -161,15 +156,12 @@ class SurveyController extends Controller
             $options[$i] = empty($options[$i]) ? [new Option] : $options[$i];
         }
 
-        // handle POST
         if ($model->load(Yii::$app->request->post())) {
 
-            // get Payment data from POST
             $questions = Model::createMultiple(Question::classname(), $questions);
             Model::loadMultiple($questions, Yii::$app->request->post());
             $newQuestionIds = ArrayHelper::getColumn($questions,'id');
 
-            // get Options data from POST
             $newOptionIds = [];
             $optionData['_csrf'] =  Yii::$app->request->post()['_csrf'];
             for ($i=0; $i<count($questions); $i++) {
@@ -197,9 +189,11 @@ class SurveyController extends Controller
             // save deposit data
             if ($valid) {
                 if ($this->saveSurvey($model,$questions,$options)) {
-                    $model->updateCities(Yii::$app->request->post('cities'));
-                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                    if(Yii::$app->request->post('pharmacies')) {
+                        $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                    }
                     $model->updateEducation(Yii::$app->request->post('education'));
+                    $model->updateTypes(Yii::$app->request->post('types'));
                     return $this->redirect(['view', 'id'=>$model->id]);
                 }
             }
@@ -209,14 +203,15 @@ class SurveyController extends Controller
             'model' => $model,
             'questions' => (empty($questions)) ? [new Question] : $questions,
             'options' => (empty($options)) ? [new Option] : $options,
-            'cities'=>City::find()->asArray()->all(),
             'education' => Education::find()->asArray()->all(),
-            'pharmacies'=>Pharmacy::find()->asArray()->all(),
-            'survey_cities' => $survey_cities,
-            'survey_pharmacies' => $survey_pharmacies,
-            'survey_education' => $survey_education,
+            'regions'=>Region::find()->asArray()->all(),
+            'types'=>Type::find()->asArray()->all(),
+            'cities'=>City::find()->all(),
+            'companies'=>Company::find()->asArray()->all(),
+            'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
+            'old_types' => $old_types,
             'old_cities' => $old_cities,
-            'old_pharmacies' => $old_pharmacies,
+            'old_companies' => $old_companies,
             'old_education' => $old_education
         ]);
 

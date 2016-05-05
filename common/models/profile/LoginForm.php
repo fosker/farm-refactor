@@ -27,6 +27,7 @@ class LoginForm extends Model
             [['login'], 'string','max'=>100],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['login', 'isVerified'],
         ];
     }
 
@@ -45,12 +46,22 @@ class LoginForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
+
+    public function isVerified($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if (!$this->getUser()) {
+                $this->addError($attribute, 'Невозможно авторизоваться. Аккаунт не активен.');
+            }
+       }
+    }
+
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Невозможно авторизоваться. Неккоректные данные или аккаунт не активен.');
+                $this->addError($attribute, 'Невозможно авторизоваться. Неккоректные данные.');
             }
         }
     }

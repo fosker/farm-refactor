@@ -24,21 +24,20 @@ $this->title = $model->user->name.' прокомментировал "'.$model->
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            'date_add:datetime',
             [
                 'label'=>'Автор',
                 'attribute'=>'user.name',
                 'value'=>Html::a($model->user->name, ['/user/view', 'id'=>$model->user_id]),
                 'format'=>'html',
             ],
-            'comment:text',
             [
                 'label'=>'Вакансия',
                 'attribute'=>'vacancy.title',
                 'value'=>Html::a($model->vacancy->title, ['/vacancy/view', 'id'=>$model->vacancy_id]),
                 'format'=>'html',
             ],
-            'date_add:datetime',
+            'comment:text',
         ],
     ]) ?>
 

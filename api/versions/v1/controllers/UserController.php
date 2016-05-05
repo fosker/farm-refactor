@@ -3,19 +3,18 @@
 namespace rest\versions\v1\controllers;
 
 use Yii;
-use yii\base\Model;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 
-use common\models\profile\UpdateRequest;
-use common\models\profile\SetNotification;
+use common\models\profile\PharmacistUpdateRequest;
+use common\models\profile\AgentUpdateRequest;
 use common\models\User;
-use common\models\profile\Notification;
-use rest\components\Controller;
 use common\models\ContactForm;
+use rest\components\Controller;
+
 
 class UserController extends Controller
 {
@@ -49,14 +48,25 @@ class UserController extends Controller
         return $this->_user();
     }
 
-    public function actionUpdateProfile()
+    public function actionUpdateProfileAgent()
     {
-        UpdateRequest::deleteAll(['user_id'=>$this->_user()->id]);
-
-        $request = new UpdateRequest();
+        AgentUpdateRequest::deleteAll(['agent_id'=>$this->_user()->id]);
+        $request = new AgentUpdateRequest();
         $request->loadCurrentAttributes($this->_user());
-        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save())
+        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
             return ['success'=>true];
+        }
+        return $request;
+    }
+
+    public function actionUpdateProfilePharmacist()
+    {
+        PharmacistUpdateRequest::deleteAll(['pharmacist_id'=>$this->_user()->id]);
+        $request = new PharmacistUpdateRequest();
+        $request->loadCurrentAttributes($this->_user());
+        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
+            return ['success'=>true];
+        }
         return $request;
     }
 
@@ -101,25 +111,6 @@ class UserController extends Controller
         if($this->_user === null)
             $this->_user = User::findOne(Yii::$app->user->id);
         return $this->_user;
-    }
-
-    public function actionNotifications() {
-        $notifications = SetNotification::find()
-            ->select(['id','notification_id','value'])
-            ->where(['user_id'=>Yii::$app->user->id])
-            ->indexBy('id')
-            ->all();
-
-        if (Model::loadMultiple($notifications, Yii::$app->request->queryParams) && Model::validateMultiple($notifications)) {
-            foreach ($notifications as $notify) {
-                $notify->save(false);
-            }
-            return ['success'=>true];
-        } else return $notifications;
-    }
-
-    public function actionGetNotifications() {
-        return Notification::find()->asArray()->all();
     }
 
     public function actionSendMessage() {

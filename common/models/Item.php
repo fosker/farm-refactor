@@ -5,15 +5,13 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\imagine\Image;
-use common\models\shop\City;
-use common\models\shop\Pharmacy;
+use yii\helpers\ArrayHelper;
+use common\models\shop\Pharmacy as Item_Pharmacy;
 use common\models\shop\Vendor;
-use common\models\location\City as Region_city;
-use common\models\agency\Pharmacy as P;
-use common\models\agency\Firm;
+use common\models\company\Pharmacy;
 use common\models\shop\Desire;
 use common\models\shop\Present;
-use yii\helpers\ArrayHelper;
+
 
 /**
  * This is the model class for table "shop_items".
@@ -102,10 +100,8 @@ class Item extends ActiveRecord
      */
     public static function getForCurrentUser() {
         return static::find()
-            ->joinWith('cities')
             ->joinWith('pharmacies')
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
+            ->andWhere([Item_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
             ->andWhere(['status'=>static::STATUS_ACTIVE])
             ->orderBy(["priority"=>SORT_DESC,static::tableName().".id"=>SORT_DESC])
             ->groupBy(static::tableName().'.id');
@@ -116,16 +112,15 @@ class Item extends ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
-    public function getVendor() {
+    public function getVendor()
+    {
         return $this->hasOne(Vendor::className(),['id'=>'vendor_id']);
     }
 
-    public function getCities() {
-        return $this->hasMany(City::className(),['item_id'=>'id']);
-    }
 
-    public function getPharmacies() {
-        return $this->hasMany(Pharmacy::className(),['item_id'=>'id']);
+    public function getPharmacies()
+    {
+        return $this->hasMany(Item_Pharmacy::className(),['item_id'=>'id']);
     }
 
     public function getImagePath() {
@@ -141,13 +136,15 @@ class Item extends ActiveRecord
         return [static::STATUS_ACTIVE=>'активный',static::STATUS_HIDDEN=>'скрытый'];
     }
 
-    public function getCitiesView($isFull = false) {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(Region_city::tableName().'.name')
-            ->joinWith('city')
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Item_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
             ->asArray()
             ->where(['item_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -164,18 +161,20 @@ class Item extends ActiveRecord
         return $string;
     }
 
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
             ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', Item_Pharmacy::tableName(),
+                Item_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
             ->distinct()
             ->asArray()
             ->where(['item_id' => $this->id])
-            ->all()),'name');
+            ->all()),'title');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -192,17 +191,20 @@ class Item extends ActiveRecord
         return $string;
     }
 
-    public function approve() {
+    public function approve()
+    {
         $this->status = static::STATUS_ACTIVE;
         $this->save(false);
     }
 
-    public function hide() {
+    public function hide()
+    {
         $this->status = static::STATUS_HIDDEN;
         $this->save(false);
     }
 
-    public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
         if(parent::beforeSave($insert)) {
             $this->loadImage();
             $this->loadThumb();
@@ -210,59 +212,34 @@ class Item extends ActiveRecord
         } else return false;
     }
 
-    public function afterDelete() {
+    public function afterDelete()
+    {
         parent::afterDelete();
         Desire::deleteAll(['item_id'=>$this->id]);
         Present::deleteAll(['item_id'=>$this->id]);
-        City::deleteAll(['item_id'=>$this->id]);
-        Pharmacy::deleteAll(['item_id'=>$this->id]);
+        Item_Pharmacy::deleteAll(['item_id'=>$this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/presents/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/presents/thumbs/'.$this->thumbnail));
-    }
-
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->item_id = $this->id;
-                $city->save();
-            }
-        }
     }
 
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Item_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->item_id = $this->id;
                 $pharmacy->save();
-            }
-        }
-    }
-
-    public function updateCities($cities)
-    {
-        City::deleteAll(['item_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->item_id = $this->id;
-                $city->save();
             }
         }
     }
 
     public function updatePharmacies($pharmacies)
     {
-        Pharmacy::deleteAll(['item_id' => $this->id]);
+        Item_Pharmacy::deleteAll(['item_id' => $this->id]);
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Item_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->item_id = $this->id;
                 $pharmacy->save();
@@ -270,7 +247,9 @@ class Item extends ActiveRecord
         }
     }
 
-    public function loadImage() {
+
+    public function loadImage()
+    {
         if($this->imageFile) {
             $path = Yii::getAlias('@uploads/presents/');
             if($this->image && file_exists($path . $this->image))
@@ -284,7 +263,8 @@ class Item extends ActiveRecord
         }
     }
 
-    public function loadThumb() {
+    public function loadThumb()
+    {
         if($this->thumbFile) {
             $path = Yii::getAlias('@uploads/presents/thumbs/');
             if($this->thumbnail && file_exists($path . $this->thumbnail))

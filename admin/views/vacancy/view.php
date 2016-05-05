@@ -39,12 +39,18 @@ $this->title = $model->title;
             ],
             'title',
             [
-                'label'=>'Для городов',
-                'value'=>$model->getCitiesView(true)
+                'label' => 'Фабрика',
+                'attribute' => 'factory.title',
+                'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
+                'format'=>'html',
             ],
             [
-                'label'=>'Для фирм',
-                'value'=>$model->getFirmsView(true)
+                'label'=>'Для аптек',
+                'value'=>$model->getPharmaciesView(false)
+            ],
+            [
+                'label'=>'Для компаний',
+                'value'=>$model->getCompanyView(true)
             ],
             'description:html',
             'email:email',

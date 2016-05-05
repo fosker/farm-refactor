@@ -13,14 +13,17 @@ use common\models\presentation\Question;
 use common\models\presentation\Slide;
 use common\models\presentation\Option;
 use common\models\Presentation;
-use common\models\agency\Firm;
+use common\models\Company;
 use common\models\location\City;
-use common\models\agency\Pharmacy;
-use common\models\presentation\City as Presentation_City;
-use common\models\presentation\Pharmacy as Presentation_Pharmacy;
+use common\models\location\Region;
+use common\models\company\Pharmacy;
 use common\models\presentation\Education as Presentation_Education;
-use backend\models\presentation\Search;
+use common\models\presentation\Type as Presentation_Type;
+use common\models\profile\Type;
 use common\models\profile\Education;
+use common\models\Factory;
+use backend\models\presentation\Search;
+
 
 
 
@@ -62,10 +65,11 @@ class PresentationController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'firms' => ArrayHelper::map(Firm::find()->asArray()->all(),'id','name'),
             'education' => ArrayHelper::map(Education::find()->asArray()->all(),'id','name'),
-            'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
-            'titles' =>ArrayHelper::map(Presentation::find()->asArray()->all(), 'title','title'),
+            'pharmacies'=>ArrayHelper::map(Pharmacy::find()->asArray()->all(),'id','name'),
+            'types' => ArrayHelper::map(Type::find()->asArray()->all(),'id','name'),
+            'companies' => ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
+            'titles'=>ArrayHelper::map(Presentation::find()->asArray()->all(), 'title','title'),
         ]);
     }
 
@@ -80,28 +84,25 @@ class PresentationController extends Controller
     {
         $model = new Presentation();
         $model->scenario = 'create';
-        $presentation_cities = new Presentation_City();
-        $presentation_pharmacies = new Presentation_Pharmacy();
-        $presentation_education = new Presentation_Education();
 
         if($model->load(Yii::$app->request->getBodyParams())) {
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
             if ($model->save(false)) {
-                $model->loadCities(Yii::$app->request->post('cities'));
                 $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
                 $model->loadEducation(Yii::$app->request->post('education'));
+                $model->loadTypes(Yii::$app->request->post('types'));
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'cities'=>City::find()->asArray()->all(),
-                'pharmacies'=>Pharmacy::find()->asArray()->all(),
                 'education' => Education::find()->asArray()->all(),
-                'presentation_cities' => $presentation_cities,
-                'presentation_pharmacies' => $presentation_pharmacies,
-                'presentation_education' => $presentation_education
+                'regions'=>Region::find()->asArray()->all(),
+                'types'=>Type::find()->asArray()->all(),
+                'cities'=>City::find()->all(),
+                'companies'=>Company::find()->asArray()->all(),
+                'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
             ]);
         }
     }
@@ -109,34 +110,37 @@ class PresentationController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $presentation_cities = new Presentation_City();
-        $presentation_pharmacies = new Presentation_Pharmacy();
-        $presentation_education = new Presentation_Education();
 
-        $old_cities = Presentation_City::find()->select('city_id')->where(['presentation_id' => $id])->asArray()->all();
-        $old_pharmacies = Presentation_Pharmacy::find()->select('pharmacy_id')->where(['presentation_id' => $id])->asArray()->all();
+        $old_cities = Pharmacy::find()->select('city_id')->joinWith('presentationPharmacies')
+            ->where(['presentation_id' => $id])->asArray()->all();
+        $old_companies = Pharmacy::find()->select('company_id')->joinWith('presentationPharmacies')
+            ->where(['presentation_id' => $id])->asArray()->all();
         $old_education = Presentation_Education::find()->select('education_id')->where(['presentation_id' => $id])->asArray()->all();
+        $old_types = Presentation_Type::find()->select('type_id')->where(['presentation_id' => $id])->asArray()->all();
 
         if($model->load(Yii::$app->request->getBodyParams())) {
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
             if ($model->save()) {
-                $model->updateCities(Yii::$app->request->post('cities'));
-                $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                if(Yii::$app->request->post('pharmacies')) {
+                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                }
                 $model->updateEducation(Yii::$app->request->post('education'));
+                $model->updateTypes(Yii::$app->request->post('types'));
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'cities'=>City::find()->asArray()->all(),
-                'pharmacies'=>Pharmacy::find()->asArray()->all(),
                 'education' => Education::find()->asArray()->all(),
-                'presentation_cities' => $presentation_cities,
-                'presentation_pharmacies' => $presentation_pharmacies,
-                'presentation_education' => $presentation_education,
+                'regions'=>Region::find()->asArray()->all(),
+                'types'=>Type::find()->asArray()->all(),
+                'cities'=>City::find()->all(),
+                'companies'=>Company::find()->asArray()->all(),
+                'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
+                'old_types' => $old_types,
                 'old_cities' => $old_cities,
-                'old_pharmacies' => $old_pharmacies,
+                'old_companies' => $old_companies,
                 'old_education' => $old_education
             ]);
         }
@@ -187,7 +191,8 @@ class PresentationController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionAddSlide($presentation_id) {
+    public function actionAddSlide($presentation_id)
+    {
         $model = new Slide();
         $model->scenario = 'create';
 
@@ -206,7 +211,8 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionEditSlide($id) {
+    public function actionEditSlide($id)
+    {
         $model = $this->findSlideModel($id);
 
         if($model->load(Yii::$app->request->getBodyParams())) {
@@ -223,13 +229,15 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionDeleteSlide($id) {
+    public function actionDeleteSlide($id)
+    {
         $model = $this->findSlideModel($id);
         $model->delete();
         return $this->redirect(['view','id'=>$model->presentation_id]);
     }
 
-    public function findSlideModel($id) {
+    public function findSlideModel($id)
+    {
         if (($model = Slide::findOne($id)) !== null) {
             return $model;
         } else {
@@ -237,7 +245,8 @@ class PresentationController extends Controller
         }
     }
 
-    public function actionAddQuestion($presentation_id) {
+    public function actionAddQuestion($presentation_id)
+    {
         $model = new Question();
 
         if($model->load(Yii::$app->request->getBodyParams())) {
@@ -251,7 +260,8 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionEditQuestion($id) {
+    public function actionEditQuestion($id)
+    {
         $model = $this->findQuestionModel($id);
 
         if($model->load(Yii::$app->request->getBodyParams()) && $model->save()) {
@@ -263,13 +273,15 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionDeleteQuestion($id) {
+    public function actionDeleteQuestion($id)
+    {
         $model = $this->findQuestionModel($id);
         $model->delete();
         return $this->redirect(['view','id'=>$model->presentation_id]);
     }
 
-    public function findQuestionModel($id) {
+    public function findQuestionModel($id)
+    {
         if (($model = Question::findOne($id)) !== null) {
             return $model;
         } else {
@@ -277,13 +289,15 @@ class PresentationController extends Controller
         }
     }
 
-    public function actionViewOption($question_id) {
+    public function actionViewOption($question_id)
+    {
         return $this->render('question/option/index', [
             'options'=>Option::findAllByQuestionId($question_id)->all(),
         ]);
     }
 
-    public function actionAddOption($question_id) {
+    public function actionAddOption($question_id)
+    {
         $model = new Option();
 
         if($model->load(Yii::$app->request->getBodyParams())) {
@@ -298,7 +312,8 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionEditOption($id) {
+    public function actionEditOption($id)
+    {
         $model = $this->findOptionModel($id);
 
         if($model->load(Yii::$app->request->getBodyParams()) && $model->save()) {
@@ -311,14 +326,16 @@ class PresentationController extends Controller
         ]);
     }
 
-    public function actionDeleteOption($id) {
+    public function actionDeleteOption($id)
+    {
         $model = $this->findOptionModel($id);
         $model->delete();
         return $this->redirect(['view-option','question_id'=>$model->question_id,
             'presentation_id' => Yii::$app->request->get('presentation_id')]);
     }
 
-    public function findOptionModel($id) {
+    public function findOptionModel($id)
+    {
         if (($model = Option::findOne($id)) !== null) {
             return $model;
         } else {

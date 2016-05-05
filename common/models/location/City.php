@@ -1,14 +1,8 @@
 <?php
 
 namespace common\models\location;
-use yii\helpers\ArrayHelper;
-use common\models\banner\City as Banner_city;
-use common\models\factory\City as Factory_city;
-use common\models\presentation\City as Presentation_city;
-use common\models\seminar\City as Seminar_city;
-use common\models\shop\City as Item_city;
-use common\models\survey\City as Survey_city;
-use common\models\agency\Pharmacy;
+
+use common\models\company\Pharmacy;
 
 use Yii;
 
@@ -60,11 +54,13 @@ class City extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getRegion() {
+    public function getRegion()
+    {
         return $this->hasOne(Region::className(),['id'=>'region_id']);
     }
 
-    public function getPharmacies() {
+    public function getPharmacies()
+    {
         return $this->hasMany(Pharmacy::className(), ['city_id' => 'id']);
     }
 
@@ -80,12 +76,6 @@ class City extends \yii\db\ActiveRecord
     public function afterDelete()
     {
         parent::afterDelete();
-        Banner_city::deleteAll(['city_id' => $this->id]);
-        Factory_city::deleteAll(['city_id' => $this->id]);
-        Presentation_city::deleteAll(['city_id' => $this->id]);
-        Seminar_city::deleteAll(['city_id' => $this->id]);
-        Item_city::deleteAll(['city_id' => $this->id]);
-        Survey_city::deleteAll(['city_id' => $this->id]);
         foreach($this->pharmacies as $pharmacy)
             $pharmacy->delete();
     }

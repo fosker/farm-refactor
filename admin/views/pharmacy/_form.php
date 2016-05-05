@@ -13,9 +13,9 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'firm_id')->widget(Select2::classname(), [
-        'data' => $firms,
-        'options' => ['placeholder' => 'Выберите фирму ...'],
+    <?= $form->field($model, 'company_id')->widget(Select2::classname(), [
+        'data' => $companies,
+        'options' => ['placeholder' => 'Выберите компанию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

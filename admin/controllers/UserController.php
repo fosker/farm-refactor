@@ -10,15 +10,19 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\Push;
-use common\models\agency\Firm;
-use common\models\agency\Pharmacy;
+use backend\models\profile\agent\Search as Agent_Search;
+use backend\models\profile\pharmacist\Search as Pharmacist_Search;
+use common\models\profile\AgentUpdateRequest;
+use common\models\profile\PharmacistUpdateRequest;
+use common\models\Company;
+use common\models\user\Agent;
+use common\models\user\Pharmacist;
+use common\models\Factory;
+use common\models\company\Pharmacy;
 use common\models\User;
 use common\models\location\City;
-use backend\models\profile\Search;
 use common\models\profile\Device;
 use common\models\profile\Education;
-use common\models\profile\UpdateRequest;
 use common\models\location\Region;
 use yii\helpers\Json;
 
@@ -50,25 +54,42 @@ class UserController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionAgents()
     {
-        $searchModel = new Search();
+        $searchModel = new Agent_Search();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+
+        return $this->render('agents/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'names' => ArrayHelper::map(User::find()->asArray()->all(), 'name','name'),
-            'firms' => ArrayHelper::map(Firm::find()->asArray()->all(), 'id','name'),
-            'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
-            'emails' => ArrayHelper::map(User::find()->asArray()->all(), 'email','email'),
-            'pharmacies' => ArrayHelper::map(Pharmacy::find()->asArray()->all(), 'id','name'),
+            'names' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'name', 'name'),
+            'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
+            'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
+            'emails' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'email', 'email'),
+        ]);
+    }
+
+    public function actionPharmacists()
+    {
+        $searchModel = new Pharmacist_Search();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('pharmacists/index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'names' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'name', 'name'),
+            'pharmacies' => ArrayHelper::map(Pharmacy::find()->asArray()->all(), 'id', 'name'),
+            'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
+            'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id', 'title'),
+            'emails' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'email', 'email'),
         ]);
     }
 
     public function actionView($id)
     {
-        return $this->render('view', [
+        $type = $this->findModel($id)->type_id;
+        return $this->render('view_'.$type, [
             'model' => $this->findModel($id),
         ]);
     }
@@ -76,37 +97,74 @@ class UserController extends Controller
     public function actionUpdate($id, $update_id = null)
     {
         $model = $this->findModel($id);
-        if($update_id) {
-            $user = UpdateRequest::findOne(['user_id' => $update_id]);
+        $model->scenario = 'update';
+        switch($model->type_id) {
+            case 1: $type = Pharmacist::findOne($id);
+                break;
+            case 2: $type = Agent::findOne($id);
+                break;
         }
-        if (Yii::$app->request->post()) {
-            $model->load(Yii::$app->request->post());
-            if($model->save(false))
+        if($update_id) {
+            switch($model->type_id) {
+                case 1: $update = PharmacistUpdateRequest::findOne(['pharmacist_id' => $update_id]);
+                    break;
+                case 2: $update = AgentUpdateRequest::findOne(['agent_id' => $update_id]);
+                    break;
+            }
+        }
+        if (($model->load(Yii::$app->request->post()) && $type->load(Yii::$app->request->post()) &&
+            ($model->validate() && $type->validate()))) {
+            if($model->save(false) && $type->save(false))
                 if($update_id) {
-                    UpdateRequest::deleteAll(['user_id' => $update_id]);
+                    switch($model->type_id) {
+                        case 1: PharmacistUpdateRequest::deleteAll(['pharmacist_id' => $update_id]);
+                            break;
+                        case 2: AgentUpdateRequest::deleteAll(['agent_id' => $update_id]);
+                            break;
+                    }
                 }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-                'firms' => ArrayHelper::map(Firm::find()->asArray()->all(), 'id','name'),
-                'regions' => ArrayHelper::map(Region::find()->asArray()->all(), 'id','name'),
-                'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
-                'education' => ArrayHelper::map(Education::find()->asArray()->all(), 'id','name'),
-                'pharmacies' => ArrayHelper::map(Pharmacy::find()
-                    ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
-                    ->asArray()->all(), 'id','name'),
-                'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id','name'),
-                'user' => $user
-            ]);
+            switch($model->type_id) {
+                case 1:
+                    return $this->render('pharmacists/update', [
+                        'model' => $model,
+                        'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id','title'),
+                        'regions' => ArrayHelper::map(Region::find()->asArray()->all(), 'id','name'),
+                        'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
+                        'pharmacies' => ArrayHelper::map(Pharmacy::find()
+                            ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
+                            ->asArray()->all(), 'id','name'),
+                        'education' => ArrayHelper::map(Education::find()->asArray()->all(), 'id','name'),
+                        'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id','name'),
+                        'update' => $update,
+                        'type' => $type
+                ]);
+                case 2:
+                    return $this->render('agents/update', [
+                        'model' => $model,
+                        'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
+                        'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
+                        'update' => $update,
+                        'type' => $type,
+                ]);
+            }
         }
     }
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+        switch($model->type_id) {
+            case 1:
+                $pharmacist = $model->pharmacist;
+                $pharmacist->delete();
+                return $this->redirect(['pharmacists']);
+            case 2:
+                $agent = $model->agent;
+                $agent->delete();
+                return $this->redirect(['agents']);
+        }
     }
 
     protected function findModel($id)
@@ -120,13 +178,16 @@ class UserController extends Controller
 
     public function actionAccept($id)
     {
-        $this->findModel($id)->verified();
+
+        $model = $this->findModel($id);
+        $model->verified();
 
         $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
             ->andWhere(['not',['push_token' => null]])
             ->andWhere(['type' => 1])
             ->asArray()
             ->all(), 'id', 'push_token');
+
         $ios_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
             ->andWhere(['not',['push_token' => null]])
             ->andWhere(['type' => 2])
@@ -161,14 +222,25 @@ class UserController extends Controller
             ->setSubject('Ваш аккаунт верифицирован.')
             ->send();
 
-        return $this->redirect(['index']);
+        switch($model->type_id) {
+            case 1:
+                return $this->redirect(['pharmacists']);
+            case 2:
+                return $this->redirect(['agents']);
+        }
     }
 
     public function actionBan($id)
     {
-        $this->findModel($id)->ban();
+        $model = $this->findModel($id);
+        $model->ban();
 
-        return $this->redirect(['index']);
+        switch($model->type_id) {
+            case 1:
+                return $this->redirect(['pharmacists']);
+            case 2:
+                return $this->redirect(['agents']);
+        }
     }
 
     public function actionCityList() {
@@ -185,28 +257,14 @@ class UserController extends Controller
         echo Json::encode(['output'=>'', 'selected'=>'']);
     }
 
-    public function actionFirmList() {
-        $out = [];
-        if (isset($_POST['depdrop_parents'])) {
-            $parents = $_POST['depdrop_parents'];
-            if ($parents != null) {
-                $city_id = $parents[0];
-                $out = Firm::getFirmList($city_id);
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
-                return;
-            }
-        }
-        echo Json::encode(['output'=>'', 'selected'=>'']);
-    }
-
     public function actionPharmacyList() {
         $out = [];
         if (isset($_POST['depdrop_parents'])) {
             $parents = $_POST['depdrop_parents'];
             if ($parents != null) {
-                $firm_id = $parents[0];
+                $company_id = $parents[0];
                 $city_id = $parents[1];
-                $out = Pharmacy::getPharmacyList($firm_id, $city_id);
+                $out = Pharmacy::getPharmacyList($company_id, $city_id);
                 echo Json::encode(['output'=>$out, 'selected'=>'']);
                 return;
             }

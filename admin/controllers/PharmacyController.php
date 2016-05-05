@@ -9,8 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\location\City;
-use common\models\agency\Firm;
-use common\models\agency\Pharmacy;
+use common\models\Company;
+use common\models\company\Pharmacy;
 use backend\models\pharmacy\Search;
 
 class PharmacyController extends Controller
@@ -48,7 +48,7 @@ class PharmacyController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'cities'=> ArrayHelper::map(City::find()->asArray()->all(),'id','name'),
-            'firms'=> ArrayHelper::map(Firm::find()->asArray()->all(),'id','name'),
+            'companies'=> ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
             'names'=> ArrayHelper::map(Pharmacy::find()->asArray()->all(),'name','name'),
             'dataProvider' => $dataProvider,
         ]);
@@ -72,7 +72,7 @@ class PharmacyController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'cities'=> ArrayHelper::map(City::find()->asArray()->all(),'id','name'),
-                'firms'=> ArrayHelper::map(Firm::find()->asArray()->all(),'id','name'),
+                'companies'=> ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
             ]);
         }
     }
@@ -87,7 +87,7 @@ class PharmacyController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'cities'=> ArrayHelper::map(City::find()->asArray()->all(),'id','name'),
-                'firms'=> ArrayHelper::map(Firm::find()->asArray()->all(),'id','name'),
+                'companies'=> ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
             ]);
         }
     }
@@ -104,7 +104,7 @@ class PharmacyController extends Controller
         if (($model = Pharmacy::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена. ');
+            throw new NotFoundHttpException('РђРїС‚РµРєР° РЅРµ РЅР°Р№РґРµРЅР°. ');
         }
     }
 }

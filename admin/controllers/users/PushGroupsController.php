@@ -2,33 +2,30 @@
 
 namespace backend\controllers\users;
 
-use common\models\profile\Position;
-use Yii;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\Push;
-use common\models\agency\Firm;
-use common\models\agency\Pharmacy;
+
+
 use common\models\User;
 use common\models\location\City;
-use backend\models\profile\Search;
 use common\models\profile\Device;
 use common\models\profile\Education;
-use common\models\profile\UpdateRequest;
-use common\models\location\Region;
-use yii\helpers\Json;
 use common\models\Seminar;
 use common\models\Survey;
-use common\models\Block;
 use common\models\Item;
-use common\models\factory\Stock;
+use common\models\Stock;
 use common\models\Presentation;
 use common\models\News;
 use common\models\Vacancy;
+use common\models\Factory;
+use common\models\company\Pharmacy;
+use common\models\Company;
+use common\models\location\Region;
+use backend\models\Push;
 
 
 class PushGroupsController extends Controller
@@ -62,8 +59,6 @@ class PushGroupsController extends Controller
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '']];
         if (!is_null($q)) {
-            $block = Block::find()->select('CONCAT("block/",`id`) as id, CONCAT("Страница: ",`title`) as text')->where(['like','CONCAT("Страница: ",title)',$q])->asArray()->limit(20);
-
             $survey = Survey::find()->select('CONCAT("survey/",`id`) as id, CONCAT("Анкета: ",`title`) as text')->where(['like','CONCAT("Анкета: ",title)',$q])->asArray();
 
             $seminar = Seminar::find()->select('CONCAT("seminar/",`id`) as id, CONCAT("Семинар: ",`title`) as text')->where(['like','CONCAT("Семинар: ",title)',$q])->asArray();
@@ -78,16 +73,13 @@ class PushGroupsController extends Controller
 
             $vacancy = Vacancy::find()->select('CONCAT("vacancy/",`id`) as id, CONCAT("Вакансия: ",`title`) as text')->where(['like','CONCAT("Вакансия: ",title)',$q])->asArray();
 
-            $block->union($survey)->union($seminar)->union($present)->union($stock)->union($presentation)->union($news)->union($vacancy);
+            $survey->union($seminar)->union($present)->union($stock)->union($presentation)->union($news)->union($vacancy);
 
-            $out['results'] = array_values($block->limit(20)->all());
+            $out['results'] = array_values($survey->limit(20)->all());
         }
         elseif (!is_null($id)) {
             $path = explode("/",$id);
             switch($path[0]) {
-                case 'block':
-                    $item = Block::findOne($path[1]);
-                    break;
                 case 'present':
                     $item = Item::findOne($path[1]);
                     break;
@@ -124,16 +116,34 @@ class PushGroupsController extends Controller
 
             $cities = Yii::$app->request->post('cities') ?  Yii::$app->request->post('cities') : [];
             $educations = Yii::$app->request->post('education') ?  Yii::$app->request->post('education') : [];
+            $factories = Yii::$app->request->post('factories') ?  Yii::$app->request->post('factories') : [];
             $pharmacies = Yii::$app->request->post('pharmacies') ?  Yii::$app->request->post('pharmacies') : [];
             $model->load(Yii::$app->request->post());
 
-            $users = ArrayHelper::map(User::find()->select(User::tableName().'.id')->andWhere(['in', 'education_id', $educations])
-                ->andWhere(['in', 'pharmacy_id', $pharmacies])
-                ->join('LEFT JOIN', Pharmacy::tableName(),
-                    User::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
-                ->andWhere(['in', 'city_id', $cities])
-                ->asArray()
-                ->all(), 'id', 'id');
+            if($factories && !$pharmacies && !$educations) {
+                $users = ArrayHelper::map(
+                    User::find()
+                        ->select(User::tableName().'.id')
+                        ->joinWith('agent')
+                        ->andWhere(['in', 'factory_id', $factories])
+                        ->andWhere(['in', 'city_id', $cities])
+                        ->asArray()
+                        ->all(), 'id', 'id'
+                );
+            } else {
+                $users = ArrayHelper::map(
+                    User::find()
+                        ->select(User::tableName().'.id')
+                        ->joinWith('pharmacist')
+                        ->andWhere(['in', 'education_id', $educations])
+                        ->andWhere(['in', 'pharmacy_id', $pharmacies])
+                        ->join('LEFT JOIN', Pharmacy::tableName(),
+                            'pharmacy_id = '.Pharmacy::tableName().'.id')
+                        ->andWhere(['in', 'city_id', $cities])
+                        ->asArray()
+                        ->all(), 'id', 'id'
+                );
+            }
 
             $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['in', 'user_id', $users])
                 ->andWhere(['not',['push_token' => null]])
@@ -181,9 +191,12 @@ class PushGroupsController extends Controller
         } else {
             return $this->render('index', [
                 'model' => $model,
-                'cities'=>City::find()->asArray()->all(),
-                'pharmacies'=>Pharmacy::find()->asArray()->all(),
-                'education' => Education::find()->asArray()->all()
+                'regions' => Region::find()->asArray()->all(),
+                'cities' => City::find()->asArray()->all(),
+                'education' => Education::find()->asArray()->all(),
+                'companies' => Company::find()->asArray()->all(),
+                'pharmacies' => Pharmacy::find()->asArray()->all(),
+                'factories' => Factory::find()->asArray()->all(),
             ]);
         }
     }

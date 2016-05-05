@@ -53,4 +53,10 @@ class Video extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Comment::className(), ['video_id' => 'id'])->orderBy('date_add ASC');
     }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        Comment::deleteAll(['video_id'=>$this->id]);
+    }
 }

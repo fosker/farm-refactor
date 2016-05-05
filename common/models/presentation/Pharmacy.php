@@ -40,6 +40,6 @@ class Pharmacy extends \yii\db\ActiveRecord
     }
 
     public function getPharmacy() {
-        return $this->hasOne(\common\models\agency\Pharmacy::className(),['id'=>'pharmacy_id']);
+        return $this->hasOne(\common\models\company\Pharmacy::className(),['id'=>'pharmacy_id']);
     }
 }

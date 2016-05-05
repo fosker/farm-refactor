@@ -5,17 +5,16 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\imagine\Image;
+use yii\helpers\ArrayHelper;
 
+use common\models\profile\Type;
 use common\models\survey\View;
 use common\models\survey\Question;
-use common\models\survey\City;
-use common\models\location\City as Region_City;
-use common\models\agency\Pharmacy as P;
-use common\models\agency\Firm;
-use common\models\survey\Pharmacy;
-use yii\helpers\ArrayHelper;
-use common\models\survey\Education;
-use common\models\profile\Education as E;
+use common\models\survey\Pharmacy as Survey_Pharmacy;
+use common\models\survey\Education as Survey_Education;
+use common\models\survey\Type as Survey_Type;
+use common\models\company\Pharmacy;
+use common\models\Factory;
 
 /**
  * This is the model class for table "surveys".
@@ -24,9 +23,11 @@ use common\models\profile\Education as E;
  * @property string $title
  * @property string $description
  * @property integer $points
+ * @property integer $factory_id
  * @property string $image
  * @property string $thumbnail
  * @property integer $status
+ * @property integer $views_limit
  */
 class Survey extends ActiveRecord
 {
@@ -51,8 +52,8 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points'], 'integer'],
-            [['title', 'description', 'points'], 'required'],
+            [['points', 'views_limit'], 'integer'],
+            [['title', 'description', 'points', 'factory_id'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
         ];
@@ -64,7 +65,7 @@ class Survey extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile', 'views_limit', 'factory_id'];
         return $scenarios;
     }
 
@@ -77,7 +78,9 @@ class Survey extends ActiveRecord
             'status' => 'Статус',
             'description' => 'Описание',
             'imageFile' => 'Изображение',
-            'thumbFile' => 'Превью'
+            'thumbFile' => 'Превью',
+            'views_limit' => 'Ограничение просмотров',
+            'factory_id' => 'Фабрика Автор'
         ];
     }
 
@@ -99,54 +102,90 @@ class Survey extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\Query
+     * @return \yii\db\ActiveQuery
      */
     public static function getForCurrentUser()
     {
-        return static::find()
-            ->joinWith('questions')
-            ->joinWith('cities')
-            ->joinWith('pharmacies')
-            ->joinWith('education')
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Education::tableName().'.education_id'=>Yii::$app->user->identity->education_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
-            ->andWhere(['status'=>static::STATUS_ACTIVE])
-            ->andWhere([
-                'not exists',
-                View::findByCurrentUser()
-                    ->andWhere(View::tableName().'.survey_id='.static::tableName().'.id')
-            ])
-            ->orderBy(['id'=>SORT_DESC])
-            ->groupBy(static::tableName().'.id');
+        if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            return static::find()
+                ->joinWith('pharmacies')
+                ->joinWith('education')
+                ->joinWith('types')
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->andWhere([Survey_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
+                ->andWhere([Survey_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
+                ->andWhere([Survey_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->andWhere(['!=', 'views_limit', '0'])
+                ->groupBy(static::tableName().'.id')
+                ->andWhere([
+                    'not exists',
+                    View::findByCurrentUser()
+                        ->andWhere(View::tableName().'.survey_id='.static::tableName().'.id')
+                ])
+                ->orderBy(['id'=>SORT_DESC])
+                ->groupBy(static::tableName().'.id');
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            return static::find()
+                ->joinWith('types')
+                ->where([
+                    'factory_id'=>Yii::$app->user->identity->agent->factory_id,
+                    Survey_Type::tableName().'.type_id'=> Type::TYPE_PHARMACIST
+                ])
+                ->orWhere([
+                    Survey_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
+                    'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
+                ])
+                ->andWhere([
+                    'not exists',
+                    View::findByCurrentUser()
+                        ->andWhere(View::tableName().'.survey_id='.static::tableName().'.id')
+                ])
+                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->orderBy(['id'=>SORT_DESC])
+                ->groupBy(static::tableName().'.id');
+        }
     }
 
     public static function getOneForCurrentUser($id)
     {
-        return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
+        return static::getForCurrentUser()
+            ->joinWith('questions')
+            ->andWhere([static::tableName().'.id'=>$id])
+            ->one();
     }
 
-    public function getQuestions() {
+    public function getFactory()
+    {
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
+    }
+
+    public function getTypes()
+    {
+        return $this->hasMany(Survey_Type::className(),['survey_id'=>'id']);
+    }
+
+    public function getQuestions()
+    {
         return $this->hasMany(Question::className(), ['survey_id' => 'id']);
     }
 
-    public function getEducation() {
-        return $this->hasMany(Education::className(),['survey_id'=>'id']);
+    public function getEducation()
+    {
+        return $this->hasMany(Survey_Education::className(),['survey_id'=>'id']);
     }
 
-    public function getCities() {
-        return $this->hasMany(City::className(), ['survey_id' => 'id']);
+    public function getPharmacies()
+    {
+        return $this->hasMany(Survey_Pharmacy::className(), ['survey_id' => 'id']);
     }
 
-    public function getPharmacies() {
-        return $this->hasMany(Pharmacy::className(), ['survey_id' => 'id']);
-    }
-
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return Yii::getAlias('@uploads_view/surveys/'.$this->image);
     }
 
-    public function getThumbPath() {
+    public function getThumbPath()
+    {
         return Yii::getAlias('@uploads_view/surveys/thumbs/'.$this->thumbnail);
     }
 
@@ -172,65 +211,96 @@ class Survey extends ActiveRecord
         $this->save(false);
     }
 
-    public function getCitiesView($isFull = false)
+    public function getEducationsView($isFull = false)
     {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(Region_City::tableName().'.name')
-            ->joinWith('city')
-            ->asArray()
-            ->where(['survey_id'=>$this->id])
-            ->all()),'name');
-        $string = "";
-        if(!$isFull) {
-            $limit = 5;
-            if (count($result) > $limit) {
-                for ($i = 0; $i < $limit; $i++) {
-                    $string .= $result[$i].", ";
-                }
-                $string .= "и ещё (".(count($result)-$limit).")";
-            } else
-                $string = implode(", ", $result);
-        } else
-            $string = implode(", ", $result);
-
-        return $string;
-    }
-
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
-            ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
-            ->distinct()
-            ->asArray()
-            ->where(['survey_id' => $this->id])
-            ->all()),'name');
-        $string = "";
-        if(!$isFull) {
-            $limit = 5;
-            if (count($result) > $limit) {
-                for ($i = 0; $i < $limit; $i++) {
-                    $string .= $result[$i].", ";
-                }
-                $string .= "и ещё (".(count($result)-$limit).")";
-            } else
-                $string = implode(", ", $result);
-        } else
-            $string = implode(", ", $result);
-
-        return $string;
-    }
-
-    public function getEducationsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Education::find()
-            ->select(E::tableName().'.name')
+        $result = ArrayHelper::getColumn((Survey_Education::find()
+            ->select('name')
             ->joinWith('education')
             ->asArray()
             ->where(['survey_id'=>$this->id])
             ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Survey_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
+            ->asArray()
+            ->where(['survey_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+
+    public function getTypesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Survey_Type::find()
+            ->select('name')
+            ->joinWith('type')
+            ->asArray()
+            ->where(['survey_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
+            ->join('LEFT JOIN', Pharmacy::tableName(),
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', Survey_Pharmacy::tableName(),
+                Survey_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->distinct()
+            ->asArray()
+            ->where(['survey_id' => $this->id])
+            ->all()),'title');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -300,31 +370,19 @@ class Survey extends ActiveRecord
             $question->delete();
         foreach($this->views as $view)
             $view->delete();
-        City::deleteAll(['survey_id'=>$this->id]);
-        Education::deleteAll(['survey_id'=>$this->id]);
-        Pharmacy::deleteAll(['survey_id'=>$this->id]);
+        Survey_Education::deleteAll(['survey_id'=>$this->id]);
+        Survey_Pharmacy::deleteAll(['survey_id'=>$this->id]);
+        Survey_Type::deleteAll(['survey_id'=>$this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/surveys/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/surveys/thumbs/'.$this->thumbnail));
         parent::afterDelete();
-    }
-
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->survey_id = $this->id;
-                $city->save();
-            }
-        }
     }
 
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new Survey_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->survey_id = $this->id;
                 $pharmacy->save();
@@ -336,20 +394,32 @@ class Survey extends ActiveRecord
     {
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Survey_Education();
                 $education->education_id = $educations[$i];
                 $education->survey_id = $this->id;
                 $education->save();
+            }
+        }
+    }
+
+    public function loadTypes($types)
+    {
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Survey_Type();
+                $type->type_id = $types[$i];
+                $type->survey_id = $this->id;
+                $type->save();
             }
         }
     }
 
     public function updateEducation($educations)
     {
-        Education::deleteAll(['survey_id' => $this->id]);
+        Survey_Education::deleteAll(['survey_id' => $this->id]);
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new Survey_Education();
                 $education->education_id = $educations[$i];
                 $education->survey_id = $this->id;
                 $education->save();
@@ -357,28 +427,28 @@ class Survey extends ActiveRecord
         }
     }
 
-    public function updateCities($cities)
+    public function updatePharmacies($pharmacies)
     {
-        City::deleteAll(['survey_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->survey_id = $this->id;
-                $city->save();
+        Survey_Pharmacy::deleteAll(['survey_id' => $this->id]);
+        if($pharmacies) {
+            for ($i = 0; $i < count($pharmacies); $i++) {
+                $pharmacy = new Survey_Pharmacy();
+                $pharmacy->pharmacy_id = $pharmacies[$i];
+                $pharmacy->survey_id = $this->id;
+                $pharmacy->save();
             }
         }
     }
 
-    public function updatePharmacies($pharmacies)
+    public function updateTypes($types)
     {
-        Pharmacy::deleteAll(['survey_id' => $this->id]);
-        if($pharmacies) {
-            for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
-                $pharmacy->pharmacy_id = $pharmacies[$i];
-                $pharmacy->survey_id = $this->id;
-                $pharmacy->save();
+        Survey_Type::deleteAll(['survey_id' => $this->id]);
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new Survey_Type();
+                $type->type_id = $types[$i];
+                $type->survey_id = $this->id;
+                $type->save();
             }
         }
     }

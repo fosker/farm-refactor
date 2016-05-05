@@ -16,13 +16,14 @@ $this->title = 'Редактировать баннер: ' . ' ' . $model->title
     <?= $this->render('_form', [
         'model' => $model,
         'education'=>$education,
+        'regions'=>$regions,
         'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
-        'banner_cities' => $banner_cities,
-        'banner_pharmacies' => $banner_pharmacies,
-        'banner_education' => $banner_education,
-        'old_cities' => $old_cities,
-        'old_pharmacies' => $old_pharmacies,
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
+        'old_cities'=>$old_cities,
+        'old_companies'=>$old_companies,
+        'old_types' => $old_types,
         'old_education' => $old_education
     ]) ?>
 

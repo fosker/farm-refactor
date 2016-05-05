@@ -47,13 +47,13 @@ $this->title = 'Аптеки';
                 'contentOptions'=>['style'=>'width: 300px;'],
             ],
             [
-                'attribute' => 'firm_id',
-                'value' => 'firm.name',
+                'attribute' => 'company_id',
+                'value' => 'company.title',
                 'filter' => Select2::widget([
                     'model' => $searchModel,
-                    'attribute' => 'firm_id',
-                    'data' => $firms,
-                    'options' => ['placeholder' => 'Выберите фирму ...'],
+                    'attribute' => 'company_id',
+                    'data' => $companies,
+                    'options' => ['placeholder' => 'Выберите компанию ...'],
                     'pluginOptions' => [
                         'allowClear' => true,
                         'width' => '200px'

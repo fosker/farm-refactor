@@ -13,7 +13,6 @@ use Yii;
  */
 class Education extends \yii\db\ActiveRecord
 {
-    public $education = [];
 
     public static function tableName()
     {

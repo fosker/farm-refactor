@@ -13,14 +13,15 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->tit
 
     <?= $this->render('_form', [
         'model' => $model,
-        'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
         'education'=>$education,
-        'seminar_cities' => $seminar_cities,
-        'seminar_pharmacies' => $seminar_pharmacies,
-        'seminar_education' => $seminar_education,
-        'old_cities' => $old_cities,
-        'old_pharmacies' => $old_pharmacies,
+        'regions'=>$regions,
+        'cities'=>$cities,
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
+        'old_cities'=>$old_cities,
+        'old_companies'=>$old_companies,
+        'old_types' => $old_types,
         'old_education' => $old_education
     ]) ?>
 

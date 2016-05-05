@@ -7,8 +7,8 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Seminar;
 use common\models\seminar\Pharmacy;
-use common\models\seminar\City;
 use common\models\seminar\Education;
+use common\models\seminar\Type;
 
 class Search extends Seminar
 {
@@ -18,7 +18,7 @@ class Search extends Seminar
         return [
             [['id', 'status'], 'integer'],
             [['title','email'], 'string'],
-            [['city_id', 'firm_id', 'education_id'], 'safe']
+            [['company_id', 'education_id', 'type_id', 'pharmacy_id'], 'safe'],
         ];
     }
 
@@ -27,8 +27,9 @@ class Search extends Seminar
         return Model::scenarios();
     }
 
-    public function attributes() {
-        return array_merge(parent::attributes(),['city_id', 'firm_id', 'education_id']);
+    public function attributes()
+    {
+        return array_merge(parent::attributes(),['city_id', 'company_id', 'education_id', 'type_id', 'pharmacy_id']);
     }
 
     public function search($params)
@@ -56,19 +57,22 @@ class Search extends Seminar
             'status' => $this->status,
         ]);
 
-        if($this->getAttribute('city_id'))
-            $cities = City::find()->select('seminar_id')->where(['in', 'city_id', $this->getAttribute('city_id')]);
-        if($this->getAttribute('firm_id'))
-            $firms = Pharmacy::find()->select('seminar_id')->where(['in', 'firm_id', $this->getAttribute('firm_id')])
+        if($this->getAttribute('company_id'))
+            $companies = Pharmacy::find()->select('seminar_id')->where(['in', 'company_id', $this->getAttribute('company_id')])
                 ->joinWith('pharmacy');
         if($this->getAttribute('education_id'))
             $education = Education::find()->select('seminar_id')->andFilterWhere(['in', 'education_id', $this->getAttribute('education_id')]);
+        if($this->getAttribute('type_id'))
+            $types = Type::find()->select('seminar_id')->andFilterWhere(['in', 'type_id', $this->getAttribute('type_id')]);
+        if($this->getAttribute('pharmacy_id'))
+            $pharmacies = Pharmacy::find()->select('seminar_id')->andFilterWhere(['in', 'pharmacy_id', $this->getAttribute('pharmacy_id')]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['in', Seminar::tableName().'.id', $education])
-            ->andFilterWhere(['in', Seminar::tableName().'.id', $cities])
-            ->andFilterWhere(['in', Seminar::tableName().'.id', $firms]);
+            ->andFilterWhere(['in', Seminar::tableName().'.id', $companies])
+            ->andFilterWhere(['in', Seminar::tableName().'.id', $types])
+            ->andFilterWhere(['in', Seminar::tableName().'.id', $pharmacies]);
 
         return $dataProvider;
     }

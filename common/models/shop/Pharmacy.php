@@ -12,7 +12,7 @@ use Yii;
  */
 class Pharmacy extends \yii\db\ActiveRecord
 {
-    public $pharmacies = [];
+
     public static function tableName()
     {
         return 'shop_item_for_pharmacies';
@@ -40,6 +40,6 @@ class Pharmacy extends \yii\db\ActiveRecord
     }
 
     public function getPharmacy() {
-        return $this->hasOne(\common\models\agency\Pharmacy::className(),['id'=>'pharmacy_id']);
+        return $this->hasOne(\common\models\company\Pharmacy::className(),['id'=>'pharmacy_id']);
     }
 }

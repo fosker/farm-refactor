@@ -79,6 +79,8 @@ class View extends ActiveRecord
         $view->user_id = Yii::$app->user->id;
         $view->survey_id = reset($answers)->question->survey_id;
         $view->save(false);
+        $survey = Survey::findOne($view->survey_id);
+        $survey->updateCounters(['views_limit' => -1]);
         foreach($answers as $answer) {
             $answer->view_id = $view->id;
             $answer->save(false);

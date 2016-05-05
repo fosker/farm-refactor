@@ -3,17 +3,18 @@
 namespace common\models;
 
 use Yii;
-use common\models\news\Comment;
-use common\models\news\View;
 use yii\imagine\Image;
-use common\models\news\City;
-use common\models\news\Pharmacy;
-use common\models\news\Education;
-use common\models\location\City as Region_City;
-use common\models\agency\Pharmacy as P;
-use common\models\profile\Education as E;
 use yii\helpers\ArrayHelper;
-use common\models\agency\Firm;
+
+use common\models\news\Comment;
+use common\models\news\Pharmacy as News_Pharmacy;
+use common\models\news\Education as News_Education;
+use common\models\news\Type as News_Type;
+use common\models\company\Pharmacy;
+use common\models\Factory;
+use common\models\news\View;
+use common\models\profile\Type;
+
 /**
  * This is the model class for table "news".
  *
@@ -24,6 +25,7 @@ use common\models\agency\Firm;
  * @property string $thumbnail
  * @property string $date
  * @property integer $views_added
+ * @property integer $factory_id
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -47,8 +49,8 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'text'], 'required'],
-            [['views_added'], 'integer'],
+            [['title', 'text', 'factory_id'], 'required'],
+            [['views_added', 'factory_id'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
             [['title', 'text', 'date'], 'string'],
         ];
@@ -57,7 +59,7 @@ class News extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile'];
+        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id'];
         return $scenarios;
     }
 
@@ -76,21 +78,27 @@ class News extends \yii\db\ActiveRecord
             'thumbFile' => 'Превью',
             'date' => 'Дата публикации',
             'views' => 'Количество уникальных просмотров',
-            'views_added' => 'Добавленные просмотры'
+            'views_added' => 'Добавленные просмотры',
+            'factory_id' => 'Фабрика Автор'
         ];
     }
 
-    public function fields() {
+    public function fields()
+    {
         return [
-            'id', 'title', 'thumb'=>'thumbPath',
+            'id', 'title', 'thumb'=>'thumbPath'
         ];
     }
 
-    public function extraFields() {
+    public function extraFields()
+    {
         return [
             'text',
             'views' => function () {
                 return $this->countUniqueViews();
+            },
+            'isViewed' => function () {
+                return $isViewed = $this->isViewedByCurrentUser();
             },
             'image'=>'imagePath',
             'date'=>function($model) {
@@ -99,29 +107,56 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getCities() {
-        return $this->hasMany(City::className(), ['news_id' => 'id']);
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(),['news_id'=>'id']);
     }
 
-    public function getPharmacies() {
-        return $this->hasMany(Pharmacy::className(), ['news_id' => 'id']);
+    public function getPharmacies()
+    {
+        return $this->hasMany(News_Pharmacy::className(), ['news_id' => 'id']);
     }
 
-    public function getEducation() {
-        return $this->hasMany(Education::className(),['news_id'=>'id']);
+    public function getTypes()
+    {
+        return $this->hasMany(News_Type::className(),['news_id'=>'id']);
+    }
+
+    public function getFactory()
+    {
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
+    }
+
+    public function getEducation()
+    {
+        return $this->hasMany(News_Education::className(),['news_id'=>'id']);
     }
 
     public static function getForCurrentUser()
     {
-        return static::find()
-            ->joinWith('cities')
-            ->joinWith('pharmacies')
-            ->joinWith('education')
-            ->andWhere([Education::tableName().'.education_id'=>Yii::$app->user->identity->education_id])
-            ->andWhere([City::tableName().'.city_id'=>Yii::$app->user->identity->pharmacy->city_id])
-            ->andWhere([Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacy_id])
-            ->orderBy(['id'=>SORT_DESC])
-            ->groupBy(static::tableName().'.id');
+        if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            return static::find()
+                ->joinWith('education')
+                ->joinWith('pharmacies')
+                ->joinWith('types')
+                ->andWhere([News_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
+                ->andWhere([News_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
+                ->andWhere([News_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->orderBy(['id'=>SORT_DESC])
+                ->groupBy(static::tableName().'.id');
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            return static::find()
+                    ->joinWith('types')
+                    ->where([
+                        'factory_id'=>Yii::$app->user->identity->agent->factory_id,
+                        News_Type::tableName().'.type_id'=> Type::TYPE_PHARMACIST
+                    ])
+                    ->orWhere([
+                        News_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
+                        'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
+                    ])
+                    ->groupBy(static::tableName().'.id');
+        }
     }
 
     public static function getOneForCurrentUser($id)
@@ -135,7 +170,13 @@ class News extends \yii\db\ActiveRecord
         return $this->views;
     }
 
-    public function beforeSave($insert) {
+    public function isViewedByCurrentUser()
+    {
+        return View::findOne(['news_id'=>$this->id, 'user_id'=>Yii::$app->user->id]) !== null;
+    }
+
+    public function beforeSave($insert)
+    {
         if(parent::beforeSave($insert)) {
             $this->loadImage();
             $this->loadThumb();
@@ -143,18 +184,19 @@ class News extends \yii\db\ActiveRecord
         } else return false;
     }
 
-    public function afterDelete() {
+    public function afterDelete()
+    {
         parent::afterDelete();
+        News_Education::deleteAll(['news_id'=>$this->id]);
+        News_Pharmacy::deleteAll(['news_id'=>$this->id]);
+        News_Type::deleteAll(['news_id'=>$this->id]);
         Comment::deleteAll(['news_id'=>$this->id]);
-        City::deleteAll(['news_id'=>$this->id]);
-        Pharmacy::deleteAll(['news_id'=>$this->id]);
-        Education::deleteAll(['news_id'=>$this->id]);
-        View::deleteAll(['news_id'=>$this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/news/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/news/thumbs/'.$this->thumbnail));
     }
 
-    public function loadImage() {
+    public function loadImage()
+    {
         if($this->imageFile) {
             $path = Yii::getAlias('@uploads/news/');
             if($this->image && file_exists($path . $this->image))
@@ -168,7 +210,8 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
-    public function loadThumb() {
+    public function loadThumb()
+    {
         if($this->thumbFile) {
             $path = Yii::getAlias('@uploads/news/thumbs/');
             if($this->thumbnail && file_exists($path . $this->thumbnail))
@@ -182,7 +225,8 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return Yii::getAlias('@uploads_view/news/'.$this->image);
     }
 
@@ -190,13 +234,15 @@ class News extends \yii\db\ActiveRecord
         return Yii::getAlias('@uploads_view/news/thumbs/'.$this->thumbnail);
     }
 
-    public function getCitiesView($isFull = false) {
-        $result = ArrayHelper::getColumn((City::find()
-            ->select(Region_City::tableName().'.name')
-            ->joinWith('city')
+    public function getTypesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((News_Type::find()
+            ->select('name')
+            ->joinWith('type')
             ->asArray()
             ->where(['news_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -213,18 +259,20 @@ class News extends \yii\db\ActiveRecord
         return $string;
     }
 
-    public function getFirmsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Firm::find()->select([
-            'firms.name'])
-            ->from(Firm::tableName())
-            ->join('LEFT JOIN', P::tableName(),
-                Firm::tableName().'.id = '.P::tableName().'.firm_id')
+    public function getCompanyView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((Company::find()->select([
+            Company::tableName().'.title'])
+            ->from(Company::tableName())
             ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacy::tableName().'.pharmacy_id = '.P::tableName().'.id')
+                Company::tableName().'.id = '.Pharmacy::tableName().'.company_id')
+            ->join('LEFT JOIN', News_Pharmacy::tableName(),
+                News_Pharmacy::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
             ->distinct()
             ->asArray()
             ->where(['news_id' => $this->id])
-            ->all()),'name');
+            ->all()),'title');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -241,13 +289,40 @@ class News extends \yii\db\ActiveRecord
         return $string;
     }
 
-    public function getEducationsView($isFull = false) {
-        $result = ArrayHelper::getColumn((Education::find()
-            ->select(E::tableName().'.name')
+    public function getPharmaciesView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((News_Pharmacy::find()
+            ->select(new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name"))
+            ->joinWith('pharmacy')
+            ->asArray()
+            ->where(['news_id'=>$this->id])
+            ->all()),'name');
+
+        $string = "";
+        if(!$isFull) {
+            $limit = 5;
+            if (count($result) > $limit) {
+                for ($i = 0; $i < $limit; $i++) {
+                    $string .= $result[$i].", ";
+                }
+                $string .= "и ещё (".(count($result)-$limit).")";
+            } else
+                $string = implode(", ", $result);
+        } else
+            $string = implode(", ", $result);
+
+        return $string;
+    }
+
+    public function getEducationsView($isFull = false)
+    {
+        $result = ArrayHelper::getColumn((News_Education::find()
+            ->select('name')
             ->joinWith('education')
             ->asArray()
             ->where(['news_id'=>$this->id])
             ->all()),'name');
+
         $string = "";
         if(!$isFull) {
             $limit = 5;
@@ -262,25 +337,13 @@ class News extends \yii\db\ActiveRecord
             $string = implode(", ", $result);
 
         return $string;
-    }
-
-    public function loadCities($cities)
-    {
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->news_id = $this->id;
-                $city->save();
-            }
-        }
     }
 
     public function loadPharmacies($pharmacies)
     {
         if($pharmacies) {
             for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
+                $pharmacy = new News_Pharmacy();
                 $pharmacy->pharmacy_id = $pharmacies[$i];
                 $pharmacy->news_id = $this->id;
                 $pharmacy->save();
@@ -292,20 +355,32 @@ class News extends \yii\db\ActiveRecord
     {
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new News_Education();
                 $education->education_id = $educations[$i];
                 $education->news_id = $this->id;
                 $education->save();
+            }
+        }
+    }
+
+    public function loadTypes($types)
+    {
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new News_Type();
+                $type->type_id = $types[$i];
+                $type->news_id = $this->id;
+                $type->save();
             }
         }
     }
 
     public function updateEducation($educations)
     {
-        Education::deleteAll(['news_id' => $this->id]);
+        News_Education::deleteAll(['news_id' => $this->id]);
         if($educations) {
             for ($i = 0; $i < count($educations); $i++) {
-                $education = new Education();
+                $education = new News_Education();
                 $education->education_id = $educations[$i];
                 $education->news_id = $this->id;
                 $education->save();
@@ -313,28 +388,28 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
-    public function updateCities($cities)
+    public function updatePharmacies($pharmacies)
     {
-        City::deleteAll(['news_id' => $this->id]);
-        if($cities) {
-            for ($i = 0; $i < count($cities); $i++) {
-                $city = new City();
-                $city->city_id = $cities[$i];
-                $city->news_id = $this->id;
-                $city->save();
+        News_Pharmacy::deleteAll(['news_id' => $this->id]);
+        if($pharmacies) {
+            for ($i = 0; $i < count($pharmacies); $i++) {
+                $pharmacy = new News_Pharmacy();
+                $pharmacy->pharmacy_id = $pharmacies[$i];
+                $pharmacy->news_id = $this->id;
+                $pharmacy->save();
             }
         }
     }
 
-    public function updatePharmacies($pharmacies)
+    public function updateTypes($types)
     {
-        Pharmacy::deleteAll(['news_id' => $this->id]);
-        if($pharmacies) {
-            for ($i = 0; $i < count($pharmacies); $i++) {
-                $pharmacy = new Pharmacy();
-                $pharmacy->pharmacy_id = $pharmacies[$i];
-                $pharmacy->news_id = $this->id;
-                $pharmacy->save();
+        News_Type::deleteAll(['news_id' => $this->id]);
+        if($types) {
+            for ($i = 0; $i < count($types); $i++) {
+                $type = new News_Type();
+                $type->type_id = $types[$i];
+                $type->news_id = $this->id;
+                $type->save();
             }
         }
     }

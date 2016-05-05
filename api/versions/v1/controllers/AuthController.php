@@ -7,7 +7,10 @@ use yii\rest\Controller;
 use backend\models\Param;
 use common\models\profile\Device;
 use common\models\User;
+use common\models\user\Agent;
+use common\models\user\Pharmacist;
 use common\models\profile\LoginForm;
+use common\models\profile\Type;
 
 class AuthController extends Controller
 {
@@ -68,22 +71,50 @@ class AuthController extends Controller
         else return $model;
     }
 
-    public function actionJoin()
+    public function actionJoinPharmacist()
     {
         $model = new User(['scenario'=>'join']);
-
+        $model->type_id = Type::TYPE_PHARMACIST;
+        $user = new Pharmacist();
         if ($model->load(Yii::$app->request->post(),'') && $model->validate()) {
-            $model->register();
-            Yii::$app->mailer->compose('@common/mail/user-register-info', [
-                'user' => $model,
-            ])
-                ->setFrom('pharmbonus@gmail.com')
-                ->setTo($model->email)
-                ->setSubject('Вы зарегистрировались в PharmBonus')
-                ->send();
-            return ['success'=>true];
+            if($user->load(Yii::$app->request->post(),'') && $user->validate()) {
+                $model->register();
+                $user->id = $model->id;
+                $user->save(false);
+                Yii::$app->mailer->compose('@common/mail/user-register-info', [
+                    'user' => $model,
+                ])
+                    ->setFrom('pharmbonus@gmail.com')
+                    ->setTo($model->email)
+                    ->setSubject('Вы зарегистрировались в PharmBonus')
+                    ->send();
+                return ['success'=>true];
+            } else return $user;
         } else return $model;
     }
+
+    public function actionJoinAgent()
+    {
+        $model = new User(['scenario'=>'join']);
+        $model->type_id = Type::TYPE_AGENT;
+        $user = new Agent();
+        if ($model->load(Yii::$app->request->post(),'') && $model->validate()) {
+            if($user->load(Yii::$app->request->post(),'') && $user->validate()) {
+                $model->register();
+                $user->id = $model->id;
+                $user->save(false);
+                Yii::$app->mailer->compose('@common/mail/user-register-info', [
+                    'user' => $model,
+                ])
+                    ->setFrom('pharmbonus@gmail.com')
+                    ->setTo($model->email)
+                    ->setSubject('Вы зарегистрировались в PharmBonus')
+                    ->send();
+                return ['success'=>true];
+            } else return $user;
+        } else return $model;
+    }
+
 
     public function actionResetPassword()
     {

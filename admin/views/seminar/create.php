@@ -10,12 +10,12 @@ $this->title = 'Добавить семинар';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
         'education'=>$education,
-        'seminar_cities' => $seminar_cities,
-        'seminar_pharmacies' => $seminar_pharmacies,
-        'seminar_education' => $seminar_education
+        'regions'=>$regions,
+        'cities'=>$cities,
+        'companies'=>$companies,
+        'types'=>$types,
+        'factories'=>$factories,
     ]) ?>
 
 </div>

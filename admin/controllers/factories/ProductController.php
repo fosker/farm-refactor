@@ -108,7 +108,7 @@ class ProductController extends Controller
         if (($model = Product::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('Продукт не найден.');
         }
     }
 }

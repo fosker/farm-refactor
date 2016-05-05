@@ -285,22 +285,11 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showLists($id)
     {
-        $list = ['city', 'firm', 'pharmacy', 'education', 'position', 'banner', 'substance', 'substances/request'];
+        $list = ['city', 'company', 'factory', 'factories/products',
+            'pharmacy', 'education', 'type', 'position',
+            'substance', 'substances/request', 'presents/vendor'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item) == true) {
-                return true;
-                break;
-            }
-        }
-
-        return false;
-    }
-
-    public static function showBlock($id)
-    {
-        $list = ['block', 'blocks/comment', 'blocks/mark'];
-        foreach($list as $item) {
-            if (Right::HasAdmin($id, $item)) {
                 return true;
                 break;
             }
@@ -324,7 +313,9 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showUser($id)
     {
-        $list = ['user', 'users/push-users', 'users/present', 'users/push-groups', 'users/update-request'];
+        $list = ['user/agents', 'user/pharmacists', 'users/push-users',
+            'users/present', 'users/push-groups',
+            'users/agent/update-request', 'users/pharmacist/update-request'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -361,9 +352,9 @@ class Admin extends ActiveRecord  implements IdentityInterface
         return false;
     }
 
-    public static function showFactory($id)
+    public static function showStock($id)
     {
-        $list = ['factory', 'factories/stock', 'factories/product', 'factories/stocks/answer'];
+        $list = ['stock', 'stocks/answer'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -377,19 +368,6 @@ class Admin extends ActiveRecord  implements IdentityInterface
     public static function showSeminar($id)
     {
         $list = ['seminar', 'seminars/sign', 'seminars/comment'];
-        foreach($list as $item) {
-            if (Right::HasAdmin($id, $item)) {
-                return true;
-                break;
-            }
-        }
-
-        return false;
-    }
-
-    public static function showPresent($id)
-    {
-        $list = ['present', 'presents/vendor'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -441,7 +419,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showContent($id)
     {
-        $list = ['block', 'survey', 'presentation', 'factory', 'seminar', 'present', 'news', 'video'];
+        $list = ['survey', 'presentation', 'seminar', 'present', 'news', 'video', 'banner'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;

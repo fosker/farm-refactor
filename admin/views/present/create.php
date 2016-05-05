@@ -17,10 +17,9 @@ $this->title = 'Добавить подарок';
     <?= $this->render('_form', [
         'model' => $model,
         'vendors'=>$vendors,
+        'regions'=>$regions,
         'cities'=>$cities,
-        'pharmacies'=>$pharmacies,
-        'item_cities' => $item_cities,
-        'item_pharmacies' => $item_pharmacies
+        'companies'=>$companies,
     ]) ?>
 
 </div>
