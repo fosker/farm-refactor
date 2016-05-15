@@ -48,7 +48,10 @@ $this->title = 'Аптеки';
             ],
             [
                 'attribute' => 'company_id',
-                'value' => 'company.title',
+                'value'=>function($model) {
+                    return Html::a($model->company->title, ['/company/view', 'id' => $model->company_id]);
+                },
+                'format'=>'html',
                 'filter' => Select2::widget([
                     'model' => $searchModel,
                     'attribute' => 'company_id',

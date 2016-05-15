@@ -66,6 +66,11 @@ class Pharmacist extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields() {
+
+        return ['id', 'sex','education','pharmacy','position','region', 'city', 'company', 'mail_address'];
+    }
+
     public function getPharmacy()
     {
         return $this->hasOne(Pharmacy::className(), ['id' => 'pharmacy_id']);
@@ -111,12 +116,5 @@ class Pharmacist extends \yii\db\ActiveRecord
     {
         $this->user->status = static::STATUS_VERIFY;
         $this->user->save(false);
-    }
-
-    public function afterDelete()
-    {
-        parent::afterDelete();
-        $user = $this->user;
-        $user->delete();
     }
 }

@@ -106,6 +106,7 @@ class Survey extends ActiveRecord
      */
     public static function getForCurrentUser()
     {
+
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
             return static::find()
                 ->joinWith('pharmacies')
@@ -116,7 +117,6 @@ class Survey extends ActiveRecord
                 ->andWhere([Survey_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
                 ->andWhere([Survey_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
                 ->andWhere(['!=', 'views_limit', '0'])
-                ->groupBy(static::tableName().'.id')
                 ->andWhere([
                     'not exists',
                     View::findByCurrentUser()

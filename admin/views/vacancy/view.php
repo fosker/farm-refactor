@@ -39,12 +39,6 @@ $this->title = $model->title;
             ],
             'title',
             [
-                'label' => 'Фабрика',
-                'attribute' => 'factory.title',
-                'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
-                'format'=>'html',
-            ],
-            [
                 'label'=>'Для аптек',
                 'value'=>$model->getPharmaciesView(false)
             ],

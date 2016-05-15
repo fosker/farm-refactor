@@ -92,7 +92,7 @@ class Entry extends ActiveRecord
             'contact'=> $this->contact,
             'date'=>$this->date_contact,
         ])
-            ->setFrom(Param::getParam('email'))
+            ->setFrom("pharmbonus@gmail.com")
             ->setTo($seminar->email)
             ->setSubject('Новая запись на семинар!')
             ->send();

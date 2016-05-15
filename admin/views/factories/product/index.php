@@ -38,7 +38,10 @@ $this->title = 'Продукты';
             ],
             [
                 'attribute'=>'factory_id',
-                'value'=>'factory.title',
+                'value'=>function($model) {
+                    return Html::a($model->factory->title, ['/factory/view', 'id' => $model->factory_id]);
+                },
+                'format'=>'html',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $factories,

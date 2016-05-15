@@ -26,6 +26,7 @@ use common\models\profile\Type;
 use common\models\profile\Education;
 use common\models\Factory;
 use backend\models\banner\Search;
+use common\models\News;
 
 
 class BannerController extends Controller
@@ -176,7 +177,9 @@ class BannerController extends Controller
 
             $stock = Stock::find()->select('CONCAT("stock/",`id`) as id, CONCAT("Акция: ",`title`) as text')->where(['like','CONCAT("Акция: ",title)',$q])->asArray();
 
-            $survey->union($seminar)->union($present)->union($stock)->union($presentation);
+            $news = News::find()->select('CONCAT("news/",`id`) as id, CONCAT("Новость: ",`title`) as text')->where(['like','CONCAT("Новость: ",title)',$q])->asArray();
+
+            $survey->union($seminar)->union($present)->union($stock)->union($presentation)->union($news);
 
             $out['results'] = array_values($survey->limit(20)->all());
         }
@@ -194,6 +197,9 @@ class BannerController extends Controller
                     break;
                 case 'seminar':
                     $item = Seminar::findOne($path[1]);
+                    break;
+                case 'news':
+                    $item = News::findOne($path[1]);
                     break;
                 case 'stock':
                     $item = Stock::findOne($path[1]);

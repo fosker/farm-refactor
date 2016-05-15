@@ -13,7 +13,6 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->tit
         'regions'=>$regions,
         'cities'=>$cities,
         'companies'=>$companies,
-        'factories'=>$factories,
         'old_cities'=>$old_cities,
         'old_companies'=>$old_companies,
     ]) ?>

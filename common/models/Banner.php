@@ -150,6 +150,7 @@ class Banner extends ActiveRecord
             'seminar'=>'Семинары',
             'stock'=>'Акции',
             'presentation'=>'Презентации',
+            'news' => 'Новости'
         ];
     }
 
@@ -198,6 +199,10 @@ class Banner extends ActiveRecord
             case 'stock':
                 $item = Stock::findOne($path[1]);
                 $name = 'Акция: ';
+                break;
+            case 'news':
+                $item = News::findOne($path[1]);
+                $name = 'Новость: ';
                 break;
             case 'presentation':
                 $item = Presentation::findOne($path[1]);

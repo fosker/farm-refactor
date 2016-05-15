@@ -14,7 +14,6 @@ use common\models\Presentation;
 use common\models\Seminar;
 use common\models\Stock;
 use common\models\Survey;
-use common\models\Vacancy;
 
 
 /**
@@ -72,7 +71,7 @@ class Factory extends ActiveRecord
 
     public function extraFields() {
         return [
-            'description','image'=>'imagePath','products'
+            'description','image'=>'imagePath','products','stocks'
         ];
     }
 
@@ -95,7 +94,7 @@ class Factory extends ActiveRecord
         Stock::deleteAll(['factory_id' => $this->id]);
         Survey::deleteAll(['factory_id' => $this->id]);
         Seminar::deleteAll(['factory_id' => $this->id]);
-        Vacancy::deleteAll(['factory_id' => $this->id]);
+        Product::deleteAll(['factory_id' => $this->id]);
         if($this->image) @unlink(Yii::getAlias('@uploads/factories/'.$this->image));
         if($this->logo) @unlink(Yii::getAlias('@uploads/factories/logos'.$this->logo));
         parent::afterDelete();
@@ -134,6 +133,11 @@ class Factory extends ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Product::className(),['factory_id'=>'id']);
+    }
+
+    public function getStocks()
+    {
+        return $this->hasMany(Stock::className(),['factory_id'=>'id']);
     }
 
     public function getAgents()

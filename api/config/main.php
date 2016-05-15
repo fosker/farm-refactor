@@ -76,14 +76,6 @@ return [
                 'GET v1/banners' => 'v1/banner/index',
                 'GET v1/banner/<id>' => 'v1/banner/view',
 
-                'GET v1/block/<id>' => 'v1/block/index',
-                'GET v1/block/comments/<block_id>' => 'v1/block/comments',
-                'GET v1/block/comment/<id>' => 'v1/block/comment',
-                'POST v1/block/comment' => 'v1/block/add-comment',
-                'DELETE v1/block/comment/<id>' => 'v1/block/delete-comment',
-                'GET v1/block/mark/<block_id>' => 'v1/block/is-mark-exists',
-                'POST v1/block/mark' => 'v1/block/add-mark',
-
                 'GET v1/surveys' => 'v1/survey/index',
                 'GET v1/survey/<id>' => 'v1/survey/view',
                 'POST v1/survey' => 'v1/survey/answer',

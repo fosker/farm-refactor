@@ -53,7 +53,8 @@ class UserController extends Controller
         AgentUpdateRequest::deleteAll(['agent_id'=>$this->_user()->id]);
         $request = new AgentUpdateRequest();
         $request->loadCurrentAttributes($this->_user());
-        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
+        if ($request->load(Yii::$app->request->bodyParams,'')) {
+            $request->save(false);
             return ['success'=>true];
         }
         return $request;
@@ -64,7 +65,7 @@ class UserController extends Controller
         PharmacistUpdateRequest::deleteAll(['pharmacist_id'=>$this->_user()->id]);
         $request = new PharmacistUpdateRequest();
         $request->loadCurrentAttributes($this->_user());
-        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
+        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save(false)) {
             return ['success'=>true];
         }
         return $request;
@@ -74,7 +75,7 @@ class UserController extends Controller
         $model = $this->_user();
         $model->scenario = 'update-photo';
 
-        if ($model->load(Yii::$app->getRequest()->getBodyParams(),'')) {
+        if($model->load(Yii::$app->getRequest()->getBodyParams(),'')) {
             $model->image = UploadedFile::getInstance($model, 'image');
             if ($model->validate()) {
                 $model->saveImage();
@@ -123,7 +124,9 @@ class UserController extends Controller
                 return ['success'=>true];
             }
         }
-        return $message;
+        return $message;{
+
+        }
 
     }
 

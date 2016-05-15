@@ -49,6 +49,11 @@ class Agent extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields() {
+
+        return ['id', 'city', 'factory'];
+    }
+
     public function getFactory()
     {
         return $this->hasOne(Factory::className(), ['id' => 'factory_id']);
@@ -76,10 +81,4 @@ class Agent extends \yii\db\ActiveRecord
         $this->user->save(false);
     }
 
-    public function afterDelete()
-    {
-        parent::afterDelete();
-        $user = $this->user;
-        $user->delete();
-    }
 }

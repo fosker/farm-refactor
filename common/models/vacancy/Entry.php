@@ -86,7 +86,7 @@ class Entry extends \yii\db\ActiveRecord
             'contact'=> $this->contact,
             'date'=>$this->date_contact,
         ])
-            ->setFrom(Param::getParam('email'))
+            ->setFrom("pharmbonus@gmail.com")
             ->setTo($vacancy->email)
             ->setSubject('Новая заявка на вакансию!')
             ->send();

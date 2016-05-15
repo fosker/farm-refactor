@@ -66,7 +66,10 @@ class AuthController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post(),'') && $model->login()) {
-            return ['access_token'=>Yii::$app->user->identity->getAccessTokenByDevice($model->device_id)];
+            return [
+                'access_token'=>Yii::$app->user->identity->getAccessTokenByDevice($model->device_id),
+                'type_id'=>User::findOne(['login' => $model->login])->type_id
+            ];
         }
         else return $model;
     }
@@ -127,7 +130,6 @@ class AuthController extends Controller
 
     public function actionSendResetToken()
     {
-     
         if(!$user = User::FindByEmail(Yii::$app->getRequest()->getBodyParams()['email']))
             throw new \yii\web\NotFoundHttpException('Пользователь с такой почтой не существует.');
 

@@ -13,6 +13,7 @@ use common\models\profile\Device;
 use common\models\substance\Request;
 use common\models\shop\Present;
 use common\models\news\Comment as News_comment;
+use common\models\news\View as News_view;
 use common\models\video\Comment as Video_comment;
 use common\models\survey\View as Survey_view;
 use common\models\presentation\View as Presentation_view;
@@ -107,10 +108,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             [['re_password'], 'compare', 'compareAttribute'=>'password'],
             [['password','old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
             [['details'],'string'],
-            [['image'],'image',
+            [['image'],'file',
                 'extensions' => 'png, jpg, jpeg',
-                'minWidth' => 150, 'maxWidth' => 4000,
-                'minHeight' => 150, 'maxHeight' => 4000,
+                'checkExtensionByMimeType'=>false,
             ],
             [['old_password'], 'check_old_password'],
             [['reset_token'], 'check_reset_token'],
@@ -155,7 +155,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function extraFields() {
         if($this->scenario == 'default')
         return [
-            'type_id'
+            'type_id',
+            'pharmacist',
+            'agent'
         ];
         else return [''];
     }
@@ -399,7 +401,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function register()
     {
         $this->setPassword($this->password);
-        //$this->sendInfoMail();
+        $this->sendInfoMail();
         $this->save(false);
         $this->generateAccessToken();
 
@@ -427,7 +429,10 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
 
     public function getDefaultAvatar()
     {
-        return Yii::getAlias('@uploads_view/avatars/'.Yii::$app->params['default_'.$this->pharmacist->sex.'_avatar']);
+        return $this->type_id == Type::TYPE_PHARMACIST ?
+            Yii::getAlias('@uploads_view/avatars/'.Yii::$app->params['default_'.$this->pharmacist->sex.'_avatar']):
+            Yii::getAlias('@uploads_view/avatars/'.'default_male_avatar.png');
+
     }
 
     public function getAvatarPath()
@@ -481,20 +486,26 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function afterDelete()
     {
         parent::afterDelete();
+        if($this->type_id == Type::TYPE_PHARMACIST) {
+            $this->pharmacist->delete();
+        } elseif ($this->type_id == Type::TYPE_AGENT) {
+            $this->agent->delete();
+        }
         foreach($this->devices as $device)
             $device->delete();
-        Request::deleteAll(['user_id'=>'id']);
-        Present::deleteAll(['user_id'=>'id']);
-        News_comment::deleteAll(['user_id'=>'id']);
-        Video_comment::deleteAll(['user_id'=>'id']);
-        Survey_view::deleteAll(['user_id'=>'id']);
-        Presentation_view::deleteAll(['user_id'=>'id']);
-        Presentation_comment::deleteAll(['user_id'=>'id']);
-        Reply::deleteAll(['user_id'=>'id']);
-        Seminar_entry::deleteAll(['user_id'=>'id']);
-        Seminar_comment::deleteAll(['user_id'=>'id']);
-        Vacancy_comment::deleteAll(['user_id'=>'id']);
-        Vacancy_entry::deleteAll(['user_id'=>'id']);
+        Request::deleteAll(['user_id'=>$this->id]);
+        Present::deleteAll(['user_id'=>$this->id]);
+        News_comment::deleteAll(['user_id'=>$this->id]);
+        News_view::deleteAll(['user_id'=>$this->id]);
+        Video_comment::deleteAll(['user_id'=>$this->id]);
+        Survey_view::deleteAll(['user_id'=>$this->id]);
+        Presentation_view::deleteAll(['user_id'=>$this->id]);
+        Presentation_comment::deleteAll(['user_id'=>$this->id]);
+        Reply::deleteAll(['user_id'=>$this->id]);
+        Seminar_entry::deleteAll(['user_id'=>$this->id]);
+        Seminar_comment::deleteAll(['user_id'=>$this->id]);
+        Vacancy_comment::deleteAll(['user_id'=>$this->id]);
+        Vacancy_entry::deleteAll(['user_id'=>$this->id]);
     }
 
     private function sendInfoMail()

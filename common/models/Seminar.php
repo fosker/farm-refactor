@@ -137,7 +137,7 @@ class Seminar extends \yii\db\ActiveRecord
 
     public static function getOneForCurrentUser($id)
     {
-        return static::getForCurrentUser()->andWhere([Pharmacy::tableName().'.seminar_id'=>$id])->one();
+        return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
     public function getFactory()

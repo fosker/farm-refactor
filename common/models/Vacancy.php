@@ -18,7 +18,6 @@ use common\models\Factory;
  * @property integer $id
  * @property string $image
  * @property string $thumbnail
- * @property integer $factory_id
  * @property string $title
  * @property string $description
  * @property string $email
@@ -44,7 +43,7 @@ class Vacancy extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title','description','email', 'factory_id'], 'required'],
+            [['title','description','email'], 'required'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
             [['title', 'description'], 'string'],
             ['email', 'email'],
@@ -54,7 +53,7 @@ class Vacancy extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'email', 'imageFile','thumbFile', 'factory_id'];
+        $scenarios['create'] = ['title', 'description', 'email', 'imageFile','thumbFile'];
         return $scenarios;
     }
 
@@ -71,7 +70,6 @@ class Vacancy extends \yii\db\ActiveRecord
             'image' => 'Изображение',
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
-            'factory_id' => 'Фабрика Автор',
         ];
     }
 
@@ -109,10 +107,6 @@ class Vacancy extends \yii\db\ActiveRecord
         return static::getForCurrentUser()->andWhere([Pharmacy::tableName().'.vacancy_id'=>$id])->one();
     }
 
-    public function getFactory()
-    {
-        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
-    }
 
     public function getPharmacies()
     {

@@ -137,7 +137,7 @@ class Present extends \yii\db\ActiveRecord
             'count'=>$this->count,
             'promo'=>$this->promo,
         ])
-            ->setFrom(Param::getParam('email'))
+            ->setFrom("pharmbonus@gmail.com")
             ->setTo(["pharmbonus@gmail.com", $item->vendor->email])
             ->setSubject('Новая покупка!')
             ->send();

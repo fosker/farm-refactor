@@ -6,4 +6,4 @@ Yii::setAlias('rest', dirname(dirname(__DIR__)) . '/api');
 
 Yii::setAlias('uploads', dirname(dirname(__DIR__)) . '/public_html/uploads');
 
-Yii::setAlias('uploads_view', 'http://farm.loc/uploads');
+Yii::setAlias('uploads_view', 'http://pharmbonus.by/uploads');

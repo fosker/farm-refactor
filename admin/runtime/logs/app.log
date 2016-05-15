@@ -24593,3 +24593,660 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-05-05 15:29:06 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'pharmbon_pharm'@'localhost' (using password: YES)' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php:591
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(591): PDO->__construct('mysql:host=loca...', 'pharmbon_pharm', 'Pharmbonus123', NULL)
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(533): yii\db\Connection->createPdoInstance()
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(848): yii\db\Connection->open()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(835): yii\db\Connection->getMasterPdo()
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(218): yii\db\Connection->getSlavePdo()
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(833): yii\db\Command->prepare('<span class="ke...')
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php(146): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(296): yii\db\Schema->getTableSchema('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(320): yii\db\ActiveRecord::getTableSchema()
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(176): yii\db\ActiveRecord::primaryKey()
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(102): yii\db\ActiveRecord::findByCondition('<span class="nu...')
+#14 C:\OpenServer\domains\farm.loc\admin\models\Admin.php(91): yii\db\BaseActiveRecord::findOne('<span class="nu...')
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(614): backend\models\Admin::findIdentity('<span class="nu...')
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(176): yii\web\User->renewAuthStatus()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(346): yii\web\User->getIdentity()
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessRule.php(149): yii\web\User->getIsGuest()
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessRule.php(104): yii\filters\AccessRule->matchRole(Object(yii\web\User))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(yii\web\User), Object(yii\web\Request))
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\ActionFilter.php(70): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#22 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php(541): call_user_func('[<span class="t...', Object(yii\base\ActionEvent))
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(269): yii\base\Component->trigger('<span class="st...', Object(yii\base\ActionEvent))
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Controller.php(121): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#28 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#29 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#31 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [1045] Access denied for user 'pharmbon_pharm'@'localhost' (using password: YES)' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php:538
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(848): yii\db\Connection->open()
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Connection.php(835): yii\db\Connection->getMasterPdo()
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(218): yii\db\Connection->getSlavePdo()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(833): yii\db\Command->prepare('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php(146): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(296): yii\db\Schema->getTableSchema('<span class="st...')
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(320): yii\db\ActiveRecord::getTableSchema()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(176): yii\db\ActiveRecord::primaryKey()
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(102): yii\db\ActiveRecord::findByCondition('<span class="nu...')
+#12 C:\OpenServer\domains\farm.loc\admin\models\Admin.php(91): yii\db\BaseActiveRecord::findOne('<span class="nu...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(614): backend\models\Admin::findIdentity('<span class="nu...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(176): yii\web\User->renewAuthStatus()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\User.php(346): yii\web\User->getIdentity()
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessRule.php(149): yii\web\User->getIsGuest()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessRule.php(104): yii\filters\AccessRule->matchRole(Object(yii\web\User))
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\filters\AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(yii\web\User), Object(yii\web\Request))
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\ActionFilter.php(70): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#20 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php(541): call_user_func('[<span class="t...', Object(yii\base\ActionEvent))
+#22 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(269): yii\base\Component->trigger('<span class="st...', Object(yii\base\ActionEvent))
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Controller.php(121): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+Additional Information:
+
+2016-05-05 15:29:06 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => 'lcktivm7k4hvp5bqf376n3q576'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=lcktivm7k4hvp5bqf376n3q576'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '11441'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1462451346.09
+    'REQUEST_TIME' => 1462451346
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-05-05 15:43:45 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.title' in 'order clause'' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php:839
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(839): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.title' in 'order clause'
+The SQL being executed was: SELECT `pharmacists`.* FROM `pharmacists` LEFT JOIN `users` ON `pharmacists`.`id` = `users`.`id` LEFT JOIN `company_pharmacies` ON `pharmacists`.`pharmacy_id` = `company_pharmacies`.`id` ORDER BY `companies`.`title` LIMIT 20' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'SELECT `pharmac...')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'companies.title' in 'order clause'
+)
+
+2016-05-05 15:43:45 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+    'sort' => 'pharmacy.company.id'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => 'lcktivm7k4hvp5bqf376n3q576'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=lcktivm7k4hvp5bqf376n3q576'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '11550'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1462452225.643
+    'REQUEST_TIME' => 1462452225
+    'argv' => [
+        0 => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    ]
+    'argc' => 1
+]
+2016-05-05 15:45:46 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php:839
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(839): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'
+The SQL being executed was: SELECT `pharmacists`.* FROM `pharmacists` LEFT JOIN `users` ON `pharmacists`.`id` = `users`.`id` LEFT JOIN `company_pharmacies` ON `pharmacists`.`pharmacy_id` = `company_pharmacies`.`id` ORDER BY `companies`.`id` LIMIT 20' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'SELECT `pharmac...')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'companies.id' in 'order clause'
+)
+
+2016-05-05 15:45:46 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+    'sort' => 'pharmacy.company.id'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => 'lcktivm7k4hvp5bqf376n3q576'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=lcktivm7k4hvp5bqf376n3q576'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '11556'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1462452346.17
+    'REQUEST_TIME' => 1462452346
+    'argv' => [
+        0 => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    ]
+    'argc' => 1
+]
+2016-05-05 15:46:24 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php:839
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(839): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'
+The SQL being executed was: SELECT `pharmacists`.* FROM `pharmacists` LEFT JOIN `users` ON `pharmacists`.`id` = `users`.`id` LEFT JOIN `company_pharmacies` ON `pharmacists`.`pharmacy_id` = `company_pharmacies`.`id` ORDER BY `companies`.`id` LIMIT 20' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'SELECT `pharmac...')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'companies.id' in 'order clause'
+)
+
+2016-05-05 15:46:24 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+    'sort' => 'pharmacy.company.id'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => 'lcktivm7k4hvp5bqf376n3q576'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=lcktivm7k4hvp5bqf376n3q576'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '11573'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1462452384.803
+    'REQUEST_TIME' => 1462452384
+    'argv' => [
+        0 => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    ]
+    'argc' => 1
+]
+2016-05-05 15:46:31 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php:839
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(839): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companies.id' in 'order clause'
+The SQL being executed was: SELECT `pharmacists`.* FROM `pharmacists` LEFT JOIN `users` ON `pharmacists`.`id` = `users`.`id` LEFT JOIN `company_pharmacies` ON `pharmacists`.`pharmacy_id` = `company_pharmacies`.`id` ORDER BY `companies`.`id` LIMIT 20' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'SELECT `pharmac...')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Command.php(361): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\Query.php(206): yii\db\Command->queryAll()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(133): yii\db\Query->all('<span class="ke...')
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(112): yii\db\ActiveQuery->all('<span class="ke...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(178): yii\data\BaseDataProvider->getCount()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\widgets\BaseListView->renderSummary()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('<span class="st...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('<span class="st...')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}('[<span class="s...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('<span class="st...', Object(Closure), '<span class="st...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(143): yii\base\Widget::widget('[<span class="s...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(377): yii\base\View->render('<span class="st...', '[<span class="s...', Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(86): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'companies.id' in 'order clause'
+)
+
+2016-05-05 15:46:31 [127.0.0.1][-][lcktivm7k4hvp5bqf376n3q576][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+    'sort' => 'pharmacy.company.id'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => 'lcktivm7k4hvp5bqf376n3q576'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=lcktivm7k4hvp5bqf376n3q576'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '11576'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists&sort=pharmacy.company.id'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1462452391.266
+    'REQUEST_TIME' => 1462452391
+    'argv' => [
+        0 => 'r=user%2Fpharmacists&sort=pharmacy.company.id'
+    ]
+    'argc' => 1
+]

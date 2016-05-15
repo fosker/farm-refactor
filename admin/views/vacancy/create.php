@@ -13,7 +13,6 @@ $this->title = 'Добавить вакансию';
         'regions'=>$regions,
         'cities'=>$cities,
         'companies'=>$companies,
-        'factories'=>$factories,
     ]) ?>
 
 </div>

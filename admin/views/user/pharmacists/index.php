@@ -44,7 +44,10 @@ $this->title = 'Фармацевты';
             ],
             [
                 'attribute' => 'pharmacy_id',
-                'value'=>'pharmacy.name',
+                'value'=>function($model) {
+                    return Html::a($model->pharmacy->name, ['/pharmacy/view', 'id' => $model->pharmacy_id]);
+                },
+                'format'=>'html',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $pharmacies,
@@ -61,7 +64,10 @@ $this->title = 'Фармацевты';
             [
                 'label' => 'Компания',
                 'attribute' => 'pharmacy.company.id',
-                'value'=>'pharmacy.company.title',
+                'value'=>function($model) {
+                    return Html::a($model->pharmacy->company->title, ['/company/view', 'id' => $model->pharmacy->company_id]);
+                },
+                'format'=>'html',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $pharmacies,

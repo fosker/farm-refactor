@@ -107,12 +107,9 @@ class Presentation extends ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\Query
-     */
     public static function getForCurrentUser()
     {
-        if(Yii::$app->user->identity->type_id == TYPE_PHARMACIST) {
+        if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
             return static::find()
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->joinWith('education')

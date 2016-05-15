@@ -118,7 +118,6 @@ class VacancyController extends Controller
                 'regions'=>Region::find()->asArray()->all(),
                 'cities'=>City::find()->all(),
                 'companies'=>Company::find()->asArray()->all(),
-                'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
             ]);

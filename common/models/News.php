@@ -59,7 +59,7 @@ class News extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id'];
+        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added'];
         return $scenarios;
     }
 
@@ -142,7 +142,7 @@ class News extends \yii\db\ActiveRecord
                 ->andWhere([News_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
                 ->andWhere([News_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
                 ->andWhere([News_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
-                ->orderBy(['id'=>SORT_DESC])
+                ->orderBy(['date'=>SORT_DESC])
                 ->groupBy(static::tableName().'.id');
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()

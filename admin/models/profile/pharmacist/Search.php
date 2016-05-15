@@ -64,10 +64,10 @@ class Search extends Pharmacist
 //            'asc' => [City::tableName() . '.name' => SORT_ASC],
 //            'desc' => [City::tableName() . '.name' => SORT_DESC],
 //        ];
-
+//
 //        $dataProvider->sort->attributes['pharmacy.company.id'] = [
-//            'asc' => [Company::tableName() . '.title' => SORT_ASC],
-//            'desc' => [Company::tableName() . '.title' => SORT_DESC],
+//            'asc' => [Company::tableName() . '.id' => SORT_ASC],
+//            'desc' => [Company::tableName() . '.id' => SORT_DESC],
 //        ];
 
         $this->load($params);
