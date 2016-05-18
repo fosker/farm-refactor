@@ -404,7 +404,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->sendInfoMail();
         $this->save(false);
         $this->generateAccessToken();
-
     }
 
     public function answerSurvey($survey)

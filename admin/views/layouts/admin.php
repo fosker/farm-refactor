@@ -187,6 +187,11 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                     ],
                                 ]
                             ],
+                            [
+                                'label' => 'Администраторы производителей',
+                                'url' => ['/users/factory-admin'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/factory-admin')
+                            ],
                         ],
                         'visible' => Admin::showUser(Yii::$app->admin->id)
                     ],

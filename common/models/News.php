@@ -77,7 +77,7 @@ class News extends \yii\db\ActiveRecord
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
             'date' => 'Дата публикации',
-            'views' => 'Количество уникальных просмотров',
+            'views' => 'Уникальных просмотров',
             'views_added' => 'Добавленные просмотры',
             'factory_id' => 'Фабрика Автор'
         ];
