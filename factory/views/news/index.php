@@ -29,60 +29,9 @@ $this->title = 'Новости';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '200px'
+                        'width' => '400px'
                     ],
                 ]),
-            ],
-            [
-                'label'=>'Для компаний',
-                'value'=>'companyView',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $companies,
-                    'attribute'=>'company_id',
-                    'options' => [
-                        'placeholder' => 'Выберите компании ...',
-                        'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ])
-            ],
-            [
-                'label'=>'Для типов',
-                'value'=>'typesView',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $types,
-                    'attribute'=>'type_id',
-                    'options' => [
-                        'placeholder' => 'Выберите типы пользователей ...',
-                        'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ])
-            ],
-            [
-                'label'=>'Для образования',
-                'value'=>'educationsView',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $education,
-                    'attribute'=>'education_id',
-                    'options' => [
-                        'placeholder' => 'Выберите группы ...',
-                        'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ])
             ],
             [
                 'attribute'=>'views',

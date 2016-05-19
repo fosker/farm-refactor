@@ -8,7 +8,7 @@ $('#pharmacies').on('shown.bs.modal', function () {
         checked_companies.push($(this).val());
     });
     $("#pharmacies .modal-body").append("<p>Загрузка...");
-    $.post("/factory/list/pharmacies", {'cities[]': checked_cities, 'companies[]' : checked_companies},
+    $.post("/list/pharmacies", {'cities[]': checked_cities, 'companies[]' : checked_companies},
         function(data) {
             var obj = jQuery.parseJSON(data);
             var modal_body = $("#pharmacies .modal-body");

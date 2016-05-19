@@ -13,14 +13,6 @@ $this->title = 'Изменить новость: ' . ' ' . $model->title;
 
     <?= $this->render('_form', [
         'model' => $model,
-        'education'=>$education,
-        'regions'=>$regions,
-        'cities'=>$cities,
-        'companies'=>$companies,
-        'pharmacies'=>$pharmacies,
-        'old_cities'=>$old_cities,
-        'old_companies'=>$old_companies,
-        'old_education' => $old_education
     ]) ?>
 
 </div>

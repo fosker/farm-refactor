@@ -36,26 +36,6 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             'title',
-            [
-                'label' => 'Фабрика',
-                'attribute' => 'factory.title',
-            ],
-            [
-                'label'=>'Для аптек',
-                'value'=>$model->getPharmaciesView(false)
-            ],
-            [
-                'label'=>'Для образования',
-                'value'=>$model->getEducationsView(true)
-            ],
-            [
-                'label'=>'Для компаний',
-                'value'=>$model->getCompanyView(true)
-            ],
-            [
-                'label'=>'Для типов пользователей',
-                'value'=>$model->getTypesView(true)
-            ],
             'text:html',
             [
                 'attribute'=>'views',

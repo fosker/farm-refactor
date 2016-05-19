@@ -401,9 +401,11 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function register()
     {
         $this->setPassword($this->password);
-        $this->sendInfoMail();
         $this->save(false);
         $this->generateAccessToken();
+        if($this->email) {
+            $this->sendInfoMail();
+        }
     }
 
     public function answerSurvey($survey)

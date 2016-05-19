@@ -4,7 +4,6 @@ namespace common\models\factory;
 
 use Yii;
 use common\models\Factory;
-use yii\db\Expression;
 
 /**
  * This is the model class for table "factory_agents".
@@ -38,7 +37,7 @@ class Admin extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'factory_agents';
+        return 'factory_admins';
     }
 
     public function scenarios() {

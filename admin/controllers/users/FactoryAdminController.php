@@ -70,7 +70,7 @@ class FactoryAdminController extends Controller
         $model = new Admin();
         $model->scenario = 'join';
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->register();
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -85,7 +85,7 @@ class FactoryAdminController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if($model->save(false))
                 return $this->redirect(['view', 'id' => $model->id]);
         } else {

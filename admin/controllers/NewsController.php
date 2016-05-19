@@ -64,7 +64,6 @@ class NewsController extends Controller
             'pharmacies'=>ArrayHelper::map(Pharmacy::find()->asArray()->all(),'id','name'),
             'types' => ArrayHelper::map(Type::find()->asArray()->all(),'id','name'),
             'companies' => ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
-            'titles'=>ArrayHelper::map(News::find()->asArray()->all(), 'title','title'),
         ]);
     }
 

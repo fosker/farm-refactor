@@ -1,6 +1,8 @@
 <?php
 
-$params = require(__DIR__ . '/params.php');
+$params = array_merge(
+    require(__DIR__ . '/../../common/config/params.php')
+);
 
 $config = [
     'id' => 'basic',
@@ -51,7 +53,6 @@ $config = [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'login' => 'auth/login',
-                'signup' => 'auth/signup',
                 'logout' => 'auth/logout',
                 '/' => 'site/index'
             ],

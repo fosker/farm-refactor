@@ -9,7 +9,7 @@ use yii\imagine\Image;
 use common\models\Factory;
 
 /**
- * This is the model class for table "factory_agents".
+ * This is the model class for table "factory_admins".
  *
  * @property integer $id
  * @property string $login
@@ -46,7 +46,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return 'factory_agents';
+        return 'factory_admins';
     }
 
     public function scenarios() {

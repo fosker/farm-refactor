@@ -49,10 +49,9 @@ class Reply extends ActiveRecord
                     }
                 }
             }],
-            [['image'],'image',
-                'extensions' => 'jpg, jpeg, png',
-                'minWidth' => 150, 'maxWidth' => 4000,
-                'minHeight' => 150, 'maxHeight' => 4000,
+            [['image'],'file',
+                'extensions' => 'png, jpg, jpeg',
+                'checkExtensionByMimeType'=>false,
             ],
         ];
     }
