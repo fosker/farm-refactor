@@ -2,6 +2,8 @@
 use kartik\detail\DetailView;
 use yii\helpers\Html;
 
+$this->title = 'Мой профиль';
+
 echo Html::a('Сменить пароль', ['update-password'], [
     'class' => 'btn btn-info',
 ]);

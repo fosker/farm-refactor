@@ -49,6 +49,12 @@ class Admin extends \yii\db\ActiveRecord
         );
     }
 
+    public function fields() {
+        return [
+            'name','login','avatar'=>'avatarPath'
+        ];
+    }
+
     /**
      * @inheritdoc
      */

@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
+$this->title = 'Изменить пароль';
 ?>
 <div class="profile-update-password">
     <div class="row">

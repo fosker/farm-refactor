@@ -264,7 +264,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
         Yii::$app->mailer->compose('@common/mail/repair-password', [
             'route'=>['/auth/reset-password', 'key'=>$this->reset_token],
         ])
-            ->setFrom(Param::getParam('email'))
+            ->setFrom('pharmbonus@gmail.com')
             ->setTo($this->email)
             ->setSubject('Восстановление пароля')
             ->send();

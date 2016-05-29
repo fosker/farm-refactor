@@ -102,7 +102,7 @@ class CityController extends Controller
         if (($model = City::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('Р“РѕСЂРѕРґ РЅР° РЅР°Р№РґРµРЅ.');
         }
     }
 }

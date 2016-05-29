@@ -69,7 +69,7 @@ class CompanyAdminController extends Controller
         $model = new Admin();
         $model->scenario = 'join';
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate(['login', 'email'])) {
             $model->register();
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -84,7 +84,7 @@ class CompanyAdminController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate(['login', 'email'])) {
             if($model->save(false))
                 return $this->redirect(['view', 'id' => $model->id]);
         } else {

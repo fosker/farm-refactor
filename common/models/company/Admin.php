@@ -49,6 +49,12 @@ class Admin extends \yii\db\ActiveRecord
         );
     }
 
+    public function fields() {
+        return [
+            'name','login','avatar'=>'avatarPath'
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -58,7 +64,6 @@ class Admin extends \yii\db\ActiveRecord
             [['login', 'name', 'password', 'company_id', 're_password'], 'required'],
             ['email', 'email'],
             [['login', 'email'],'unique'],
-            [['factory_id'], 'integer'],
             [['re_password'], 'compare', 'compareAttribute'=>'password'],
             [['login'], 'string', 'max' => 100],
             [['name', 'email'], 'string', 'max' => 255],

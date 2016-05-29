@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\form\ActiveForm;
 
 $this->title = $model->title;
 ?>
@@ -20,6 +21,7 @@ $this->title = $model->title;
             ],
         ]) ?>
     </p>
+
 
     <?= DetailView::widget([
         'model' => $model,
@@ -44,5 +46,38 @@ $this->title = $model->title;
             'date:datetime',
         ],
     ]) ?>
+
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($comment, 'comment')->textArea(['rows' => 6]) ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Добавить', ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+    <h4>Комментарии</h4>
+    <div class="col-md-8">
+    <?php foreach ($model->comments as $comment): ?>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="row">
+                    <p class="text-center"><?=$comment->user->login?></p>
+                </div>
+                <div class="row">
+                    <?=Html::img($comment->user->avatarPath, ['class' => 'img-responsive']);?>
+                </div>
+            </div>
+            </br>
+            <div class="col-md-8" style="word-wrap: break-word;">
+                <p><?=$comment->comment?></p>
+                <h6><?=$comment->date_add?></h6>
+            </div>
+        </div>
+        </br>
+    <?php endforeach;?>
+    </div>
+
 
 </div>

@@ -11,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
+use common\models\news\Comment;
 use common\models\News;
 use common\models\location\City;
 use common\models\location\Region;
@@ -73,6 +74,15 @@ class NewsController extends Controller
 
     public function actionView($id)
     {
+        $comment = new Comment();
+        $comment->admin_type = 1;
+        $comment->news_id = $id;
+        $comment->user_id = Yii::$app->user->id;
+        if($comment->load(Yii::$app->request->post())) {
+            $comment->save(false);
+            $this->refresh();
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

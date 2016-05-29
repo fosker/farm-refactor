@@ -98,7 +98,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function rules()
     {
         return [
-            [['login', 'name', 'password', 're_password', 'reset_token', 'old_password', 'device_id', 'type_id', 'device_id'], 'required'],
+            [['login', 'name', 'password', 're_password', 'reset_token', 'old_password', 'device_id', 'type_id', 'email'], 'required'],
             [['device_id'],'exist','targetClass'=>Device::className(),'targetAttribute'=>'id'],
             [['login'], 'string', 'max' => 100],
             [['name','email'], 'string', 'max'=>255],
@@ -403,9 +403,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->setPassword($this->password);
         $this->save(false);
         $this->generateAccessToken();
-        if($this->email) {
-            $this->sendInfoMail();
-        }
+        $this->sendInfoMail();
     }
 
     public function answerSurvey($survey)

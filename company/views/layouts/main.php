@@ -54,16 +54,7 @@ AppAsset::register($this);
                 ],
             [
                 'label' => 'Новости',
-                'items' => [
-                    [
-                        'label' => 'Новости',
-                        'url' => ['/news']
-                    ],
-                    [
-                        'label' => 'Комментарии',
-                        'url' => ['/newss/comment'],
-                    ],
-                ],
+                'url' => ['/news'],
                 'visible' => Yii::$app->user->isGuest ? false : true
             ]
         ]

@@ -6,6 +6,9 @@ use Yii;
 use common\models\News;
 use common\models\User;
 
+use common\models\factory\Admin as FactoryAdmin;
+use common\models\company\Admin as CompanyAdmin;
+
 /**
  * This is the model class for table "news_comments".
  *
@@ -14,6 +17,7 @@ use common\models\User;
  * @property string $comment
  * @property integer $news_id
  * @property string $date_add
+ * @property integer $admin_type
  */
 class Comment extends \yii\db\ActiveRecord
 {
@@ -42,6 +46,7 @@ class Comment extends \yii\db\ActiveRecord
             [['comment'], 'string', 'max'=>400],
             [['news_id'], 'exist', 'targetClass'=>News::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
+            ['isAdmin', 'integer']
         ];
     }
 
@@ -53,7 +58,7 @@ class Comment extends \yii\db\ActiveRecord
                 'comment',
                 'date_add'=>function($model) {
                     return strtotime($model->date_add);
-                }
+                },
             ];
         else
             return $this->scenarios()[$this->scenario];
@@ -79,7 +84,12 @@ class Comment extends \yii\db\ActiveRecord
     }
 
     public function getUser() {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        if($this->admin_type == 1) {
+            return $this->hasOne(FactoryAdmin::className(), ['id' => 'user_id']);
+        } elseif($this->admin_type == 2) {
+            return $this->hasOne(CompanyAdmin::className(), ['id' => 'user_id']);
+        } else
+            return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getNews() {

@@ -139,7 +139,7 @@ class AuthController extends Controller
         Yii::$app->mailer->compose('@common/mail/repair-user-code', [
             'token'=>$user->reset_token,
         ])
-            ->setFrom(Param::getParam('email'))
+            ->setFrom("pharmbonus@gmail.com")
             ->setTo($user->email)
             ->setSubject("Восстановление доступа")
             ->send();

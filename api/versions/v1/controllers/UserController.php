@@ -93,7 +93,6 @@ class UserController extends Controller
         $model->password = '';
 
         if($model->load(Yii::$app->getRequest()->getBodyParams(),'') && $model->validate()) {
-            // GENERATE PASSWORD HASH
             $model->setPassword($model->password);
             $model->save(false);
             return ['success'=>true];
