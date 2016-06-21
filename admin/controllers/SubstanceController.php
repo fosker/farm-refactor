@@ -97,7 +97,7 @@ class SubstanceController extends Controller
         if (($model = Substance::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена. ');
+            throw new NotFoundHttpException('Р’РµС‰РµСЃС‚РІРѕ РЅРµ РЅР°Р№РґРµРЅРѕ. ');
         }
     }
 }

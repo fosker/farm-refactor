@@ -13,6 +13,7 @@ use Yii;
  * @property string $name
  * @property integer $region_id
  */
+
 class City extends \yii\db\ActiveRecord
 {
     /**
@@ -71,7 +72,6 @@ class City extends \yii\db\ActiveRecord
             ->asArray()
             ->all();
     }
-
 
     public function afterDelete()
     {

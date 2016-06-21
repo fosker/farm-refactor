@@ -26,8 +26,8 @@ class LoginForm extends Model
             [['device_id'],'exist','targetClass'=>Device::className(),'targetAttribute'=>'id'],
             [['login'], 'string','max'=>100],
             // password is validated by validatePassword()
-            ['password', 'validatePassword'],
-            ['login', 'isVerified'],
+            ['password', 'check_password'],
+            ['login', 'check_status'],
         ];
     }
 
@@ -47,16 +47,17 @@ class LoginForm extends Model
      * @param array $params the additional name-value pairs given in the rule
      */
 
-    public function isVerified($attribute, $params)
+    public function check_status($attribute)
     {
         if (!$this->hasErrors()) {
-            if (!$this->getUser()) {
-                $this->addError($attribute, 'Невозможно авторизоваться. Аккаунт не активен.');
+            $user = $this->getUser();
+            if ($user && $user->status == User::STATUS_VERIFY) {
+                $this->addError($attribute, 'Невозможно авторизоваться. Ваш аккаунт неверифицирован.');
             }
-       }
+        }
     }
 
-    public function validatePassword($attribute, $params)
+    public function check_password($attribute)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();

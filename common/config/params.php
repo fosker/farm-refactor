@@ -1,7 +1,6 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
+    'adminEmail' => 'pharmbonus@gmail.com',
     'user.passwordResetTokenExpire' => 3600,
     'maxRateLimit'=>1,
     'perRateLimit'=>30,

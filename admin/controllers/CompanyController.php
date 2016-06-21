@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Company;
-use backend\models\company\Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
+use common\models\Company;
+use backend\models\company\Search;
 
 
 class CompanyController extends Controller

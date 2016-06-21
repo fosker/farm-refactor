@@ -10,9 +10,9 @@ use Yii;
  * @property integer $pharmacy_id
  * @property integer $banner_id
  */
+
 class Pharmacy extends \yii\db\ActiveRecord
 {
-    public $pharmacies = [];
 
     public static function tableName()
     {
@@ -33,7 +33,8 @@ class Pharmacy extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getPharmacy() {
+    public function getPharmacy()
+    {
         return $this->hasOne(\common\models\company\Pharmacy::className(),['id'=>'pharmacy_id']);
     }
 }

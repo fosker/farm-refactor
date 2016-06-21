@@ -40,7 +40,8 @@ class Admin extends \yii\db\ActiveRecord
         return 'company_admins';
     }
 
-    public function scenarios() {
+    public function scenarios()
+    {
         return array_merge(
             parent::scenarios(),
             [
@@ -49,7 +50,8 @@ class Admin extends \yii\db\ActiveRecord
         );
     }
 
-    public function fields() {
+    public function fields()
+    {
         return [
             'name','login','avatar'=>'avatarPath'
         ];

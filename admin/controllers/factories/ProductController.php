@@ -3,15 +3,15 @@
 namespace backend\controllers\factories;
 
 use Yii;
-use common\models\factory\Product;
-use backend\models\factory\product\Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use common\models\Factory;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
+use common\models\Factory;
+use common\models\factory\Product;
+use backend\models\factory\product\Search;
 
 class ProductController extends Controller
 {

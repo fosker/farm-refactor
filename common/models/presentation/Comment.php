@@ -40,7 +40,7 @@ class Comment extends ActiveRecord
     {
         return [
             [['comment', 'presentation_id', 'user_id'], 'required'],
-            [['comment'], 'string', 'max'=>400],
+            [['comment'], 'string'],
             [['presentation_id'], 'validatePresentation'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];

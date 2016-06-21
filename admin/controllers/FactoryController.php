@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Factory;
-use backend\models\factory\Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
+use common\models\Factory;
+use backend\models\factory\Search;
 
 
 class FactoryController extends Controller

@@ -4,7 +4,6 @@ namespace common\models\user;
 
 use Yii;
 use common\models\Factory;
-use common\models\location\City;
 use common\models\User;
 
 /**
@@ -12,8 +11,8 @@ use common\models\User;
  *
  * @property integer $id
  * @property integer $factory_id
- * @property integer $city_id
  */
+
 class Agent extends \yii\db\ActiveRecord
 {
 
@@ -32,8 +31,7 @@ class Agent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['factory_id', 'city_id'], 'required'],
-            [['city_id'], 'integer'],
+            [['factory_id'], 'required'],
         ];
     }
 
@@ -45,23 +43,17 @@ class Agent extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'factory_id' => 'Фабрика',
-            'city_id' => 'Город',
         ];
     }
 
     public function fields() {
 
-        return ['id', 'city', 'factory'];
+        return ['id', 'factory'];
     }
 
     public function getFactory()
     {
         return $this->hasOne(Factory::className(), ['id' => 'factory_id']);
-    }
-
-    public function getCity()
-    {
-        return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
 
     public function getUser()

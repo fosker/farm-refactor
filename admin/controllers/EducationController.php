@@ -96,7 +96,7 @@ class EducationController extends Controller
         if (($model = Education::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('РћР±СЂР°Р·РѕРІР°РЅРёРµ РЅРµ РЅР°Р№РґРµРЅРѕ. ');
         }
     }
 }

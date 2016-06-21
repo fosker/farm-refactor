@@ -37,11 +37,20 @@ class Pharmacist extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 
+    public function scenarios()
+    {
+        return array_merge(
+            parent::scenarios(),
+            [
+                'update' => ['pharmacy_id', 'education_id', 'sex', 'position_id', 'mail_address'],
+            ]
+        );
+    }
 
     public function rules()
     {
         return [
-            [['education_id', 'region_id', 'city_id', 'company_id', 'pharmacy_id', 'sex'], 'required'],
+            [['education_id', 'region_id', 'city_id', 'company_id', 'sex', 'pharmacy_id'], 'required'],
             [['education_id', 'pharmacy_id', 'position_id', 'region_id', 'company_id', 'city_id'], 'integer'],
             [['sex'], 'string', 'max' => 6],
             [['mail_address'], 'string', 'max' => 100],

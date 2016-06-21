@@ -61,7 +61,6 @@ $this->title = 'Представитель: '.$model->name;
                 ,
                 'format'=>'html',
             ],
-            'agent.city.name',
             [
                 'attribute'=>'status',
                 'value'=> $model->status == User::STATUS_VERIFY ? 'Ожидает верификацию' : 'активный',

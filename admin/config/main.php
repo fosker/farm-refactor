@@ -4,7 +4,7 @@ $params = array_merge(
 );
 
 $config =  [
-    'id' => 'app-backend',
+    'id' => 'admin',
     'language'=>'ru',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

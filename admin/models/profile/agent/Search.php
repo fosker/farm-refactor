@@ -14,7 +14,7 @@ class Search extends Agent
     public function rules()
     {
         return [
-            [['user.status', 'id', 'factory_id', 'city_id'], 'integer'],
+            [['user.status', 'id', 'factory_id'], 'integer'],
             [['user.name', 'user.email'], 'string'],
         ];
     }
@@ -66,7 +66,6 @@ class Search extends Agent
         $query->andFilterWhere([
             'id' => $this->id,
             'factory_id' => $this->factory_id,
-            'city_id' => $this->city_id,
         ]);
 
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])

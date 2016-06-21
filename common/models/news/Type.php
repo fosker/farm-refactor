@@ -30,7 +30,8 @@ class Type extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->hasOne(\common\models\profile\Type::className(),['id'=>'type_id']);
     }
 }

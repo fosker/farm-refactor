@@ -11,9 +11,9 @@ use Yii;
  * @property integer $news_id
  * @property integer $education_id
  */
+
 class Education extends \yii\db\ActiveRecord
 {
-    public $education = [];
 
     public static function tableName()
     {
@@ -36,7 +36,8 @@ class Education extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getEducation() {
+    public function getEducation()
+    {
         return $this->hasOne(\common\models\profile\Education::className(),['id'=>'education_id']);
     }
 }

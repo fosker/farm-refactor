@@ -10,6 +10,7 @@ use Yii;
  * @property integer $banner_id
  * @property integer $type_id
  */
+
 class Type extends \yii\db\ActiveRecord
 {
 

@@ -26,6 +26,7 @@ use common\models\vacancy\Entry as Vacancy_entry;
 use common\models\profile\Type;
 use common\models\user\Pharmacist;
 use common\models\user\Agent;
+use common\models\Mailer;
 
 
 /**
@@ -60,15 +61,16 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
 
-    public function scenarios() {
+    public function scenarios()
+    {
         return array_merge(
             parent::scenarios(),
             [
                 'update' => ['name', 'email', 'phone'],
-                'join'=>['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'device_id'],
-                'update-password'=>['old_password','password','re_password'],
-                'reset-password'=>['reset_token','password','re_password'],
-                'update-photo'=>['image'],
+                'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone'],
+                'update-password' => ['old_password', 'password', 're_password'],
+                'reset-password' => ['reset_token', 'password', 're_password'],
+                'update-photo' => ['image'],
             ]
         );
     }
@@ -99,16 +101,16 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         return [
             [['login', 'name', 'password', 're_password', 'reset_token', 'old_password', 'device_id', 'type_id', 'email'], 'required'],
-            [['device_id'],'exist','targetClass'=>Device::className(),'targetAttribute'=>'id'],
+            [['device_id'], 'exist', 'targetClass' => Device::className(), 'targetAttribute'=>'id'],
             [['login'], 'string', 'max' => 100],
             [['name','email'], 'string', 'max'=>255],
             [['email'],'email'],
             [['phone'], 'string', 'max' => 30],
-            [['login', 'email'],'unique'],
-            [['re_password'], 'compare', 'compareAttribute'=>'password'],
-            [['password','old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
-            [['details'],'string'],
-            [['image'],'file',
+            [['login', 'email'], 'unique'],
+            [['re_password'], 'compare', 'compareAttribute' => 'password'],
+            [['password', 'old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
+            [['details'], 'string'],
+            [['image'], 'file',
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
             ],
@@ -121,7 +123,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
      * Checks old password
      * @param $attribute
      */
-    public function check_old_password($attribute) {
+    public function check_old_password($attribute)
+    {
         if (!$this->hasErrors()) {
             $user = static::findOne(Yii::$app->user->id);
             if (!$user || !$user->validatePassword($this->old_password)) {
@@ -134,7 +137,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
      * Checks old password
      * @param $attribute
      */
-    public function check_reset_token($attribute) {
+    public function check_reset_token($attribute)
+    {
         if (!$this->hasErrors()) {
             $user = static::findByPasswordResetToken($this->reset_token);
             if (!$user) {
@@ -143,22 +147,24 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         }
     }
 
-    public function fields() {
+    public function fields()
+    {
         if($this->scenario == 'default')
             return [
-                'name','login','email','points','phone', 'avatar'=>'avatarPath'
+                'name', 'login', 'email', 'points', 'phone', 'avatar'=>'avatarPath'
             ];
         else
             return $this->scenarios()[$this->scenario];
     }
 
-    public function extraFields() {
+    public function extraFields()
+    {
         if($this->scenario == 'default')
-        return [
-            'type_id',
-            'pharmacist',
-            'agent'
-        ];
+            return [
+                'type_id',
+                'pharmacist',
+                'agent'
+            ];
         else return [''];
     }
 
@@ -207,7 +213,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
      */
     public static function findByLogin($login)
     {
-        return static::findOne(['login' => $login, 'status' => static::STATUS_ACTIVE]);
+        return static::findOne(['login' => $login]);
     }
 
     /**
@@ -403,7 +409,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->setPassword($this->password);
         $this->save(false);
         $this->generateAccessToken();
-        $this->sendInfoMail();
+        Mailer::sendRegisterMail($this);
+        Mailer::sendRegisterMailToUser($this);
     }
 
     public function answerSurvey($survey)
@@ -505,19 +512,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         Seminar_comment::deleteAll(['user_id'=>$this->id]);
         Vacancy_comment::deleteAll(['user_id'=>$this->id]);
         Vacancy_entry::deleteAll(['user_id'=>$this->id]);
-    }
-
-    private function sendInfoMail()
-    {
-        Yii::$app->mailer->compose('@common/mail/user-register', [
-            'name'=>$this->name,
-            'login'=>$this->login,
-            'email'=>$this->email,
-        ])
-            ->setFrom("pharmbonus@gmail.com")
-            ->setTo("pharmbonus@gmail.com")
-            ->setSubject('Новый пользователь!')
-            ->send();
     }
 
 }

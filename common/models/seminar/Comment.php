@@ -52,7 +52,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'seminar_id'], 'required'],
-            [['comment'], 'string', 'max'=>400],
+            [['comment'], 'string'],
             [['seminar_id'], 'exist', 'targetClass'=>Seminar::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];

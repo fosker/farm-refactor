@@ -9,6 +9,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  */
+
 class Region extends \yii\db\ActiveRecord
 {
     /**

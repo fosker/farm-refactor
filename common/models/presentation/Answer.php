@@ -46,7 +46,8 @@ class Answer extends ActiveRecord
     /**
      * @param $attribute
      */
-    public function validatorAnswersCount($attribute) {
+    public function validatorAnswersCount($attribute)
+    {
         if (!$this->hasErrors()) {
             if(stristr($this->value, ';')) {
                 $values = explode(';', $this->value);
@@ -57,7 +58,8 @@ class Answer extends ActiveRecord
         }
     }
 
-    public function validatorInOptionList($attribute) {
+    public function validatorInOptionList($attribute)
+    {
         if (!$this->hasErrors() && $this->question->options) {
             $values = explode(';', $this->value);
             $valid = true;
@@ -82,7 +84,8 @@ class Answer extends ActiveRecord
     }
 
 
-    public static function filterModels($models) {
+    public static function filterModels($models)
+    {
 
         $presentation = $models[0]->question->presentation;
 
@@ -116,11 +119,13 @@ class Answer extends ActiveRecord
         return $answers;
     }
 
-    public function getQuestion() {
+    public function getQuestion()
+    {
         return $this->hasOne(Question::className(),['id'=>'question_id']);
     }
 
-    public function getView() {
+    public function getView()
+    {
         return $this->hasOne(View::className(),['id'=>'view_id']);
     }
 

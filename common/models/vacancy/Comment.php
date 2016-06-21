@@ -46,7 +46,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'vacancy_id'], 'required'],
-            [['comment'], 'string', 'max'=>400],
+            [['comment'], 'string'],
             [['vacancy_id'], 'exist', 'targetClass'=>Vacancy::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];

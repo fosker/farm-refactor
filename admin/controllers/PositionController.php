@@ -96,7 +96,7 @@ class PositionController extends Controller
         if (($model = Position::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена.');
+            throw new NotFoundHttpException('Р”РѕР»Р¶РЅРѕСЃС‚СЊ РЅРµ РЅР°Р№РґРµРЅР°.');
         }
     }
 }

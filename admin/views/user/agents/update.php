@@ -71,22 +71,6 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
               </div>";
     } ?>
 
-    <?= $form->field($type, 'city_id')->widget(Select2::classname(), [
-        'data' => $cities,
-        'options' => ['placeholder' => 'Выберите город ...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
-    <?php if ($update->city_id != $type->city_id && $update->city_id) {
-        echo "<div class='row'>
-                <div class='col-md-4'>
-                    <p class='text-success'>Новый город: ".$update->city->name."</p>
-                </div>
-              </div>";
-    } ?>
-
     <?php if ($update->details) {
         echo "<div class='row'>
                 <div class='col-md-12'>

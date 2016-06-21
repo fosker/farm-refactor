@@ -4,8 +4,9 @@ namespace common\models\factory;
 
 use Yii;
 use yii\db\ActiveRecord;
-use common\models\Factory;
 use yii\imagine\Image;
+use common\models\Factory;
+
 
 /**
  * This is the model class for table "factory_products".
@@ -58,13 +59,15 @@ class Product extends ActiveRecord
         ];
     }
 
-    public function fields() {
+    public function fields()
+    {
         return [
-            'id','title','thumbnail'=>'thumbnailPath'
+            'id','title','thumbnail'=>'thumbPath'
         ];
     }
 
-    public function extraFields() {
+    public function extraFields()
+    {
         return [
             'description','image'=>'imagePath'
         ];
@@ -75,7 +78,7 @@ class Product extends ActiveRecord
         return Yii::getAlias('@uploads_view/factories/products/'.$this->image);
     }
 
-    public function getThumbnailPath()
+    public function getThumbPath()
     {
         return Yii::getAlias('@uploads_view/factories/products/thumbs/'.$this->thumbnail);
     }
@@ -85,7 +88,8 @@ class Product extends ActiveRecord
         return $this->hasOne(Factory::className(),['id'=>'factory_id']);
     }
 
-    public function loadImage() {
+    public function loadImage()
+    {
         if($this->imageFile) {
             $path = Yii::getAlias('@uploads/factories/products/');
             if($this->image && file_exists($path . $this->image))
@@ -99,7 +103,8 @@ class Product extends ActiveRecord
         }
     }
 
-    public function loadThumb() {
+    public function loadThumb()
+    {
         if($this->thumbFile) {
             $path = Yii::getAlias('@uploads/factories/products/thumbs/');
             if($this->thumbnail && file_exists($path . $this->thumbnail))
@@ -113,7 +118,8 @@ class Product extends ActiveRecord
         }
     }
 
-    public function beforeSave($insert) {
+    public function beforeSave($insert)
+    {
         if(parent::beforeSave($insert)) {
             $this->loadImage();
             $this->loadThumb();
@@ -121,7 +127,8 @@ class Product extends ActiveRecord
         } else return false;
     }
 
-    public function afterDelete() {
+    public function afterDelete()
+    {
         if($this->image) @unlink(Yii::getAlias('@uploads/factories/products/'.$this->image));
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/factories/products/thumbs/'.$this->thumbnail));
         parent::afterDelete();

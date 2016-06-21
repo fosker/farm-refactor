@@ -43,22 +43,6 @@ $this->title = 'Представители';
                 ]),
             ],
             [
-                'attribute' => 'city_id',
-                'value'=>'city.name',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $cities,
-                    'attribute'=>'city_id',
-                    'options' => [
-                        'placeholder' => 'Выберите город ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '175px'
-                    ],
-                ]),
-            ],
-            [
                 'label' => 'Фабрика',
                 'attribute' => 'factory_id',
                 'value'=>function($model) {

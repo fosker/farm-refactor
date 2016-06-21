@@ -19,13 +19,15 @@ use common\models\company\Admin as CompanyAdmin;
  * @property string $date_add
  * @property integer $admin_type
  */
+
 class Comment extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
 
-    public function scenarios() {
+    public function scenarios()
+    {
         return array_merge(parent::scenarios(),[
             'add'=> ['comment','news_id'],
         ]);
@@ -43,14 +45,15 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'news_id'], 'required'],
-            [['comment'], 'string', 'max'=>400],
+            [['comment'], 'string'],
             [['news_id'], 'exist', 'targetClass'=>News::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
             ['isAdmin', 'integer']
         ];
     }
 
-    public function fields() {
+    public function fields()
+    {
         if($this->scenario == 'default')
             return [
                 'id',
@@ -67,6 +70,7 @@ class Comment extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public function attributeLabels()
     {
         return [
@@ -83,7 +87,8 @@ class Comment extends \yii\db\ActiveRecord
         return static::find()->where(['news_id'=>$news_id])->orderBy(['date_add'=>SORT_DESC]);
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         if($this->admin_type == 1) {
             return $this->hasOne(FactoryAdmin::className(), ['id' => 'user_id']);
         } elseif($this->admin_type == 2) {
@@ -92,7 +97,8 @@ class Comment extends \yii\db\ActiveRecord
             return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
-    public function getNews() {
+    public function getNews()
+    {
         return $this->hasOne(News::className(), ['id' => 'news_id']);
     }
 }

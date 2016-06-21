@@ -4,13 +4,13 @@ namespace rest\versions\v1\controllers;
 use Yii;
 use yii\rest\Controller;
 
-use backend\models\Param;
 use common\models\profile\Device;
 use common\models\User;
 use common\models\user\Agent;
 use common\models\user\Pharmacist;
 use common\models\profile\LoginForm;
 use common\models\profile\Type;
+use common\models\Mailer;
 
 class AuthController extends Controller
 {
@@ -84,13 +84,6 @@ class AuthController extends Controller
                 $model->register();
                 $user->id = $model->id;
                 $user->save(false);
-                Yii::$app->mailer->compose('@common/mail/user-register-info', [
-                    'user' => $model,
-                ])
-                    ->setFrom('pharmbonus@gmail.com')
-                    ->setTo($model->email)
-                    ->setSubject('Вы зарегистрировались в PharmBonus')
-                    ->send();
                 return ['success'=>true];
             } else return $user;
         } else return $model;
@@ -106,13 +99,6 @@ class AuthController extends Controller
                 $model->register();
                 $user->id = $model->id;
                 $user->save(false);
-                Yii::$app->mailer->compose('@common/mail/user-register-info', [
-                    'user' => $model,
-                ])
-                    ->setFrom('pharmbonus@gmail.com')
-                    ->setTo($model->email)
-                    ->setSubject('Вы зарегистрировались в PharmBonus')
-                    ->send();
                 return ['success'=>true];
             } else return $user;
         } else return $model;
@@ -132,17 +118,9 @@ class AuthController extends Controller
     {
         if(!$user = User::FindByEmail(Yii::$app->getRequest()->getBodyParams()['email']))
             throw new \yii\web\NotFoundHttpException('Пользователь с такой почтой не существует.');
-
         $user->generatePasswordResetToken();
         $user->save(false);
-
-        Yii::$app->mailer->compose('@common/mail/repair-user-code', [
-            'token'=>$user->reset_token,
-        ])
-            ->setFrom("pharmbonus@gmail.com")
-            ->setTo($user->email)
-            ->setSubject("Восстановление доступа")
-            ->send();
+        Mailer::sendRepairCode($user);
         return ['success'=>true];
     }
 

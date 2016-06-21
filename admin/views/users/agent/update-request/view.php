@@ -35,7 +35,6 @@ $this->title = 'Представитель: '.$model->name;
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',
             ],
-            'city.name',
             'details',
             'date_add:datetime'
 

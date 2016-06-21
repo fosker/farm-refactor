@@ -2,8 +2,8 @@
 
 namespace common\models\company;
 
-use common\models\Banner;
 use Yii;
+use common\models\Banner;
 use common\models\location\City;
 use common\models\User;
 use common\models\Company;
@@ -27,6 +27,7 @@ use common\models\profile\PharmacistUpdateRequest;
  * @property integer $company_id
  * @property integer $city_id
  */
+
 class Pharmacy extends \yii\db\ActiveRecord
 {
 

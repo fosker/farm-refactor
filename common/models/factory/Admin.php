@@ -21,6 +21,7 @@ use common\models\Factory;
  * @property string $factory_id
  * @property string $sex
  */
+
 class Admin extends \yii\db\ActiveRecord
 {
 
@@ -40,7 +41,8 @@ class Admin extends \yii\db\ActiveRecord
         return 'factory_admins';
     }
 
-    public function scenarios() {
+    public function scenarios()
+    {
         return array_merge(
             parent::scenarios(),
             [
@@ -49,7 +51,8 @@ class Admin extends \yii\db\ActiveRecord
         );
     }
 
-    public function fields() {
+    public function fields()
+    {
         return [
             'name','login','avatar'=>'avatarPath'
         ];

@@ -10,8 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\profile\agent\Search as Agent_Search;
-use backend\models\profile\pharmacist\Search as Pharmacist_Search;
+use yii\helpers\Json;
 use common\models\profile\AgentUpdateRequest;
 use common\models\profile\PharmacistUpdateRequest;
 use common\models\Company;
@@ -24,7 +23,10 @@ use common\models\location\City;
 use common\models\profile\Device;
 use common\models\profile\Education;
 use common\models\location\Region;
-use yii\helpers\Json;
+use common\models\profile\Type;
+use backend\models\profile\agent\Search as Agent_Search;
+use backend\models\profile\pharmacist\Search as Pharmacist_Search;
+
 
 
 class UserController extends Controller
@@ -65,7 +67,6 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'name', 'name'),
             'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
-            'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
             'emails' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'email', 'email'),
         ]);
     }
@@ -99,16 +100,17 @@ class UserController extends Controller
         $model = $this->findModel($id);
         $model->scenario = 'update';
         switch($model->type_id) {
-            case 1: $type = Pharmacist::findOne($id);
+            case Type::TYPE_PHARMACIST: $type = Pharmacist::findOne($id);
+                                        $type->scenario = 'update';
                 break;
-            case 2: $type = Agent::findOne($id);
+            case Type::TYPE_AGENT: $type = Agent::findOne($id);
                 break;
         }
         if($update_id) {
             switch($model->type_id) {
-                case 1: $update = PharmacistUpdateRequest::findOne(['pharmacist_id' => $update_id]);
+                case Type::TYPE_PHARMACIST: $update = PharmacistUpdateRequest::findOne(['pharmacist_id' => $update_id]);
                     break;
-                case 2: $update = AgentUpdateRequest::findOne(['agent_id' => $update_id]);
+                case Type::TYPE_AGENT: $update = AgentUpdateRequest::findOne(['agent_id' => $update_id]);
                     break;
             }
         }
@@ -117,16 +119,16 @@ class UserController extends Controller
             if($model->save(false) && $type->save(false))
                 if($update_id) {
                     switch($model->type_id) {
-                        case 1: PharmacistUpdateRequest::deleteAll(['pharmacist_id' => $update_id]);
+                        case Type::TYPE_PHARMACIST: PharmacistUpdateRequest::deleteAll(['pharmacist_id' => $update_id]);
                             break;
-                        case 2: AgentUpdateRequest::deleteAll(['agent_id' => $update_id]);
+                        case Type::TYPE_AGENT: AgentUpdateRequest::deleteAll(['agent_id' => $update_id]);
                             break;
                     }
                 }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             switch($model->type_id) {
-                case 1:
+                case Type::TYPE_PHARMACIST:
                     return $this->render('pharmacists/update', [
                         'model' => $model,
                         'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id','title'),
@@ -140,11 +142,10 @@ class UserController extends Controller
                         'update' => $update,
                         'type' => $type
                 ]);
-                case 2:
+                case Type::TYPE_AGENT:
                     return $this->render('agents/update', [
                         'model' => $model,
                         'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
-                        'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
                         'update' => $update,
                         'type' => $type,
                 ]);
@@ -156,10 +157,10 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         switch($model->type_id) {
-            case 1:
+            case Type::TYPE_PHARMACIST:
                 $model->delete();
                 return $this->redirect(['pharmacists']);
-            case 2:
+            case Type::TYPE_AGENT:
                 $model->delete();
                 return $this->redirect(['agents']);
         }
@@ -170,7 +171,7 @@ class UserController extends Controller
         if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Пользователя не существует.');
+            throw new NotFoundHttpException('Пользователь не существует.');
         }
     }
 
