@@ -72,6 +72,7 @@ class PushUsersController extends Controller
 //            echo '</pre>';
 //            die();
 
+
             if($ios_tokens)
             {
                 if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [

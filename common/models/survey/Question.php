@@ -14,6 +14,7 @@ use common\models\Survey;
  * @property string $question
  * @property integer $survey_id
  * @property integer $right_answers
+ * @property integer $validAnswer
  */
 class Question extends ActiveRecord
 {
@@ -32,7 +33,7 @@ class Question extends ActiveRecord
     {
         return [
             [['question', 'right_answers'], 'required'],
-            ['question', 'string'],
+            [['question', 'validAnswer'], 'string'],
             ['right_answers', 'integer']
         ];
     }
@@ -44,13 +45,14 @@ class Question extends ActiveRecord
     {
         return [
             'question' => 'Вопрос',
-            'right_answers' => 'Количество правильных ответов'
+            'right_answers' => 'Количество правильных ответов',
+            'validAnswer' => 'Правильный ответ'
         ];
     }
 
     public function fields() {
         return [
-            'id', 'question', 'options', 'right_answers'
+            'id', 'question', 'options', 'right_answers', 'validAnswer'
         ];
     }
 

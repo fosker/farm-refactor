@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string $value
  * @property integer $question_id
+ * @property boolean $isValid
  */
 class Option extends ActiveRecord
 {
@@ -24,7 +25,7 @@ class Option extends ActiveRecord
 
     public function fields() {
         return [
-            'value',
+            'value', 'isValid'
         ];
     }
 
@@ -36,7 +37,8 @@ class Option extends ActiveRecord
         return [
             ['value', 'required'],
             ['value', 'trim'],
-            ['value', 'string']
+            ['value', 'string'],
+            ['isValid', 'integer'],
         ];
     }
 
@@ -46,7 +48,8 @@ class Option extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'value' => 'Вариант ответа'
+            'value' => 'Вариант ответа',
+            'isValid' => 'Правильный ответ'
         ];
     }
 

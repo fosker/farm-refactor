@@ -14,6 +14,7 @@ use common\models\survey\Pharmacy as Survey_Pharmacy;
 use common\models\survey\Education as Survey_Education;
 use common\models\survey\Type as Survey_Type;
 use common\models\company\Pharmacy;
+use common\models\user\Pharmacist;
 use common\models\Factory;
 
 /**
@@ -28,6 +29,7 @@ use common\models\Factory;
  * @property string $thumbnail
  * @property integer $status
  * @property integer $views_limit
+ * @property integer $for_one
  */
 class Survey extends ActiveRecord
 {
@@ -52,7 +54,7 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points', 'views_limit'], 'integer'],
+            [['points', 'views_limit', 'for_one'], 'integer'],
             [['title', 'description', 'points', 'factory_id'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
@@ -80,7 +82,8 @@ class Survey extends ActiveRecord
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
             'views_limit' => 'Ограничение просмотров',
-            'factory_id' => 'Фабрика Автор'
+            'factory_id' => 'Фабрика Автор',
+            'for_one' => 'Показывать одному фармацевту',
         ];
     }
 
@@ -106,13 +109,20 @@ class Survey extends ActiveRecord
      */
     public static function getForCurrentUser()
     {
-
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $pharmacy_id = Yii::$app->user->identity->pharmacist->pharmacy_id;
+            $pharmacist = Pharmacist::find()
+                ->select('id')
+                ->where(['pharmacy_id' => $pharmacy_id])
+                ->one();
             return static::find()
                 ->joinWith('pharmacies')
+                ->join('LEFT JOIN', Pharmacist::tableName(),
+                    Survey_Pharmacy::tableName().'.pharmacy_id = '.Pharmacist::tableName().'.pharmacy_id')
                 ->joinWith('education')
                 ->joinWith('types')
-                ->andWhere(['status'=>static::STATUS_ACTIVE])
+                ->andWhere(['!=', 'for_one', '1'])
+                ->andWhere([static::tableName().'.status'=>static::STATUS_ACTIVE])
                 ->andWhere([Survey_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
                 ->andWhere([Survey_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
                 ->andWhere([Survey_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])

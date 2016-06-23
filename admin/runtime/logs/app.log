@@ -26652,3 +26652,1472 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-06-21 16:09:59 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][ReflectionException] exception 'ReflectionException' with message 'Class validAnswer does not exist' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php:417
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(417): ReflectionClass->__construct('validAnswer')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(360): yii\di\Container->getDependencies('validAnswer')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('validAnswer', Array, Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('validAnswer', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\validators\Validator.php(209): yii\BaseYii::createObject(Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(445): yii\validators\Validator::createValidator('validAnswer', Object(common\models\survey\Option), Array, Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(409): yii\base\Model->createValidators()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(185): yii\base\Model->getValidators()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(772): yii\base\Model->scenarios()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(700): yii\base\Model->activeAttributes()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(216): yii\widgets\ActiveField->getClientOptions()
+#11 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(273): yii\widgets\ActiveField->begin()
+#12 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(230): kartik\form\ActiveField->begin()
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(216): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+2016-06-21 16:09:59 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '4689'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466514599.041
+    'REQUEST_TIME' => 1466514599
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-21 16:10:22 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][ReflectionException] exception 'ReflectionException' with message 'Class validAnswer does not exist' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php:417
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(417): ReflectionClass->__construct('validAnswer')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(360): yii\di\Container->getDependencies('validAnswer')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('validAnswer', Array, Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('validAnswer', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\validators\Validator.php(209): yii\BaseYii::createObject(Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(445): yii\validators\Validator::createValidator('validAnswer', Object(common\models\survey\Option), Array, Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(409): yii\base\Model->createValidators()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(185): yii\base\Model->getValidators()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(772): yii\base\Model->scenarios()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(700): yii\base\Model->activeAttributes()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(216): yii\widgets\ActiveField->getClientOptions()
+#11 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(273): yii\widgets\ActiveField->begin()
+#12 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(230): kartik\form\ActiveField->begin()
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(216): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+2016-06-21 16:10:22 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '4700'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466514622.286
+    'REQUEST_TIME' => 1466514622
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-21 16:22:54 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\survey\Question::validAnswer' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('validAnswer')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(2068): yii\db\BaseActiveRecord->__get('validAnswer')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1243): yii\helpers\BaseHtml::getAttributeValue(Object(common\models\survey\Question), '[0]validAnswer')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1292): yii\helpers\BaseHtml::activeInput('text', Object(common\models\survey\Question), '[0]validAnswer', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(362): yii\helpers\BaseHtml::activeTextInput(Object(common\models\survey\Question), '[0]validAnswer', Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(529): yii\widgets\ActiveField->textInput(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(239): kartik\form\ActiveField->textInput()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(216): yii\base\Controller->render('update', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-21 16:22:54 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=31'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '4830'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466515374.636
+    'REQUEST_TIME' => 1466515374
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-21 16:23:08 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'DOMDocument::importNode(): ID option-0-validanswer already defined' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:234
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'DOMDocument::im...', 'C:\\OpenServer\\d...', 234, Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php(234): DOMDocument->importNode(Object(DOMElement), 1)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(73): wbraganca\dynamicform\DynamicFormWidget->run()
+#3 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(262): yii\base\Widget::end()
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#7 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#12 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(216): yii\base\Controller->render('update', Array)
+#13 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#20 {main}
+2016-06-21 16:23:07 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=31'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '4834'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466515387.515
+    'REQUEST_TIME' => 1466515387
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-21 16:43:49 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][ReflectionException] exception 'ReflectionException' with message 'Class validAnswer does not exist' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php:417
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(417): ReflectionClass->__construct('validAnswer')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(360): yii\di\Container->getDependencies('validAnswer')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('validAnswer', Array, Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('validAnswer', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\validators\Validator.php(209): yii\BaseYii::createObject(Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(445): yii\validators\Validator::createValidator('validAnswer', Object(common\models\survey\Question), Array, Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(409): yii\base\Model->createValidators()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(185): yii\base\Model->getValidators()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Model.php(772): yii\base\Model->scenarios()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(700): yii\base\Model->activeAttributes()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(216): yii\widgets\ActiveField->getClientOptions()
+#11 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(273): yii\widgets\ActiveField->begin()
+#12 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(176): kartik\form\ActiveField->begin()
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(215): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#29 {main}
+2016-06-21 16:43:49 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=31'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '5150'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466516629.06
+    'REQUEST_TIME' => 1466516629
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-21 16:43:58 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'DOMDocument::importNode(): ID question-0-validanswer already defined' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:234
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'DOMDocument::im...', 'C:\\OpenServer\\d...', 234, Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php(234): DOMDocument->importNode(Object(DOMElement), 1)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(73): wbraganca\dynamicform\DynamicFormWidget->run()
+#3 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(263): yii\base\Widget::end()
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#7 C:\OpenServer\domains\farm.loc\admin\views\survey\update.php(28): yii\base\View->render('_form', Array)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\SurveyController))
+#12 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(215): yii\base\Controller->render('update', Array)
+#13 [internal function]: backend\controllers\SurveyController->actionUpdate('31')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/update', Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#20 {main}
+2016-06-21 16:43:58 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/update'
+    'id' => '31'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=31'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '5153'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fupdate&id=31'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fupdate&id=31'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466516638.422
+    'REQUEST_TIME' => 1466516638
+    'argv' => [
+        0 => 'r=survey%2Fupdate&id=31'
+    ]
+    'argc' => 1
+]
+2016-06-22 16:51:46 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'move_uploaded_file(C:\OpenServer\domains\farm.loc/public_html/uploads/surveys/OnjDMtP7rZZhdQ1PsDdLeoVZt0E7TYfs1466603506.jpg): failed to open stream: No such file or directory' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\UploadedFile.php:161
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'move_uploaded_f...', 'C:\\OpenServer\\d...', 161, Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\UploadedFile.php(161): move_uploaded_file('C:\\OpenServer\\u...', 'C:\\OpenServer\\d...')
+#2 C:\OpenServer\domains\farm.loc\common\models\Survey.php(334): yii\web\UploadedFile->saveAs('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\common\models\Survey.php(357): common\models\Survey->loadImage()
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(453): common\models\Survey->beforeSave(true)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(598): yii\db\ActiveRecord->insert(false, NULL)
+#7 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(231): yii\db\BaseActiveRecord->save(false)
+#8 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(110): backend\controllers\SurveyController->saveSurvey(Object(common\models\Survey), Array, Array)
+#9 [internal function]: backend\controllers\SurveyController->actionCreate()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#16 {main}
+2016-06-22 16:51:46 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'QzRzc3B3ZHoTWzhDFRJQMyR1AUAgL1YQOl0RCSAjDkMFfSEwBDEnCg=='
+    'Survey' => [
+        'title' => 'asdasd'
+        'factory_id' => '1'
+        'points' => '11'
+        'description' => '<p>qweqwe</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qweqweqwe'
+            'right_answers' => '1'
+            'validAnswer' => ''
+        ]
+        1 => [
+            'question' => 'dddd'
+            'right_answers' => '2'
+            'validAnswer' => ''
+        ]
+    ]
+    'Option' => [
+        0 => [
+            0 => [
+                'value' => 'asdasdasd'
+                'isValid' => '1'
+            ]
+            1 => [
+                'value' => 'qwdqwd'
+                'isValid' => '0'
+            ]
+        ]
+        1 => [
+            0 => [
+                'value' => 'zxczxc'
+                'isValid' => '0'
+            ]
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => 'ET0br5O4vTQ.jpg'
+            'thumbFile' => '0IypVduH3KU.jpg'
+        ]
+        'type' => [
+            'imageFile' => 'image/jpeg'
+            'thumbFile' => 'image/jpeg'
+        ]
+        'tmp_name' => [
+            'imageFile' => 'C:\\OpenServer\\userdata\\temp\\php843E.tmp'
+            'thumbFile' => 'C:\\OpenServer\\userdata\\temp\\php843F.tmp'
+        ]
+        'error' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+        'size' => [
+            'imageFile' => 37494
+            'thumbFile' => 42964
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '83170'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarySmFAH1AaBrRYIHOV'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '8905'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466603506.025
+    'REQUEST_TIME' => 1466603506
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 16:57:16 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(130): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 16:57:16 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'WU4zR2VqUGsJIXh3AA9kIj4PQXQ1MmIBICdRPTU.OlIfB2EEESwTGw=='
+    'Survey' => [
+        'title' => 'asdasd'
+        'factory_id' => '1'
+        'points' => '11'
+        'description' => '<p>qweqwe</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qweqweqwe'
+            'right_answers' => '1'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => '0IypVduH3KU.jpg'
+            'thumbFile' => '0IypVduH3KU.jpg'
+        ]
+        'type' => [
+            'imageFile' => 'image/jpeg'
+            'thumbFile' => 'image/jpeg'
+        ]
+        'tmp_name' => [
+            'imageFile' => 'C:\\OpenServer\\userdata\\temp\\php8E4A.tmp'
+            'thumbFile' => 'C:\\OpenServer\\userdata\\temp\\php8E4B.tmp'
+        ]
+        'error' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+        'size' => [
+            'imageFile' => 42964
+            'thumbFile' => 42964
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '87528'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryv3Z86sA9IrEu41Up'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '8929'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466603836.279
+    'REQUEST_TIME' => 1466603836
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 17:00:37 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(127): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 17:00:37 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'RWh2NEU3N2cVBz0EIFIDLiIpBAcVbwUNPAEUThVjXV4DISR3MXF0Fw=='
+    'Survey' => [
+        'title' => 'qweqw'
+        'factory_id' => '8'
+        'points' => '123'
+        'description' => '<p>asdasd</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qqqqq'
+            'right_answers' => '222'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1596'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryQfBlqb5Q29TMuBMw'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '8983'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466604037.225
+    'REQUEST_TIME' => 1466604037
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 17:01:09 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(127): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 17:01:09 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'ZUZfbml5LmQ1KRReDBwaLQIHLV05IRwOHC89FDktRF0jDw0tHT9tFA=='
+    'Survey' => [
+        'title' => 'qweqw'
+        'factory_id' => '8'
+        'points' => '123'
+        'description' => '<p>asdasd</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qqqqq'
+            'right_answers' => '222'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1596'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryBo3ci9M2jvuLtHHO'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '8991'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466604069.608
+    'REQUEST_TIME' => 1466604069
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 17:03:12 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(132): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 17:03:12 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'RTZ6WlI1VWUVWTFqN1BhLCJ3CGkCbWcPPF8YIAJhP1wDfygZJnMWFQ=='
+    'Survey' => [
+        'title' => 'qweqw'
+        'factory_id' => '8'
+        'points' => '123'
+        'description' => '<p>asdasd</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qqqqq'
+            'right_answers' => '222'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1596'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryjdTpLbnNhWeMcOla'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9003'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466604192.445
+    'REQUEST_TIME' => 1466604192
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 17:03:54 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(128): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 17:03:54 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'RTZ6WlI1VWUVWTFqN1BhLCJ3CGkCbWcPPF8YIAJhP1wDfygZJnMWFQ=='
+    'Survey' => [
+        'title' => 'qweqw'
+        'factory_id' => '8'
+        'points' => '123'
+        'description' => '<p>asdasd</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qqqqq'
+            'right_answers' => '222'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1596'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryjdTpLbnNhWeMcOla'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9014'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466604234.127
+    'REQUEST_TIME' => 1466604234
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-06-22 17:04:52 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The 'model' property must be set and must extend from '\yii\base\Model'.' in C:\OpenServer\domains\farm.loc\vendor\wbraganca\yii2-dynamicform\src\DynamicFormWidget.php:106
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): wbraganca\dynamicform\DynamicFormWidget->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('wbraganca\\dynam...', Array, Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('wbraganca\\dynam...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(56): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm.loc\admin\views\survey\_form.php(218): yii\base\Widget::begin(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#10 C:\OpenServer\domains\farm.loc\admin\views\survey\create.php(21): yii\base\View->render('_form', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\SurveyController))
+#15 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(128): yii\base\Controller->render('create', Array)
+#16 [internal function]: backend\controllers\SurveyController->actionCreate()
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/create', Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(16): yii\base\Application->run()
+#23 {main}
+2016-06-22 17:04:52 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/create'
+]
+
+$_POST = [
+    '_csrf' => 'RTZ6WlI1VWUVWTFqN1BhLCJ3CGkCbWcPPF8YIAJhP1wDfygZJnMWFQ=='
+    'Survey' => [
+        'title' => 'qweqw'
+        'factory_id' => '8'
+        'points' => '123'
+        'description' => '<p>asdasd</p>
+'
+        'views_limit' => ''
+        'imageFile' => ''
+        'thumbFile' => ''
+    ]
+    'Question' => [
+        0 => [
+            'question' => 'qqqqq'
+            'right_answers' => '222'
+            'validAnswer' => ''
+        ]
+    ]
+]
+
+$_FILES = [
+    'Survey' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1596'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryjdTpLbnNhWeMcOla'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9024'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=survey%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1466604292.157
+    'REQUEST_TIME' => 1466604292
+    'argv' => [
+        0 => 'r=survey%2Fcreate'
+    ]
+    'argc' => 1
+]

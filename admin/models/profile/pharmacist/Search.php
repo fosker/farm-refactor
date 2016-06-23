@@ -77,7 +77,7 @@ class Search extends Pharmacist
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+            Pharmacist::tableName().'.id' => $this->id,
             'education_id' => $this->education_id,
             'pharmacy_id' => $this->pharmacy_id,
             'position_id' => $this->position_id,

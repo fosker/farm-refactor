@@ -11,6 +11,8 @@ use kartik\widgets\ActiveForm;
 
     <?= $form->field($model, 'value')->textInput() ?>
 
+    <?= $form->field($model, 'isValid')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

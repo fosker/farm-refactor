@@ -15,6 +15,11 @@ use kartik\widgets\ActiveForm;
 
     <?= $form->field($model, 'right_answers')->textInput(['maxlength' => true]) ?>
 
+    <?php if(!$model->options) {
+        echo $form->field($model, 'validAnswer')->textInput(['maxlength' => true]);
+    };
+    ?>
+
     <?= $form->field($model, 'order_index') ?>
 
     <div class="form-group">

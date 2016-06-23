@@ -13,7 +13,8 @@ use common\models\profile\Type;
 use backend\components\CheckWidget;
 use yii\bootstrap\Modal;
 
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/answer.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="survey-form">
@@ -154,8 +155,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
             <tr class="active">
                 <td></td>
                 <td><?= Html::activeLabel($questions[0], 'question'); ?></td>
-                <td><label class="control-label">Варианты ответа</label></td>
                 <td><label class="control-label">Количество правильных ответов</label></td>
+                <td><label class="control-label">Варианты ответа</label></td>
             </tr>
             </thead>
 
@@ -181,9 +182,22 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
                     </td>
 
                     <td>
-                        <?php
-                        echo $form->field($question, "[{$i}]right_answers")->textInput();
-                        ?>
+                        <table>
+                            <tr>
+                                <td>
+                                    <?php
+                                        echo $form->field($question, "[{$i}]right_answers")->textInput();
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php
+                                    echo $form->field($question, "[{$i}]validAnswer")->textInput();
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
 
                     <!-- The Options on the Question -->
@@ -227,10 +241,11 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
                                     <td>
                                         <?php
-                                        echo $form->field($option, "[{$i}][{$ix}]value")->begin();
-                                        echo Html::activeTextInput($option, "[{$i}][{$ix}]value", ['maxlength' => true, 'class' => 'form-control']); //Field
-                                        echo Html::error($option,"[{$i}][{$ix}]value", ['class' => 'help-block']); //error
-                                        echo $form->field($option, "[{$i}][{$ix}]value")->end();
+                                            echo $form->field($option, "[{$i}][{$ix}]value")->begin();
+                                            echo Html::activeTextInput($option, "[{$i}][{$ix}]value", ['maxlength' => true, 'class' => 'form-control']); //Field
+                                            echo Html::error($option,"[{$i}][{$ix}]value", ['class' => 'help-block']); //error
+                                            echo $form->field($option, "[{$i}][{$ix}]value")->end();
+                                            echo $form->field($option, "[{$i}][{$ix}]isValid")->checkbox();
                                         ?>
                                     </td>
 

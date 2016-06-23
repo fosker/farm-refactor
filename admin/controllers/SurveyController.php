@@ -101,12 +101,8 @@ class SurveyController extends Controller
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
 
-            $valid = $model->validate();
+            if ($model->validate()) {
 
-
-            //$valid = Question::validateWithOptions($questions, $options) && $valid;
-
-            if ($valid) {
                 if ($this->saveSurvey($model,$questions,$options)) {
                     $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
                     $model->loadEducation(Yii::$app->request->post('education'));
@@ -157,7 +153,6 @@ class SurveyController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())) {
-
             $questions = Model::createMultiple(Question::classname(), $questions);
             Model::loadMultiple($questions, Yii::$app->request->post());
             $newQuestionIds = ArrayHelper::getColumn($questions,'id');

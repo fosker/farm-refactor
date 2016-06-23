@@ -301,6 +301,9 @@ class PresentationController extends Controller
         $model = new Option();
 
         if($model->load(Yii::$app->request->getBodyParams())) {
+            $question = Question::findOne($question_id);
+            $question->validAnswer = "";
+            $question->save(false);
             $model->question_id = $question_id;
             if($model->save())
                 return $this->redirect(['view-option','question_id'=>$question_id,

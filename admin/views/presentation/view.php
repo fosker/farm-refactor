@@ -12,7 +12,8 @@ $this->title = $model->title;
     <p>
         <?= Html::a('Список', ['index'],['class'=>'btn btn-info']) ?>
         <?= Html::a('Ответы ('.$model->answersCount.')', ['presentations/answer/index', 'Search[presentation.id]' => $model->id], ['class' => 'btn btn-warning']) ?>
-
+        <?= Html::a('Экспорт pdf', ['presentations/answer/export-pdf', 'presentation_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт xls', ['presentations/answer/export-xls', 'presentation_id' => $model->id], ['class' => 'btn btn-success'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
 
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'pull-right btn btn-danger',
@@ -135,12 +136,13 @@ $this->title = $model->title;
     </h2>
 
     <table class="table">
-        <tr><th>Вопрос</th><th>Варианты ответа</th><th>Порядковый номер</th><th>Количество правильных ответов</th><th>Действия</th></tr>
+        <tr><th>Вопрос</th><th>Варианты ответа/Ответ</th><th>Порядковый номер</th><th>Количество правильных ответов</th><th>Действия</th></tr>
 
         <?php foreach($model->questions as $question) : ?>
             <tr>
                 <td><?=$question->question?></td>
                 <td>
+                    <p class="text-info"><?=$question->validAnswer;?></p>
                     <table>
                         <?php foreach($question->options as $option) :?>
                             <tr><td><p class="text-info"><?=$option->value?></p></td></tr>

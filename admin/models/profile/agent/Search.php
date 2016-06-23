@@ -64,7 +64,7 @@ class Search extends Agent
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+            Agent::tableName().'.id' => $this->id,
             'factory_id' => $this->factory_id,
         ]);
 

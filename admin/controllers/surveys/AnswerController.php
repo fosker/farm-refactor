@@ -2,11 +2,9 @@
 
 namespace backend\controllers\surveys;
 
-use common\models\survey\Question;
 use kartik\mpdf\Pdf;
 use PHPExcel;
 use PHPExcel_Style_Alignment;
-use PHPExcel_Style_Fill;
 use PHPExcel_Writer_Excel5;
 use Yii;
 use common\models\survey\Answer;
@@ -70,8 +68,6 @@ class AnswerController extends Controller
     public function actionDelete($user_id,$survey_id)
     {
         View::deleteAll(['user_id' => $user_id, 'survey_id' => $survey_id]);
-        //Answer::deleteAll(['user_id'=>$user_id, 'question_id'=>ArrayHelper::getColumn(Question::find()->select('id')->where(['survey_id'=>$survey_id])->asArray()->all(),'id')]);
-
         return $this->redirect(['index']);
     }
 
@@ -96,7 +92,7 @@ class AnswerController extends Controller
                 'defaultfooterline'=>false,
                 'margin_footer'=>0,
             ],
-            'cssInline'=>file_get_contents('../web/css/pdf-export.css'),
+            'cssInline'=>file_get_contents('../admin/css/pdf-export.css'),
             'marginLeft'=>10,
             'marginTop'=>10,
             'marginRight'=>10,
@@ -138,7 +134,7 @@ class AnswerController extends Controller
                 );
                 $sheet->setCellValueByColumnAndRow(
                     2,
-                    $i, $answer->view->user->pharmacy->city->region->name . '/' . $answer->view->user->pharmacy->city->name
+                    $i, $answer->view->user->pharmacist->pharmacy->city->region->name . '/' . $answer->view->user->pharmacist->pharmacy->city->name
                 );
                 $sheet->setCellValueByColumnAndRow(
                     3,
@@ -146,7 +142,7 @@ class AnswerController extends Controller
                 );
                 $sheet->setCellValueByColumnAndRow(
                     4,
-                    $i, $answer->view->user->education->name
+                    $i, $answer->view->user->pharmacist->education->name
                 );
                 $i++;
             }

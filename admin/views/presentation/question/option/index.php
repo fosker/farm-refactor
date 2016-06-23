@@ -23,10 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <table class="table">
-        <tr><th>Вариант ответа</th><th>Действия</th></tr>
+        <tr><th>Вариант ответа</th><th>Правильный ответ</th><th>Действия</th></tr>
         <? foreach($options as $option) : ?>
             <tr>
                 <td><?=$option->value?></td>
+                <td><?php echo $option->isValid ? "Да" : "Нет"?></td>
                 <td>
 
                     <?=Html::a('<span class="glyphicon glyphicon-pencil"></span>',['edit-option', 'id'=>$option->id, 'question_id'=>$_GET['question_id'] ,'presentation_id'=>$_GET['presentation_id']],['class'=>'btn btn-primary btn-xs']);?>
