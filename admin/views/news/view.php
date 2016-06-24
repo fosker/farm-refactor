@@ -67,4 +67,41 @@ $this->title = $model->title;
         ],
     ]) ?>
 
+    <h4>Комментарии</h4>
+    <div class="col-md-8">
+        <?php if(!$model->comments) {
+            echo "Комментариев нет.";
+        } else {
+        foreach ($model->comments as $comment): ?>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="row">
+                <p class="text-center"><?=$comment->user->login?></p>
+            </div>
+            <div class="row">
+                <?=Html::img($comment->user->avatarPath, ['class' => 'img-responsive']);?>
+            </div>
+        </div>
+        </br>
+        <div class="col-md-8" style="word-wrap: break-word;">
+            <p><?=$comment->comment?></p>
+            <h6><i><?=$comment->date_add?></i></h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <?= Html::a('Удалить', ['delete-comment', 'id' => $comment->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Удалить комментарий?',
+                'method' => 'post',
+            ],
+            ]) ?>
+        </div>
+    </div>
+    </br>
+<?php endforeach;
+}?>
+    </div>
+
 </div>

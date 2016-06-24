@@ -163,6 +163,11 @@ class Presentation extends ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(),['presentation_id'=>'id']);
+    }
+
     public function getQuestions()
     {
         return $this->hasMany(Question::className(), ['presentation_id' => 'id'])->orderBy('order_index');

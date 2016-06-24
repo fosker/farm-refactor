@@ -20,6 +20,7 @@ use common\models\seminar\Type as Seminar_Type;
 use common\models\profile\Type;
 use common\models\profile\Education;
 use common\models\Factory;
+use common\models\seminar\Comment;
 use backend\models\seminar\Search;
 
 class SeminarController extends Controller
@@ -166,5 +167,13 @@ class SeminarController extends Controller
         $this->findModel($id)->hide();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionDeleteComment($id)
+    {
+        $model = Comment::findOne($id);
+        $seminar_id = $model->seminar_id;
+        $model->delete();
+        $this->redirect(['view', 'id' => $seminar_id]);
     }
 }

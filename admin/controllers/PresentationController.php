@@ -22,9 +22,8 @@ use common\models\presentation\Type as Presentation_Type;
 use common\models\profile\Type;
 use common\models\profile\Education;
 use common\models\Factory;
+use common\models\presentation\Comment;
 use backend\models\presentation\Search;
-
-
 
 
 class PresentationController extends Controller
@@ -189,6 +188,14 @@ class PresentationController extends Controller
         $this->findModel($id)->hideHome();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionDeleteComment($id)
+    {
+        $model = Comment::findOne($id);
+        $presentation_id = $model->presentation_id;
+        $model->delete();
+        $this->redirect(['view', 'id' => $presentation_id]);
     }
 
     public function actionAddSlide($presentation_id)

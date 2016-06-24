@@ -16,6 +16,7 @@ use common\models\location\City;
 use common\models\company\Pharmacy;
 use common\models\Company;
 use common\models\Factory;
+use common\models\vacancy\Comment;
 use backend\models\vacancy\Search;
 
 
@@ -129,6 +130,14 @@ class VacancyController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionDeleteComment($id)
+    {
+        $model = Comment::findOne($id);
+        $vacancy_id = $model->vacancy_id;
+        $model->delete();
+        $this->redirect(['view', 'id' => $vacancy_id]);
     }
 
 

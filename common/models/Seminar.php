@@ -140,6 +140,11 @@ class Seminar extends \yii\db\ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(),['seminar_id'=>'id']);
+    }
+
     public function getFactory()
     {
         return $this->hasOne(Factory::className(),['id'=>'factory_id']);

@@ -18,6 +18,10 @@ $this->title = 'Новости';
         'filterModel' => $searchModel,
         'columns' => [
             [
+                'attribute' => 'id',
+                'contentOptions'=>['style'=>'width: 150px;'],
+            ],
+            [
                 'attribute'=>'title',
                 'value'=>'title',
                 'filter'=>Select2::widget([
@@ -29,7 +33,7 @@ $this->title = 'Новости';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '200px'
+                        'width' => '150px'
                     ],
                 ]),
             ],
@@ -100,7 +104,7 @@ $this->title = 'Новости';
                     ]
                 ]),
                 'format' => ['datetime'],
-                'contentOptions'=>['style'=>'width: 250px;'],
+                'contentOptions'=>['style'=>'width: 220px;'],
             ],
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -34,7 +34,7 @@ $this->title = 'Семинары';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '200px'
+                        'width' => '160px'
                     ],
                 ]),
             ],

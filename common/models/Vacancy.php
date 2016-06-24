@@ -107,6 +107,10 @@ class Vacancy extends \yii\db\ActiveRecord
         return static::getForCurrentUser()->andWhere([static::tableName().'.id'=>$id])->one();
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(),['vacancy_id'=>'id']);
+    }
 
     public function getPharmacies()
     {

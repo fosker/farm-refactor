@@ -34,7 +34,7 @@ $this->title = 'Презентации';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '200px'
+                        'width' => '160px'
                     ],
                 ])
             ],

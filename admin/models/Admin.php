@@ -298,22 +298,10 @@ class Admin extends ActiveRecord  implements IdentityInterface
         return false;
     }
 
-    public static function showVideo($id)
-    {
-        $list = ['video', 'videos/comment'];
-        foreach($list as $item) {
-            if (Right::HasAdmin($id, $item)) {
-                return true;
-                break;
-            }
-        }
-
-        return false;
-    }
 
     public static function showUser($id)
     {
-        $list = ['user/agents', 'user/pharmacists', 'users/push-users',
+        $list = ['users/push-users',
             'users/present', 'users/push-groups',
             'users/agent/update-request', 'users/pharmacist/update-request', 'users/factory-admin', 'users/company-admin'];
         foreach($list as $item) {
@@ -341,7 +329,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showPresentation($id)
     {
-        $list = ['presentation', 'presentations/comment', 'presentations/answer'];
+        $list = ['presentation', 'presentations/answer'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -367,7 +355,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showSeminar($id)
     {
-        $list = ['seminar', 'seminars/sign', 'seminars/comment'];
+        $list = ['seminar', 'seminars/sign'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -391,22 +379,9 @@ class Admin extends ActiveRecord  implements IdentityInterface
         return false;
     }
 
-    public static function showNews($id)
-    {
-        $list = ['news', 'newss/comment'];
-        foreach($list as $item) {
-            if (Right::HasAdmin($id, $item)) {
-                return true;
-                break;
-            }
-        }
-
-        return false;
-    }
-
     public static function showVacancy($id)
     {
-        $list = ['vacancy', 'vacancies/comment', 'vacancies/sign'];
+        $list = ['vacancy', 'vacancies/sign'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;

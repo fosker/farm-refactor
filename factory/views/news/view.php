@@ -59,7 +59,10 @@ $this->title = $model->title;
 
     <h4>Комментарии</h4>
     <div class="col-md-8">
-    <?php foreach ($model->comments as $comment): ?>
+        <?php if(!$model->comments) {
+            echo "Комментариев нет.";
+        } else {
+        foreach ($model->comments as $comment): ?>
         <div class="row">
             <div class="col-md-1">
                 <div class="row">
@@ -76,8 +79,7 @@ $this->title = $model->title;
             </div>
         </div>
         </br>
-    <?php endforeach;?>
+    <?php endforeach;
+    } ?>
     </div>
-
-
 </div>

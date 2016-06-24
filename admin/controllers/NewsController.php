@@ -20,6 +20,7 @@ use common\models\profile\Type;
 use common\models\profile\Education;
 use common\models\Company;
 use common\models\Factory;
+use common\models\news\Comment;
 use backend\models\news\Search;
 
 
@@ -33,6 +34,7 @@ class NewsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'delete-comment' => ['post']
                 ],
             ],
             'access' => [
@@ -140,6 +142,14 @@ class NewsController extends Controller
                 'old_education' => $old_education
             ]);
         }
+    }
+
+    public function actionDeleteComment($id)
+    {
+        $model = Comment::findOne($id);
+        $news_id = $model->news_id;
+        $model->delete();
+        $this->redirect(['view', 'id' => $news_id]);
     }
 
     public function actionDelete($id)
