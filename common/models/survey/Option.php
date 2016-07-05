@@ -35,6 +35,7 @@ class Option extends ActiveRecord
     public function rules()
     {
         return [
+            ['value', 'required'],
             ['value', 'trim'],
             [['value'], 'string'],
             ['isValid', 'integer']

@@ -155,6 +155,7 @@ class News extends \yii\db\ActiveRecord
                         News_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                         'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                     ])
+                    ->orderBy(['date'=>SORT_DESC])
                     ->groupBy(static::tableName().'.id');
         }
     }

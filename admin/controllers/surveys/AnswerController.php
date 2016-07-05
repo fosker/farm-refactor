@@ -110,14 +110,16 @@ class AnswerController extends Controller
         $sheet = $xls->getActiveSheet();
         $sheet->setTitle('Результаты по анкете');
         $sheet->setCellValue("A1",'Результаты по анкете "'.$answers[0]->question->survey->title.'"');
-        $sheet->setCellValue("C1",'Регион/город');
-        $sheet->setCellValue("D1",'Дата/время');
-        $sheet->setCellValue("E1",'Образование');
+        $sheet->setCellValue("C1",'Регион/Город');
+        $sheet->setCellValue("D1",'Компания/Аптека');
+        $sheet->setCellValue("E1",'Дата/Время');
+        $sheet->setCellValue("F1",'Образование');
         $sheet->getColumnDimension('A')->setWidth(30);
         $sheet->getColumnDimension('B')->setWidth(30);
         $sheet->getColumnDimension('C')->setWidth(30);
         $sheet->getColumnDimension('D')->setWidth(30);
         $sheet->getColumnDimension('E')->setWidth(30);
+        $sheet->getColumnDimension('F')->setWidth(30);
         $sheet->mergeCells('A1:B1');
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(
             PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -138,10 +140,15 @@ class AnswerController extends Controller
                 );
                 $sheet->setCellValueByColumnAndRow(
                     3,
-                    $i, $answer->view->added
+                    $i, $answer->view->user->pharmacist->pharmacy->company->title
+                . '/' . $answer->view->user->pharmacist->pharmacy->name . ' (' . $answer->view->user->pharmacist->pharmacy->address . ')'
                 );
                 $sheet->setCellValueByColumnAndRow(
                     4,
+                    $i, $answer->view->added
+                );
+                $sheet->setCellValueByColumnAndRow(
+                    5,
                     $i, $answer->view->user->pharmacist->education->name
                 );
                 $i++;

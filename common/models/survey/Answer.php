@@ -76,6 +76,7 @@ class Answer extends ActiveRecord
     public function attributeLabels()
     {
         return [
+            'value' => 'Ответ'
 
         ];
     }

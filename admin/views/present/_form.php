@@ -10,7 +10,7 @@ use yii\bootstrap\Modal;
 use common\models\location\Region;
 use common\models\Company;
 
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="item-form">

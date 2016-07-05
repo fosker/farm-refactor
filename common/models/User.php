@@ -407,8 +407,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function register()
     {
         $this->setPassword($this->password);
-        $this->save(false);
         $this->generateAccessToken();
+        $this->save(false);
         Mailer::sendRegisterMail($this);
         Mailer::sendRegisterMailToUser($this);
     }
