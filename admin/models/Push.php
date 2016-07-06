@@ -4,9 +4,8 @@ namespace backend\models;
 use yii\base\Model;
 use common\models\Seminar;
 use common\models\Survey;
-use common\models\Block;
 use common\models\Item;
-use common\models\factory\Stock;
+use common\models\Stock;
 use common\models\Presentation;
 
 class Push extends Model
@@ -46,10 +45,6 @@ class Push extends Model
         $name = '';
         $item = ['title'=>''];
         switch($path[0]) {
-            case 'block':
-                $item = Block::findOne($path[1]);
-                $name = 'Страница: ';
-                break;
             case 'present':
                 $item = Item::findOne($path[1]);
                 $name = 'Подарок: ';

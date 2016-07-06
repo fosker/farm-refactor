@@ -35,6 +35,7 @@ class Device extends ActiveRecord
         return [
             [['type'], 'required'],
             [['push_token'],'string'],
+            ['user_id', 'integer'],
             [['type'],'in','range'=>[static::TYPE_ANDROID, static::TYPE_IOS]],
         ];
     }

@@ -67,7 +67,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             parent::scenarios(),
             [
                 'update' => ['name', 'email', 'phone'],
-                'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone'],
+                'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'update-password' => ['old_password', 'password', 're_password'],
                 'reset-password' => ['reset_token', 'password', 're_password'],
                 'update-photo' => ['image'],
@@ -407,8 +407,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function register()
     {
         $this->setPassword($this->password);
-        $this->generateAccessToken();
         $this->save(false);
+        $this->generateAccessToken();
         Mailer::sendRegisterMail($this);
         Mailer::sendRegisterMailToUser($this);
     }
