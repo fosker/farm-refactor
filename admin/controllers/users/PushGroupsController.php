@@ -126,7 +126,6 @@ class PushGroupsController extends Controller
                         ->select(User::tableName().'.id')
                         ->joinWith('agent')
                         ->andWhere(['in', 'factory_id', $factories])
-                        ->andWhere(['in', 'city_id', $cities])
                         ->asArray()
                         ->all(), 'id', 'id'
                 );
@@ -135,11 +134,11 @@ class PushGroupsController extends Controller
                     User::find()
                         ->select(User::tableName().'.id')
                         ->joinWith('pharmacist')
-                        ->andWhere(['in', 'education_id', $educations])
-                        ->andWhere(['in', 'pharmacy_id', $pharmacies])
+                        ->where(['in', 'city_id', $cities])
+                        ->orWhere(['in', 'education_id', $educations])
+                        ->orWhere(['in', 'pharmacy_id', $pharmacies])
                         ->join('LEFT JOIN', Pharmacy::tableName(),
                             'pharmacy_id = '.Pharmacy::tableName().'.id')
-                        ->andWhere(['in', 'city_id', $cities])
                         ->asArray()
                         ->all(), 'id', 'id'
                 );

@@ -111,10 +111,6 @@ class Survey extends ActiveRecord
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
             $pharmacy_id = Yii::$app->user->identity->pharmacist->pharmacy_id;
-            $pharmacist = Pharmacist::find()
-                ->select('id')
-                ->where(['pharmacy_id' => $pharmacy_id])
-                ->one();
             return static::find()
                 ->joinWith('pharmacies')
                 ->join('LEFT JOIN', Pharmacist::tableName(),

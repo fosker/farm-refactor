@@ -65,6 +65,7 @@ $this->title = 'Представитель: '.$model->name;
                 'attribute'=>'status',
                 'value'=> $model->status == User::STATUS_VERIFY ? 'Ожидает верификацию' : 'активный',
             ],
+            'phone',
             'date_reg:datetime',
             'points',
             [

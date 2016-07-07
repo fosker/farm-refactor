@@ -5,12 +5,14 @@ namespace common\models\user;
 use Yii;
 use common\models\Factory;
 use common\models\User;
+use common\models\location\City;
 
 /**
  * This is the model class for table "agents".
  *
  * @property integer $id
  * @property integer $factory_id
+ * @property integer $city_id
  */
 
 class Agent extends \yii\db\ActiveRecord
@@ -32,6 +34,7 @@ class Agent extends \yii\db\ActiveRecord
     {
         return [
             [['factory_id'], 'required'],
+            ['city_id', 'integer']
         ];
     }
 
@@ -43,17 +46,23 @@ class Agent extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'factory_id' => 'Фабрика',
+            'city_id' => 'Город'
         ];
     }
 
     public function fields() {
 
-        return ['id', 'factory'];
+        return ['id', 'factory', 'city'];
     }
 
     public function getFactory()
     {
         return $this->hasOne(Factory::className(), ['id' => 'factory_id']);
+    }
+
+    public function getCity()
+    {
+        return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
 
     public function getUser()

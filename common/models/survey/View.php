@@ -69,8 +69,7 @@ class View extends ActiveRecord
     public function afterDelete()
     {
         parent::afterDelete();
-        foreach($this->answers as $answer)
-            $answer->delete();
+        Answer::deleteAll(['view_id' => $this->id]);
     }
 
     public static function addByCurrentUser($answers)

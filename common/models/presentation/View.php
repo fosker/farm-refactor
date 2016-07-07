@@ -60,7 +60,8 @@ class View extends ActiveRecord
         return $this->hasOne(User::className(),['id'=>'user_id']);
     }
 
-    public function getPresentation() {
+    public function getPresentation()
+    {
         return $this->hasOne(Presentation::className(),['id'=>'presentation_id']);
     }
 
@@ -85,8 +86,8 @@ class View extends ActiveRecord
 
     public function afterDelete()
     {
+        Answer::deleteAll(['view_id' => $this->id]);
         parent::afterDelete();
-        foreach($this->answers as $answer)
-            $answer->delete();
+
     }
 }

@@ -90,6 +90,10 @@ class Answer extends ActiveRecord
             throw new BadRequestHttpException('Вам недоступна эта анкета.');
         }
 
+        if(Survey::findOne($survey->id)->views_limit == 0) {
+            throw new BadRequestHttpException('Извините, Вы не успели ответить на анкету.');
+        }
+
         // Получаем список вопросов анкеты
         $questions = ArrayHelper::map($survey->questions,'id','id');
 
