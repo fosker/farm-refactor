@@ -177,11 +177,11 @@ class PushGroupsController extends Controller
 
             if($ios_tokens) {
                 if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
-                        'sound' => 'default',
-                        'badge' => $model->link ? 1 : 0,
-                    ])) {
+                    'sound' => 'default',
+                    'badge' => $model->link ? 1 : 0
+                ])){
                     Yii::$app->session->setFlash('PushMessage',
-                        'Push-уведомление успешно отправлено на ' . count($ios_tokens) . ' ios-устройств');
+                        'Push-уведомление успешно отправлено на '.count($ios_tokens).' ios-устройств');
                 }
             }
 

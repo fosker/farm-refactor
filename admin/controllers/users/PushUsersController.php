@@ -55,7 +55,7 @@ class PushUsersController extends Controller
                 ->all(), 'id', 'push_token');
 
             $android_tokens = array_values($android_tokens);
-            $android_tokens = array_filter(array_unique($android_tokens));
+            $android_tokens = array_values(array_filter(array_unique($android_tokens)));
 
             $ios_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['in', 'user_id', $ids])
                 ->andWhere(['not',['push_token' => null]])
@@ -64,7 +64,7 @@ class PushUsersController extends Controller
                 ->all(), 'id', 'push_token');
 
             $ios_tokens = array_values($ios_tokens);
-            $ios_tokens = array_filter(array_unique($ios_tokens));
+            $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
 //            echo '<pre>';
 //            var_dump($ios_tokens);
@@ -77,7 +77,7 @@ class PushUsersController extends Controller
             {
                 if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
                     'sound' => 'default',
-                    'badge' => 1
+                    'badge' => $model->link ? 1 : 0
                 ])){
                     Yii::$app->session->setFlash('PushMessage',
                         'Push-уведомление успешно отправлено на '.count($ios_tokens).' ios-устройств');
