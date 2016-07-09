@@ -157,10 +157,10 @@ class PushGroupsController extends Controller
                 ->all(), 'id', 'push_token');
 
             $android_tokens = array_values($android_tokens);
-            $android_tokens = array_filter(array_unique($android_tokens));
+            $android_tokens = array_values(array_filter(array_unique($android_tokens)));
 
             $ios_tokens = array_values($ios_tokens);
-            $ios_tokens = array_filter(array_unique($ios_tokens));
+            $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
 //            echo '<pre>';
 //            var_dump($ios_tokens);
@@ -168,25 +168,25 @@ class PushGroupsController extends Controller
 //            echo '</pre>';
 //            die();
 
-            if($ios_tokens)
-            {
-                if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
-                    'sound' => 'default',
-                    'badge' => 1,
-                ])){
-                    Yii::$app->session->setFlash('PushMessage',
-                        'Push-уведомление успешно отправлено на '.count($ios_tokens).' ios-устройств');
-                }
-            }
-            if($android_tokens)
-            {
-                if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])){
+            if($android_tokens) {
+                if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
                     Yii::$app->session->setFlash('PushMessage2',
                         'Push-уведомление успешно отправлено на ' . count($android_tokens) . ' android-устройств');
                 }
             }
 
+            if($ios_tokens) {
+                if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
+                        'sound' => 'default',
+                        'badge' => $model->link ? 1 : 0,
+                    ])) {
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено на ' . count($ios_tokens) . ' ios-устройств');
+                }
+            }
+
             return $this->redirect(['index']);
+
         } else {
             return $this->render('index', [
                 'model' => $model,

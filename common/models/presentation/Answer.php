@@ -99,6 +99,10 @@ class Answer extends ActiveRecord
             throw new BadRequestHttpException('Вы уже просматривали эту презентацию.');
         }
 
+        if(Presentation::findOne($presentation->id)->views_limit == 0) {
+            throw new BadRequestHttpException('Извините, Вы не успели ответить на презентацию.');
+        }
+
         // Получаем список вопросов презентации
         $questions = ArrayHelper::map($presentation->questions,'id','id');
 

@@ -58,7 +58,13 @@ class Slide extends \yii\db\ActiveRecord
 
     public function fields() {
         return [
-            'id','image'=>'imagePath','description','order'=>'order_index'
+            'id','image'=>'imagePath','description','order'=>'order_index',
+            'image_width' => function() {
+                return getimagesize($this->imagePath)[0];
+            },
+            'image_height' => function() {
+                return getimagesize($this->imagePath)[1];
+            }
         ];
     }
 
