@@ -5,7 +5,6 @@ namespace common\models;
 use Yii;
 use yii\db\ActiveRecord;
 
-use common\models\company\Product;
 use common\models\company\Pharmacy;
 use yii\imagine\Image;
 
@@ -58,13 +57,13 @@ class Company extends ActiveRecord
 
     public function fields() {
         return [
-            'id','title','logo'=>'logoPath',
+            'id','title','logo'=>'logoPath'
         ];
     }
 
     public function extraFields() {
         return [
-            'description','image'=>'imagePath'
+            'description','image'=>'imagePath','themes'
         ];
     }
 
@@ -119,6 +118,11 @@ class Company extends ActiveRecord
     public function getPharmacies()
     {
         return $this->hasMany(Pharmacy::className(),['company_id'=>'id']);
+    }
+
+    public function getThemes()
+    {
+        return $this->hasMany(Theme::className(),['company_id'=>'id']);
     }
 
     public function getImagePath()

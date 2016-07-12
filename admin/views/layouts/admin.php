@@ -300,6 +300,21 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                         ],
                         'visible' => Admin::showVacancy(Yii::$app->admin->id)
                     ],
+                    ['label'=>'Темы',
+                        'items'=>[
+                            [
+                                'label'=>'Темы',
+                                'url'=>['/theme'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
+                            ],
+                            [
+                                'label'=>'Ответы',
+                                'url'=>['/themes/answer'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'themes/answer')
+                            ],
+                        ],
+                        'visible' => Admin::showVacancy(Yii::$app->admin->id)
+                    ],
                     ['label' => 'Выход', 'url' => ['/auth/logout']],
                 ],
             ]);
