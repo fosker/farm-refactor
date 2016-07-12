@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers\seminars;
+namespace backend\controllers\themes;
 
 use Yii;
 use yii\filters\AccessControl;
@@ -8,12 +8,12 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use common\models\seminar\Entry;
+use common\models\theme\Reply;
 use common\models\User;
-use common\models\Seminar;
-use backend\models\seminar\sign\Search;
+use common\models\Theme;
+use backend\models\theme\answer\Search;
 
-class SignController extends Controller
+class AnswerController extends Controller
 {
     public function behaviors()
     {
@@ -48,8 +48,8 @@ class SignController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'logins' => ArrayHelper::map(User::find()->asArray()->all(),'id','login'),
-            'seminars' => ArrayHelper::map(Seminar::find()->asArray()->all(),'title','title'),
+            'users' => ArrayHelper::map(User::find()->asArray()->all(),'id','login'),
+            'themes' => ArrayHelper::map(Theme::find()->asArray()->all(),'id','title'),
         ]);
     }
 
@@ -70,10 +70,10 @@ class SignController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Entry::findOne($id)) !== null) {
+        if (($model = Reply::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Запись не найдена. ');
+            throw new NotFoundHttpException('Ответ не найден. ');
         }
     }
 }

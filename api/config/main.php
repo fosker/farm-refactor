@@ -53,6 +53,7 @@ return [
                 'POST v1/join-pharmacist'  => 'v1/auth/join-pharmacist',
                 'PUT v1/reset-token'  => 'v1/auth/send-reset-token',
                 'GET v1/reset-token'  => 'v1/auth/check-reset-token',
+                'GET v1/access-token'  => 'v1/auth/check-access-token',
                 'PUT v1/reset-password'  => 'v1/auth/reset-password',
 
                 'GET v1/companies' => 'v1/list/companies',

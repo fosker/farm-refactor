@@ -114,6 +114,15 @@ class AuthController extends Controller
         } else return $model;
     }
 
+    public function actionCheckAccessToken($access_token)
+    {
+        if(Device::find()->where(['access_token' => $access_token])->exists()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false];
+        }
+    }
+
     public function actionSendResetToken()
     {
         if(!$user = User::FindByEmail(Yii::$app->getRequest()->getBodyParams()['email']))
