@@ -141,7 +141,8 @@ return [
                 'GET v1/companies/all' => 'v1/company/all',
 
                 'GET v1/themes/<company_id>/all' => 'v1/theme/company',
-                'GET v1/themes/<id>' => 'v1/theme/view',
+                'GET v1/themes/<id:\d+>' => 'v1/theme/view',
+
                 'POST v1/themes/send' => 'v1/theme/send',
 
                 'GET v1/substances' => 'v1/substance/index',

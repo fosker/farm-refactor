@@ -1,1 +1,1 @@
-{"template":"default","enableI18N":"0","messageCategory":"app","ns":"common\\models\\theme","db":"db","baseClass":"yii\\db\\ActiveRecord","generateRelations":"all","generateLabelsFromComments":"0","queryNs":"common\\models\\theme","queryBaseClass":"yii\\db\\ActiveQuery"}
+{"template":"default","enableI18N":"0","messageCategory":"app","ns":"common\\models\\forms","db":"db","baseClass":"yii\\db\\ActiveRecord","generateRelations":"all","generateLabelsFromComments":"0","queryNs":"common\\models\\forms","queryBaseClass":"yii\\db\\ActiveQuery"}

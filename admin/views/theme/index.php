@@ -34,7 +34,7 @@ $this->title = 'Темы';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '300px',
+                        'width' => '250px',
                     ],
                 ]),
             ],
@@ -50,9 +50,18 @@ $this->title = 'Темы';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '300px',
+                        'width' => '200px',
                     ],
                 ])
+            ],
+            [
+                'label' => 'Тип темы',
+                'attribute'=>'form_id',
+                'value'=>function($model) {
+                    return $model->getTypesList()[$model->form_id];
+                },
+                'filter'=>$searchModel::getTypesList(),
+                'contentOptions'=>['style'=>'width: 250px;'],
             ],
             [
                 'attribute' => 'email',

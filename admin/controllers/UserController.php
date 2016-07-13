@@ -194,9 +194,9 @@ class UserController extends Controller
             ->all(), 'id', 'push_token');
 
         $android_tokens = array_values($android_tokens);
-        $android_tokens = array_filter(array_unique($android_tokens));
+        $android_tokens = array_values(array_filter(array_unique($android_tokens)));
         $ios_tokens = array_values($ios_tokens);
-        $ios_tokens = array_filter(array_unique($ios_tokens));
+        $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
         $message = 'Ваш аккаунт верифицирован. ';
 
@@ -204,7 +204,7 @@ class UserController extends Controller
         {
             Yii::$app->apns->sendMulti($ios_tokens, $message, [], [
                 'sound' => 'default',
-                'badge' => 1
+                'badge' => 0
             ]);
         }
 

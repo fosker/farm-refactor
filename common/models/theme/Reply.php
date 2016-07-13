@@ -3,41 +3,27 @@
 namespace common\models\theme;
 
 use Yii;
+use yii\base\Model;
 use common\models\User;
 use common\models\Theme;
 
-/**
- * This is the model class for table "themes_replies".
- *
- * @property integer $id
- * @property integer $theme_id
- * @property integer $user_id
- * @property string $photo
- * @property string $date_added
- * @property string $text
- */
-class Reply extends \yii\db\ActiveRecord
+
+class Reply extends Model
 {
 
     public $image;
+    public $theme_id;
+    public $user_id;
+    public $text;
+    public $photo;
 
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'themes_replies';
-    }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['theme_id', 'user_id', 'text'], 'required'],
-            [['theme_id', 'user_id'], 'integer'],
-            [['date_added', 'text'], 'string'],
+            [['theme_id', 'user_id'], 'required'],
+            [['theme_id'], 'integer'],
+            [['text'], 'string'],
             [['image'],'file',
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
@@ -55,7 +41,6 @@ class Reply extends \yii\db\ActiveRecord
             'theme_id' => 'Тема',
             'user_id' => 'Пользователь',
             'photo' => 'Фото',
-            'date_added' => 'Дата добавления',
             'text' => 'Сообщение'
         ];
     }
@@ -63,13 +48,6 @@ class Reply extends \yii\db\ActiveRecord
     public function getImagePath()
     {
         return Yii::getAlias('@uploads_view/themes-replies/'.$this->photo);
-    }
-
-    public function afterDelete()
-    {
-        if($this->photo)
-            @unlink(Yii::getAlias('@uploads/themes-replies/'.$this->photo));
-        parent::afterDelete();
     }
 
     public function saveImage()
@@ -85,15 +63,5 @@ class Reply extends \yii\db\ActiveRecord
             $this->photo = $filename;
             move_uploaded_file($this->photo, Yii::getAlias('@uploads/themes-replies/'));
         }
-    }
-
-    public function getUser()
-    {
-        return $this->hasOne(User::className(),['id'=>'user_id']);
-    }
-
-    public function getTheme()
-    {
-        return $this->hasOne(Theme::className(),['id'=>'theme_id']);
     }
 }

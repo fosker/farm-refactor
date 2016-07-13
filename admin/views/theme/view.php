@@ -35,6 +35,13 @@ $this->title = $model->title;
             ],
             'email',
             'description:html',
+            [
+                'label' => 'Тип темы',
+                'attribute' => 'form_id',
+                'value'=> $model->form_id == 0 ? 'Свободная тема' : $model->form->title,
+                'format'=>'html',
+            ],
+
         ],
     ]) ?>
 

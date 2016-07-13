@@ -42,4 +42,14 @@ class Mailer
             ->send();
     }
 
+    public static function sendThemeAnswer($attach, $email)
+    {
+        Yii::$app->mailer->compose('@common/mail/theme-answer')
+            ->setFrom("pharmbonus@gmail.com")
+            ->setTo($email)
+            ->setSubject("Новый ответ")
+            ->attach($attach)
+            ->send();
+    }
+
 }
