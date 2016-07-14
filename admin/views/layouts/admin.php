@@ -215,6 +215,11 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'url' => ['/video'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'video')
                             ],
+                            [
+                                'label'=>'Темы',
+                                'url'=>['/theme'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
+                            ],
                             ['label'=>'Анкеты',
                                 'items'=>[
                                     [
@@ -296,21 +301,6 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'label'=>'Записи',
                                 'url'=>['/vacancies/sign'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'vacancies/sign')
-                            ],
-                        ],
-                        'visible' => Admin::showVacancy(Yii::$app->admin->id)
-                    ],
-                    ['label'=>'Темы',
-                        'items'=>[
-                            [
-                                'label'=>'Темы',
-                                'url'=>['/theme'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
-                            ],
-                            [
-                                'label'=>'Ответы',
-                                'url'=>['/themes/answer'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'themes/answer')
                             ],
                         ],
                         'visible' => Admin::showVacancy(Yii::$app->admin->id)

@@ -44,10 +44,10 @@ class ThemeController extends Controller
         ];
     }
 
-    public function actionCompany($company_id)
+    public function actionCompany($factory_id)
     {
         return new ActiveDataProvider([
-            'query' => Theme::find()->where(['company_id' => $company_id]),
+            'query' => Theme::find()->where(['factory_id' => $factory_id]),
         ]);
     }
 
@@ -64,25 +64,26 @@ class ThemeController extends Controller
         if($reply->load(Yii::$app->request->post(),'')) {
             $reply->image = UploadedFile::getInstance($reply, 'image');
             $reply->user_id = Yii::$app->user->id;
-        }
+            if($reply->validate()) {
+                $form = [new Answer()];
+                for($i = 1; $i < count($_POST['answer']); $i++) {
+                    $form[] = new Answer();
+                }
 
-        $form = [new Answer()];
-        for($i = 1; $i < count($_POST['answer']); $i++) {
-            $form[] = new Answer();
-        }
+                if(Answer::loadMultiple($form,$_POST,'answer')) {
+                    $form = Answer::filterModels($form);
+                    if(Answer::validateMultiple($form,['field_id','value'])) {
+                        $user = User::findOne($reply->user_id);
+                        $theme = Theme::findOne($reply->theme_id);
+                        $this->sendPdf($user, $theme);
+                        return ['success'=>true];
+                    }
+                }
 
-        if(Answer::loadMultiple($form,$_POST,'answer')) {
-            $form = Answer::filterModels($form);
-            if(Answer::validateMultiple($form,['field_id','value'])) {
-                $user = User::findOne($reply->user_id);
-                $theme = Theme::findOne($reply->theme_id);
-                $this->sendPdf($user, $theme);
-                return ['success'=>true];
+                return $form;
             }
         }
-
-        return $form;
-
+        return $reply;
     }
 
     private function sendPdf($user, $theme)

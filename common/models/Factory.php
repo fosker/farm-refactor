@@ -14,6 +14,7 @@ use common\models\Presentation;
 use common\models\Seminar;
 use common\models\Stock;
 use common\models\Survey;
+use common\models\Theme;
 
 
 /**
@@ -71,7 +72,7 @@ class Factory extends ActiveRecord
 
     public function extraFields() {
         return [
-            'description','image'=>'imagePath','products','stocks'
+            'description','image'=>'imagePath','products','stocks','themes'
         ];
     }
 
@@ -133,6 +134,11 @@ class Factory extends ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Product::className(),['factory_id'=>'id']);
+    }
+
+    public function getThemes()
+    {
+        return $this->hasMany(Theme::className(),['factory_id'=>'id']);
     }
 
     public function getStocks()

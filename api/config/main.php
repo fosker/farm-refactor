@@ -138,9 +138,8 @@ return [
                 'GET v1/factory/products/<factory_id>' => 'v1/factory/products',
                 'GET v1/factory/product/<id>' => 'v1/factory/product',
 
-                'GET v1/companies/all' => 'v1/company/all',
 
-                'GET v1/themes/<company_id>/all' => 'v1/theme/company',
+                'GET v1/themes/<factory_id>/all' => 'v1/theme/factory',
                 'GET v1/themes/<id:\d+>' => 'v1/theme/view',
 
                 'POST v1/themes/send' => 'v1/theme/send',

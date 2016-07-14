@@ -14,7 +14,7 @@ $this->title = 'Добавить тему';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'companies' => $companies
+        'factories' => $factories
     ]) ?>
 
 </div>

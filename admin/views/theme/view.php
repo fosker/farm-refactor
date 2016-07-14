@@ -28,9 +28,9 @@ $this->title = $model->title;
             'id',
             'title',
             [
-                'label' => 'Компания',
-                'attribute' => 'company.title',
-                'value'=>Html::a($model->company->title,['/company/view','id'=>$model->company_id]),
+                'label' => 'Фабрика Автор',
+                'attribute' => 'factory.title',
+                'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',
             ],
             'email',

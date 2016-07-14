@@ -9,7 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use common\models\Company;
+use common\models\Factory;
 use common\models\Theme;
 use backend\models\theme\Search;
 
@@ -50,7 +50,7 @@ class ThemeController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'emails'=>ArrayHelper::map(Theme::find()->asArray()->all(),'email','email'),
-            'companies' => ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
+            'factories' => ArrayHelper::map(Factory::find()->asArray()->all(),'id','title'),
             'titles'=>ArrayHelper::map(Theme::find()->asArray()->all(), 'title','title'),
         ]);
     }
@@ -68,12 +68,14 @@ class ThemeController extends Controller
         $model = new Theme();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if(!$model->form_id)
+                $model->form_id = 0;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'companies'=> ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
+                'factories'=> ArrayHelper::map(Factory::find()->asArray()->all(),'id','title'),
             ]);
         }
     }
@@ -82,12 +84,15 @@ class ThemeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if(!$model->form_id)
+                $model->form_id = 0;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'companies'=> ArrayHelper::map(Company::find()->asArray()->all(),'id','title'),
+                'factories'=> ArrayHelper::map(Factory::find()->asArray()->all(),'id','title'),
             ]);
         }
     }

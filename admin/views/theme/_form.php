@@ -12,9 +12,9 @@ use common\models\Form;
     <?php $form = ActiveForm::begin([]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'company_id')->widget(Select2::classname(), [
-        'data' => $companies,
-        'options' => ['placeholder' => 'Выберите компанию ...'],
+    <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
+        'data' => $factories,
+        'options' => ['placeholder' => 'Выберите фабрику ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

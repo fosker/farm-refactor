@@ -63,7 +63,7 @@ class Company extends ActiveRecord
 
     public function extraFields() {
         return [
-            'description','image'=>'imagePath','themes'
+            'description','image'=>'imagePath'
         ];
     }
 
@@ -118,11 +118,6 @@ class Company extends ActiveRecord
     public function getPharmacies()
     {
         return $this->hasMany(Pharmacy::className(),['company_id'=>'id']);
-    }
-
-    public function getThemes()
-    {
-        return $this->hasMany(Theme::className(),['company_id'=>'id']);
     }
 
     public function getImagePath()

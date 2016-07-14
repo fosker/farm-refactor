@@ -39,14 +39,17 @@ $this->title = 'Темы';
                 ]),
             ],
             [
-                'attribute'=>'company_id',
-                'value'=>'company.title',
+                'attribute'=>'factory_id',
+                'value'=>function($model) {
+                    return Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]);
+                },
+                'format' => 'html',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
-                    'data' => $companies,
-                    'attribute'=>'company_id',
+                    'data' => $factories,
+                    'attribute'=>'factory_id',
                     'options' => [
-                        'placeholder' => 'Выберите компанию ...',
+                        'placeholder' => 'Выберите фабрику ...',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

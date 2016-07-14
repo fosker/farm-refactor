@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
  * This is the model class for table "themes".
  *
  * @property integer $id
- * @property integer $company_id
+ * @property integer $factory_id
  * @property string $email
  * @property string $description
  * @property string $title
@@ -32,8 +32,8 @@ class Theme extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'email', 'description','title'], 'required'],
-            [['company_id', 'form_id'], 'integer'],
+            [['factory_id', 'email', 'description','title'], 'required'],
+            [['factory_id', 'form_id'], 'integer'],
             [['description', 'title'], 'string'],
             [['email'], 'string', 'max' => 255],
             ['email', 'email']
@@ -45,7 +45,7 @@ class Theme extends \yii\db\ActiveRecord
         return [
             'id',
             'title',
-            'company',
+            'factory',
         ];
     }
 
@@ -65,7 +65,7 @@ class Theme extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
-            'company_id' => 'Компания Автор',
+            'factory_id' => 'Фабрика Автор',
             'email' => 'Email',
             'description' => 'Описание',
             'form_id' => 'Форма'
@@ -79,9 +79,9 @@ class Theme extends \yii\db\ActiveRecord
         return $array;
     }
 
-    public function getCompany()
+    public function getFactory()
     {
-        return $this->hasOne(Company::className(),['id'=>'company_id']);
+        return $this->hasOne(Factory::className(),['id'=>'factory_id']);
     }
 
     public function getForm()
