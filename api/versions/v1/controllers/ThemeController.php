@@ -17,6 +17,7 @@ use common\models\forms\Answer;
 use common\models\User;
 use common\models\Mailer;
 use kartik\mpdf\Pdf;
+use yii\web\BadRequestHttpException;
 use yii\web\UploadedFile;
 
 class ThemeController extends Controller
@@ -59,41 +60,51 @@ class ThemeController extends Controller
 
     public function actionSend()
     {
-
         $reply = new Reply();
         if($reply->load(Yii::$app->request->post(),'')) {
             $reply->image = UploadedFile::getInstance($reply, 'image');
+            $reply->saveImage();
             $reply->user_id = Yii::$app->user->id;
             if($reply->validate()) {
-                $form = [new Answer()];
-                for($i = 1; $i < count($_POST['answer']); $i++) {
-                    $form[] = new Answer();
-                }
-
-                if(Answer::loadMultiple($form,$_POST,'answer')) {
-                    $form = Answer::filterModels($form);
-                    if(Answer::validateMultiple($form,['field_id','value'])) {
-                        $user = User::findOne($reply->user_id);
-                        $theme = Theme::findOne($reply->theme_id);
-                        $this->sendPdf($user, $theme);
-                        return ['success'=>true];
+                $user = User::findOne($reply->user_id);
+                $theme = Theme::findOne($reply->theme_id);
+                if($theme->form && !Yii::$app->request->post('answer')) {
+                    throw new BadRequestHttpException('Форма не заполнена.');
+                } elseif(!$theme->form && Yii::$app->request->post('answer')) {
+                    throw new BadRequestHttpException('Тема не содержит формы.');
+                } elseif($theme->form && Yii::$app->request->post('answer')) {
+                    $form = [new Answer()];
+                    for($i = 1; $i < count(Yii::$app->request->post('answer')); $i++) {
+                        $form[] = new Answer();
                     }
+                    if(Answer::loadMultiple($form,Yii::$app->request->post(),'answer')) {
+                        $form = Answer::filterModels($form);
+                        if(Answer::validateMultiple($form,['field_id','value'])) {
+                            $this->sendPdf($user, $theme, $form);
+                            return [
+                                'success' => true,
+                            ];
+                        }
+                    }
+                    return $form;
+                } elseif(!$theme->form && !Yii::$app->request->post('answer')) {
+                    $this->sendPdf($user, $theme, null, $reply);
+                    return [
+                        'success' => true,
+                    ];
                 }
-
-                return $form;
             }
-        }
-        return $reply;
+        } else return $reply;
     }
 
-    private function sendPdf($user, $theme)
+    private function sendPdf($user, $theme, $form = null, $reply = null)
     {
         $filename = 'Answer-'.Yii::$app->security->generateRandomString(5).'.pdf';
         $pdf = new Pdf([
-            'content' => $this->renderPartial('pdf-export', ['user' => $user, 'theme' => $theme]),
+            'content' => $this->renderPartial($theme->form ? 'pdf-form-export' : 'pdf-free-export', ['user' => $user, 'reply' => $reply, 'form' => $form]),
             'options' => [
                 'title' => 'Ответ на тему',
-                'subject' => 'Заполненная форма темы',
+                'subject' => 'Ответ на тему',
                 'defaultfooterline'=>false,
                 'margin_footer'=>0,
             ],

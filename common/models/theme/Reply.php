@@ -52,11 +52,8 @@ class Reply extends Model
 
     public function saveImage()
     {
-
         if($this->image) {
             $path = Yii::getAlias('@uploads/themes-replies/');
-            if($this->photo && file_exists($path . $this->photo))
-                @unlink($path . $this->photo);
             $filename = Yii::$app->getSecurity()->generateRandomString() . time() . '.' . $this->image->extension;
             $path = $path . $filename;
             $this->image->saveAs($path);
