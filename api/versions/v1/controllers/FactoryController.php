@@ -2,6 +2,7 @@
 
 namespace rest\versions\v1\controllers;
 
+use common\models\Theme;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -45,6 +46,12 @@ class FactoryController extends Controller
         return new ActiveDataProvider([
             'query' => Factory::getForCurrentUser(),
         ]);
+    }
+
+    public function actionThemes()
+    {
+        $ids = Theme::find()->select('factory_id')->asArray();
+        return Factory::find()->where(['in', 'id', $ids])->all();
     }
 
     public function actionAll() {

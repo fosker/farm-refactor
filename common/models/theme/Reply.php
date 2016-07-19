@@ -21,7 +21,7 @@ class Reply extends Model
     public function rules()
     {
         return [
-            [['theme_id', 'user_id'], 'required'],
+            [['theme_id', 'user_id', 'text'], 'required'],
             [['theme_id'], 'integer'],
             [['text'], 'string'],
             [['image'],'file',
@@ -29,6 +29,14 @@ class Reply extends Model
                 'checkExtensionByMimeType'=>false,
             ],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['free'] = ['theme_id', 'user_id', 'text', 'image'];
+        $scenarios['form'] = ['theme_id', 'user_id'];
+        return $scenarios;
     }
 
     /**

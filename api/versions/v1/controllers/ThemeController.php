@@ -45,7 +45,7 @@ class ThemeController extends Controller
         ];
     }
 
-    public function actionCompany($factory_id)
+    public function actionFactory($factory_id)
     {
         return new ActiveDataProvider([
             'query' => Theme::find()->where(['factory_id' => $factory_id]),
@@ -57,44 +57,58 @@ class ThemeController extends Controller
         return  Theme::find()->where(['id' => $id])->one();
     }
 
-
     public function actionSend()
     {
         $reply = new Reply();
+        $reply->scenario = 'free';
         if($reply->load(Yii::$app->request->post(),'')) {
             $reply->image = UploadedFile::getInstance($reply, 'image');
-            $reply->saveImage();
             $reply->user_id = Yii::$app->user->id;
+            $reply->saveImage();
             if($reply->validate()) {
                 $user = User::findOne($reply->user_id);
                 $theme = Theme::findOne($reply->theme_id);
-                if($theme->form && !Yii::$app->request->post('answer')) {
+                $this->sendPdf($user, $theme, null, $reply);
+                return [
+                    'success' => true,
+                ];
+            }
+        }
+        return $reply;
+    }
+
+
+    public function actionSendForm()
+    {
+        $reply = new Reply();
+        $reply->scenario = 'form';
+        if ($reply->load(Yii::$app->request->post(), '')) {
+            $reply->user_id = Yii::$app->user->id;
+            if ($reply->validate()) {
+                $user = User::findOne($reply->user_id);
+                $theme = Theme::findOne($reply->theme_id);
+                if (!Yii::$app->request->post('answer')) {
                     throw new BadRequestHttpException('Форма не заполнена.');
-                } elseif(!$theme->form && Yii::$app->request->post('answer')) {
-                    throw new BadRequestHttpException('Тема не содержит формы.');
-                } elseif($theme->form && Yii::$app->request->post('answer')) {
+                } elseif (Yii::$app->request->post('answer')) {
                     $form = [new Answer()];
-                    for($i = 1; $i < count(Yii::$app->request->post('answer')); $i++) {
+                    for ($i = 1; $i < count(Yii::$app->request->post('answer')); $i++) {
                         $form[] = new Answer();
                     }
-                    if(Answer::loadMultiple($form,Yii::$app->request->post(),'answer')) {
+                    if (Answer::loadMultiple($form, Yii::$app->request->post(), 'answer')) {
                         $form = Answer::filterModels($form);
-                        if(Answer::validateMultiple($form,['field_id','value'])) {
+                        if (Answer::validateMultiple($form, ['field_id', 'value'])) {
                             $this->sendPdf($user, $theme, $form);
                             return [
                                 'success' => true,
+                                'form' => $form
                             ];
                         }
                     }
                     return $form;
-                } elseif(!$theme->form && !Yii::$app->request->post('answer')) {
-                    $this->sendPdf($user, $theme, null, $reply);
-                    return [
-                        'success' => true,
-                    ];
                 }
             }
-        } else return $reply;
+            return $reply;
+        }
     }
 
     private function sendPdf($user, $theme, $form = null, $reply = null)

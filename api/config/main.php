@@ -131,6 +131,7 @@ return [
 
                 'GET v1/factories' => 'v1/factory/index',
                 'GET v1/factories/all' => 'v1/factory/all',
+                'GET v1/factories/themes' => 'v1/factory/themes',
                 'GET v1/factory/<id>' => 'v1/factory/view',
                 'GET v1/factory/stocks/<factory_id>' => 'v1/factory/stocks',
                 'GET v1/factory/stock/<id>' => 'v1/factory/stock',
@@ -139,10 +140,10 @@ return [
                 'GET v1/factory/product/<id>' => 'v1/factory/product',
 
 
-                'GET v1/themes/<factory_id>/all' => 'v1/theme/factory',
+                'GET v1/themes/<factory_id:\d+>/all' => 'v1/theme/factory',
                 'GET v1/themes/<id:\d+>' => 'v1/theme/view',
-
                 'POST v1/themes/send' => 'v1/theme/send',
+                'POST v1/themes/send-form' => 'v1/theme/send-form',
 
                 'GET v1/substances' => 'v1/substance/index',
                 'GET v1/substance/<id>' => 'v1/substance/view',

@@ -22,10 +22,11 @@ class Answer extends Model
     public function rules()
     {
         return [
-            [['field_id', 'value'], 'required'],
+            [['field_id'], 'required'],
             [['field_id'], 'integer'],
             [['value'], 'string'],
             [['value'],'validatorInOptionList'],
+            [['field_id'], 'requiredForm']
         ];
     }
 
@@ -34,6 +35,16 @@ class Answer extends Model
         if($options = ArrayHelper::map(Option::find()->where(['field_id' => $this->field_id])->all(),'id','value')) {
             if(!in_array($this->value, $options)) {
                 $this->addError($attribute, 'Ответ не соответствует предложенным вариантам.');
+            }
+        }
+    }
+
+    public function requiredForm()
+    {
+        $field = Field::findOne($this->field_id);
+        if($field->isRequired) {
+            if(!$this->value) {
+                $this->addError($field->label, 'Поле не заполнено.');
             }
         }
     }
@@ -55,19 +66,11 @@ class Answer extends Model
 
         $fields = ArrayHelper::map($form->fields,'id','id');
 
-        // Ответы
         $answers = [];
 
-        // Если ответ относится к анкеты - копируем в отвеченные вопросы
         foreach($models as $answer) {
             if(in_array($answer->field_id,$fields))
                 $answers[$answer->field_id] = $answer;
-        }
-
-
-        // Проверяем, ответил ли пользователь на все вопросы
-        if(count($answers) !== count($fields)) {
-            throw new BadRequestHttpException('Вы заполнили не все поля.');
         }
 
         return $answers;
