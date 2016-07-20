@@ -97,10 +97,9 @@ class ThemeController extends Controller
                     if (Answer::loadMultiple($form, Yii::$app->request->post(), 'answer')) {
                         $form = Answer::filterModels($form);
                         if (Answer::validateMultiple($form, ['field_id', 'value'])) {
-                            $this->sendPdf($user, $theme, $form);
+                            $this->sendPdf($user, $theme, $form, $reply);
                             return [
                                 'success' => true,
-                                'form' => $form
                             ];
                         }
                     }

@@ -16,6 +16,8 @@ class Reply extends Model
     public $user_id;
     public $text;
     public $photo;
+    public $phone;
+    public $email;
 
 
     public function rules()
@@ -23,19 +25,21 @@ class Reply extends Model
         return [
             [['theme_id', 'user_id', 'text'], 'required'],
             [['theme_id'], 'integer'],
-            [['text'], 'string'],
+            [['text', 'phone'], 'string'],
             [['image'],'file',
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
             ],
+            ['email', 'email'],
+            [['phone', 'email'], 'required', 'on' => 'form']
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['free'] = ['theme_id', 'user_id', 'text', 'image'];
-        $scenarios['form'] = ['theme_id', 'user_id'];
+        $scenarios['free'] = ['theme_id', 'user_id', 'text', 'image', 'phone', 'email'];
+        $scenarios['form'] = ['theme_id', 'user_id', 'phone', 'email'];
         return $scenarios;
     }
 
@@ -49,7 +53,9 @@ class Reply extends Model
             'theme_id' => 'Тема',
             'user_id' => 'Пользователь',
             'photo' => 'Фото',
-            'text' => 'Сообщение'
+            'text' => 'Сообщение',
+            'phone' => 'Телефон',
+            'email' => 'Email'
         ];
     }
 
