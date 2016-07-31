@@ -11,7 +11,6 @@ $( document ).ready(function() {
     });
 
     $(".container-questions").on("click", ".add-option", function() {
-        console.log($(this));
         $($(this).parents()[6]).find("td:nth-child(3) tr:nth-child(2)").css("display", "none");
     });
 

@@ -8,8 +8,9 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\Push;
+use common\models\Push;
 use common\models\User;
+use common\models\pharmbonus\Users;
 use common\models\profile\Device;
 
 
@@ -66,13 +67,6 @@ class PushUsersController extends Controller
             $ios_tokens = array_values($ios_tokens);
             $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
-//            echo '<pre>';
-//            var_dump($ios_tokens);
-//            var_dump($android_tokens);
-//            echo '</pre>';
-//            die();
-
-
             if($ios_tokens)
             {
                 if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
@@ -89,6 +83,17 @@ class PushUsersController extends Controller
                 if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])){
                     Yii::$app->session->setFlash('PushMessage2',
                         'Push-уведомление успешно отправлено на ' . count($android_tokens) . ' android-устройств');
+                }
+            }
+
+            $model->device_count = count($ios_tokens) + count($android_tokens);
+            $model->views = 0;
+            if($model->save()) {
+                foreach($ids as $id) {
+                    $users = new Users();
+                    $users->push_id = $model->id;
+                    $users->user_id = $id;
+                    $users->save();
                 }
             }
 

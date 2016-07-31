@@ -56,7 +56,28 @@ AppAsset::register($this);
                 'label' => 'Новости',
                 'url' => ['/news'],
                 'visible' => Yii::$app->user->isGuest ? false : true
-            ]
+            ],
+            [
+                'label' => 'Оповещения',
+                'items' => [
+                    [
+                        'label' => 'Все оповещения',
+                        'url' => ['/push/all'],
+                        'visible' => Yii::$app->user->isGuest ? false : true
+                    ],
+                    [
+                        'label' => 'Оповещения группам',
+                        'url' => ['/push/push-groups'],
+                        'visible' => Yii::$app->user->isGuest ? false : true
+                    ],
+                    [
+                        'label' => 'Оповещения пользователям',
+                        'url' => ['/push/push-users'],
+                        'visible' => Yii::$app->user->isGuest ? false : true
+                    ],
+                ],
+                'visible' => Yii::$app->user->isGuest ? false : true
+            ],
         ]
     ]);
     NavBar::end();

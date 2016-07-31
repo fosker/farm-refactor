@@ -174,6 +174,12 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'label' => 'Оповещения',
                                 'items' => [
                                     [
+                                        'label' => 'Все оповещения',
+                                        'url' => ['/users/pushes'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/push-groups') ||
+                                            Right::HasAdmin(Yii::$app->admin->id, 'users/push-users')
+                                    ],
+                                    [
                                         'label' => 'Оповещения группам',
                                         'url' => ['/users/push-groups'],
                                         'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/push-groups')
@@ -215,10 +221,20 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'url' => ['/video'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'video')
                             ],
-                            [
-                                'label'=>'Темы',
-                                'url'=>['/theme'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
+                            ['label'=>'Темы',
+                                'items'=>[
+                                    [
+                                        'label'=>'Темы',
+                                        'url'=>['/theme'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
+                                    ],
+                                    [
+                                        'label'=>'Формы',
+                                        'url'=>['/form'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'form')
+                                    ],
+                                ],
+                                'visible' => Admin::showTheme(Yii::$app->admin->id)
                             ],
                             ['label'=>'Анкеты',
                                 'items'=>[

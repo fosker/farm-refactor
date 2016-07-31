@@ -9,7 +9,6 @@ use Yii;
  * @property integer $id
  * @property integer $form_id
  * @property integer $type
- * @property string $placeholder
  * @property string $label
  * @property string $isRequired
  */
@@ -36,9 +35,8 @@ class Field extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['form_id', 'type'], 'required'],
+            [['form_id', 'type', 'label'], 'required'],
             [['form_id', 'type', 'isRequired'], 'integer'],
-            [['placeholder'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,7 +45,6 @@ class Field extends \yii\db\ActiveRecord
         return [
             'id',
             'type',
-            'placeholder',
             'label',
             'options' => function() {
                 if($this->options) {
@@ -66,8 +63,8 @@ class Field extends \yii\db\ActiveRecord
             'id' => 'ID',
             'form_id' => 'Форма',
             'type' => 'Тип поля',
-            'placeholder' => 'Название поля',
-            'isRequired' => 'Обязательное поле'
+            'isRequired' => 'Обязательное поле',
+            'label' => 'Поле'
         ];
     }
 

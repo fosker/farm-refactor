@@ -25,8 +25,8 @@ use common\models\Factory;
 use common\models\company\Pharmacy;
 use common\models\Company;
 use common\models\location\Region;
-use backend\models\Push;
-
+use common\models\Push;
+use common\models\pharmbonus\Users;
 
 class PushGroupsController extends Controller
 {
@@ -162,11 +162,6 @@ class PushGroupsController extends Controller
             $ios_tokens = array_values($ios_tokens);
             $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
-//            echo '<pre>';
-//            var_dump($ios_tokens);
-//            var_dump($android_tokens);
-//            echo '</pre>';
-//            die();
 
             if($android_tokens) {
                 if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
@@ -182,6 +177,17 @@ class PushGroupsController extends Controller
                 ])){
                     Yii::$app->session->setFlash('PushMessage',
                         'Push-уведомление успешно отправлено на '.count($ios_tokens).' ios-устройств');
+                }
+            }
+
+            $model->device_count = count($ios_tokens) + count($android_tokens);
+            $model->views = 0;
+            if($model->save()) {
+                foreach($users as $id) {
+                    $users = new Users();
+                    $users->push_id = $model->id;
+                    $users->user_id = $id;
+                    $users->save();
                 }
             }
 

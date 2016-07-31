@@ -303,7 +303,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
     {
         $list = ['users/push-users',
             'users/present', 'users/push-groups',
-            'users/agent/update-request', 'users/pharmacist/update-request', 'users/factory-admin', 'users/company-admin'];
+            'users/agent/update-request', 'users/pharmacist/update-request', 'users/factory-admin', 'users/company-admin', 'users/pushes'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -356,6 +356,19 @@ class Admin extends ActiveRecord  implements IdentityInterface
     public static function showSeminar($id)
     {
         $list = ['seminar', 'seminars/sign'];
+        foreach($list as $item) {
+            if (Right::HasAdmin($id, $item)) {
+                return true;
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    public static function showTheme($id)
+    {
+        $list = ['theme', 'form'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
