@@ -32460,3 +32460,223 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-08-01 11:13:06 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: yii\grid\CheckboxColumn::0' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php:161
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(521): yii\base\Object->__set('0', '</div>')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(yii\grid\CheckboxColumn), Array)
+#2 [internal function]: yii\base\Object->__construct(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('yii\\grid\\Checkb...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('yii\\grid\\Checkb...', Array, Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(531): yii\BaseYii::createObject(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(275): yii\grid\GridView->initColumns()
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): yii\grid\GridView->init()
+#9 [internal function]: yii\base\Object->__construct(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('yii\\grid\\GridVi...', Array, Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('yii\\grid\\GridVi...', Array, Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(97): yii\BaseYii::createObject(Array)
+#14 C:\OpenServer\domains\farm.loc\admin\views\surveys\answer\index.php(101): yii\base\Widget::widget(Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\surveys\AnswerController))
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\surveys\AnswerController))
+#19 C:\OpenServer\domains\farm.loc\admin\controllers\surveys\AnswerController.php(58): yii\base\Controller->render('index', Array)
+#20 [internal function]: backend\controllers\surveys\AnswerController->actionIndex()
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#22 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('surveys/answer/...', Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#26 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#27 {main}
+2016-08-01 11:13:06 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'surveys/answer/index'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=surveys%2Fanswer%2Fview&user_id=190&survey_id=34'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '28825'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=surveys%2Fanswer%2Findex'
+    'REQUEST_URI' => '/admin/index.php?r=surveys%2Fanswer%2Findex'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1470039186.573
+    'REQUEST_TIME' => 1470039186
+    'argv' => [
+        0 => 'r=surveys%2Fanswer%2Findex'
+    ]
+    'argc' => 1
+]
+2016-08-01 11:40:47 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "factories/stocks/answer".' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('factories/stock...', Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Страница не найдена.' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#2 {main}
+2016-08-01 11:40:47 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'factories/stocks/answer'
+    'Search' => [
+        'user.id' => '200'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fview&id=200'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '29654'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=factories%2Fstocks%2Fanswer&Search%5Buser.id%5D=200'
+    'REQUEST_URI' => '/admin/index.php?r=factories%2Fstocks%2Fanswer&Search%5Buser.id%5D=200'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1470040847.706
+    'REQUEST_TIME' => 1470040847
+    'argv' => [
+        0 => 'r=factories%2Fstocks%2Fanswer&Search%5Buser.id%5D=200'
+    ]
+    'argc' => 1
+]
+2016-08-01 11:41:02 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "seminars/comment".' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('seminars/commen...', Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Страница не найдена.' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#2 {main}
+2016-08-01 11:41:02 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'seminars/comment'
+    'Search' => [
+        'user.id' => '200'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fview&id=200'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '29654'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=seminars%2Fcomment&Search%5Buser.id%5D=200'
+    'REQUEST_URI' => '/admin/index.php?r=seminars%2Fcomment&Search%5Buser.id%5D=200'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1470040862.644
+    'REQUEST_TIME' => 1470040862
+    'argv' => [
+        0 => 'r=seminars%2Fcomment&Search%5Buser.id%5D=200'
+    ]
+    'argc' => 1
+]

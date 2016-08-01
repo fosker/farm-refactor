@@ -87,28 +87,8 @@ $this->title = 'Фармацевт: '.$model->name;
             'date_reg:datetime',
             'points',
             [
-                'label' => 'Комментарии новостей',
-                'value'=>Html::a('Комментарии',['/newss/comment', 'Search[user.id]' => $model->id]),
-                'format'=>'html',
-            ],
-            [
-                'label' => 'Комментарии видео',
-                'value'=>Html::a('Комментарии',['/videos/comment', 'Search[user.id]' => $model->id]),
-                'format'=>'html',
-            ],
-            [
-                'label' => 'Комментарии презентаций',
-                'value'=>Html::a('Комментарии',['/presentations/comment', 'Search[user.id]' => $model->id]),
-                'format'=>'html',
-            ],
-            [
                 'label' => 'Ответы презентаций',
                 'value'=>Html::a('Ответы',['/presentations/answer', 'Search[user.id]' => $model->id]),
-                'format'=>'html',
-            ],
-            [
-                'label' => 'Комментарии семинаров',
-                'value'=>Html::a('Комментарии',['/seminars/comment', 'Search[user.id]' => $model->id]),
                 'format'=>'html',
             ],
             [
@@ -123,17 +103,12 @@ $this->title = 'Фармацевт: '.$model->name;
             ],
             [
                 'label' => 'Ответы акций',
-                'value'=>Html::a('Ответы',['/factories/stocks/answer', 'Search[user.id]' => $model->id]),
+                'value'=>Html::a('Ответы',['/stocks/answer', 'Search[user.id]' => $model->id]),
                 'format'=>'html',
             ],
             [
                 'label' => 'Записи на вакансии',
                 'value'=>Html::a('Записи',['/vacancies/sign', 'Search[user.id]' => $model->id]),
-                'format'=>'html',
-            ],
-            [
-                'label' => 'Комментарии вакансий',
-                'value'=>Html::a('Комментарии',['/vacancies/comment', 'Search[user.id]' => $model->id]),
                 'format'=>'html',
             ],
             [

@@ -65,9 +65,9 @@ class AnswerController extends Controller
         ]);
     }
 
-    public function actionDelete($user_id,$presentation_id)
+    public function actionDelete($id)
     {
-        View::deleteAll(['user_id' => $user_id, 'presentation_id' => $presentation_id]);
+        View::findOne($id)->delete();
         return $this->redirect(['index']);
     }
 
@@ -176,6 +176,17 @@ class AnswerController extends Controller
         } else {
             throw new NotFoundHttpException('Страница не найдена. ');
         }
+    }
+
+    public function actionMultipleDelete()
+    {
+        $pk = Yii::$app->request->post('row_id');
+        foreach ($pk as $key => $value)
+        {
+            View::findOne($value)->delete();
+        }
+        return $this->redirect(['index']);
+
     }
 
 }

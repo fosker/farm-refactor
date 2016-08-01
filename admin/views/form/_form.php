@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use backend\components\Editor;
 use wbraganca\dynamicform\DynamicFormWidget;
 
-$this->registerJsFile('admin/js/test.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/form-constructor.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="theme-form">
 

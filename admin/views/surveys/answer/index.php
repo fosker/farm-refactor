@@ -6,12 +6,14 @@ use kartik\date\DatePicker;
 use kartik\widgets\Select2;
 
 $this->title = 'Ответы на анкеты';
+$this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="answer-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-
+    <input type="button" class="btn btn-danger pull-right" value="Удалить" id="delete-survey" data-confirm="Удалить ответ?">
+    </br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -74,20 +76,19 @@ $this->title = 'Ответы на анкеты';
                 'contentOptions'=>['style'=>'width: 250px;'],
             ],
             [
+                'class' => 'yii\grid\CheckboxColumn',
+                'header' => Html::checkBox('selection_all', false, [
+                            'class' => 'select-on-check-all',
+                            'label' => 'Все',
+                ]),
+            ],
+            [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{view} {delete}',
                 'buttons'=> [
                     'view'=>function ($url, $model, $key) {
                         return Html::a('<i class="glyphicon glyphicon-eye-open"></i> ', ['view', 'user_id'=>$model->user->id, 'survey_id'=>$model->survey->id], [
                             'title'=>'Просмотреть',
-                        ]);
-                    },
-                    'delete'=>function ($url, $model, $key) {
-                        return Html::a('<i class="glyphicon glyphicon-trash"></i> ', ['delete', 'user_id'=>$model->user->id, 'survey_id'=>$model->survey->id], [
-                            'title'=>'Удалить',
-                            'data-pjax'=>0,
-                            'data-method'=>'post',
-                            'data-confirm'=>'Удалить ответ?',
                         ]);
                     },
                 ],

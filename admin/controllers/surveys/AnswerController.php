@@ -65,9 +65,9 @@ class AnswerController extends Controller
         ]);
     }
 
-    public function actionDelete($user_id,$survey_id)
+    public function actionDelete($id)
     {
-        View::deleteAll(['user_id' => $user_id, 'survey_id' => $survey_id]);
+        View::findOne($id)->delete();
         return $this->redirect(['index']);
     }
 
@@ -174,6 +174,17 @@ class AnswerController extends Controller
 
         $objWriter = new PHPExcel_Writer_Excel5($xls);
         $objWriter->save('php://output');
+    }
+
+    public function actionMultipleDelete()
+    {
+        $pk = Yii::$app->request->post('row_id');
+        foreach ($pk as $key => $value)
+        {
+            View::findOne($value)->delete();
+        }
+        return $this->redirect(['index']);
+
     }
 
 }
