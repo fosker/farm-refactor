@@ -69,6 +69,9 @@ class ShopController extends Controller
             $present->promo = Yii::$app->security->generateRandomString(8);
             Yii::$app->user->identity->pay($present->item->points*$present->count);
             $present->save(false);
+            $item = Item::findOne($present->item_id);
+            $item->count -= 1;
+            $item->save(false);
             return ['success'=>true];
         } else return $present;
     }

@@ -79,6 +79,7 @@ $this->title = 'Подарки';
                     ],
                 ])
             ],
+            'priority',
             [
                 'attribute'=>'status',
                 'value'=>function($model) {

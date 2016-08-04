@@ -38,6 +38,8 @@ class BannerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'approve' => ['post'],
+                    'hide' => ['post']
                 ],
             ],
             'access' => [

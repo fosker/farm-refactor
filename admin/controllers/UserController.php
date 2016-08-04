@@ -38,6 +38,9 @@ class UserController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'accept' => ['post'],
+                    'ban' => ['post'],
+                    'not-verify' => ['post']
                 ],
             ],
             'access' => [
@@ -213,14 +216,6 @@ class UserController extends Controller
             Yii::$app->gcm->sendMulti($android_tokens, $message);
         }
 
-        Yii::$app->mailer->compose('@common/mail/user-verify', [
-            'user' => User::findOne($id),
-        ])
-            ->setFrom('pharmbonus@gmail.com')
-            ->setTo(User::findOne($id)->email)
-            ->setSubject('Ваш аккаунт верифицирован.')
-            ->send();
-
         switch($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
@@ -233,6 +228,19 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->ban();
+
+        switch($model->type_id) {
+            case 1:
+                return $this->redirect(['pharmacists']);
+            case 2:
+                return $this->redirect(['agents']);
+        }
+    }
+
+    public function actionNotVerify($id)
+    {
+        $model = $this->findModel($id);
+        $model->notVerify();
 
         switch($model->type_id) {
             case 1:

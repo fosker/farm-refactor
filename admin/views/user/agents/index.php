@@ -16,7 +16,7 @@ $this->title = 'Представители';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions' => function($model) {
-            if($model->user->status == 0) {
+            if($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
             }
         },
@@ -83,14 +83,21 @@ $this->title = 'Представители';
             [
                 'attribute'=>'user.status',
                 'value' => function($model) {
-                  return $model->user->status == User::STATUS_ACTIVE ? 'активен' : 'ожидает';
+                    switch($model->user->status) {
+                        case User::STATUS_ACTIVE:
+                            return 'активен';
+                        case User::STATUS_VERIFY:
+                            return 'ожидает';
+                        case User::STATUS_NOTE_VERIFIED:
+                            return 'не прошёл верификацию';
+                    }
                 },
-                'filter'=>[User::STATUS_ACTIVE=>'активен',User::STATUS_VERIFY=>'ожидает'],
+                'filter'=>[User::STATUS_ACTIVE=>'активен',User::STATUS_VERIFY=>'ожидает',User::STATUS_NOTE_VERIFIED=>'не прошёл верификацию'],
                 'contentOptions'=>['style'=>'width: 250px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{ban} {accept} {view} {delete} {update}',
+                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify}',
                 'buttons'=>[
                     'accept' => function ($url, $model, $key) {
                         return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-ok"></i>', ['accept', 'id'=>$model->id], [
@@ -105,6 +112,14 @@ $this->title = 'Представители';
                         return $model->user->status == User::STATUS_ACTIVE ? Html::a('<i class="glyphicon glyphicon-remove"></i>', ['ban', 'id'=>$model->id], [
                             'data-confirm' => 'Вы уверены, что хотите забанить пользователя?',
                             'title'=>'Забанить',
+                            'data-pjax'=>0,
+                            'data-method'=>'post',
+                        ]) : '';
+                    },
+                    'not-verify' => function ($url, $model, $key) {
+                        return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-thumbs-down"></i>', ['not-verify', 'id'=>$model->id], [
+                            'data-confirm' => 'Вы уверены, что хотите отменить верификацию пользователя?',
+                            'title'=>'Не прошёл верификацию',
                             'data-pjax'=>0,
                             'data-method'=>'post',
                         ]) : '';

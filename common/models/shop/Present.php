@@ -83,6 +83,9 @@ class Present extends \yii\db\ActiveRecord
             if (!Item::getOneForCurrentUser($this->item_id)) {
                 $this->addError($attribute, 'Этот подарок недоступен для ваc.');
             }
+            if ($this->count > Item::findOne($this->item_id)->count) {
+                $this->addError($attribute, 'Подарок отсутствует в данный момент.');
+            }
         }
     }
 

@@ -29,7 +29,6 @@ use common\models\Factory;
  * @property string $thumbnail
  * @property integer $status
  * @property integer $views_limit
- * @property integer $for_one
  */
 class Survey extends ActiveRecord
 {
@@ -54,7 +53,7 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points', 'views_limit', 'for_one'], 'integer'],
+            [['points', 'views_limit'], 'integer'],
             [['title', 'description', 'points', 'factory_id'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
@@ -83,7 +82,6 @@ class Survey extends ActiveRecord
             'thumbFile' => 'Превью',
             'views_limit' => 'Ограничение просмотров',
             'factory_id' => 'Фабрика Автор',
-            'for_one' => 'Показывать одному фармацевту',
         ];
     }
 
@@ -110,14 +108,12 @@ class Survey extends ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
-            $pharmacy_id = Yii::$app->user->identity->pharmacist->pharmacy_id;
             return static::find()
                 ->joinWith('pharmacies')
                 ->join('LEFT JOIN', Pharmacist::tableName(),
                     Survey_Pharmacy::tableName().'.pharmacy_id = '.Pharmacist::tableName().'.pharmacy_id')
                 ->joinWith('education')
                 ->joinWith('types')
-                ->andWhere(['!=', 'for_one', '1'])
                 ->andWhere([static::tableName().'.status'=>static::STATUS_ACTIVE])
                 ->andWhere([Survey_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
                 ->andWhere([Survey_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])

@@ -24,6 +24,7 @@ use common\models\shop\Present;
  * @property integer $points
  * @property string $description
  * @property integer $priority
+ * @property integer $count
  * @property integer $status
  */
 class Item extends ActiveRecord
@@ -49,8 +50,8 @@ class Item extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'vendor_id', 'points', 'priority'], 'required'],
-            [['points', 'priority'], 'integer'],
+            [['title', 'description', 'vendor_id', 'points', 'priority', 'count'], 'required'],
+            [['points', 'priority', 'count'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -58,7 +59,7 @@ class Item extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'vendor_id', 'points', 'priority', 'imageFile','thumbFile'];
+        $scenarios['create'] = ['title', 'description', 'vendor_id', 'points', 'priority', 'imageFile','thumbFile', 'count'];
         return $scenarios;
     }
 
@@ -80,6 +81,7 @@ class Item extends ActiveRecord
             'status' => 'Статус',
             'thumbFile' => 'Превью',
             'imageFile' => 'Изображение',
+            'count' => 'Количество'
         ];
     }
 
@@ -103,6 +105,7 @@ class Item extends ActiveRecord
             ->joinWith('pharmacies')
             ->andWhere([Item_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
             ->andWhere(['status'=>static::STATUS_ACTIVE])
+            ->andWhere(['>', 'count', '0'])
             ->orderBy(["priority"=>SORT_DESC,static::tableName().".id"=>SORT_DESC])
             ->groupBy(static::tableName().'.id');
     }

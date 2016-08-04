@@ -321,6 +321,21 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                         ],
                         'visible' => Admin::showVacancy(Yii::$app->admin->id)
                     ],
+                    ['label'=>'Статистика',
+                        'items'=>[
+                            [
+                                'label'=>'Пользователи в городах',
+                                'url'=>['/statistics/in-cities'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'statistics')
+                            ],
+                            [
+                                'label'=>'Пользователи в аптеках',
+                                'url'=>['/statistics/in-pharmacies'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'statistics')
+                            ],
+                        ],
+                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'statistics')
+                    ],
                     ['label' => 'Выход', 'url' => ['/auth/logout']],
                 ],
             ]);

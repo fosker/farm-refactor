@@ -82,7 +82,7 @@ $this->title = 'Фармацевт: '.$model->name;
             'pharmacist.mail_address',
             [
                 'attribute'=>'status',
-                'value'=> $model->status == User::STATUS_VERIFY ? 'Ожидает верификацию' : 'активный',
+                'value'=> $model->getStatuses()
             ],
             'date_reg:datetime',
             'points',

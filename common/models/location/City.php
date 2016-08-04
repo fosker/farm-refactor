@@ -3,7 +3,7 @@
 namespace common\models\location;
 
 use common\models\company\Pharmacy;
-
+use common\models\user\Pharmacist;
 use Yii;
 
 /**
@@ -58,6 +58,15 @@ class City extends \yii\db\ActiveRecord
     public function getRegion()
     {
         return $this->hasOne(Region::className(),['id'=>'region_id']);
+    }
+
+    public function getUserCount()
+    {
+        return Pharmacist::find()->joinWith('pharmacy')
+            ->join('LEFT JOIN', City::tableName(),
+                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
+            ->andWhere([static::tableName().'.id' => $this->id])
+            ->count();
     }
 
     public function getPharmacies()

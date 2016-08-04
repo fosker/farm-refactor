@@ -10,7 +10,7 @@ use yii\bootstrap\Modal;
 use common\models\location\Region;
 use common\models\Company;
 
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="item-form">
@@ -96,6 +96,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     <?= $form->field($model, 'points')->textInput() ?>
 
     <?= $form->field($model, 'priority')->textInput() ?>
+
+    <?= $form->field($model, 'count')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

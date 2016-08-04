@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 
 use common\models\company\Pharmacy;
 use yii\imagine\Image;
+use common\models\user\Pharmacist;
 
 /**
  * This is the model class for table "companies".
@@ -53,6 +54,13 @@ class Company extends ActiveRecord
             'logoFile' => 'Лого',
             'imageFile' => 'Изображение'
         ];
+    }
+
+    public function getUserCount()
+    {
+        return Pharmacist::find()->joinWith('pharmacy')
+            ->andWhere([Pharmacy::tableName().'.company_id' => $this->id])
+            ->count();
     }
 
     public function fields() {

@@ -14,20 +14,20 @@ class Mailer
             'login'=>$user->login,
             'email'=>$user->email,
         ])
-            ->setFrom("pharmbonus@gmail.com")
-            ->setTo("pharmbonus@gmail.com")
+            ->setFrom("info@pharmbonus.by")
+            ->setTo('pharmbonus@gmail.com')
             ->setSubject('Новый пользователь!')
             ->send();
     }
 
-    public static function sendRegisterMailToUser($user)
+    public static function sendVerificationMailToUser($user, $verified)
     {
-        Yii::$app->mailer->compose('@common/mail/user-register-info', [
-            'user' => $user,
+        Yii::$app->mailer->compose($verified ? '@common/mail/user-status-verified' : '@common/mail/user-status-banned', [
         ])
-            ->setFrom('pharmbonus@gmail.com')
+            ->setFrom('info@pharmbonus.by')
             ->setTo($user->email)
-            ->setSubject('Вы зарегистрировались в PharmBonus')
+            ->setSubject($verified ? 'Поздравляем Вас с прохождением верификации в ФармБонус!' :
+            'К сожалению, нам не удалось верифицировать Ваш аккаунт.')
             ->send();
     }
 

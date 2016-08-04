@@ -57,6 +57,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
 
     const STATUS_VERIFY = 0;
     const STATUS_ACTIVE = 1;
+    const STATUS_NOTE_VERIFIED = 2;
 
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
@@ -106,7 +107,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             [['name','email'], 'string', 'max'=>255],
             [['email'],'email'],
             [['phone'], 'string', 'max' => 30],
-            [['login', 'email'], 'unique'],
+            [['login'], 'unique'],
             [['re_password'], 'compare', 'compareAttribute' => 'password'],
             [['password', 'old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
             [['details'], 'string'],
@@ -116,6 +117,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             ],
             [['old_password'], 'check_old_password'],
             [['reset_token'], 'check_reset_token'],
+            ['email', 'customUnique']
         ];
     }
 
@@ -123,6 +125,18 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
      * Checks old password
      * @param $attribute
      */
+    public function customUnique($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $user = static::find()->where(['email' => $this->email])
+                ->andWhere(['in', 'status', [static::STATUS_VERIFY, static::STATUS_ACTIVE]])
+                ->one();
+            if ($user) {
+                $this->addError($attribute, "Значение $this->email для «Почта» уже занято");
+            }
+        }
+    }
+
     public function check_old_password($attribute)
     {
         if (!$this->hasErrors()) {
@@ -410,7 +424,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->save(false);
         $this->generateAccessToken();
         Mailer::sendRegisterMail($this);
-        Mailer::sendRegisterMailToUser($this);
     }
 
     public function answerSurvey($survey)
@@ -446,6 +459,18 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         return $this->avatar !== NULL ? Yii::getAlias('@uploads_view/avatars/'.$this->avatar) : $this->getDefaultAvatar();
     }
 
+    public function getStatuses()
+    {
+        $values = array(
+            self::STATUS_NOTE_VERIFIED => 'не прошёл верификацию',
+            self::STATUS_VERIFY => 'ожидает',
+            self::STATUS_ACTIVE => 'активен',
+        );
+        if(isset($values[$this->status])) {
+            return $values[$this->status];
+        }
+    }
+
     public function saveImage()
     {
         if($this->image) {
@@ -471,12 +496,20 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         $this->status = static::STATUS_ACTIVE;
         $this->save(false);
+        Mailer::sendVerificationMailToUser($this, static::STATUS_ACTIVE);
     }
 
     public function ban()
     {
         $this->status = static::STATUS_VERIFY;
         $this->save(false);
+    }
+
+    public function notVerify()
+    {
+        $this->status = static::STATUS_NOTE_VERIFIED;
+        $this->save(false);
+        Mailer::sendVerificationMailToUser($this, static::STATUS_VERIFY);
     }
 
     public function getPresentationViews()

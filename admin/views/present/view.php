@@ -55,6 +55,7 @@ $this->title = $model->title;
             ],
             'points',
             'description:html',
+            'count',
             'priority',
             [
                 'attribute'=>'status',

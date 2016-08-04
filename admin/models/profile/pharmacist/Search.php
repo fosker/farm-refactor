@@ -9,6 +9,7 @@ use common\models\user\Pharmacist;
 use common\models\User;
 use common\models\location\City;
 use common\models\Company;
+use common\models\company\Pharmacy;
 
 
 class Search extends Pharmacist
@@ -82,7 +83,7 @@ class Search extends Pharmacist
             'pharmacy_id' => $this->pharmacy_id,
             'position_id' => $this->position_id,
             City::tableName().'.id' => $this->getAttribute('pharmacy.city.id'),
-            Company::tableName().'.id' => $this->getAttribute('pharmacy.company.id')
+            Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id')
         ]);
 
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
