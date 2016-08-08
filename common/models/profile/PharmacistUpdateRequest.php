@@ -50,20 +50,28 @@ class PharmacistUpdateRequest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'region_id', 'education_id', 'sex'], 'required'],
+            [['name', 'region_id', 'education_id', 'sex', 'pharmacy_id', 'region_id', 'city_id', 'company_id'], 'required'],
             [['name','email', 'mail_address'], 'string', 'max'=>255],
             [['sex'], 'string', 'max' => 6],
             [['phone'], 'string', 'max' => 30],
             [['email'],'email'],
-            [['email'],'unique', 'targetClass'=>User::className(), 'targetAttribute'=>'email'],
-            [['education_id'], 'exist', 'targetClass'=>Education::className(), 'targetAttribute'=>'id'],
-            [['position_id'], 'exist', 'targetClass'=>Position::className(), 'targetAttribute'=>'id'],
-            [['pharmacy_id'], 'exist', 'targetClass'=>Pharmacy::className(), 'targetAttribute'=>'id'],
-            [['region_id'], 'exist', 'targetClass'=>Region::className(), 'targetAttribute'=>'id'],
-            [['city_id'], 'exist', 'targetClass'=>City::className(), 'targetAttribute'=>'id'],
-            [['company_id'], 'exist', 'targetClass'=>Company::className(), 'targetAttribute'=>'id'],
+            ['email', 'customUnique'],
+            [['position_id'], 'integer'],
             [['details'],'string'],
         ];
+    }
+
+    public function customUnique($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $user = User::find()->where(['email' => $this->email])
+                ->andWhere(['!=', 'id', $this->pharmacist_id])
+                ->andWhere(['in', 'status', [User::STATUS_VERIFY, User::STATUS_ACTIVE]])
+                ->one();
+            if ($user) {
+                $this->addError($attribute, "Значение $this->email для «Почта» уже занято");
+            }
+        }
     }
 
     /**

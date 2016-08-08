@@ -2,10 +2,11 @@
 
 namespace common\models\vacancy;
 
-use backend\models\Param;
 use Yii;
 use common\models\Vacancy;
 use common\models\User;
+use common\models\Mailer;
+
 /**
  * This is the model class for table "vacancy_entries".
  *
@@ -61,34 +62,19 @@ class Entry extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert) {
-        if(parent::beforeSave($insert)) {
-            if($insert) {
-                $this->sendInfoMail(Yii::$app->user->identity, Vacancy::findOne($this->vacancy_id));
-            }
-            return true;
-        } else return false;
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        Mailer::sendVacancy(Yii::$app->user->identity, Vacancy::findOne($this->vacancy_id), $this);
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         return $this->hasOne(User::className(),['id'=>'user_id']);
     }
 
-    public function getVacancy() {
-        return $this->hasOne(Vacancy::className(),['id'=>'vacancy_id']);
-    }
-
-    private function sendInfoMail($user, $vacancy)
+    public function getVacancy()
     {
-        Yii::$app->mailer->compose('@common/mail/sign-up-vacancy', [
-            'vacancy_title'=>$vacancy->title,
-            'username'=>$user->name,
-            'contact'=> $this->contact,
-            'date'=>$this->date_contact,
-        ])
-            ->setFrom("pharmbonus@gmail.com")
-            ->setTo($vacancy->email)
-            ->setSubject('Новая заявка на вакансию!')
-            ->send();
+        return $this->hasOne(Vacancy::className(),['id'=>'vacancy_id']);
     }
 }

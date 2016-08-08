@@ -53,8 +53,7 @@ class UserController extends Controller
         AgentUpdateRequest::deleteAll(['agent_id'=>$this->_user()->id]);
         $request = new AgentUpdateRequest();
         $request->loadCurrentAttributes($this->_user());
-        if ($request->load(Yii::$app->request->bodyParams,'')) {
-            $request->save(false);
+        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
             return ['success'=>true];
         }
         return $request;
@@ -65,7 +64,7 @@ class UserController extends Controller
         PharmacistUpdateRequest::deleteAll(['pharmacist_id'=>$this->_user()->id]);
         $request = new PharmacistUpdateRequest();
         $request->loadCurrentAttributes($this->_user());
-        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save(false)) {
+        if ($request->load(Yii::$app->request->bodyParams,'') && $request->save()) {
             return ['success'=>true];
         }
         return $request;

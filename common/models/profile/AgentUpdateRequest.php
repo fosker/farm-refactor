@@ -39,10 +39,23 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
             [['name','email'], 'string', 'max'=>100],
             [['phone'], 'string', 'max' => 30],
             [['email'],'email'],
-            [['email'],'unique', 'targetClass'=> User::className(), 'targetAttribute'=>'email'],
+            ['email', 'customUnique'],
             [['city_id'], 'exist', 'targetClass'=> City::className(), 'targetAttribute'=>'id'],
             [['details'],'string'],
         ];
+    }
+
+    public function customUnique($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $user = User::find()->where(['email' => $this->email])
+                ->andWhere(['!=', 'id', $this->agent_id])
+                ->andWhere(['in', 'status', [User::STATUS_VERIFY, User::STATUS_ACTIVE]])
+                ->one();
+            if ($user) {
+                $this->addError($attribute, "Значение $this->email для «Почта» уже занято");
+            }
+        }
     }
 
     /**

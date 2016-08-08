@@ -87,7 +87,7 @@ $this->title = 'Фармацевты';
                 'value'=>'pharmacy.city.name',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
-                    'data' => $pharmacies,
+                    'data' => $cities,
                     'attribute'=>'pharmacy.city.id',
                     'options' => [
                         'placeholder' => 'Выберите город ...',
@@ -134,14 +134,15 @@ $this->title = 'Фармацевты';
                 'template'=>'{ban} {accept} {view} {delete} {update} {not-verify}',
                 'buttons'=>[
                     'accept' => function ($url, $model, $key) {
-                        return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-ok"></i>', ['accept', 'id'=>$model->id], [
-                            'title'=>'Утвердить',
-                            'data-confirm' => 'Вы уверены, что хотите подтвердить пользователя?',
-                            'data-pjax'=>0,
-                            'data-method'=>'post',
-                        ]) : '';
+                        if($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
+                            return Html::a('<i class="glyphicon glyphicon-ok"></i>', ['accept', 'id'=>$model->id], [
+                                'title'=>'Утвердить',
+                                'data-confirm' => 'Вы уверены, что хотите подтвердить пользователя?',
+                                'data-pjax'=>0,
+                                'data-method'=>'post',
+                            ]);
+                        }
                     },
-
                     'ban' => function ($url, $model, $key) {
                         return $model->user->status == User::STATUS_ACTIVE ? Html::a('<i class="glyphicon glyphicon-remove"></i>', ['ban', 'id'=>$model->id], [
                             'data-confirm' => 'Вы уверены, что хотите забанить пользователя?',

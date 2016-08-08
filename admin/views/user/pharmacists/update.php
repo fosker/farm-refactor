@@ -149,7 +149,7 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
         ],
     ]); ?>
 
-    <?php if ($update->position_id != $type->position_id && $user->position_id) {
+    <?php if ($update->position_id != $type->position_id && $update->position_id) {
         echo "<div class='row'>
                 <div class='col-md-4'>
                     <p class='text-success'>Новая должность: ". $update->position->name."</p>

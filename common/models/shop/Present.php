@@ -6,7 +6,7 @@ use Yii;
 
 use common\models\Item;
 use common\models\User;
-use backend\models\Param;
+use common\models\Mailer;
 /**
  * This is the model class for table "user_presents".
  *
@@ -89,9 +89,10 @@ class Present extends \yii\db\ActiveRecord
         }
     }
 
-    public function afterSave($insert, $changedAttributes){
+    public function afterSave($insert, $changedAttributes)
+    {
         parent::afterSave($insert, $changedAttributes);
-        $this->sendInfoMail(Yii::$app->user->identity, Item::findOne($this->item_id));
+        Mailer::sendPresent(Yii::$app->user->identity, Item::findOne($this->item_id), $this);
     }
 
     /**
@@ -130,20 +131,6 @@ class Present extends \yii\db\ActiveRecord
 
     public function getUser() {
         return $this->hasOne(User::className(),['id'=>'user_id']);
-    }
-
-    private function sendInfoMail($user, $item)
-    {
-        Yii::$app->mailer->compose('@common/mail/buy-present', [
-            'item_title'=>$item->title,
-            'username'=>$user->name,
-            'count'=>$this->count,
-            'promo'=>$this->promo,
-        ])
-            ->setFrom("pharmbonus@gmail.com")
-            ->setTo(["pharmbonus@gmail.com", $item->vendor->email])
-            ->setSubject('Новая покупка!')
-            ->send();
     }
 
 }

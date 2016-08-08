@@ -117,7 +117,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             ],
             [['old_password'], 'check_old_password'],
             [['reset_token'], 'check_reset_token'],
-            ['email', 'customUnique']
+            ['email', 'unique'],
         ];
     }
 
@@ -130,6 +130,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         if (!$this->hasErrors()) {
             $user = static::find()->where(['email' => $this->email])
                 ->andWhere(['in', 'status', [static::STATUS_VERIFY, static::STATUS_ACTIVE]])
+                ->orWhere(['email' => $this->email, 'id' => $this->id])
                 ->one();
             if ($user) {
                 $this->addError($attribute, "Значение $this->email для «Почта» уже занято");

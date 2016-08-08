@@ -61,15 +61,15 @@ class Search extends Pharmacist
             'desc' => [User::tableName() . '.email' => SORT_DESC],
         ];
 
-//        $dataProvider->sort->attributes['pharmacy.city.id'] = [
-//            'asc' => [City::tableName() . '.name' => SORT_ASC],
-//            'desc' => [City::tableName() . '.name' => SORT_DESC],
-//        ];
-//
-//        $dataProvider->sort->attributes['pharmacy.company.id'] = [
-//            'asc' => [Company::tableName() . '.id' => SORT_ASC],
-//            'desc' => [Company::tableName() . '.id' => SORT_DESC],
-//        ];
+        $dataProvider->sort->attributes['pharmacy.city.id'] = [
+            'asc' => [Pharmacy::tableName().'.city_id' => SORT_ASC],
+            'desc' => [Pharmacy::tableName().'.city_id' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['pharmacy.company.id'] = [
+            'asc' => [Pharmacy::tableName().'.company_id' => SORT_ASC],
+            'desc' => [Pharmacy::tableName().'.company_id' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -82,7 +82,7 @@ class Search extends Pharmacist
             'education_id' => $this->education_id,
             'pharmacy_id' => $this->pharmacy_id,
             'position_id' => $this->position_id,
-            City::tableName().'.id' => $this->getAttribute('pharmacy.city.id'),
+            Pharmacy::tableName().'.city_id' => $this->getAttribute('pharmacy.city.id'),
             Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id')
         ]);
 
