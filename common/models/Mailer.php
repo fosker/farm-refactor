@@ -35,7 +35,7 @@ class Mailer
         Yii::$app->mailer->compose('@common/mail/repair-user-code', [
             'token'=>$user->reset_token,
         ])
-            ->setFrom("pharmbonus@gmail.com")
+            ->setFrom("info@pharmbonus.by")
             ->setTo($user->email)
             ->setSubject("Восстановление доступа")
             ->send();
@@ -44,7 +44,7 @@ class Mailer
     public static function sendThemeAnswer($attach, $email)
     {
         Yii::$app->mailer->compose('@common/mail/theme-answer')
-            ->setFrom("pharmbonus@gmail.com")
+            ->setFrom("feedback@pharmbonus.by")
             ->setTo($email)
             ->setSubject("Новый ответ")
             ->attach($attach)

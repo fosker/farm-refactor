@@ -182,7 +182,7 @@ class PushGroupsController extends Controller
 
             $model->device_count = count($ios_tokens) + count($android_tokens);
             $model->views = 0;
-            if($model->save()) {
+            if($model->save(false)) {
                 foreach($users as $id) {
                     $users = new Users();
                     $users->push_id = $model->id;
