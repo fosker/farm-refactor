@@ -17,6 +17,10 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
 <div class="stock-form">
 
+    <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
+    </br>
+    </br>
+
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?php

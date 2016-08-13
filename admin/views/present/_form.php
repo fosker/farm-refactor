@@ -10,10 +10,14 @@ use yii\bootstrap\Modal;
 use common\models\location\Region;
 use common\models\Company;
 
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="item-form">
+
+    <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
+    </br>
+    </br>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data',]]); ?>
 

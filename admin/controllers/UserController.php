@@ -28,7 +28,6 @@ use backend\models\profile\agent\Search as Agent_Search;
 use backend\models\profile\pharmacist\Search as Pharmacist_Search;
 
 
-
 class UserController extends Controller
 {
     public function behaviors()
@@ -40,7 +39,8 @@ class UserController extends Controller
                     'delete' => ['post'],
                     'accept' => ['post'],
                     'ban' => ['post'],
-                    'not-verify' => ['post']
+                    'not-verify' => ['post'],
+                    'not-gray' => ['post']
                 ],
             ],
             'access' => [
@@ -216,6 +216,38 @@ class UserController extends Controller
             Yii::$app->gcm->sendMulti($android_tokens, $message);
         }
 
+        switch($model->type_id) {
+            case 1:
+                return $this->redirect(['pharmacists']);
+            case 2:
+                return $this->redirect(['agents']);
+        }
+    }
+
+    public function actionGray($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'gray';
+        if($model->load(Yii::$app->request->post())) {
+            $model->toGray();
+            switch($model->type_id) {
+                case 1:
+                    return $this->redirect(['pharmacists']);
+                case 2:
+                    return $this->redirect(['agents']);
+            }
+        } else {
+            return $this->render('gray', [
+                'model' => $model,
+                'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
+            ]);
+        }
+    }
+
+    public function actionNotGray($id)
+    {
+        $model = $this->findModel($id);
+        $model->notGray();
         switch($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);

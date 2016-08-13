@@ -2,16 +2,18 @@
 
 namespace backend\controllers;
 
-use common\models\user\Pharmacist;
-use common\models\user\Agent;
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 
 use common\models\location\Region;
 use common\models\Company;
 use common\models\location\City;
 use common\models\company\Pharmacy;
-use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
+use common\models\user\Pharmacist;
+use common\models\user\Agent;
+use common\models\User;
+use yii\helpers\ArrayHelper;
 
 class MainController extends \yii\web\Controller
 {
@@ -70,14 +72,84 @@ class MainController extends \yii\web\Controller
             ],
         ]);
 
-        $pharmacists = Pharmacist::find()->joinWith('user')->where(['status' => 1])->count();
-        $agents = Agent::find()->joinWith('user')->where(['status' => 1])->count();
+        $dateQuery = User::find()->select('date_reg')->orderBy('date_reg DESC');
+
+        $dates = new ActiveDataProvider([
+            'query' => $dateQuery,
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+        ]);
+
+        $date_reg_array = ArrayHelper::map(User::find()->select('id, date_reg')
+            ->orderBy('date_reg DESC')
+            ->asArray()
+            ->all(), 'id', 'date_reg');
+
+        $months = [1 => 'январь', 2 => 'февраль', 3 => 'март', 4 => 'апрель', 5 => 'май', 6 => 'июнь',
+            7 => 'июль', 8 => 'август', 9 => 'сентябрь', 10 => 'октябрь', 11 => 'ноябрь', 12 => 'декабрь'
+        ];
+
+
+        foreach($date_reg_array as $date_reg) {
+            $year = substr($date_reg, 0, 4);
+            if($year != '2015')
+                $years[] = $year;
+        }
+
+        $years = array_unique($years);
+
+        $count_in_month = ArrayHelper::map(Pharmacist::find()->select('count('.Pharmacist::tableName().'.id'.') as count, month(date_reg) as month')
+            ->joinWith('user')
+            ->where('year(date_reg) > 2015')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->asArray()
+            ->all(), 'month', 'count');
+
+        $region_month = Pharmacist::find()
+            ->select('count('.Pharmacist::tableName().'.id'.') as count, '.Region::tableName().'.name, month(date_reg) as month')
+            ->joinWith('user')
+            ->join('LEFT JOIN', Pharmacy::tableName(),
+                Pharmacy::tableName().'.id = '.Pharmacist::tableName().'.pharmacy_id')
+            ->join('LEFT JOIN', City::tableName(),
+                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
+            ->join('LEFT JOIN', Region::tableName(),
+                Region::tableName().'.id = '.City::tableName().'.region_id')
+            ->where('year(date_reg) > 2015')
+            ->groupBy([Region::tableName().'.id', 'month'])
+            ->asArray()
+            ->all();
+
+        $user_region_month = Pharmacist::find()
+            ->select(User::tableName().'.name as name,'.Region::tableName().'.name as region, month(date_reg) as month, date_reg')
+            ->joinWith('user')
+            ->join('LEFT JOIN', Pharmacy::tableName(),
+                Pharmacy::tableName().'.id = '.Pharmacist::tableName().'.pharmacy_id')
+            ->join('LEFT JOIN', City::tableName(),
+                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
+            ->join('LEFT JOIN', Region::tableName(),
+                Region::tableName().'.id = '.City::tableName().'.region_id')
+            ->where('year(date_reg) > 2015')
+            ->orderBy('date_reg DESC')
+            ->asArray()
+            ->all();
+
+
+        $pharmacists = Pharmacist::find()->count();
+        $agents = Agent::find()->count();
 
         return $this->render('index', [
             'regions' => $regions,
             'companies' => $companies,
             'pharmacists' => $pharmacists,
-            'agents' => $agents
+            'agents' => $agents,
+            'dates' => $dates,
+            'months' => $months,
+            'years' => $years,
+            'count_in_month' => $count_in_month,
+            'region_month' => $region_month,
+            'user_region_month' => $user_region_month
         ]);
     }
 

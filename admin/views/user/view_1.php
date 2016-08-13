@@ -27,6 +27,16 @@ $this->title = 'Фармацевт: '.$model->name;
                 'method' => 'post',
             ],
         ]); ?>
+        <?= $model->inGray ? Html::a('Убрать из серого списка', ['not-gray', 'id' => $model->id], [
+            'class' => 'btn btn-success',
+            'data' => [
+                'confirm' => 'Вы уверены, что хотите убрать пользователя из серого списка?',
+                'method' => 'post',
+            ],
+        ]) :
+            Html::a('В серый список', ['gray', 'id' => $model->id], [
+                'class' => 'btn btn-warning',
+            ]); ?>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], [
             'class' => 'btn btn-info',
         ]) ?>
@@ -83,6 +93,10 @@ $this->title = 'Фармацевт: '.$model->name;
             [
                 'attribute'=>'status',
                 'value'=> $model->getStatuses()
+            ],
+            [
+                'attribute'=>'inGray',
+                'value'=> $model->inGray  ? 'да'." ($model->comment)" : 'нет',
             ],
             'date_reg:datetime',
             'points',

@@ -13,11 +13,15 @@ use common\models\profile\Type;
 use backend\components\CheckWidget;
 use yii\bootstrap\Modal;
 
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('admin/js/answer.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="survey-form">
+
+    <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
+    </br>
+    </br>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=>'survey-form']]); ?>
 
@@ -132,6 +136,8 @@ $this->registerJsFile('admin/js/answer.js', ['depends' => [\yii\web\JqueryAsset:
             'showRemove' => false,
         ]
     ]); ?>
+
+    <?= $form->field($model, 'grayList')->checkbox() ?>
 
     <!-- The Questions on the Survey -->
     <div class="row panel-body">

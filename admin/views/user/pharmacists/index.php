@@ -7,6 +7,7 @@ use yii\grid\GridView;
 use kartik\widgets\Select2;
 
 $this->title = 'Фармацевты';
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="pharmacist-index">
 
@@ -18,6 +19,9 @@ $this->title = 'Фармацевты';
         'rowOptions' => function($model) {
             if($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
+            };
+            if($model->user->inGray) {
+                return ['style' => 'background: #C0C0C0'];
             }
         },
         'columns' => [
@@ -57,7 +61,7 @@ $this->title = 'Фармацевты';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '175px'
+                        'width' => '150px'
                     ],
                 ]),
             ],
@@ -77,7 +81,7 @@ $this->title = 'Фармацевты';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '175px'
+                        'width' => '150px'
                     ],
                 ]),
             ],
@@ -94,7 +98,7 @@ $this->title = 'Фармацевты';
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
-                        'width' => '175px'
+                        'width' => '150px'
                     ],
                 ]),
             ],
@@ -127,11 +131,19 @@ $this->title = 'Фармацевты';
                     }
                 },
                 'filter'=>[User::STATUS_ACTIVE=>'активен',User::STATUS_VERIFY=>'ожидает',User::STATUS_NOTE_VERIFIED=>'не прошёл верификацию'],
-                'contentOptions'=>['style'=>'width: 250px;'],
+                'contentOptions'=>['style'=>'width: 200px;'],
+            ],
+            [
+                'attribute'=>'user.inGray',
+                'value' => function($model) {
+                    return [1 => 'да', 0 => 'нет'][$model->user->inGray];
+                },
+                'filter'=>[User::IN_GRAY=>'да',User::NOT_IN_GRAY=>'нет'],
+                'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify}',
+                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {gray} {not-gray}',
                 'buttons'=>[
                     'accept' => function ($url, $model, $key) {
                         if($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
@@ -151,11 +163,24 @@ $this->title = 'Фармацевты';
                             'data-method'=>'post',
                         ]) : '';
                     },
-
                     'not-verify' => function ($url, $model, $key) {
                         return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-thumbs-down"></i>', ['not-verify', 'id'=>$model->id], [
                             'data-confirm' => 'Вы уверены, что хотите отменить верификацию пользователя?',
                             'title'=>'Не прошёл верификацию',
+                            'data-pjax'=>0,
+                            'data-method'=>'post',
+                        ]) : '';
+                    },
+                    'gray' => function ($url, $model, $key) {
+                        return !$model->user->inGray ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['gray', 'id' => $model->id], [
+                            'title'=>'Добавить в серый список',
+                        ]) : '';
+                    },
+                    'not-gray' => function ($url, $model, $key) {
+                        return $model->user->inGray ? Html::a('<i class="glyphicon glyphicon-list" style="color:gray"></i>', ['not-gray', 'id'=>$model->id], [
+                            'data-confirm' => 'Вы уверены, что хотите убрать пользователя из серого списка?',
+                            'class' => 'to_gray',
+                            'title'=>$model->user->comment,
                             'data-pjax'=>0,
                             'data-method'=>'post',
                         ]) : '';

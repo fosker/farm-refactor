@@ -46,6 +46,8 @@ use common\models\Mailer;
  * @property string $details
  * @property string $phone
  * @property integer $type_id
+ * @property integer $inGray
+ * @property string $comment
  */
 class User extends ActiveRecord implements IdentityInterface , RateLimitInterface
 {
@@ -59,6 +61,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const STATUS_ACTIVE = 1;
     const STATUS_NOTE_VERIFIED = 2;
 
+    const IN_GRAY = 1;
+    const NOT_IN_GRAY = 0;
+
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
 
@@ -68,6 +73,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             parent::scenarios(),
             [
                 'update' => ['name', 'email', 'phone'],
+                'gray' => ['inGray', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'update-password' => ['old_password', 'password', 're_password'],
                 'reset-password' => ['reset_token', 'password', 're_password'],
@@ -110,7 +116,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             [['login'], 'unique'],
             [['re_password'], 'compare', 'compareAttribute' => 'password'],
             [['password', 'old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
-            [['details'], 'string'],
+            [['details', 'comment'], 'string'],
+            ['inGray', 'integer'],
             [['image'], 'file',
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
@@ -200,7 +207,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             'points' => 'Баллы',
             'details'=>'Дополнительные сведения',
             'phone' => 'Мобильный телефон',
-            'type_id' => 'Тип пользователя'
+            'type_id' => 'Тип пользователя',
+            'inGray' => 'В сером списке',
+            'comment' => 'Комментарий'
         ];
     }
 
@@ -503,6 +512,19 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function ban()
     {
         $this->status = static::STATUS_VERIFY;
+        $this->save(false);
+    }
+
+    public function toGray()
+    {
+        $this->inGray = static::IN_GRAY;
+        $this->save(false);
+    }
+
+    public function notGray()
+    {
+        $this->inGray = static::NOT_IN_GRAY;
+        $this->comment = "";
         $this->save(false);
     }
 

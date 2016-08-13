@@ -1,15 +1,18 @@
-$('#pharmacies').on('shown.bs.modal', function () {
-    var checked_cities = [];
-    var checked_companies = [];
+var checked_cities = [];
+var checked_companies = [];
+
+function generatePharmacies() {
     $("input:checkbox[name='cities[]']:checked").each(function(){
         checked_cities.push($(this).val());
     });
     $("input:checkbox[name='companies[]']:checked").each(function(){
         checked_companies.push($(this).val());
     });
-    $("#pharmacies .modal-body").append("<p>Загрузка...");
-    $.post("index.php?r=list/pharmacies", {'cities[]': checked_cities, 'companies[]' : checked_companies},
-        function(data) {
+    $.ajax({
+        type: 'POST',
+        url: "index.php?r=list/pharmacies",
+        data: {'cities[]': checked_cities, 'companies[]' : checked_companies},
+        success: function(data) {
             var obj = jQuery.parseJSON(data);
             var modal_body = $("#pharmacies .modal-body");
             modal_body.html("");
@@ -31,8 +34,43 @@ $('#pharmacies').on('shown.bs.modal', function () {
                     .eq(index)
                     .append("<input type=checkbox name=pharmacies[] value="+val.id+"> "+val.name);
             });
+        },
+        async:false
+    });
+};
+
+$('#pharmacies').on('shown.bs.modal', function () {
+    var check_all = $('.all-groups')[0];
+    if(check_all.checked == false){
+        $("#pharmacies .modal-body").append("<p>Загрузка...");
+        checked_cities = [];
+        checked_companies = [];
+        generatePharmacies();
+    }
+});
+
+$(".all-groups").on("change", function() {
+    var status = this.checked;
+    var buttons = $("input[type=checkbox][class='all']");
+    buttons.each(function(){
+        $(this).prop('checked', status);
+        $(this).parent().next().children().each(function(i, elem) {
+            var checkbox = $(elem).find('label > input');
+            checkbox.prop('checked', status);
         });
-})
+    });
+    checked_cities = [];
+    checked_companies = [];
+    generatePharmacies();
+    var all_pharmacies = $('.all_pharmacies');
+    all_pharmacies.each(function(){
+        $(this).prop('checked', status);
+        $(this).parent().next().children().each(function(i, elem) {
+            var checkbox = $(elem).find('label > input');
+            checkbox.prop('checked', status);
+        });
+    });
+});
 
 $("#pharmacies .modal-body").on('change', '.all_pharmacies', function(e) {
     var status = this.checked;

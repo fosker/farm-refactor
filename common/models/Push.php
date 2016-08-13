@@ -60,7 +60,7 @@ class Push extends \yii\db\ActiveRecord
             'education' => 'Образования',
             'message' => 'Сообщение',
             'users' => 'Пользователи',
-            'device_count' => 'Количество устройств',
+            'device_count' => 'Количество пользователей',
             'link' => 'Ссылка',
             'views' => 'Количество просмотров',
             'date_send' => 'Дата отправки'

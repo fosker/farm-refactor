@@ -8,7 +8,7 @@
             <b><?=$model->name;?></b>
         </div>
         <?php if($model->userCount):?>
-            <div class="col-md-3"><button type="button" class="btn btn-info more-cities">подробнее</button></div>
+            <div class="col-md-3"><button type="button" class="btn btn-info more-cities">+</button></div>
         <?php endif;?>
         <div class="col-md-2"><i><?=$model->userCount?></i></div>
     </div>

@@ -25,7 +25,8 @@ class Search extends Push
     {
         $query = Push::find()
             ->joinWith('pharmPushes')
-            ->andWhere(['in', Push::tableName().'.id', Users::find()->select('push_id')]);
+            ->andWhere(['in', Push::tableName().'.id', Users::find()->select('push_id')])
+            ->groupBy(Push::tableName().'.id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -13,11 +13,15 @@ use backend\components\CheckWidget;
 use yii\bootstrap\Modal;
 use kartik\widgets\ActiveForm;
 
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $url = Url::to(['/banner/link-list']);
 ?>
 
 <div class="banner-form">
+
+    <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
+    </br>
+    </br>
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 

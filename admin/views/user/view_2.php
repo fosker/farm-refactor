@@ -65,6 +65,10 @@ $this->title = 'Представитель: '.$model->name;
                 'attribute'=>'status',
                 'value'=> $model->getStatuses()
             ],
+            [
+                'attribute'=>'inGray',
+                'value'=> $model->inGray  ? 'да'." ($model->comment)" : 'нет',
+            ],
             'phone',
             'date_reg:datetime',
             'points',

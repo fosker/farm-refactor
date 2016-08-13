@@ -14,14 +14,14 @@ class Search extends Agent
     public function rules()
     {
         return [
-            [['user.status', 'id', 'factory_id'], 'integer'],
+            [['user.status', 'id', 'factory_id', 'user.inGray'], 'integer'],
             [['user.name', 'user.email'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.inGray']);
     }
 
     public function scenarios()
@@ -57,6 +57,11 @@ class Search extends Agent
             'desc' => [User::tableName() . '.email' => SORT_DESC],
         ];
 
+        $dataProvider->sort->attributes['user.inGray'] = [
+            'asc' => [User::tableName().'.inGray' => SORT_ASC],
+            'desc' => [User::tableName().'.inGray' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -66,6 +71,7 @@ class Search extends Agent
         $query->andFilterWhere([
             Agent::tableName().'.id' => $this->id,
             'factory_id' => $this->factory_id,
+            User::tableName().'.inGray' => $this->getAttribute('user.inGray'),
         ]);
 
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])

@@ -7,7 +7,6 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\user\Pharmacist;
 use common\models\User;
-use common\models\location\City;
 use common\models\Company;
 use common\models\company\Pharmacy;
 
@@ -18,14 +17,14 @@ class Search extends Pharmacist
     public function rules()
     {
         return [
-            [['user.status', 'id', 'education_id', 'pharmacy_id', 'position_id', 'pharmacy.city.id', 'pharmacy.company.id'], 'integer'],
+            [['user.status', 'id', 'education_id', 'pharmacy_id', 'position_id', 'pharmacy.city.id', 'pharmacy.company.id', 'user.inGray'], 'integer'],
             [['user.name', 'user.email'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'pharmacy.city.id', 'pharmacy.company.id']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'pharmacy.city.id', 'pharmacy.company.id', 'user.inGray']);
     }
 
     public function scenarios()
@@ -71,17 +70,24 @@ class Search extends Pharmacist
             'desc' => [Pharmacy::tableName().'.company_id' => SORT_DESC],
         ];
 
+        $dataProvider->sort->attributes['user.inGray'] = [
+            'asc' => [User::tableName().'.inGray' => SORT_ASC],
+            'desc' => [User::tableName().'.inGray' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
             return $dataProvider;
         }
 
+
         $query->andFilterWhere([
             Pharmacist::tableName().'.id' => $this->id,
             'education_id' => $this->education_id,
             'pharmacy_id' => $this->pharmacy_id,
             'position_id' => $this->position_id,
+            User::tableName().'.inGray' => $this->getAttribute('user.inGray'),
             Pharmacy::tableName().'.city_id' => $this->getAttribute('pharmacy.city.id'),
             Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id')
         ]);

@@ -10,7 +10,6 @@ use kartik\widgets\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'region_id')->widget(Select2::classname(), [
         'data' => $regions,
         'options' => ['placeholder' => 'Выберите район ...'],
@@ -18,6 +17,8 @@ use kartik\widgets\Select2;
             'allowClear' => true
         ],
     ]); ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

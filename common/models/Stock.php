@@ -92,16 +92,15 @@ class Stock extends ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $education = Stock_Education::find()->select('stock_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = Stock_Type::find()->select('stock_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = Stock_Pharmacy::find()->select('stock_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             return static::find()
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
-                ->joinWith('education')
-                ->joinWith('pharmacies')
-                ->joinWith('types')
-                ->andWhere([Stock_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
-                ->andWhere([Stock_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
-                ->andWhere([Stock_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
-                ->orderBy([static::tableName().'.id'=>SORT_DESC])
-                ->groupBy(static::tableName().'.id');
+                ->andFilterWhere(['in', static::tableName().'.id', $education])
+                ->andFilterWhere(['in', static::tableName().'.id', $types])
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
+                ->orderBy([static::tableName().'.id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
                 ->joinWith('types')

@@ -32,6 +32,7 @@ use common\models\profile\Type;
  * @property integer $home
  * @property integer $home_priority
  * @property integer $views_limit
+ * @property integer $grayList
  */
 class Presentation extends ActiveRecord
 {
@@ -59,7 +60,7 @@ class Presentation extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'points', 'factory_id'], 'required'],
+            [['title', 'description', 'points', 'factory_id', 'grayList'], 'required'],
             [['points', 'home_priority', 'views_limit'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
@@ -68,7 +69,7 @@ class Presentation extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id', 'grayList'];
         return $scenarios;
     }
 
@@ -87,7 +88,8 @@ class Presentation extends ActiveRecord
             'home' => 'Отображать на главной',
             'home_priority' => 'Приоритет',
             'views_limit' => 'Ограничение просмотров',
-            'factory_id' => 'Фабрика Автор'
+            'factory_id' => 'Фабрика Автор',
+            'grayList' => 'Показывать серому списку'
         ];
     }
 
@@ -110,17 +112,17 @@ class Presentation extends ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $education = Presentation_Education::find()->select('presentation_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = Presentation_Type::find()->select('presentation_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = Presentation_Pharmacy::find()->select('presentation_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             return static::find()
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
-                ->joinWith('education')
-                ->joinWith('pharmacies')
-                ->joinWith('types')
-                ->andWhere([Presentation_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
-                ->andWhere([Presentation_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
-                ->andWhere([Presentation_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->andFilterWhere(['in', static::tableName().'.id', $education])
+                ->andFilterWhere(['in', static::tableName().'.id', $types])
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
+                ->andFilterWhere(['or', ['grayList' => 1], ['and', ['grayList'=>0], Yii::$app->user->identity->inGray. '=0']])
                 ->andWhere(['!=', 'views_limit', '0'])
-                ->orderBy(['id'=>SORT_DESC])
-                ->groupBy(static::tableName().'.id');
+                ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
                 ->joinWith('types')

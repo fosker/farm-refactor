@@ -80,15 +80,14 @@ class Banner extends ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $education = Banner_Education::find()->select('banner_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = Banner_Type::find()->select('banner_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = Banner_Pharmacy::find()->select('banner_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             $base = static::find()
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
-                ->joinWith('education')
-                ->joinWith('pharmacies')
-                ->joinWith('types')
-                ->andWhere([Banner_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
-                ->andWhere([Banner_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
-                ->andWhere([Banner_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
-                ->groupBy(static::tableName().'.id');
+                ->andFilterWhere(['in', static::tableName().'.id', $education])
+                ->andFilterWhere(['in', static::tableName().'.id', $types])
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             $base = static::find()
                 ->joinWith('types')

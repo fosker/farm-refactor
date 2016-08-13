@@ -22,6 +22,7 @@ $this->title = $model->title;
                 'method' => 'post',
             ],
         ]) ?>
+
         <?= Html::a(
             'Редактировать',
             ['update', 'id' => $model->id],
@@ -90,6 +91,10 @@ $this->title = $model->title;
             [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
+            ],
+            [
+                'attribute'=>'grayList',
+                'value'=>[1 => 'да', 0 => 'нет'][$model->grayList],
             ],
         ],
     ]) ?>

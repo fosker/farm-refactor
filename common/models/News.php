@@ -135,9 +135,9 @@ class News extends \yii\db\ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
-            $education = News_Education::find()->select('news_id')->andFilterWhere(['in', 'education_id', Yii::$app->user->identity->pharmacist->education_id]);
-            $types = News_Type::find()->select('news_id')->andFilterWhere(['in', 'type_id', Yii::$app->user->identity->type_id]);
-            $pharmacies = News_Pharmacy::find()->select('news_id')->andFilterWhere(['in', 'pharmacy_id', Yii::$app->user->identity->pharmacist->pharmacy_id]);
+            $education = News_Education::find()->select('news_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = News_Type::find()->select('news_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = News_Pharmacy::find()->select('news_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             return static::find()
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])

@@ -16,6 +16,10 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
 <div class="presentation-form">
 
+    <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
+    </br>
+    </br>
+
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=>'presentation-form']]); ?>
 
     <?php
@@ -131,6 +135,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
             'showRemove' => false,
         ]
     ]); ?>
+
+    <?= $form->field($model, 'grayList')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

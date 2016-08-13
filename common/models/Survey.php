@@ -29,6 +29,7 @@ use common\models\Factory;
  * @property string $thumbnail
  * @property integer $status
  * @property integer $views_limit
+ * @property integer $grayList
  */
 class Survey extends ActiveRecord
 {
@@ -53,7 +54,7 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points', 'views_limit'], 'integer'],
+            [['points', 'views_limit', 'grayList'], 'integer'],
             [['title', 'description', 'points', 'factory_id'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
@@ -66,7 +67,7 @@ class Survey extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile', 'views_limit', 'factory_id'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile', 'views_limit', 'factory_id', 'greyList'];
         return $scenarios;
     }
 
@@ -82,6 +83,7 @@ class Survey extends ActiveRecord
             'thumbFile' => 'Превью',
             'views_limit' => 'Ограничение просмотров',
             'factory_id' => 'Фабрика Автор',
+            'grayList' => 'Показывать серому списку'
         ];
     }
 
@@ -108,24 +110,22 @@ class Survey extends ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $education = Survey_Education::find()->select('survey_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = Survey_Type::find()->select('survey_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = Survey_Pharmacy::find()->select('survey_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             return static::find()
-                ->joinWith('pharmacies')
-                ->join('LEFT JOIN', Pharmacist::tableName(),
-                    Survey_Pharmacy::tableName().'.pharmacy_id = '.Pharmacist::tableName().'.pharmacy_id')
-                ->joinWith('education')
-                ->joinWith('types')
                 ->andWhere([static::tableName().'.status'=>static::STATUS_ACTIVE])
-                ->andWhere([Survey_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
-                ->andWhere([Survey_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
-                ->andWhere([Survey_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
+                ->andFilterWhere(['in', static::tableName().'.id', $education])
+                ->andFilterWhere(['in', static::tableName().'.id', $types])
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
+                ->andFilterWhere(['or', ['grayList' => 1], ['and', ['grayList'=>0], Yii::$app->user->identity->inGray. '=0']])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
                     View::findByCurrentUser()
                         ->andWhere(View::tableName().'.survey_id='.static::tableName().'.id')
                 ])
-                ->orderBy(['id'=>SORT_DESC])
-                ->groupBy(static::tableName().'.id');
+                ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
                 ->joinWith('types')

@@ -108,16 +108,15 @@ class Seminar extends \yii\db\ActiveRecord
     public static function getForCurrentUser()
     {
         if(Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $education = Seminar_Education::find()->select('seminar_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
+            $types = Seminar_Type::find()->select('seminar_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
+            $pharmacies = Seminar_Pharmacy::find()->select('seminar_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
             return static::find()
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
-                ->joinWith('education')
-                ->joinWith('pharmacies')
-                ->joinWith('types')
-                ->andWhere([Seminar_Education::tableName().'.education_id'=>Yii::$app->user->identity->pharmacist->education_id])
-                ->andWhere([Seminar_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
-                ->andWhere([Seminar_Type::tableName().'.type_id'=>Yii::$app->user->identity->type_id])
-                ->orderBy(['id'=>SORT_DESC])
-                ->groupBy(static::tableName().'.id');
+                ->andFilterWhere(['in', static::tableName().'.id', $education])
+                ->andFilterWhere(['in', static::tableName().'.id', $types])
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
+                ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
                 ->joinWith('types')
