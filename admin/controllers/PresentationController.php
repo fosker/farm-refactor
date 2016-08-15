@@ -38,8 +38,6 @@ class PresentationController extends Controller
                     'delete-question'=>['POST'],
                     'delete-slide'=>['POST'],
                     'delete-option'=>['POST'],
-                    'approve' => ['post'],
-                    'hide' => ['post']
                 ],
             ],
             'access' => [

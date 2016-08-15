@@ -99,16 +99,28 @@ class MainController extends \yii\web\Controller
 
         $years = array_unique($years);
 
-        $count_in_month = ArrayHelper::map(Pharmacist::find()->select('count('.Pharmacist::tableName().'.id'.') as count, month(date_reg) as month')
+        $count_in_month = Pharmacist::find()->select('count('.Pharmacist::tableName().'.id'.') as count,
+        month(date_reg) as month, year(date_reg) as year')
             ->joinWith('user')
             ->where('year(date_reg) > 2015')
-            ->groupBy('month')
+            ->groupBy(['month', 'year'])
             ->orderBy('month')
             ->asArray()
-            ->all(), 'month', 'count');
+            ->all();
+
+        $calendar = [];
+
+        foreach($years as $year) {
+            foreach($count_in_month as $month) {
+                if($month['year'] == $year) {
+                    $calendar[$year][$month['month']] = $month['count'];
+                }
+            }
+        }
 
         $region_month = Pharmacist::find()
-            ->select('count('.Pharmacist::tableName().'.id'.') as count, '.Region::tableName().'.name, month(date_reg) as month')
+            ->select('count('.Pharmacist::tableName().'.id'.') as count, '.Region::tableName().'.name,
+            month(date_reg) as month, year(date_reg) as year')
             ->joinWith('user')
             ->join('LEFT JOIN', Pharmacy::tableName(),
                 Pharmacy::tableName().'.id = '.Pharmacist::tableName().'.pharmacy_id')
@@ -117,12 +129,13 @@ class MainController extends \yii\web\Controller
             ->join('LEFT JOIN', Region::tableName(),
                 Region::tableName().'.id = '.City::tableName().'.region_id')
             ->where('year(date_reg) > 2015')
-            ->groupBy([Region::tableName().'.id', 'month'])
+            ->groupBy([Region::tableName().'.id', 'month', 'year'])
             ->asArray()
             ->all();
 
         $user_region_month = Pharmacist::find()
-            ->select(User::tableName().'.name as name,'.Region::tableName().'.name as region, month(date_reg) as month, date_reg')
+            ->select(User::tableName().'.name as name,'.Region::tableName().'.name as region, month(date_reg) as month,
+            year(date_reg) as year, date_reg')
             ->joinWith('user')
             ->join('LEFT JOIN', Pharmacy::tableName(),
                 Pharmacy::tableName().'.id = '.Pharmacist::tableName().'.pharmacy_id')
@@ -135,6 +148,11 @@ class MainController extends \yii\web\Controller
             ->asArray()
             ->all();
 
+//        echo '<pre>';
+//        var_dump($region_month);
+//        echo '</pre>';
+//        die();
+
 
         $pharmacists = Pharmacist::find()->count();
         $agents = Agent::find()->count();
@@ -144,10 +162,9 @@ class MainController extends \yii\web\Controller
             'companies' => $companies,
             'pharmacists' => $pharmacists,
             'agents' => $agents,
-            'dates' => $dates,
             'months' => $months,
             'years' => $years,
-            'count_in_month' => $count_in_month,
+            'calendar' => $calendar,
             'region_month' => $region_month,
             'user_region_month' => $user_region_month
         ]);

@@ -82,4 +82,10 @@ class Agent extends \yii\db\ActiveRecord
         $this->user->save(false);
     }
 
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        $this->user->delete();
+    }
+
 }

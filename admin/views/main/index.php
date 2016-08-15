@@ -31,10 +31,10 @@ $this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::cl
                             <div class="col-md-4">
                                 <b><?=$month . ' ' . $year ;?></b>
                             </div>
-                           <?php if($count_in_month[$index]):?>
+                           <?php if($calendar[$year][$index]):?>
                                 <div class="col-md-3"><button type="button" class="btn btn-info more-regions">+</button></div>
                            <?php endif;?>
-                            <div class="col-md-2"><i><?=$count_in_month[$index] ? $count_in_month[$index] : 0?></i></div>
+                            <div class="col-md-2"><i><?=$calendar[$year][$index] ? $calendar[$year][$index] : 0?></i></div>
                         </div>
                     </div>
                     </br>
@@ -42,7 +42,7 @@ $this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::cl
                         <div class="month-region">
                             <ul style="list-style: none">
                                 <?php foreach($region_month as $region):?>
-                                    <?php if($index == $region['month'] && $region['name'] != ''):?>
+                                    <?php if($index == $region['month'] && $region['name'] != '' && $region['year'] == $year):?>
                                             <li>
                                                 <br>
                                                 <div class="row">
@@ -55,7 +55,7 @@ $this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::cl
                                                 <div class="row user-region-month" style="display: none">
                                                     <ul style="list-style: none">
                                                         <?php foreach($user_region_month as $user):?>
-                                                            <?php if($index == $user['month'] && $region['name'] == $user['region']):?>
+                                                            <?php if($index == $user['month'] && $region['name'] == $user['region'] && $user['year'] == $year):?>
                                                                 <li>
                                                                     <br>
                                                                     <div class="row">
@@ -82,6 +82,7 @@ $this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::cl
                     </div>
                     </div>
                     <?php endforeach;?>
+                    <hr>
                 <?php endforeach;?>
             </div>
         </div>

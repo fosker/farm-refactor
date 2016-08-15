@@ -38,8 +38,6 @@ class BannerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    'approve' => ['post'],
-                    'hide' => ['post']
                 ],
             ],
             'access' => [
@@ -121,10 +119,6 @@ class BannerController extends Controller
         $old_types = Banner_Type::find()->select('type_id')->where(['banner_id' => $id])->asArray()->all();
 
         if ($model->load(Yii::$app->request->post())) {
-            echo '<pre>';
-            var_dump(Yii::$app->request->post('pharmacies'));
-            echo '</pre>';
-            die();
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save()) {
                 $model->hide();

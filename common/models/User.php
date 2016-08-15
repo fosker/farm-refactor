@@ -548,11 +548,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function afterDelete()
     {
         parent::afterDelete();
-        if($this->type_id == Type::TYPE_PHARMACIST) {
-            $this->pharmacist->delete();
-        } elseif ($this->type_id == Type::TYPE_AGENT) {
-            $this->agent->delete();
-        }
         foreach($this->devices as $device)
             $device->delete();
         Request::deleteAll(['user_id'=>$this->id]);

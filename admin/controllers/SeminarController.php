@@ -32,8 +32,6 @@ class SeminarController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
-                    'approve' => ['post'],
-                    'hide' => ['post']
                 ],
             ],
             'access' => [

@@ -12,7 +12,7 @@ use common\models\Company;
 use common\models\profile\Type;
 use kartik\widgets\Select2;
 
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="news-form">

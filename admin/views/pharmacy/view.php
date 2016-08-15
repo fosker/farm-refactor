@@ -27,6 +27,7 @@ $this->title = $model->name;
             'id',
             'name',
             'address',
+            'phone',
             [
                 'attribute'=>'company.title',
                 'value'=>Html::a($model->company->title,['/company/view','id'=>$model->company_id]),

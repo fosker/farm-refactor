@@ -26,6 +26,7 @@ use common\models\profile\PharmacistUpdateRequest;
  * @property string $name
  * @property integer $company_id
  * @property integer $city_id
+ * @property integer $phone
  */
 
 class Pharmacy extends \yii\db\ActiveRecord
@@ -40,7 +41,7 @@ class Pharmacy extends \yii\db\ActiveRecord
     {
         return [
             [['company_id', 'city_id', 'name'], 'required'],
-            [['address'], 'string']
+            [['address', 'phone'], 'string']
         ];
     }
 
@@ -52,6 +53,7 @@ class Pharmacy extends \yii\db\ActiveRecord
             'address' => 'Адрес',
             'company_id' => 'Компания',
             'city_id' => 'Город',
+            'phone' => 'Телефон'
         ];
     }
 
@@ -129,7 +131,7 @@ class Pharmacy extends \yii\db\ActiveRecord
         Seminar_Pharmacy::deleteAll(['pharmacy_id' => $this->id]);
         Item_Pharmacy::deleteAll(['pharmacy_id' => $this->id]);
         Vacancy_Pharmacy::deleteAll(['pharmacy_id' => $this->id]);
-        foreach($this->pharmacist as $pharmacist)
+        foreach($this->pharmacists as $pharmacist)
             $pharmacist->delete();
         PharmacistUpdateRequest::deleteAll(['pharmacy_id' => $this->id]);
     }

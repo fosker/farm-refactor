@@ -161,10 +161,10 @@ class UserController extends Controller
         $model = $this->findModel($id);
         switch($model->type_id) {
             case Type::TYPE_PHARMACIST:
-                $model->delete();
+                Pharmacist::findOne($id)->delete();
                 return $this->redirect(['pharmacists']);
             case Type::TYPE_AGENT:
-                $model->delete();
+                Agent::findOne($id)->delete();
                 return $this->redirect(['agents']);
         }
     }

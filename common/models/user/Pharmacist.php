@@ -126,4 +126,10 @@ class Pharmacist extends \yii\db\ActiveRecord
         $this->user->status = static::STATUS_VERIFY;
         $this->user->save(false);
     }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        $this->user->delete();
+    }
 }
