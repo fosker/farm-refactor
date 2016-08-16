@@ -126,6 +126,8 @@ endif;
     ]);
     Modal::end();
 
+    echo $form->field($model, 'grayList')->checkbox();
+
     ?>
 
     <p></p>

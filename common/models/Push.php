@@ -16,6 +16,7 @@ use common\models\factory\Users as FactoryUsers;
  * @property integer $device_count
  * @property integer $views
  * @property integer $date_send
+ * @property integer $grayList
  */
 class Push extends \yii\db\ActiveRecord
 {
@@ -42,7 +43,7 @@ class Push extends \yii\db\ActiveRecord
         return [
             [['message', 'users'], 'required'],
             [['message', 'date_send'], 'string'],
-            [['device_count', 'views'], 'integer'],
+            [['device_count', 'views', 'grayList'], 'integer'],
             [['link'], 'string', 'max' => 255],
         ];
     }
@@ -63,7 +64,8 @@ class Push extends \yii\db\ActiveRecord
             'device_count' => 'Количество пользователей',
             'link' => 'Ссылка',
             'views' => 'Количество просмотров',
-            'date_send' => 'Дата отправки'
+            'date_send' => 'Дата отправки',
+            'grayList' => 'Отправлять серому списку'
         ];
     }
 

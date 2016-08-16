@@ -57,6 +57,13 @@ class Pharmacy extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields()
+    {
+        return [
+            'id', 'name', 'address', 'city_id', 'company_id'
+        ];
+    }
+
     public function getUserCount()
     {
         return Pharmacist::find()->joinWith('pharmacy')

@@ -118,6 +118,7 @@ class PushGroupsController extends Controller
             $educations = Yii::$app->request->post('education') ?  Yii::$app->request->post('education') : [];
             $factories = Yii::$app->request->post('factories') ?  Yii::$app->request->post('factories') : [];
             $pharmacies = Yii::$app->request->post('pharmacies') ?  Yii::$app->request->post('pharmacies') : [];
+
             $model->load(Yii::$app->request->post());
 
             if($factories && !$pharmacies && !$educations) {
@@ -126,6 +127,7 @@ class PushGroupsController extends Controller
                         ->select(User::tableName().'.id')
                         ->joinWith('agent')
                         ->andWhere(['in', 'factory_id', $factories])
+                        ->andFilterWhere(['or', ['inGray' => 0], ['inGray' => $model->grayList]])
                         ->asArray()
                         ->all(), 'id', 'id'
                 );
@@ -137,6 +139,7 @@ class PushGroupsController extends Controller
                         ->where(['in', 'city_id', $cities])
                         ->orWhere(['in', 'education_id', $educations])
                         ->orWhere(['in', 'pharmacy_id', $pharmacies])
+                        ->andFilterWhere(['or', ['inGray' => 0], ['inGray' => $model->grayList]])
                         ->join('LEFT JOIN', Pharmacy::tableName(),
                             'pharmacy_id = '.Pharmacy::tableName().'.id')
                         ->asArray()
