@@ -1,10 +1,8 @@
 <?php
 
 use common\models\User;
-use kartik\widgets\Growl;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use kartik\widgets\Select2;
 
 $this->title = 'Фармацевты';
 $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
@@ -12,39 +10,34 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
 <div class="pharmacist-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php echo $this->render('_search', [
+        'model' => $searchModel,
+        'names' => $names,
+        'pharmacies' => $pharmacies,
+        'cities' => $cities,
+        'companies' => $companies,
+    ]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'rowOptions' => function($model) {
             if($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
             };
-            if($model->user->inGray) {
+            if($model->user->inList == User::IN_GRAY) {
                 return ['style' => 'background: #C0C0C0'];
             }
         },
         'columns' => [
             [
                 'attribute' => 'id',
-                'contentOptions'=>['style'=>'width: 150px;'],
+                'contentOptions'=>['style'=>'width: 100px;'],
             ],
             [
                 'label' => 'Имя',
                 'attribute' => 'user.name',
-                'value'=>'user.name',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $names,
-                    'attribute'=>'user.name',
-                    'options' => [
-                        'placeholder' => 'Выберите имя ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '175px'
-                    ],
-                ]),
+                'contentOptions'=>['style'=>'width: 200px;'],
             ],
             [
                 'attribute' => 'pharmacy_id',
@@ -52,18 +45,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                     return Html::a($model->pharmacy->name, ['/pharmacy/view', 'id' => $model->pharmacy_id]);
                 },
                 'format'=>'html',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $pharmacies,
-                    'attribute'=>'pharmacy_id',
-                    'options' => [
-                        'placeholder' => 'Выберите аптеку ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ]),
+                'contentOptions'=>['style'=>'width: 200px;'],
             ],
             [
                 'label' => 'Компания',
@@ -72,51 +54,16 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                     return Html::a($model->pharmacy->company->title, ['/company/view', 'id' => $model->pharmacy->company_id]);
                 },
                 'format'=>'html',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $companies,
-                    'attribute'=>'pharmacy.company.id',
-                    'options' => [
-                        'placeholder' => 'Выберите компанию ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ]),
+                'contentOptions'=>['style'=>'width: 200px;'],
             ],
             [
                 'label' => 'Город',
                 'attribute' => 'pharmacy.city.id',
                 'value'=>'pharmacy.city.name',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $cities,
-                    'attribute'=>'pharmacy.city.id',
-                    'options' => [
-                        'placeholder' => 'Выберите город ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ]),
             ],
             [
-                'attribute' => 'user.email',
-                'value'=>'user.email',
-                'filter'=>Select2::widget([
-                    'model' => $searchModel,
-                    'data' => $emails,
-                    'attribute'=>'user.email',
-                    'options' => [
-                        'placeholder' => 'Выберите email ...',
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                        'width' => '150px'
-                    ],
-                ]),
+                'attribute' => 'user.points',
+                'value'=>'user.points',
             ],
             [
                 'attribute'=>'user.status',
@@ -130,20 +77,18 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                             return 'не прошёл верификацию';
                     }
                 },
-                'filter'=>[User::STATUS_ACTIVE=>'активен',User::STATUS_VERIFY=>'ожидает',User::STATUS_NOTE_VERIFIED=>'не прошёл верификацию'],
-                'contentOptions'=>['style'=>'width: 200px;'],
+                'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
-                'attribute'=>'user.inGray',
+                'attribute'=>'user.inList',
                 'value' => function($model) {
-                    return [1 => 'да', 0 => 'нет'][$model->user->inGray];
+                    return [0 => 'нет', 1 => 'в сером', 2 => 'в белом'][$model->user->inList];
                 },
-                'filter'=>[User::IN_GRAY=>'да',User::NOT_IN_GRAY=>'нет'],
                 'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {gray} {not-gray}',
+                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {gray} {white} {out-list} ',
                 'buttons'=>[
                     'accept' => function ($url, $model, $key) {
                         if($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
@@ -172,14 +117,19 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                         ]) : '';
                     },
                     'gray' => function ($url, $model, $key) {
-                        return !$model->user->inGray ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['gray', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_GRAY && $model->user->inList != User::IN_WHITE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['gray', 'id' => $model->id], [
                             'title'=>'Добавить в серый список',
                         ]) : '';
                     },
-                    'not-gray' => function ($url, $model, $key) {
-                        return $model->user->inGray ? Html::a('<i class="glyphicon glyphicon-list" style="color:gray"></i>', ['not-gray', 'id'=>$model->id], [
-                            'data-confirm' => 'Вы уверены, что хотите убрать пользователя из серого списка?',
-                            'class' => 'to_gray',
+                    'white' => function ($url, $model, $key) {
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
+                            'title'=>'Добавить в белый список',
+                        ]) : '';
+                    },
+                    'out-list' => function ($url, $model, $key) {
+                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['out-list', 'id'=>$model->id], [
+                            'data-confirm' => 'Вы уверены, что хотите убрать пользователя из списка?',
+                            'class' => 'list-comment',
                             'title'=>$model->user->comment,
                             'data-pjax'=>0,
                             'data-method'=>'post',

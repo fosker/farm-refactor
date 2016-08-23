@@ -71,7 +71,7 @@ class Push extends \yii\db\ActiveRecord
 
     public function fields() {
         return [
-            'id', 'message', 'link', 'date_send',
+            'id', 'message', 'link',
             'from' => function() {
                 if($this->companyPushes) {
                     return $this->companyPushes[0]->company->title;
@@ -89,6 +89,9 @@ class Push extends \yii\db\ActiveRecord
                 } elseif($this->factoryPushes) {
                     return FactoryUsers::findOne(['push_id' => $this->id, 'user_id' => Yii::$app->user->id])->isViewed;
                 }
+            },
+            'date_send'=>function($model) {
+                return strtotime($model->date_send);
             }
         ];
     }

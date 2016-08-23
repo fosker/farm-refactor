@@ -29,7 +29,7 @@ use common\models\Factory;
  * @property string $thumbnail
  * @property integer $status
  * @property integer $views_limit
- * @property integer $grayList
+ * @property integer $forList
  */
 class Survey extends ActiveRecord
 {
@@ -54,7 +54,7 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points', 'views_limit', 'grayList'], 'integer'],
+            [['points', 'views_limit', 'forList'], 'integer'],
             [['title', 'description', 'points', 'factory_id'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
@@ -67,7 +67,7 @@ class Survey extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile', 'views_limit', 'factory_id', 'greyList'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile', 'thumbFile', 'views_limit', 'factory_id', 'forList'];
         return $scenarios;
     }
 
@@ -83,7 +83,7 @@ class Survey extends ActiveRecord
             'thumbFile' => 'Превью',
             'views_limit' => 'Ограничение просмотров',
             'factory_id' => 'Фабрика Автор',
-            'grayList' => 'Показывать серому списку'
+            'forList' => 'Показывать списку',
         ];
     }
 
@@ -118,7 +118,8 @@ class Survey extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
-                ->andFilterWhere(['or', ['grayList' => 1], ['and', ['grayList'=>0], Yii::$app->user->identity->inGray. '=0']])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
@@ -137,6 +138,8 @@ class Survey extends ActiveRecord
                     Survey_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
                 ->andWhere([
                     'not exists',
                     View::findByCurrentUser()
@@ -159,6 +162,18 @@ class Survey extends ActiveRecord
     public function getFactory()
     {
         return $this->hasOne(Factory::className(),['id'=>'factory_id']);
+    }
+
+    public function getLists()
+    {
+        $values = array(
+            0 => 'нейтральному и белому',
+            1 => 'всем',
+            2 => 'только белому',
+        );
+        if(isset($values[$this->forList])) {
+            return $values[$this->forList];
+        }
     }
 
     public function getTypes()

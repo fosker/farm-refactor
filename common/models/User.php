@@ -46,7 +46,7 @@ use common\models\Mailer;
  * @property string $details
  * @property string $phone
  * @property integer $type_id
- * @property integer $inGray
+ * @property integer $inList
  * @property string $comment
  */
 class User extends ActiveRecord implements IdentityInterface , RateLimitInterface
@@ -62,7 +62,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const STATUS_NOTE_VERIFIED = 2;
 
     const IN_GRAY = 1;
-    const NOT_IN_GRAY = 0;
+    const IN_WHITE = 2;
+    const NOT_IN_LIST = 0;
 
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
@@ -73,7 +74,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             parent::scenarios(),
             [
                 'update' => ['name', 'email', 'phone'],
-                'gray' => ['inGray', 'comment'],
+                'gray' => ['inList', 'comment'],
+                'white' => ['inList', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'update-password' => ['old_password', 'password', 're_password'],
                 'reset-password' => ['reset_token', 'password', 're_password'],
@@ -117,7 +119,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             [['re_password'], 'compare', 'compareAttribute' => 'password'],
             [['password', 'old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
             [['details', 'comment'], 'string'],
-            ['inGray', 'integer'],
+            [['inList'], 'integer'],
             [['image'], 'file',
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
@@ -208,8 +210,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             'details'=>'Дополнительные сведения',
             'phone' => 'Мобильный телефон',
             'type_id' => 'Тип пользователя',
-            'inGray' => 'В сером списке',
-            'comment' => 'Комментарий'
+            'inList' => 'В списке',
+            'comment' => 'Комментарий',
         ];
     }
 
@@ -481,6 +483,18 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         }
     }
 
+    public function getLists()
+    {
+        $values = array(
+            self::IN_WHITE => 'в белом',
+            self::IN_GRAY => 'в сером',
+            self::NOT_IN_LIST => 'нет',
+        );
+        if(isset($values[$this->inList])) {
+            return $values[$this->inList];
+        }
+    }
+
     public function saveImage()
     {
         if($this->image) {
@@ -515,16 +529,24 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->save(false);
     }
 
-    public function toGray()
+    public function outList()
     {
-        $this->inGray = static::IN_GRAY;
+        $this->inList = static::NOT_IN_LIST;
+        $this->comment = "";
         $this->save(false);
     }
 
-    public function notGray()
+
+    public function toWhite()
     {
-        $this->inGray = static::NOT_IN_GRAY;
-        $this->comment = "";
+        $this->inList = static::IN_WHITE;
+        $this->save(false);
+    }
+
+
+    public function toGray()
+    {
+        $this->inList = static::IN_GRAY;
         $this->save(false);
     }
 

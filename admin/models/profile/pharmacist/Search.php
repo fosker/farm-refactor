@@ -17,14 +17,16 @@ class Search extends Pharmacist
     public function rules()
     {
         return [
-            [['user.status', 'id', 'education_id', 'pharmacy_id', 'position_id', 'pharmacy.city.id', 'pharmacy.company.id', 'user.inGray'], 'integer'],
-            [['user.name', 'user.email'], 'string'],
+            [['user.status', 'id', 'user.points', 'education_id', 'pharmacy_id', 'position_id',
+                'pharmacy.city.id', 'pharmacy.company.id', 'user.inList'], 'integer'],
+            [['user.name'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'pharmacy.city.id', 'pharmacy.company.id', 'user.inGray']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.points',
+            'pharmacy.city.id', 'pharmacy.company.id', 'user.inList']);
     }
 
     public function scenarios()
@@ -55,9 +57,9 @@ class Search extends Pharmacist
             'desc' => [User::tableName() . '.name' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['user.email'] = [
-            'asc' => [User::tableName() . '.email' => SORT_ASC],
-            'desc' => [User::tableName() . '.email' => SORT_DESC],
+        $dataProvider->sort->attributes['user.points'] = [
+            'asc' => [User::tableName() . '.points' => SORT_ASC],
+            'desc' => [User::tableName() . '.points' => SORT_DESC],
         ];
 
         $dataProvider->sort->attributes['pharmacy.city.id'] = [
@@ -70,9 +72,9 @@ class Search extends Pharmacist
             'desc' => [Pharmacy::tableName().'.company_id' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['user.inGray'] = [
-            'asc' => [User::tableName().'.inGray' => SORT_ASC],
-            'desc' => [User::tableName().'.inGray' => SORT_DESC],
+        $dataProvider->sort->attributes['user.inList'] = [
+            'asc' => [User::tableName().'.inList' => SORT_ASC],
+            'desc' => [User::tableName().'.inList' => SORT_DESC],
         ];
 
         $this->load($params);
@@ -87,13 +89,13 @@ class Search extends Pharmacist
             'education_id' => $this->education_id,
             'pharmacy_id' => $this->pharmacy_id,
             'position_id' => $this->position_id,
-            User::tableName().'.inGray' => $this->getAttribute('user.inGray'),
+            User::tableName().'.inList' => $this->getAttribute('user.inList'),
+            User::tableName().'.points' => $this->getAttribute('user.points'),
             Pharmacy::tableName().'.city_id' => $this->getAttribute('pharmacy.city.id'),
             Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id')
         ]);
 
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
-            ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);
 
         return $dataProvider;

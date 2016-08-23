@@ -137,7 +137,8 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
         ]
     ]); ?>
 
-    <?= $form->field($model, 'grayList')->checkbox() ?>
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому'])?>
+
 
     <!-- The Questions on the Survey -->
     <div class="row panel-body">

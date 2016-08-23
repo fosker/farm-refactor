@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\Html;
 use yii\imagine\Image;
 use yii\helpers\ArrayHelper;
+use yii\db\Query;
 
 use common\models\banner\Pharmacy as Banner_Pharmacy;
 use common\models\banner\Education as Banner_Education;
@@ -107,8 +108,11 @@ class Banner extends ActiveRecord
         $slider = clone $base;
 
         $slider->andWhere(['position'=>1]);
-        $banners->andWhere('position!=1')->groupBy(['position'])->orderBy(['position'=>SORT_ASC]);
-        return $slider->union($banners);
+        $banners->andWhere('position!=1')->groupBy(['position']);
+
+        return Banner::find()
+            ->from(['u' => $slider->union($banners)])
+            ->orderBy('position ASC, RAND()');
     }
 
     public static function getOneForCurrentUser($id)

@@ -27,16 +27,30 @@ $this->title = 'Фармацевт: '.$model->name;
                 'method' => 'post',
             ],
         ]); ?>
-        <?= $model->inGray ? Html::a('Убрать из серого списка', ['not-gray', 'id' => $model->id], [
-            'class' => 'btn btn-success',
-            'data' => [
-                'confirm' => 'Вы уверены, что хотите убрать пользователя из серого списка?',
-                'method' => 'post',
-            ],
-        ]) :
-            Html::a('В серый список', ['gray', 'id' => $model->id], [
+
+        <?php
+
+        if($model->inList == User::IN_GRAY || $model->inList == User::IN_WHITE) {
+            echo Html::a('Убрать из списка', ['out-list', 'id' => $model->id], [
+                'class' => 'btn btn-success',
+                'data' => [
+                    'confirm' => 'Вы уверены, что хотите убрать пользователя из списка?',
+                    'method' => 'post',
+                ]
+            ]);
+        }
+        if($model->inList != User::IN_GRAY && $model->inList != User::IN_WHITE) {
+            echo Html::a('В серый список', ['gray', 'id' => $model->id], [
                 'class' => 'btn btn-warning',
-            ]); ?>
+            ]);
+        }
+        if($model->inList != User::IN_GRAY && $model->inList != User::IN_WHITE) {
+            echo Html::a('В белый список', ['white', 'id' => $model->id], [
+                'class' => 'btn btn-warning',
+            ]);
+        }
+        ?>
+
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], [
             'class' => 'btn btn-info',
         ]) ?>
@@ -92,11 +106,11 @@ $this->title = 'Фармацевт: '.$model->name;
             'pharmacist.mail_address',
             [
                 'attribute'=>'status',
-                'value'=> $model->getStatuses()
+                'value'=> $model->statuses
             ],
             [
-                'attribute'=>'inGray',
-                'value'=> $model->inGray  ? 'да'." ($model->comment)" : 'нет',
+                'attribute'=>'inList',
+                'value'=> $model->lists . $model->comment ? $model->comment : ''
             ],
             'date_reg:datetime',
             'points',

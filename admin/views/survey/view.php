@@ -80,6 +80,10 @@ $this->title = $model->title;
             'views_limit',
             'points',
             [
+                'attribute'=>'forList',
+                'value'=>$model->lists,
+            ],
+            [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],

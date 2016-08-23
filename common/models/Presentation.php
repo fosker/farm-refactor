@@ -32,7 +32,7 @@ use common\models\profile\Type;
  * @property integer $home
  * @property integer $home_priority
  * @property integer $views_limit
- * @property integer $grayList
+ * @property integer $forList
  */
 class Presentation extends ActiveRecord
 {
@@ -60,8 +60,8 @@ class Presentation extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'points', 'factory_id', 'grayList'], 'required'],
-            [['points', 'home_priority', 'views_limit'], 'integer'],
+            [['title', 'description', 'points', 'factory_id'], 'required'],
+            [['points', 'home_priority', 'views_limit', 'forList'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -69,7 +69,7 @@ class Presentation extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id', 'grayList'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id', 'forList'];
         return $scenarios;
     }
 
@@ -89,7 +89,7 @@ class Presentation extends ActiveRecord
             'home_priority' => 'Приоритет',
             'views_limit' => 'Ограничение просмотров',
             'factory_id' => 'Фабрика Автор',
-            'grayList' => 'Показывать серому списку'
+            'forList' => 'Показывать списку',
         ];
     }
 
@@ -120,7 +120,8 @@ class Presentation extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
-                ->andFilterWhere(['or', ['grayList' => 1], ['and', ['grayList'=>0], Yii::$app->user->identity->inGray. '=0']])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
@@ -134,9 +135,23 @@ class Presentation extends ActiveRecord
                     Presentation_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->orderBy(['id'=>SORT_DESC])
                 ->groupBy(static::tableName().'.id');
+        }
+    }
+
+    public function getLists()
+    {
+        $values = array(
+            0 => 'нейтральному и белому',
+            1 => 'всем',
+            2 => 'только белому',
+        );
+        if(isset($values[$this->forList])) {
+            return $values[$this->forList];
         }
     }
 

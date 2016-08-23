@@ -82,6 +82,14 @@ $this->title = $model->title;
             ],
             'description:html',
             'points',
+            [
+                'attribute'=>'grayList',
+                'value'=>$model->grayList ? 'да' : 'нет',
+            ],
+            [
+                'attribute'=>'whiteList',
+                'value'=>$model->whiteList ? 'да' : 'нет',
+            ],
             'views_limit',
             'home_priority',
             [
@@ -89,12 +97,12 @@ $this->title = $model->title;
                 'value'=>$model::getHomeStatusList()[$model->home],
             ],
             [
-                'attribute'=>'status',
-                'value'=>$model::getStatusList()[$model->status],
+                'attribute'=>'forList',
+                'value'=>$model->lists,
             ],
             [
-                'attribute'=>'grayList',
-                'value'=>[1 => 'да', 0 => 'нет'][$model->grayList],
+                'attribute'=>'status',
+                'value'=>$model::getStatusList()[$model->status],
             ],
         ],
     ]) ?>

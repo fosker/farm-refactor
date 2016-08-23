@@ -136,7 +136,7 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
         ]
     ]); ?>
 
-    <?= $form->field($model, 'grayList')->checkbox() ?>
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому'])?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

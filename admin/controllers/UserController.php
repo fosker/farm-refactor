@@ -40,7 +40,7 @@ class UserController extends Controller
                     'accept' => ['post'],
                     'ban' => ['post'],
                     'not-verify' => ['post'],
-                    'not-gray' => ['post']
+                    'out-list' => ['post'],
                 ],
             ],
             'access' => [
@@ -83,7 +83,9 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'name', 'name'),
-            'pharmacies' => ArrayHelper::map(Pharmacy::find()->asArray()->all(), 'id', 'name'),
+            'pharmacies' => ArrayHelper::map(Pharmacy::find()
+                ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
+                ->asArray()->all(), 'id','name'),
             'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
             'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id', 'title'),
             'emails' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'email', 'email'),
@@ -244,10 +246,31 @@ class UserController extends Controller
         }
     }
 
-    public function actionNotGray($id)
+    public function actionWhite($id)
     {
         $model = $this->findModel($id);
-        $model->notGray();
+        $model->scenario = 'white';
+        if($model->load(Yii::$app->request->post())) {
+            $model->toWhite();
+            switch($model->type_id) {
+                case 1:
+                    return $this->redirect(['pharmacists']);
+                case 2:
+                    return $this->redirect(['agents']);
+            }
+        } else {
+            return $this->render('white', [
+                'model' => $model,
+                'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
+            ]);
+        }
+    }
+
+
+    public function actionOutList($id)
+    {
+        $model = $this->findModel($id);
+        $model->outList();
         switch($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
@@ -255,6 +278,7 @@ class UserController extends Controller
                 return $this->redirect(['agents']);
         }
     }
+
 
     public function actionBan($id)
     {

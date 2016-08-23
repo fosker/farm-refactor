@@ -39948,3 +39948,1734 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-08-17 13:41:34 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'Select2' not found' in C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php:36
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-17 13:41:33 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9923'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471430492.867
+    'REQUEST_TIME' => 1471430492
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-17 13:47:50 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: backend\models\profile\pharmacist\Search::email' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('email')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(2068): yii\db\BaseActiveRecord->__get('email')
+#2 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-krajee-base\InputWidget.php(172): yii\helpers\BaseHtml::getAttributeValue(Object(backend\models\profile\pharmacist\Search), 'email')
+#3 C:\OpenServer\domains\farm.loc\vendor\kartik-v\yii2-krajee-base\InputWidget.php(153): kartik\base\InputWidget->initInputWidget()
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(107): kartik\base\InputWidget->init()
+#5 [internal function]: yii\base\Object->__construct(Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('kartik\\widgets\\...', Array, Array)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('kartik\\widgets\\...', Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(97): yii\BaseYii::createObject(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(673): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\_search.php(56): yii\widgets\ActiveField->widget('kartik\\widgets\\...', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#15 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(22): yii\base\View->render('_search', Array)
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#21 [internal function]: backend\controllers\UserController->actionPharmacists()
+#22 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#28 {main}
+2016-08-17 13:47:50 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9961'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471430870.644
+    'REQUEST_TIME' => 1471430870
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-17 13:50:16 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: kartik\widgets\Select2::label' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:197
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(521): yii\base\Component->__set('label', '\xD0\x9A\xD0\xBE\xD0\xBC\xD0\xBF\xD0\xB0\xD0\xBD\xD0\xB8\xD1...')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(kartik\widgets\Select2), Array)
+#2 [internal function]: yii\base\Object->__construct(Array)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\di\Container.php(153): yii\di\Container->build('kartik\\widgets\\...', Array, Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('kartik\\widgets\\...', Array, Array)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(97): yii\BaseYii::createObject(Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(673): yii\base\Widget::widget(Array)
+#8 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\_search.php(41): yii\widgets\ActiveField->widget('kartik\\widgets\\...', Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#12 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(22): yii\base\View->render('_search', Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#17 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#18 [internal function]: backend\controllers\UserController->actionPharmacists()
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#22 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#24 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#25 {main}
+2016-08-17 13:50:15 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '9980'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471431015.858
+    'REQUEST_TIME' => 1471431015
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-20 11:28:09 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')', expecting ']'' in C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php:131
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-20 11:28:09 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '26761'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471681689.745
+    'REQUEST_TIME' => 1471681689
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-20 11:29:19 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: backend\models\profile\pharmacist\Search::user.points' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('user.points')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(2068): yii\db\BaseActiveRecord->__get('user.points')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1243): yii\helpers\BaseHtml::getAttributeValue(Object(backend\models\profile\pharmacist\Search), 'user.points')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1292): yii\helpers\BaseHtml::activeInput('text', Object(backend\models\profile\pharmacist\Search), 'user.points', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(362): yii\helpers\BaseHtml::activeTextInput(Object(backend\models\profile\pharmacist\Search), 'user.points', Array)
+#5 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\_search.php(50): yii\widgets\ActiveField->textInput()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#9 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(20): yii\base\View->render('_search', Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#14 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#15 [internal function]: backend\controllers\UserController->actionPharmacists()
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#22 {main}
+2016-08-20 11:29:19 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+    'Search' => [
+        'id' => ''
+        'user.name' => ''
+        'pharmacy_id' => ''
+        'pharmacy.company.id' => ''
+        'pharmacy.city.id' => ''
+        'user.email' => ''
+        'user.status' => '1'
+        'user.inGray' => '0'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '26796'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bpharmacy_id%5D=&Search%5Bpharmacy.company.id%5D=&Search%5Bpharmacy.city.id%5D=&Search%5Buser.email%5D=&Search%5Buser.status%5D=1&Search%5Buser.inGray%5D=0'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bpharmacy_id%5D=&Search%5Bpharmacy.company.id%5D=&Search%5Bpharmacy.city.id%5D=&Search%5Buser.email%5D=&Search%5Buser.status%5D=1&Search%5Buser.inGray%5D=0'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471681759.024
+    'REQUEST_TIME' => 1471681759
+    'argv' => [
+        0 => 'r=user%2Fpharmacists&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bpharmacy_id%5D=&Search%5Bpharmacy.company.id%5D=&Search%5Bpharmacy.city.id%5D=&Search%5Buser.email%5D=&Search%5Buser.status%5D=1&Search%5Buser.inGray%5D=0'
+    ]
+    'argc' => 1
+]
+2016-08-21 14:07:43 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::comment' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('comment')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(123): yii\db\BaseActiveRecord->__get('comment')
+#2 [internal function]: yii\base\View->{closure}('/admin/index.ph...', Object(common\models\user\Pharmacist), 350)
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\ActionColumn.php(209): call_user_func(Object(Closure), '/admin/index.ph...', Object(common\models\user\Pharmacist), 350)
+#4 [internal function]: yii\grid\ActionColumn->yii\grid\{closure}(Array)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\ActionColumn.php(213): preg_replace_callback('/\\{([\\w\\-\\/]+)\\...', Object(Closure), '{ban} {accept} ...')
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\ActionColumn->renderDataCellContent(Object(common\models\user\Pharmacist), 350, 9)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(504): yii\grid\Column->renderDataCell(Object(common\models\user\Pharmacist), 350, 9)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Pharmacist), 350, 9)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#13 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#17 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(131): yii\base\Widget::widget(Array)
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#22 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(93): yii\base\Controller->render('pharmacists/ind...', Array)
+#23 [internal function]: backend\controllers\UserController->actionPharmacists()
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#28 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#29 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#30 {main}
+2016-08-21 14:07:41 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1566'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471777661.957
+    'REQUEST_TIME' => 1471777661
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-21 14:27:36 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::comment' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('comment')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_2.php(70): yii\db\BaseActiveRecord->__get('comment')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_2', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(101): yii\base\Controller->render('view_2', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('356')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 14:27:36 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '356'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1806'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=356'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=356'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471778856.613
+    'REQUEST_TIME' => 1471778856
+    'argv' => [
+        0 => 'r=user%2Fview&id=356'
+    ]
+    'argc' => 1
+]
+2016-08-21 14:29:45 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::comment' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('comment')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_1.php(111): yii\db\BaseActiveRecord->__get('comment')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_1', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(101): yii\base\Controller->render('view_1', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('360')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 14:29:45 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '360'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fpharmacists'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1908'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=360'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=360'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471778985.596
+    'REQUEST_TIME' => 1471778985
+    'argv' => [
+        0 => 'r=user%2Fview&id=360'
+    ]
+    'argc' => 1
+]
+2016-08-21 14:39:34 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::comment' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('comment')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_2.php(103): yii\db\BaseActiveRecord->__get('comment')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_2', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(101): yii\base\Controller->render('view_2', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('356')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 14:39:34 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '356'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1989'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=356'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=356'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471779574.247
+    'REQUEST_TIME' => 1471779574
+    'argv' => [
+        0 => 'r=user%2Fview&id=356'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:41:03 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\agents\index.php(71): yii\db\BaseActiveRecord->__get('inGray')
+#2 [internal function]: yii\base\View->{closure}(Object(common\models\user\Agent), 356, 0, Object(yii\grid\DataColumn))
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(211): call_user_func(Object(Closure), Object(common\models\user\Agent), 356, 0, Object(yii\grid\DataColumn))
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(225): yii\grid\DataColumn->getDataCellValue(Object(common\models\user\Agent), 356, 0)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(common\models\user\Agent), 356, 0)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(504): yii\grid\Column->renderDataCell(Object(common\models\user\Agent), 356, 0)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Agent), 356, 0)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\agents\index.php(132): yii\base\Widget::widget(Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('agents/index', Array, Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(74): yii\base\Controller->render('agents/index', Array)
+#22 [internal function]: backend\controllers\UserController->actionAgents()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('agents', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/agents', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#29 {main}
+2016-08-21 15:41:01 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/agents'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=16'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1415'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fagents'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fagents'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471783261.922
+    'REQUEST_TIME' => 1471783261
+    'argv' => [
+        0 => 'r=user%2Fagents'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:41:42 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\agents\index.php(71): yii\db\BaseActiveRecord->__get('inGray')
+#2 [internal function]: yii\base\View->{closure}(Object(common\models\user\Agent), 356, 0, Object(yii\grid\DataColumn))
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(211): call_user_func(Object(Closure), Object(common\models\user\Agent), 356, 0, Object(yii\grid\DataColumn))
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(225): yii\grid\DataColumn->getDataCellValue(Object(common\models\user\Agent), 356, 0)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(common\models\user\Agent), 356, 0)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(504): yii\grid\Column->renderDataCell(Object(common\models\user\Agent), 356, 0)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Agent), 356, 0)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\agents\index.php(126): yii\base\Widget::widget(Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('agents/index', Array, Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(74): yii\base\Controller->render('agents/index', Array)
+#22 [internal function]: backend\controllers\UserController->actionAgents()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('agents', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/agents', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#29 {main}
+2016-08-21 15:41:42 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/agents'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fview&id=16'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1425'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fagents'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fagents'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471783302.154
+    'REQUEST_TIME' => 1471783302
+    'argv' => [
+        0 => 'r=user%2Fagents'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:44:40 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGrayComment' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGrayComment')
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(2068): yii\db\BaseActiveRecord->__get('inGrayComment')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1384): yii\helpers\BaseHtml::getAttributeValue(Object(common\models\User), 'inGrayComment')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(453): yii\helpers\BaseHtml::activeTextarea(Object(common\models\User), 'inGrayComment', Array)
+#4 C:\OpenServer\domains\farm.loc\admin\views\user\gray.php(26): yii\widgets\ActiveField->textarea()
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('gray', Array, Object(backend\controllers\UserController))
+#9 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(245): yii\base\Controller->render('gray', Array)
+#10 [internal function]: backend\controllers\UserController->actionGray('265')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('gray', Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/gray', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#17 {main}
+2016-08-21 15:44:39 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/gray'
+    'id' => '265'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1457'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fgray&id=265'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fgray&id=265'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471783479.815
+    'REQUEST_TIME' => 1471783479
+    'argv' => [
+        0 => 'r=user%2Fgray&id=265'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:50:03 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_2.php(34): yii\db\BaseActiveRecord->__get('inGray')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_2', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(100): yii\base\Controller->render('view_2', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('354')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 15:50:03 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '354'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1539'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=354'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=354'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471783803.434
+    'REQUEST_TIME' => 1471783803
+    'argv' => [
+        0 => 'r=user%2Fview&id=354'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:51:43 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_2.php(34): yii\db\BaseActiveRecord->__get('inGray')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_2', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(100): yii\base\Controller->render('view_2', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('354')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 15:51:43 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '354'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1543'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=354'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=354'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471783903.544
+    'REQUEST_TIME' => 1471783903
+    'argv' => [
+        0 => 'r=user%2Fview&id=354'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:54:30 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\view_2.php(34): yii\db\BaseActiveRecord->__get('inGray')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view_2', Array, Object(backend\controllers\UserController))
+#6 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(100): yii\base\Controller->render('view_2', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('354')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/view', Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2016-08-21 15:54:30 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/view'
+    'id' => '354'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1551'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fview&id=354'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fview&id=354'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471784070.362
+    'REQUEST_TIME' => 1471784070
+    'argv' => [
+        0 => 'r=user%2Fview&id=354'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:54:40 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(81): yii\db\BaseActiveRecord->__get('inGray')
+#2 [internal function]: yii\base\View->{closure}(Object(common\models\user\Pharmacist), 361, 0, Object(yii\grid\DataColumn))
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(211): call_user_func(Object(Closure), Object(common\models\user\Pharmacist), 361, 0, Object(yii\grid\DataColumn))
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(225): yii\grid\DataColumn->getDataCellValue(Object(common\models\user\Pharmacist), 361, 0)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(common\models\user\Pharmacist), 361, 0)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(504): yii\grid\Column->renderDataCell(Object(common\models\user\Pharmacist), 361, 0)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Pharmacist), 361, 0)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(151): yii\base\Widget::widget(Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#29 {main}
+2016-08-21 15:54:40 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1552'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471784080.233
+    'REQUEST_TIME' => 1471784080
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:55:33 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(81): yii\db\BaseActiveRecord->__get('inGray')
+#2 [internal function]: yii\base\View->{closure}(Object(common\models\user\Pharmacist), 361, 0, Object(yii\grid\DataColumn))
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(211): call_user_func(Object(Closure), Object(common\models\user\Pharmacist), 361, 0, Object(yii\grid\DataColumn))
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\DataColumn.php(225): yii\grid\DataColumn->getDataCellValue(Object(common\models\user\Pharmacist), 361, 0)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(common\models\user\Pharmacist), 361, 0)
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(504): yii\grid\Column->renderDataCell(Object(common\models\user\Pharmacist), 361, 0)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Pharmacist), 361, 0)
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#9 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#16 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(142): yii\base\Widget::widget(Array)
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#21 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#22 [internal function]: backend\controllers\UserController->actionPharmacists()
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#26 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#27 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#29 {main}
+2016-08-21 15:55:33 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1573'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471784133.568
+    'REQUEST_TIME' => 1471784133
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:55:42 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::inGray' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inGray')
+#1 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(28): yii\db\BaseActiveRecord->__get('inGray')
+#2 [internal function]: yii\base\View->{closure}(Object(common\models\user\Pharmacist), 359, 2, Object(yii\grid\GridView))
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(507): call_user_func(Object(Closure), Object(common\models\user\Pharmacist), 359, 2, Object(yii\grid\GridView))
+#4 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(473): yii\grid\GridView->renderTableRow(Object(common\models\user\Pharmacist), 359, 2)
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(344): yii\grid\GridView->renderTableBody()
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(151): yii\grid\GridView->renderItems()
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(313): yii\widgets\BaseListView->renderSection('{items}')
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#9 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#10 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\grid\GridView.php(288): yii\widgets\BaseListView->run()
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Widget.php(98): yii\grid\GridView->run()
+#13 C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php(136): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#16 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\UserController))
+#17 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('pharmacists/ind...', Array, Object(backend\controllers\UserController))
+#18 C:\OpenServer\domains\farm.loc\admin\controllers\UserController.php(92): yii\base\Controller->render('pharmacists/ind...', Array)
+#19 [internal function]: backend\controllers\UserController->actionPharmacists()
+#20 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('pharmacists', Array)
+#23 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/pharmacist...', Array)
+#24 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#26 {main}
+2016-08-21 15:55:42 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&Search%5Bid%5D=&Search%5Buser.name%5D=&Search%5Bfactory_id%5D=&Search%5Buser.points%5D=&Search%5Buser.status%5D=&Search%5Buser.inList%5D=0'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1575'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471784142.624
+    'REQUEST_TIME' => 1471784142
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-21 15:58:18 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: user/not-white' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('not-white', Array)
+#1 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/not-white', Array)
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Страница не найдена.' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#2 {main}
+2016-08-21 15:58:18 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'user/not-white'
+    'id' => '356'
+]
+
+$_POST = [
+    '_csrf' => 'TDh1NGk5LW4cVz4EDFwZJyt5Bwc5YR8ENVEXTjltR1cKcSd3HX9uHg=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '66'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fview&id=356'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1602'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=user%2Fnot-white&id=356'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fnot-white&id=356'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471784298.543
+    'REQUEST_TIME' => 1471784298
+    'argv' => [
+        0 => 'r=user%2Fnot-white&id=356'
+    ]
+    'argc' => 1
+]
+2016-08-21 18:31:49 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'ActiveForm' not found' in C:\OpenServer\domains\farm.loc\admin\views\user\pharmacists\index.php:25
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-21 18:31:49 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&sort=-factory_id'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1851'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471793509.232
+    'REQUEST_TIME' => 1471793509
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-21 18:32:02 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function formName() on null' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php:2113
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-21 18:32:02 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'user/pharmacists'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=user%2Fagents&sort=-factory_id'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '1853'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=user%2Fpharmacists'
+    'REQUEST_URI' => '/admin/index.php?r=user%2Fpharmacists'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471793522.398
+    'REQUEST_TIME' => 1471793522
+    'argv' => [
+        0 => 'r=user%2Fpharmacists'
+    ]
+    'argc' => 1
+]
+2016-08-23 11:54:00 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\Survey::inList' in C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('inList')
+#1 C:\OpenServer\domains\farm.loc\common\models\Survey.php(172): yii\db\BaseActiveRecord->__get('inList')
+#2 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Component.php(130): common\models\Survey->getLists()
+#3 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(252): yii\base\Component->__get('lists')
+#4 C:\OpenServer\domains\farm.loc\admin\views\survey\view.php(84): yii\db\BaseActiveRecord->__get('lists')
+#5 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(325): require('C:\\OpenServer\\d...')
+#6 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#7 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\SurveyController))
+#8 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\SurveyController))
+#9 C:\OpenServer\domains\farm.loc\admin\controllers\SurveyController.php(78): yii\base\Controller->render('view', Array)
+#10 [internal function]: backend\controllers\SurveyController->actionView('16')
+#11 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#12 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#13 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#14 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('survey/view', Array)
+#15 C:\OpenServer\domains\farm.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 C:\OpenServer\domains\farm.loc\public_html\admin\index.php(18): yii\base\Application->run()
+#17 {main}
+2016-08-23 11:53:59 [127.0.0.1][-][2fatdejgnqitu7dprcbh383414][info][application] $_GET = [
+    'r' => 'survey/view'
+    'id' => '16'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp\";}'
+    'PHPSESSID' => '2fatdejgnqitu7dprcbh383414'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm.loc/admin/index.php?r=survey%2Fupdate&id=16'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e298da770f1fcc4a4f01b23ff9ec78a95cfac627cc2e9ce37713057ec3e66a04a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PoK0ee4IgAr3PX2jyibzPTj9FIRCtFCp%22%3B%7D; PHPSESSID=2fatdejgnqitu7dprcbh383414'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.6\\ext;c:\\openserver\\modules\\php\\PHP-5.6\\pear;c:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.6;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'farm.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '7521'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=survey%2Fview&id=16'
+    'REQUEST_URI' => '/admin/index.php?r=survey%2Fview&id=16'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1471942439.835
+    'REQUEST_TIME' => 1471942439
+    'argv' => [
+        0 => 'r=survey%2Fview&id=16'
+    ]
+    'argc' => 1
+]
