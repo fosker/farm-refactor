@@ -27,6 +27,8 @@ use common\models\profile\PharmacistUpdateRequest;
  * @property integer $company_id
  * @property integer $city_id
  * @property integer $phone
+ * @property integer $date_visit
+ * @property integer $comment
  */
 
 class Pharmacy extends \yii\db\ActiveRecord
@@ -41,7 +43,7 @@ class Pharmacy extends \yii\db\ActiveRecord
     {
         return [
             [['company_id', 'city_id', 'name'], 'required'],
-            [['address', 'phone'], 'string']
+            [['address', 'phone', 'date_visit', 'comment'], 'string']
         ];
     }
 
@@ -53,7 +55,9 @@ class Pharmacy extends \yii\db\ActiveRecord
             'address' => 'Адрес',
             'company_id' => 'Компания',
             'city_id' => 'Город',
-            'phone' => 'Телефон'
+            'phone' => 'Телефон',
+            'date_visit' => 'Дата посещения',
+            'comment' => 'Комментарий'
         ];
     }
 

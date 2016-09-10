@@ -47,7 +47,9 @@ use kartik\widgets\Select2;
         ],
     ])->label('Город'); ?>
 
-    <?= $form->field($model, 'user.points')->textInput()?>
+    <?= $form->field($model, 'points_from')->textInput()->label('Количество бонусов (от)')?>
+
+    <?= $form->field($model, 'points_to')->textInput()->label('Количество бонусов (до)')?>
 
     <?= $form->field($model, 'user.status')->dropDownList([1 => 'активен', 0 => 'ожидает', 2 => 'не прошёл верификацию'],
         ['prompt' => 'Выберите статус']

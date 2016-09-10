@@ -38,6 +38,8 @@ $this->title = $model->name;
                 'value'=>Html::a($model->city->name,['/city/view','id'=>$model->city_id]),
                 'format'=>'html',
             ],
+            'date_visit:date',
+            'comment'
         ],
     ]) ?>
 

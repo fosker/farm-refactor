@@ -99,7 +99,7 @@ class PresentController extends Controller
         if (($model = Present::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница не найдена. ');
+            throw new NotFoundHttpException('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. ');
         }
     }
 

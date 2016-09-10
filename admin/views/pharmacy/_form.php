@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
+use kartik\widgets\DatePicker;
+
 ?>
 
 <div class="pharmacy-form">
@@ -23,6 +25,7 @@ use kartik\widgets\Select2;
         ],
     ]); ?>
 
+
     <?= $form->field($model, 'city_id')->widget(Select2::classname(), [
         'data' => $cities,
         'options' => ['placeholder' => 'Выберите город ...'],
@@ -30,6 +33,16 @@ use kartik\widgets\Select2;
             'allowClear' => true
         ],
     ]); ?>
+
+    <?= $form->field($model, 'date_visit')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату посещения ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ]); ?>
+
+    <?= $form->field($model, 'comment')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

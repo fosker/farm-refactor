@@ -16,6 +16,7 @@ $config =  [
             'class' => 'yii\i18n\Formatter',
             'locale' => 'ru_RU',
             'datetimeFormat' => 'php: d.m.Y, H:i:s',
+            'dateFormat' => 'php: d.m.Y',
             'defaultTimeZone' => 'Europe/Minsk'
         ],
         'admin' => [
@@ -43,7 +44,7 @@ $config =  [
         'apns' => [
             'class' => 'bryglen\apnsgcm\Apns',
             'environment' => \bryglen\apnsgcm\Apns::ENVIRONMENT_PRODUCTION,
-            'pemFile' => dirname(__DIR__).'/extensions/apns-dev-cert.pem',
+            'pemFile' => dirname(__DIR__).'/extensions/apns-prod-cert.pem',
             // 'retryTimes' => 3,
             'options' => [
                 'sendRetryTimes' => 5

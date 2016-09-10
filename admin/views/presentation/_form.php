@@ -11,7 +11,7 @@ use common\models\profile\Education;
 use common\models\profile\Type;
 use common\models\Company;
 use yii\bootstrap\Modal;
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="presentation-form">

@@ -25,31 +25,11 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <div class="zagluska">
-        <?= Html::img(Yii::getAlias('@images/zaglush.png'), ['class' => 'img-responsive']);?>
-
-        <?php if(!Yii::$app->user->isGuest) {
-            echo "<div class='col-md-3'>";
-            $this->beginContent('../web/views/layouts/sidebar.php');
-            $this->endContent();
-            echo "</div>";
-        }?>
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?php if(!Yii::$app->user->isGuest) {
-            echo "<div class='col-md-9'>";
-            echo $content;
-            echo "</div>";
-        } else
-            echo $content;?>
-    </div>
+    <?= $content ?>
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left"><?=Html::a("Пользовательское соглашение", ['/terms'])?></p>
-    </div>
+
 </footer>
 
 <?php $this->endBody() ?>

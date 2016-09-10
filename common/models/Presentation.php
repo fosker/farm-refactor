@@ -122,7 +122,6 @@ class Presentation extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
-                ->andWhere(['!=', 'views_limit', '0'])
                 ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
@@ -158,6 +157,7 @@ class Presentation extends ActiveRecord
     public static function getNotViewedForCurrentUser()
     {
         return static::getForCurrentUser()
+            ->andWhere(['!=', 'views_limit', '0'])
             ->andWhere([
                 'not exists',
                 View::findByCurrentUser()

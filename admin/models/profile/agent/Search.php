@@ -14,14 +14,14 @@ class Search extends Agent
     public function rules()
     {
         return [
-            [['user.status', 'id', 'factory_id', 'user.inList', 'user.points'], 'integer'],
+            [['user.status', 'id', 'factory_id', 'user.inList', 'user.points', 'points_from', 'points_to'], 'integer'],
             [['user.name'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.points','user.inList']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.points','user.inList', 'points_from', 'points_to']);
     }
 
     public function scenarios()
@@ -72,10 +72,11 @@ class Search extends Agent
             Agent::tableName().'.id' => $this->id,
             'factory_id' => $this->factory_id,
             User::tableName().'.inList' => $this->getAttribute('user.inList'),
-            User::tableName().'.points' => $this->getAttribute('user.points'),
         ]);
 
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
+            ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
+            ->andFilterWhere(['<=', 'points', $this->getAttribute('points_to')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);
 
         return $dataProvider;

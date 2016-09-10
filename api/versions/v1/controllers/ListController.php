@@ -22,37 +22,55 @@ class ListController extends Controller
 
     public function actionRegions()
     {
-        return Region::find()->asArray()->all();
-    }
-
-    public function actionCities($region,$search=null)
-    {
-        return City::find()
-            ->select(['id','name'])
-            ->where(['region_id'=>$region])
-            ->andFilterWhere(['like', 'name', $search])
-            ->orderBy("(CASE WHEN name LIKE '$search' THEN 1 WHEN name LIKE '$search%' THEN 2 ELSE 3 END)")
-            ->asArray()
-            ->all();
-    }
-
-    public function actionCompanies($search)
-    {
         return new ActiveDataProvider([
-            'query' => Company::find()
-                ->andFilterWhere(['like','title',$search])
+            'query' => Region::find(),
+            'pagination' => [
+                'pageSize' => 10000,
+            ]
         ]);
     }
 
-    public function actionPharmacies($city, $company, $search=null)
+    public function actionCities($region)
     {
-        return Pharmacy::find()
-            ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
-            ->andFilterWhere(['city_id'=>$city])
-            ->andFilterWhere(['company_id'=>$company])
-            ->andFilterWhere(['or', ['like','name',$search],['like','address',$search]])
-            ->asArray()
-            ->all();
+        $search = Yii::$app->request->get('search');
+        return new ActiveDataProvider([
+            'query' => City::find()
+                ->select(['id','name'])
+                ->where(['region_id'=>$region])
+                ->andFilterWhere(['like', 'name', $search])
+                ->orderBy("(CASE WHEN name LIKE '$search' THEN 1 WHEN name LIKE '$search%' THEN 2 ELSE 3 END)"),
+            'pagination' => [
+                'pageSize' => 10000,
+            ]
+        ]);
+    }
+
+    public function actionCompanies()
+    {
+        $search = Yii::$app->request->get('search');
+        return new ActiveDataProvider([
+            'query' => Company::find()
+                ->andFilterWhere(['like','title',$search]),
+            'pagination' => [
+                'pageSize' => 10000,
+            ]
+        ]);
+    }
+
+    public function actionPharmacies($city, $company)
+    {
+        $search = Yii::$app->request->get('search');
+        return new ActiveDataProvider([
+            'query' => Pharmacy::find()
+                ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
+                ->andFilterWhere(['city_id'=>$city])
+                ->andFilterWhere(['company_id'=>$company])
+                ->andFilterWhere(['or', ['like','name',$search],['like','address',$search]]),
+            'pagination' => [
+                'pageSize' => 10000,
+            ]
+        ]);
+
     }
 
     public function actionEducation()

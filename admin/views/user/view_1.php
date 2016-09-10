@@ -110,7 +110,7 @@ $this->title = 'Фармацевт: '.$model->name;
             ],
             [
                 'attribute'=>'inList',
-                'value'=> $model->lists . $model->comment ? $model->comment : ''
+                'value'=> $model->comment ? $model->lists . " ($model->comment)" : $model->lists
             ],
             'date_reg:datetime',
             'points',

@@ -14,13 +14,18 @@ class Search extends Pharmacy
     {
         return [
             [['id', 'city_id', 'company_id'], 'integer'],
-            [['address', 'name'], 'string']
+            [['address', 'name', 'date_from', 'date_to'], 'string']
         ];
     }
 
     public function scenarios()
     {
         return Model::scenarios();
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(),['date_from', 'date_to']);
     }
 
     public function search($params)
@@ -50,6 +55,8 @@ class Search extends Pharmacy
         ]);
 
         $query->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['>=', 'date_visit', $this->getAttribute('date_from')])
+            ->andFilterWhere(['<=', 'date_visit', $this->getAttribute('date_to')])
             ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;

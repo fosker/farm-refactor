@@ -30,6 +30,7 @@ class Present extends \yii\db\ActiveRecord
     public function usePromo() {
         $this->promo = null;
         $this->save(false);
+        Mailer::sendPresent($this->user, Item::findOne($this->item_id), $this);
     }
 
     public function fields() {
@@ -87,12 +88,6 @@ class Present extends \yii\db\ActiveRecord
                 $this->addError($attribute, 'Подарок отсутствует в данный момент.');
             }
         }
-    }
-
-    public function afterSave($insert, $changedAttributes)
-    {
-        parent::afterSave($insert, $changedAttributes);
-        Mailer::sendPresent(Yii::$app->user->identity, Item::findOne($this->item_id), $this);
     }
 
     /**

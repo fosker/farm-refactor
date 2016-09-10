@@ -82,14 +82,6 @@ $this->title = $model->title;
             ],
             'description:html',
             'points',
-            [
-                'attribute'=>'grayList',
-                'value'=>$model->grayList ? 'да' : 'нет',
-            ],
-            [
-                'attribute'=>'whiteList',
-                'value'=>$model->whiteList ? 'да' : 'нет',
-            ],
             'views_limit',
             'home_priority',
             [
