@@ -72,256 +72,420 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
-.wrap {
-    background: #FFFFFF;
+/* ЛЕНДИНГ */
+
+@font-face {
+    font-family: tinos;
+    src: url(../fonts/tinos.ttf);
 }
 
-#test {
-    height: 1000px;
+@font-face {
+    font-family: tinos-italic;
+    src: url(../fonts/tinos-italic.ttf);
+}
+
+@font-face {
+    font-family: sans;
+    src: url(../fonts/sans.ttf);
+}
+
+@font-face {
+    font-family: sans;
+    src: url(../fonts/sans-bold.ttf);
+    font-weight: bold;
+}
+
+.landing {
+    font-family: sans;
+    font-size: 14px;
 }
 
 header {
-    background: #191919;
+    padding: 0 20px;
+    margin-top: 30px;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
 }
 
-#info {
-    background: #191919;
-    min-height: 100%;
-    padding-top: 0.6%;
-    padding-bottom: 0.6%;
+.navbar {
+    background: white;
+    width: 100%;
+    border-radius: 0;
+    height: 71px;
+    margin-bottom: 0;
 }
 
-#menu {
-    min-height: 100%;
-    margin-left: 15px;
-    margin-right: 15px;
-    background-color: #ffffff;
+.navbar-brand {
+    padding: 10px;
+    height: 70px;
 }
 
-.navbar-nav > li > a {
-    padding-top: 35px !important;
-    padding-bottom: 35px !important;
-    margin-right: 35px !important;
-    font-family: PTSans;
-    color: #919191;
-    font-size: 16px;
+.navbar-brand img {
+    height: 100%;
 }
 
-.navbar-nav > li > a:hover {
-    color: #363636;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.05);
+.nav li a, .nav li a:visited, .nav li a:link {
+    color: #888;
+    padding: 25px 20px;
 }
 
-.navbar-nav {
-    padding-right: 10%;
+.nav li a:hover {
+    background: #f2f2f2;
+    color: #333;
 }
 
-#slider {
-    background: #191919;
+.nav li a:focus {
+    background: #068dde;
+    color: white;
+    position: relative;
+    top: -5px;
+    padding: 30px 20px;
+}
+
+.nav li a.btn-custom {
+    background: #068dde;
+    color: white;
+    padding: 10px 30px;
+    margin-top: 15px;
     margin-left: 20px;
-    margin-right: 20px;
 }
 
-.carousel-caption {
-    padding-bottom: 200px !important;
+.nav li a.btn-custom:hover {
+    font-weight: 400;
 }
 
-.slide-header {
-    font-family: OpenSans;
-    color: #ffffff;
-    font-size: 22px;
+.nav li a.btn-custom:focus {
+    top: 0;
 }
 
-.slide-text {
-    font-family: OpenSans;
-    color: #ffffff;
-    font-size: 40px;
+.info {
+    padding-top: 7px;
+    color: white;
+    font-size: 11px;
+    padding-bottom: 78px;
+    background: #111111;
+}
+
+.info span.phone {
+    margin-left: 20px;
+}
+
+.info img {
+    margin-right: 7px;
+}
+
+.info a {
+    color: white;
+    cursor: pointer;
+}
+
+.info a:hover, .info a:focus {
+    text-decoration: none;
+}
+
+.info a.active {
     font-weight: 700;
-
 }
 
-.slide-subtext {
-    font-family: Tinos;
-    color: #ffffff;
-    font-size: 22px;
-    font-style: italic;
+.home {
+    padding: 0 30px 30px;
+    background: #111111;
+}
+
+.home .carousel-control img {
+    width: 30px;
+    margin-top: 280px;
+}
+
+.home .carousel .carousel-caption {
+    bottom: 30%;
+    text-shadow: none;
+}
+
+.home .carousel .carousel-caption h1 {
+    font-size: 50px;
+}
+
+.home .carousel .carousel-caption i {
+    font-family: tinos;
+}
+
+.home .carousel .carousel-indicators {
+    bottom: -32px;
+}
+
+.home .carousel .carousel-indicators li {
+    margin: 0 10px;
+    border-radius: 0;
+    width: 5px;
+    height: 5px;
+    border: none;
+    background: #333;
+}
+
+.home .carousel .carousel-indicators li.active {
+    background: #068dde;
+}
+
+.advantages {
+    background: #ebebeb;
+}
+
+.section-header, .section-sub-header {
+    font-family: sans;
+    color: #262626;
     text-align: center;
 }
 
-.lang-title {
-    padding-left: 15px;
-    font-family: 'Myriad Pro';
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19px;
-    text-align: right;
+.section-header {
+    margin: 100px 0 20px;
+    font-size: 50px;
+    font-weight: 700;
 }
 
-.role-title {
-    font-family: OpenSans;
-    color: #ffffff;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: right;
-}
-
-.carousel-control {
-    background: transparent;
-}
-
-.carousel-control .glyphicon-chevron-right:before {
-    content: " ";
-    display:block;
-    background:url('../img/slider/arrow_right.png') no-repeat;
-    width:80px;
-    height:30px;
-}
-
-#advantages {
-    padding-top: 5%;
-    background: #f7f7f7;
-    padding-bottom: 5%;
-}
-
-.block-header {
-    font-size: 35pt;
-    font-family: PT Sans;
-    color: #262626;
-}
-
-
-.block-text {
+.section-sub-header {
     color: #616161;
-    font-size: 15pt;
-    font-family: PT Sans;
+    margin-bottom: 100px;
+}
+.advantages .info-background {
+    width: 100%;
 }
 
-.advantage-title {
-    color: #4b9ed8;
-    font-size: 15pt;
-    font-family: PT Sans;
+.advantages .logo {
+    width: 22%;
+    position: absolute;
+    top: 40%;
+    margin-left: 38%;
 }
 
-.advantage-number {
-    color: #ff2211;
-    font-size: 20pt;
-    font-family: OpenSans;
+.advantages .infographics {
 }
 
-.advantage-text {
-    color: #616161;
-    font-size: 12pt;
-    font-family: PT Sans;
+.advantages .infographics .advantage {
+    min-height: 240px;
 }
 
-.margin-top {
-    margin-top: 8%;
+.advantages .infographics .advantage .number {
+    color: #fc2715;
+    font-size: 30px;
+    display: inline-block;
+    margin-top: 26px;
 }
 
-
-#functions {
-    padding-top: 5%;
-    padding-bottom: 5%;
-    background: #FFFFFF;
+.advantages .infographics .advantage h4 {
+    margin: 0 0 10px;
+    color: #0084ce;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-#tabs {
-    height: 500px;
-    background: red;
+.advantages .infographics .advantage p {
+    color: #555;
 }
 
+.functions {
+    height: 100px;
+}
 
-#achievements {
-    background: url(../img/achievment_bg.png);
+.achievements {
+    background: url('../img/achievement.jpg') no-repeat no-repeat;
     background-size: cover;
-    background-repeat:no-repeat;
-    padding-bottom: 8%;
-    padding-top: 5%;
+    color: white;
+    text-align: center;
+    padding-bottom: 70px;
 }
 
-.achievements-header {
-    padding-bottom: 3%;
-    font-size: 35pt; 
-    font-family: PT Sans; 
-    color: #ffffff;
+.achievements h1 {
+    padding: 30px 0;
+    font-weight: 700;
+    font-size: 50px;
 }
 
-
-.ach-header {
-    color: #ffffff;
-    font-size: 16pt; 
-    font-family: Tinos;
+.achievements h3 {
+    font-family: tinos-italic;
+    margin-bottom: 0;
 }
 
-.ach-count {
-    color: #eeeeee;
-    font-size: 50pt; 
-    font-family: PT Sans;
+.achievements p {
+    font-size: 80px;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
-.ach-title {
-    color: #ffffff;
-    font-size: 25pt; 
-    font-family: PT Sans;
-    
+.achievements h2 {
+    margin: 0 0 10px;
+    font-weight: 700;
 }
 
-.hr {
-    background: #f7f7f7;
-    padding-top: 75px;
-    padding-bottom: 75px;
+.mobile-hr .task {
+    margin: 0;
 }
 
-.hr-left {
+.mobile-hr .task>div {
+    padding: 0;
+}
+
+.mobile-hr .problem {
     background: #f0f0f0;
-    margin-top: 8%;
+    margin: 30px 0;
+    font-size: 30px;
+    padding: 70px;
+    font-family: tinos-italic;
+    color: #616161;
+}
+
+.mobile-hr .problem b {
+    font-family: tinos;
+    color: #393939;
+}
+
+.mobile-hr .task .solving {
+    background: url('../img/hr.jpg') no-repeat no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 70px;
+    box-shadow: 0 0 20px #bbb;
+}
+
+.mobile-hr .task .solving h2 {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.mobile-hr .task .solving p {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.mobile-hr .steps {
+    text-align: center;
+    color: #666666;
+    font-size: 28px;
+    padding: 50px;
+}
+
+.mobile-hr .steps p {
+    font-family: tinos-italic;
+}
+
+.mobile-hr .fast-notify {
+    background: #f0f0f0;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.mobile-hr .fast-notify h2 {
+    color: black;
+    font-weight: 700;
+    padding: 50px 0 70px;
+    line-height: 1.5;
+}
+
+.mobile-hr .fast-notify .container {
+    padding: 0 210px;
+}
+
+.mobile-hr .fast-notify .col-md-4 {
+    color: #0084ce;
+    font-family: tinos-italic;
+    font-size: 28px;
+}
+
+.mobile-hr .fast-notify .col-md-4 img {
+    width: 90px;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.mobile-hr .install-app {
+    background: url('../img/app-bg.jpg') no-repeat no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 30px 50px 50px;
+}
+
+.mobile-hr .install-app h1 {
+    font-weight: 700;
     margin-bottom: 40px;
+    font-size: 36px;
 }
 
-.hr-left-text {
-    color: #7a7a7a;
+.mobile-hr .install-app img {
+    width: 180px;
+    margin-right: 80px;
+}
+
+.mobile-hr .install-app .col-md-5 {
+    position: relative;
+}
+
+.mobile-hr .install-app .col-md-5 img {
+    position: absolute;
+    width: 100%;
+    top: -100px;
+}
+
+.mobile-hr .space-wrap {
+    height: 160px;
+}
+
+.contacts {
+    background: #2e2e2e;
+    padding: 30px 35px 10px;
+}
+
+.contacts .details {
+    background: white;
+    padding: 70px 0 30px;
+    color: #888;
+    font-size: 18px;
+}
+
+.contacts .details .partner {
+    text-align: center;
+    width: 80%;
+    color: white;
+    top: -130px;
+    position: absolute;
+    padding: 40px 30px;
+    background: #0084ce; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#1092de, #2478c0, #1092de); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#1092de, #2478c0, #1092de); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#1092de, #2478c0, #1092de); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#1092de, #2478c0, #1092de);
+}
+
+.contacts .details .partner h2 {
     font-size: 40px;
-    font-family: OpenSans;
-    padding: 8%;
+    margin-bottom: 15px;
 }
 
-.hr-right {
-    margin-top: 5%;
-    background: red;
-    background-size:100%;
-    background-repeat:no-repeat;
+.contacts .details .partner h4 {
+    font-size: 23px;
+    line-height: 1.7;
 }
 
-.hr-right-text-header {
-    font-size: 35pt;
-    font-family: PT Sans; 
-    color: #ffffff;
-    padding: 60px 0px 0px 70px;
+.contacts .details a {
+    color: #888;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.hr-right-text-content {
-    font-size: 15pt;
-    font-family: PT Sans; 
-    color: #ffffff;
-    padding: 5px 200px 50px 85px;
+.contacts .details a:hover, .contacts .details a:focus {
+    text-decoration: none;
 }
 
-#presentation {
-    background-color: #0085d0;
+.contacts .details img {
+    margin-bottom: 20px;
 }
 
-#survey {
-    background-color: #0085d0;
+.contacts .map {
+    margin-top: 50px;
 }
 
-#earth {
-    width: 20px;
-    height: 20px;   
+.contacts .copy {
+    color: #bbb;
+    text-align: center;
+    margin-top: 10px;
 }
-
-
-
-
-

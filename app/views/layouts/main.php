@@ -28,10 +28,6 @@ AppAsset::register($this);
     <?= $content ?>
 </div>
 
-<footer class="footer">
-
-</footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

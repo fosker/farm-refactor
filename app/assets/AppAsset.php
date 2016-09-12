@@ -18,8 +18,8 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/flatly.css'
+        'css/flatly.css',
+        'css/site.css'
     ];
     public $js = [
     ];
