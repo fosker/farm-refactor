@@ -7,6 +7,9 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 
+$this->registerJsFile('js/wow.js');
+$this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
+
 ?>
 <div class="landing">
     <header>
@@ -22,18 +25,30 @@ use yii\helpers\Html;
             'items' => [
                 [
                     'label' => 'Главная',
+                    'url' => '#info',
+                    'options' => ['id' => 'link-info'],
+                    'linkOptions' => ['class' => 'active'],
                 ],
                 [
                     'label' => 'Наши преимущества',
+                    'url' => '#advantages',
+                    'options' => ['id' => 'link-advantages'],
                 ],
                 [
                     'label' => 'Функционал',
+                    'url' => '#functions',
+                    'options' => ['id' => 'link-functions'],
                 ],
                 [
                     'label' => 'Мобильный HR',
+                    'url' => '#mobile-hr',
+                    'options' => ['id' => 'link-mobile-hr'],
+
                 ],
                 [
                     'label' => 'Контакты',
+                    'url' => '#contacts',
+                    'options' => ['id' => 'link-contacts'],
                 ],
                 [
                     'label' => 'Отправить заявку',
@@ -44,14 +59,14 @@ use yii\helpers\Html;
         NavBar::end();?>
     </header>
 
-    <div class="info">
+    <div class="info" id="info">
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', ['', '#' => '']) ?> / <?=Html::a('RU', ['', '#' => ''], ['class' => 'active']) ?>
+                    <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', '#') ?> / <?=Html::a('RU', '#', ['class' => 'active']) ?>
                 </div>
                 <div class="col-md-6 text-center col-md-offset-1">
-                    <?=Html::a('Фармацевтическия компания, медицинский представитель', ['', '#' => ''], ['class' => 'active']) ?> / <?=Html::a('фармацевт,провизор', ['', '#' => '']) ?>
+                    <?=Html::a('Фармацевтическия компания, медицинский представитель', '#', ['class' => 'active']) ?> / <?=Html::a('фармацевт,провизор', '#') ?>
                 </div>
                 <div class="col-md-3 text-right">
                     <?=Html::img('img/info/email.png', ['width' => '18px'])?>
@@ -89,14 +104,14 @@ use yii\helpers\Html;
         ]); ?>
     </div>
 
-    <div class="advantages">
+    <div class="advantages" id="advantages">
         <div class="container">
-            <h1 class="section-header"><b>Наши преимущества</b></h1>
-            <h4 class="section-sub-header">Эффективное продвижение бренда при минимальных затратах</h4>
+            <h1 class="section-header wow fadeInDown"><b>Наши преимущества</b></h1>
+            <h4 class="section-sub-header wow fadeInDown">Эффективное продвижение бренда при минимальных затратах</h4>
 
             <div class="row infographics">
                 <div class="col-md-4">
-                    <div class="row advantage">
+                    <div class="row advantage wow fadeInLeft">
                         <div class="col-md-2">
                             <span class="number">01</span>
                         </div>
@@ -105,7 +120,7 @@ use yii\helpers\Html;
                             <p>Приложение может эффективно использоваться для продвижения бренда, увеличения лояльности провизоров, информирования целевой аудитории о новинках, а так же для удобной коммуникации внутри компании</p>
                         </div>
                     </div>
-                    <div class="row advantage">
+                    <div class="row advantage wow fadeInLeft">
                         <div class="col-md-2">
                             <span class="number">03</span>
                         </div>
@@ -116,11 +131,11 @@ use yii\helpers\Html;
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <?= Html::img('img/infographics.png', ['class' => 'info-background']) ?>
-                    <?= Html::img('img/logo.png', ['class' => 'logo']) ?>
+                    <?= Html::img('img/infographics.png', ['class' => 'info-background  wow fadeInDown']) ?>
+                    <?= Html::img('img/logo.png', ['class' => 'logo  wow fadeInUp']) ?>
                 </div>
                 <div class="col-md-4">
-                    <div class="row advantage">
+                    <div class="row advantage wow fadeInRight">
                         <div class="col-md-2">
                             <span class="number">02</span>
                         </div>
@@ -129,7 +144,7 @@ use yii\helpers\Html;
                             <p>Приложение позволяет в короткие сроки достигать поставленных целей при сокращении расходов на продвижение</p>
                         </div>
                     </div>
-                    <div class="row advantage">
+                    <div class="row advantage wow fadeInRight">
                         <div class="col-md-2">
                             <span class="number">04</span>
                         </div>
@@ -143,25 +158,25 @@ use yii\helpers\Html;
         </div>
     </div>
 
-    <div class="functions">
-        <h1 class="section-header">Функционал сервиса</h1>
-        <h4 class="section-sub-header">Функциональность и удобство использования для каждого клиента</h4>
+    <div class="functions" id="functions">
+        <h1 class="section-header wow fadeInDown">Функционал сервиса</h1>
+        <h4 class="section-sub-header wow fadeInDown">Функциональность и удобство использования для каждого клиента</h4>
     </div>
 
     <div class="achievements">
-        <h1 >Наши достижения в цифрах</h1>
+        <h1 class="wow fadeInDown">Наши достижения в цифрах</h1>
         <div class="container">
-            <div class="col-md-4">
+            <div class="col-md-4 wow fadeInLeft">
                 <h3>Показано</h3>
                 <p>17</p>
                 <h2>Презентаций</h2>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 wow fadeInUp">
                 <h3>Проведено</h3>
                 <p>23</p>
                 <h2>Опроса</h2>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 wow fadeInRight">
                 <h3>Опубликовано</h3>
                 <p>15</p>
                 <h2>Статей</h2>
@@ -169,16 +184,16 @@ use yii\helpers\Html;
         </div>
     </div>
 
-    <div class="mobile-hr">
-        <h1 class="section-header">Мобильный HR</h1>
-        <h4 class="section-sub-header">Быстрое оповещение о последних новостях компании и отрасли</h4>
+    <div class="mobile-hr" id="mobile-hr">
+        <h1 class="section-header wow fadeInDown">Мобильный HR</h1>
+        <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
         <div class="row task">
-            <div class="col-md-7">
+            <div class="col-md-7 wow fadeInLeft">
                 <div class="problem">
                     Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
                 </div>
             </div>
-            <div class="col-md-5 solving">
+            <div class="col-md-5 solving wow fadeInRight">
                 <h2>Мобильный HR</h2>
                 <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
             </div>
@@ -187,30 +202,38 @@ use yii\helpers\Html;
         <div class="container steps">
             <div class="row">
                 <div class="col-md-4 col-md-offset-1">
-
-                    <p>Ускоренная адаптация новых сотрудников</p>
+                    <?=Html::img('img/a.png', ['class' => 'wow fadeInDown']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.1s']) ?>
+                    <?=Html::img('img/b.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.2s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.3s']) ?>
+                    <?=Html::img('img/c.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.4s']) ?>
+                    <p class="wow fadeInUp">Ускоренная адаптация новых сотрудников</p>
                 </div>
                 <div class="col-md-6 col-md-offset-1">
-
-                    <p>Лояльный и профессиональный<br />коллектив</p>
+                    <?=Html::img('img/d.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.5s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.6s']) ?>
+                    <?=Html::img('img/e.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.7s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.8s']) ?>
+                    <?=Html::img('img/f.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.9s']) ?>
+                    <p class="wow fadeInUp">Лояльный и профессиональный<br />коллектив</p>
                 </div>
             </div>
         </div>
 
         <div class="fast-notify">
-            <div class="container ">
-                <h2>Быстрое оповещение о послежних новостях<br /> компании, для этого нужно только иметь:</h2>
+            <div class="container">
+                <h2 class="wow fadeInDown">Быстрое оповещение о послежних новостях<br /> компании, для этого нужно только иметь:</h2>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4  wow fadeInLeft">
                         <?=Html::img('img/laptop.png') ?>
                         <p>Гаджет,<br />Ноутбук<br />или компьютер</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 wow fadeInUp">
                         <?=Html::img('img/world.png') ?>
                         <p>Интернет</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 wow fadeInRight">
                         <?=Html::img('img/app.png') ?>
                         <p>Мобильное приложение</p>
                     </div>
@@ -219,12 +242,12 @@ use yii\helpers\Html;
         </div>
 
         <div class="install-app clearfix">
-            <div class="clearfix">
+            <div class="container">
                 <div class="col-md-6">
-                    <h1>Установите мобильное<br />приложение Фармбонус!</h1>
-                    <p><?=Html::a(Html::img('img/apple.png'), '')?> <?=Html::a(Html::img('img/google.png'), '')?></p>
+                    <h1 class=" wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
+                    <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5  wow fadeInRight">
                     <?= Html::img('img/phones.png') ?>
                 </div>
             </div>
@@ -233,27 +256,27 @@ use yii\helpers\Html;
         </div>
     </div>
 
-    <div class="contacts">
+    <div class="contacts" id="contacts">
         <div class="details">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="partner">
+                        <div class="partner wow fadeInDown">
                             <h2><b>PharmBonus</b></h2>
                             <h4>Ваш надежный<br />партнер в цифровом<br />Мире!</h4>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
                                 <?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?>
                                 <p><a href="mailto:info@pharbonus.by">info@pharbonus.by</a></p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.4s">
                                 <?=Html::img('img/contacts/phone.png', ['width' => '30px'])?>
                                 <p><a href="tel:+375291953706">+375291953706</a></p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.6s">
                                 <?=Html::img('img/contacts/marker.png', ['width' => '30px'])?>
                                 <p>г. Минск, пер. Корженевского, 28-115, пом. 2</p>
                             </div>

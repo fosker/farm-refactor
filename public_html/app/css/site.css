@@ -135,7 +135,7 @@ header {
     color: #333;
 }
 
-.nav li a:focus {
+.nav li a.active {
     background: #068dde;
     color: white;
     position: relative;
@@ -195,7 +195,13 @@ header {
 
 .home .carousel-control img {
     width: 30px;
-    margin-top: 280px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+}
+
+.home .carousel .item img {
+    width: 100%;
 }
 
 .home .carousel .carousel-caption {
@@ -239,8 +245,9 @@ header {
 }
 
 .section-header {
-    margin: 100px 0 20px;
+    padding: 100px 0 20px;
     font-size: 50px;
+    margin: 0;
     font-weight: 700;
 }
 
@@ -285,7 +292,7 @@ header {
 }
 
 .functions {
-    height: 100px;
+
 }
 
 .achievements {
@@ -362,11 +369,16 @@ header {
     text-align: center;
     color: #666666;
     font-size: 28px;
-    padding: 50px;
+    padding: 70px 30px;
+}
+
+.mobile-hr .steps img {
+    margin: 0 5px;
 }
 
 .mobile-hr .steps p {
     font-family: tinos-italic;
+    padding-top: 20px;
 }
 
 .mobile-hr .fast-notify {

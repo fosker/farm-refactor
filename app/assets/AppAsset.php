@@ -19,7 +19,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/flatly.css',
-        'css/site.css'
+        'css/site.css',
+        'css/animate.css'
     ];
     public $js = [
     ];
