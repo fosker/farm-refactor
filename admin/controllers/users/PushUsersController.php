@@ -41,6 +41,19 @@ class PushUsersController extends Controller
         ];
     }
 
+    public function actionTest()
+    {
+
+
+        $token = '2ba15b07207de3a7251780244c2c413bdb179daca91b623a3dd945b3777ea19f';
+        Yii::$app->apns->sendMulti($token, '12:18', [], [
+            'sound' => 'default',
+            'badge' => 1
+        ]);
+
+        die();
+    }
+
     public function actionIndex()
     {
         $model = new Push();

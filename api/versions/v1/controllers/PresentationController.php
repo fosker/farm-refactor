@@ -14,6 +14,7 @@ use common\models\presentation\Comment;
 use common\models\presentation\View;
 use common\models\Presentation;
 use common\models\presentation\Answer;
+use common\models\presentation\Unique;
 
 class PresentationController extends Controller
 {
@@ -62,6 +63,12 @@ class PresentationController extends Controller
     }
 
     public function actionView($id) {
+        if(!Unique::find()->where(['presentation_id' => $id, 'user_id' => Yii::$app->user->id])->exists()) {
+            $view = new Unique();
+            $view->presentation_id = $id;
+            $view->user_id = Yii::$app->user->id;
+            $view->save();
+        }
         return Presentation::getOneForCurrentUser($id);
     }
 

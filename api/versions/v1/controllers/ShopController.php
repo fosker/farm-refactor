@@ -12,8 +12,10 @@ use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 
 use common\models\Item;
+use common\models\User;
 use common\models\shop\Desire;
 use common\models\shop\Present;
+use common\models\Mailer;
 use yii\web\BadRequestHttpException;
 
 class ShopController extends Controller
@@ -72,6 +74,7 @@ class ShopController extends Controller
             $item = Item::findOne($present->item_id);
             $item->count -= 1;
             $item->save(false);
+            Mailer::sendPresent(User::findOne($present->user_id), Item::findOne($present->item_id), $present);
             return ['success'=>true];
         } else return $present;
     }

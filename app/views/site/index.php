@@ -9,7 +9,8 @@ use yii\helpers\Html;
 
 $this->registerJsFile('js/wow.js');
 $this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
-
+$this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="landing">
     <header>
@@ -168,17 +169,17 @@ $this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset'])
         <div class="container">
             <div class="col-md-4 wow fadeInLeft">
                 <h3>Показано</h3>
-                <p>17</p>
+                <p class='counter'>17</p>
                 <h2>Презентаций</h2>
             </div>
             <div class="col-md-4 wow fadeInUp">
                 <h3>Проведено</h3>
-                <p>23</p>
+                <p class='counter'>23</p>
                 <h2>Опроса</h2>
             </div>
             <div class="col-md-4 wow fadeInRight">
                 <h3>Опубликовано</h3>
-                <p>15</p>
+                <p class='counter'>15</p>
                 <h2>Статей</h2>
             </div>
         </div>

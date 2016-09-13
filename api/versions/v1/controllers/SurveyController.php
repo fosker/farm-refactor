@@ -13,6 +13,7 @@ use yii\filters\auth\QueryParamAuth;
 use common\models\survey\Answer;
 use common\models\survey\View;
 use common\models\Survey;
+use common\models\survey\Unique;
 
 class SurveyController extends Controller
 {
@@ -46,6 +47,12 @@ class SurveyController extends Controller
     }
 
     public function actionView($id) {
+        if(!Unique::find()->where(['survey_id' => $id, 'user_id' => Yii::$app->user->id])->exists()) {
+            $view = new Unique();
+            $view->survey_id = $id;
+            $view->user_id = Yii::$app->user->id;
+            $view->save();
+        }
         return Survey::getOneForCurrentUser($id);
     }
 

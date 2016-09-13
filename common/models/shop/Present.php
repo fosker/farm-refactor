@@ -30,7 +30,6 @@ class Present extends \yii\db\ActiveRecord
     public function usePromo() {
         $this->promo = null;
         $this->save(false);
-        Mailer::sendPresent($this->user, Item::findOne($this->item_id), $this);
     }
 
     public function fields() {

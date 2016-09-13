@@ -82,6 +82,10 @@ $this->title = $model->title;
             ],
             'description:html',
             'points',
+            [
+                'label'=>'Уникальные просмотры',
+                'value'=>\common\models\presentation\Unique::find()->where(['presentation_id' => $model->id])->count()
+            ],
             'views_limit',
             'home_priority',
             [
