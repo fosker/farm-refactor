@@ -1,5 +1,7 @@
 new WOW().init();
 
+/* MENU */
+
 $(function () {
     var $root = $('html, body');
     $('.navbar a').click(function() {
@@ -23,4 +25,25 @@ $(function () {
             }
         });
     });
+
+    $(".presentation .to-slide").click(function() {
+        var id = $(this).data("slide");
+        var slide = $("#slide" + id);
+        if(slide.css("display") == "none") {
+            $(".presentation li").removeClass("active");
+            $("a[data-slide='" + id + "']").parent().addClass("active");
+            $(".presentation .slide").fadeOut();
+            slide.fadeIn();
+        }
+    });
+
+    $('.functions .presentation ul').slimScroll({
+        height: 'auto',
+        position: 'left',
+        alwaysVisible: true,
+        wheelStep: 5,
+        railVisible: true
+    });
 });
+
+/* Presentation */

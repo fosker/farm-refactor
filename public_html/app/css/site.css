@@ -291,8 +291,151 @@ header {
     color: #555;
 }
 
-.functions {
+.functions .presentation {
+    margin: 0 0 100px;
+}
 
+.functions .presentation .to-slide {
+    cursor: pointer;
+}
+
+.functions .presentation>div {
+    padding: 0;
+}
+
+.functions .slide {
+    position: relative;
+}
+
+.functions .presentation .col-md-5 {
+    height: 440px;
+    position: relative;
+}
+
+.functions .presentation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+}
+
+.functions .presentation .slimScrollRail {
+    width: 1px!important;
+    left: 4px!important;
+}
+
+.functions .presentation .slimScrollBar {
+    border-radius: 0!important;
+    background: #0084ce!important;
+    opacity: 1!important;
+}
+
+.functions .presentation ul li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: #ececec;
+}
+
+.functions .presentation ul li img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+
+.functions .presentation ul li.active img {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.functions .presentation ul li:not(.active) {
+    cursor: pointer;
+}
+
+.functions .presentation .slide-link {
+    margin: 0;
+}
+
+.functions .presentation .slide-link .col-md-3 {
+    text-align: center;
+    padding: 37px 0 0;
+}
+
+.functions .presentation .slide-link .col-md-9 {
+    padding: 0 40px 0 0;
+}
+
+.functions .presentation .slide-link .col-md-3 img {
+    width: 50px;
+}
+
+.functions .presentation ul li h3 {
+    color: #282828;
+    font-family: sans;
+    font-weight: 700;
+}
+
+.functions .presentation ul li p {
+    font-family: tinos-italic;
+    color: #7d7d7d;
+}
+
+.functions .presentation ul li.active {
+    background: #fff;
+}
+
+.functions .presentation ul li.active h3 {
+    color: #2477c0;
+}
+
+.functions .slide {
+    display: none;
+    position: absolute;
+}
+
+.functions .slide.active {
+    display: block;
+}
+
+.functions .slide img {
+    width: 100%;
+}
+
+.functions .slide .capture {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    color: white;
+    padding: 60px;
+}
+
+.functions .slide .capture i {
+    color: #adcde5;
+    font-size: 18px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+}
+
+.functions .slide .capture h2 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.functions .slide .capture  h4 {
+    font-family: tinos-italic;
+    margin: 20px 0;
+}
+
+.functions .slide .capture  h4 b {
+    font-family: sans;
+}
+
+.functions .slide .capture  p {
+    font-size: 16px;
 }
 
 .achievements {

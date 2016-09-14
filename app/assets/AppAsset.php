@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/flatly.css',
         'css/site.css',
-        'css/animate.css'
+        'css/animate.css',
     ];
     public $js = [
     ];
