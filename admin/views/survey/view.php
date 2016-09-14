@@ -77,6 +77,10 @@ $this->title = $model->title;
                 'label'=>'Для типов пользователей',
                 'value'=>$model->getTypesView(true)
             ],
+            [
+                'label'=>'Уникальные просмотры',
+                'value'=>\common\models\survey\Unique::find()->where(['survey_id' => $model->id])->count()
+            ],
             'views_limit',
             'points',
             [
