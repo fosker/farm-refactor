@@ -10,6 +10,9 @@ use yii\helpers\Html;
 $this->registerJsFile('js/wow.js');
 $this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
 $this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 
 ?>
 <div class="landing">
