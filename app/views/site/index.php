@@ -29,7 +29,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
             'encodeLabels' => false,
             'items' => [
                 [
-                    'label' => 'Home',
+                    'label' => 'Главная',
                     'url' => '#info',
                     'options' => ['id' => 'link-info'],
                     'linkOptions' => ['class' => 'active'],
@@ -67,13 +67,13 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
     <div class="info" id="info">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-lg-2 col-md-2">
                     <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', '?lang=en', ['class' => Yii::$app->language == 'en-US' ? 'active' : '']) ?> / <?=Html::a('RU', '?lang=ru', ['class' => Yii::$app->language == 'ru-RU' ? 'active' : '']) ?>
                 </div>
-                <div class="col-md-6 text-center col-md-offset-1">
+                <div class="col-lg-6 text-center col-lg-offset-1 col-md-offset-0 col-md-6">
                     <?=Html::a('Фармацевтическия компания, медицинский представитель', '#', ['class' => 'active']) ?> / <?=Html::a('фармацевт,провизор', '#') ?>
                 </div>
-                <div class="col-md-3 text-right">
+                <div class="col-lg-3 text-right col-md-4">
                     <?=Html::img('img/info/email.png', ['width' => '18px'])?>
                     <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
                     <span class="phone">
@@ -169,7 +169,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
         <div class="container">
             <div class="row presentation">
-                <div class="col-md-5">
+                <div class="col-md-4 col-lg-5">
                     <ul>
                         <li class="active">
                             <a class="to-slide" data-slide="1">
@@ -188,7 +188,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="2">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/2.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Анкеты</h3>
@@ -201,7 +201,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="3">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/3.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Новости</h3>
@@ -214,7 +214,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="4">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/4.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Акции</h3>
@@ -227,7 +227,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="5">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/5.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Обратная связь</h3>
@@ -240,7 +240,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="6">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/6.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Семинары, вебинары</h3>
@@ -253,7 +253,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="7">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/7.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Вакансии</h3>
@@ -266,7 +266,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                             <a class="to-slide" data-slide="8">
                                 <div class="row slide-link">
                                     <div class="col-md-3">
-                                        <?=Html::img('img/functions/1.png') ?>
+                                        <?=Html::img('img/functions/8.png') ?>
                                     </div>
                                     <div class="col-md-9">
                                         <h3>Фармацевтические компании</h3>
@@ -278,7 +278,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
                     </ul>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-8 col-lg-7">
                     <div class="slide active" id="slide1">
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
@@ -395,17 +395,17 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
             <div class="row">
                 <div class="col-md-4 col-md-offset-1">
                     <?=Html::img('img/a.png', ['class' => 'wow fadeInDown']) ?>
-                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.1s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.1s']) ?>
                     <?=Html::img('img/b.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.2s']) ?>
-                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.3s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.3s']) ?>
                     <?=Html::img('img/c.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.4s']) ?>
                     <p class="wow fadeInUp">Ускоренная адаптация новых сотрудников</p>
                 </div>
                 <div class="col-md-6 col-md-offset-1">
                     <?=Html::img('img/d.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.5s']) ?>
-                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.6s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.6s']) ?>
                     <?=Html::img('img/e.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.7s']) ?>
-                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.8s']) ?>
+                    <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.8s']) ?>
                     <?=Html::img('img/f.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.9s']) ?>
                     <p class="wow fadeInUp">Лояльный и профессиональный<br />коллектив</p>
                 </div>
@@ -435,11 +435,11 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
         <div class="install-app clearfix">
             <div class="container">
-                <div class="col-md-6">
-                    <h1 class=" wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
+                <div class="col-lg-6 col-md-6">
+                    <h1 class="wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
                     <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
                 </div>
-                <div class="col-md-5  wow fadeInRight">
+                <div class="col-lg-5  col-md-6 wow fadeInRight">
                     <?= Html::img('img/phones.png') ?>
                 </div>
             </div>
@@ -452,13 +452,13 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
         <div class="details">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5 col-lg-4">
                         <div class="partner wow fadeInDown">
                             <h2><b>PharmBonus</b></h2>
                             <h4>Ваш надежный<br />партнер в цифровом<br />Мире!</h4>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7 col-md-8">
                         <div class="row">
                             <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
                                 <?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?>

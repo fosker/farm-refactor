@@ -6,7 +6,7 @@ $(function () {
     var $root = $('html, body');
     $('.navbar a').click(function() {
         $root.animate({
-            scrollTop: $($.attr(this, 'href')).offset().top -30}, 500);
+            scrollTop: $($.attr(this, 'href')).offset().top -100}, 500);
         return false;
     });
 
@@ -15,7 +15,7 @@ $(function () {
             var top = window.pageYOffset;
             var distance = top - $(this).offset().top;
             var id = $(this).attr('id');
-            if (distance < 31 && distance > -31) {
+            if (distance < 101 && distance > -101) {
                 $('.navbar a').removeClass('active');
                 $("#link-" + id + " a").addClass('active');
             }
@@ -41,7 +41,6 @@ $(function () {
         height: 'auto',
         position: 'left',
         alwaysVisible: true,
-        wheelStep: 5,
         railVisible: true
     });
 });

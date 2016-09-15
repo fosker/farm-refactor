@@ -125,9 +125,10 @@ header {
     height: 100%;
 }
 
-.nav li a, .nav li a:visited, .nav li a:link {
+.nav li a, .nav li a:visited, .nav li a:link, .nav li a:focus {
     color: #888;
     padding: 25px 20px;
+    background: white;
 }
 
 .nav li a:hover {
@@ -209,8 +210,29 @@ header {
     text-shadow: none;
 }
 
+@media (max-width: 1201px) {
+    .home .carousel .carousel-caption {
+        bottom: 20%;
+        text-shadow: none;
+    }
+}
+
 .home .carousel .carousel-caption h1 {
     font-size: 50px;
+}
+
+@media (max-width: 1201px) {
+    .home .carousel .carousel-caption h1 {
+        font-size: 40px;
+    }
+
+    .home .carousel .carousel-caption h2 {
+        font-size: 30px;
+    }
+
+    .home .carousel .carousel-caption h3 {
+        font-size: 24px;
+    }
 }
 
 .home .carousel .carousel-caption i {
@@ -259,11 +281,23 @@ header {
     width: 100%;
 }
 
+@media (max-width: 1201px) {
+    .advantages .info-background {
+        margin-top: 40px;
+    }
+}
+
 .advantages .logo {
     width: 22%;
     position: absolute;
     top: 40%;
     margin-left: 38%;
+}
+
+@media (max-width: 1201px) {
+    .advantages .logo {
+        top: 48%;
+    }
 }
 
 .advantages .infographics {
@@ -307,9 +341,15 @@ header {
     position: relative;
 }
 
-.functions .presentation .col-md-5 {
+.functions .presentation .col-md-4 {
     height: 440px;
     position: relative;
+}
+
+@media (max-width: 1201px) {
+    .functions .presentation .col-md-4 {
+        height: 413px;
+    }
 }
 
 .functions .presentation ul {
@@ -356,19 +396,44 @@ header {
 
 .functions .presentation .slide-link {
     margin: 0;
+    height: 110px;
 }
 
 .functions .presentation .slide-link .col-md-3 {
+    padding: 0;
     text-align: center;
-    padding: 37px 0 0;
+}
+
+.functions .presentation .slide-link .col-md-9  h3 {
+    margin: 10px 0;
+    font-size: 23px;
 }
 
 .functions .presentation .slide-link .col-md-9 {
     padding: 0 40px 0 0;
 }
 
+@media (max-width: 1201px) {
+    .functions .presentation .slide-link {
+        height: 103px;
+    }
+
+    .functions .presentation .slide-link .col-md-9 {
+        padding-right: 15px;
+    }
+
+    .functions .presentation .slide-link .col-md-9 h3 {
+        font-size: 20px;
+    }
+
+    .functions .presentation .slide-link .col-md-9 p {
+        font-size: 12px;
+    }
+}
+
 .functions .presentation .slide-link .col-md-3 img {
     width: 50px;
+    margin-top: 30px;
 }
 
 .functions .presentation ul li h3 {
@@ -425,9 +490,9 @@ header {
     font-weight: bold;
 }
 
-.functions .slide .capture  h4 {
+.functions .slide .capture h4 {
     font-family: tinos-italic;
-    margin: 20px 0;
+    margin: 20px 0 0;
 }
 
 .functions .slide .capture  h4 b {
@@ -436,6 +501,7 @@ header {
 
 .functions .slide .capture  p {
     font-size: 16px;
+    margin: 20px 0 0;
 }
 
 .achievements {
@@ -515,8 +581,20 @@ header {
     padding: 70px 30px;
 }
 
+@media (max-width: 1201px) {
+    .mobile-hr .steps {
+        padding: 70px 0;
+    }
+}
+
 .mobile-hr .steps img {
     margin: 0 5px;
+}
+
+@media (max-width: 1201px) {
+    .mobile-hr .steps img:not(.arrow) {
+        width: 50px;
+    }
 }
 
 .mobile-hr .steps p {
@@ -537,6 +615,12 @@ header {
     line-height: 1.5;
 }
 
+@media (max-width: 1201px) {
+    .mobile-hr .fast-notify h2 {
+        font-size: 25px;
+    }
+}
+
 .mobile-hr .fast-notify .container {
     padding: 0 210px;
 }
@@ -545,6 +629,12 @@ header {
     color: #0084ce;
     font-family: tinos-italic;
     font-size: 28px;
+}
+
+@media (max-width: 1201px) {
+    .mobile-hr .fast-notify .col-md-4 {
+        font-size: 20px;
+    }
 }
 
 .mobile-hr .fast-notify .col-md-4 img {
@@ -560,22 +650,43 @@ header {
     padding: 30px 50px 50px;
 }
 
+@media (max-width: 1201px) {
+    .mobile-hr .install-app {
+        padding: 0;
+    }
+}
+
 .mobile-hr .install-app h1 {
     font-weight: 700;
     margin-bottom: 40px;
     font-size: 36px;
 }
 
-.mobile-hr .install-app img {
+@media (max-width: 1201px) {
+    .mobile-hr .install-app h1 {
+        font-size: 34px;
+    }
+}
+
+.mobile-hr .install-app a img {
     width: 180px;
+}
+
+.mobile-hr .install-app a:first-child img {
     margin-right: 80px;
 }
 
-.mobile-hr .install-app .col-md-5 {
+@media (max-width: 1201px) {
+    .mobile-hr .install-app a:first-child img {
+        margin-right: 56px;
+    }
+}
+
+.mobile-hr .install-app .col-lg-5 {
     position: relative;
 }
 
-.mobile-hr .install-app .col-md-5 img {
+.mobile-hr .install-app .col-lg-5 img {
     position: absolute;
     width: 100%;
     top: -100px;
@@ -594,7 +705,19 @@ header {
     background: white;
     padding: 70px 0 30px;
     color: #888;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+@media (min-width: 992px) {
+    .contacts .details .container {
+        width: 900px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contacts .details .container {
+        width: 1100px;
+    }
 }
 
 .contacts .details .partner {
@@ -624,7 +747,7 @@ header {
 .contacts .details a {
     color: #888;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .contacts .details a:hover, .contacts .details a:focus {
