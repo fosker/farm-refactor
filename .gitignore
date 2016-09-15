@@ -2,3 +2,10 @@
 /public_html/admin/assets
 /public_html/uploads
 /common/config/main.php
+/admin/runtime
+.idea
+/app/runtime
+/company/runtime
+/factory/runtime
+/public_html/admin/assets
+/public_html/assets
