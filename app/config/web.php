@@ -5,7 +5,7 @@ $params = array_merge(
 );
 
 $config = [
-    'id' => 'basic',
+    'id' => 'app',
     'language'=>'ru',
     'controllerNamespace' => 'app\controllers',
     'basePath' => dirname(__DIR__),
@@ -20,9 +20,6 @@ $config = [
         'request' => [
             'cookieValidationKey' => 'm13suiePCS1k0k6G3_Nan2NQkOKPGMDr',
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
         'user' => [
             'class' => 'yii\web\User',
             'identityClass' => 'common\models\User',
@@ -35,18 +32,6 @@ $config = [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'Pharmbonus@gmail.com',
-                'password' => 'pharmbonus12345678',
-                'port' => '587',
-                'encryption' => 'tls',
-            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -65,10 +50,10 @@ $config = [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'login' => 'auth/login',
-                'signup-agent' => 'auth/signup-agent',
+                'agent-request' => 'auth/agent-request',
                 'logout' => 'auth/logout',
-                '/' => 'site/index',
-                'terms' => 'site/terms'
+                '/' => 'main/index',
+                'terms' => 'main/terms'
             ],
         ],
     ],

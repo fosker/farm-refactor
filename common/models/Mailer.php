@@ -90,4 +90,15 @@ class Mailer
             ->send();
     }
 
+    public static function sendAgentRequest($agent)
+    {
+        Yii::$app->mailer->compose('@common/mail/agent-request', [
+            'agent'=>$agent,
+        ])
+            ->setFrom("info@pharmbonus.by")
+            ->setTo("pharmbonus@gmail.com")
+            ->setSubject('Новая заявка представителя')
+            ->send();
+    }
+
 }

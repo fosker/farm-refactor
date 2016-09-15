@@ -50,7 +50,8 @@ class ListController extends Controller
         $search = Yii::$app->request->get('search');
         return new ActiveDataProvider([
             'query' => Company::find()
-                ->andFilterWhere(['like','title',$search]),
+                ->andFilterWhere(['like','title',$search])
+                ->orderBy('title'),
             'pagination' => [
                 'pageSize' => 10000,
             ]

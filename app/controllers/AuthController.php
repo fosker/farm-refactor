@@ -2,29 +2,33 @@
 
 namespace app\controllers;
 
+use common\models\Mailer;
 use Yii;
 
 use yii\web\Controller;
-use common\models\User;
 use yii\helpers\ArrayHelper;
+
+use common\models\User;
 use common\models\location\City;
 use common\models\location\Region;
 use common\models\profile\Education;
 use common\models\profile\Position;
+use common\models\pharmbonus\AgentRequest;
+use common\models\Factory;
 
 class AuthController extends Controller
 {
 
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest) {
             Yii::$app->user->logout();
         }
 
         $model = new User();
         $model->scenario = 'login';
 
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
         } else {
             return $this->render('login', [
@@ -35,43 +39,28 @@ class AuthController extends Controller
 
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+        if(!Yii::$app->user->isGuest) {
+            Yii::$app->user->logout();
+        }
         return $this->goHome();
     }
 
-    public function actionSignupAgent()
+    public function actionAgentRequest()
     {
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        $model = new User();
-        $model->scenario = 'signup-agent';
+        $model = new AgentRequest();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->details = "Имя: $model->name; Образование: представитель; Телефон: $model->phone; Email: $model->email;
-                               Регион: $model->region_agent; Фирма: $model->firm_agent;";
-            $model->name = 'agent';
-            $model->phone = 'agent';
-            $model->sex = 'male';
-            $model->pharmacy_id = '1';
-            $model->education_id = '4';
-            $model->region_id = '1';
-            $model->city_id = '1';
-            $model->firm_id = '1';
-
-            if($model->save()) {
-                return $this->goHome();
-            }
+        if($model->load(Yii::$app->request->post()) && $model->validate()) {
+            Mailer::sendAgentRequest($model);
+            return $this->redirect(['/']);
         } else {
-            return $this->render('signup-agent', [
+            return $this->render('agent-request', [
                 'model' => $model,
-                'firms' => ArrayHelper::map(Firm::find()->asArray()->all(), 'id','name'),
-                'regions' => ArrayHelper::map(Region::find()->asArray()->all(), 'id','name'),
-                'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
             ]);
         }
-
     }
 
     public function actionSignup()

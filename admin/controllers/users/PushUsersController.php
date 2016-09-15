@@ -41,18 +41,6 @@ class PushUsersController extends Controller
         ];
     }
 
-    public function actionTest()
-    {
-
-
-        $token = '2ba15b07207de3a7251780244c2c413bdb179daca91b623a3dd945b3777ea19f';
-        Yii::$app->apns->sendMulti($token, '12:18', [], [
-            'sound' => 'default',
-            'badge' => 1
-        ]);
-
-        die();
-    }
 
     public function actionIndex()
     {
@@ -80,13 +68,22 @@ class PushUsersController extends Controller
             $ios_tokens = array_values($ios_tokens);
             $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
-            if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])
-                || Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
+            if($android_tokens) {
+                if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено Android-пользователям (' . count($android_tokens) . ')');
+                }
+
+            }
+
+            if($ios_tokens) {
+                if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
                     'sound' => 'default',
                     'badge' => $model->link ? 1 : 0
                 ])) {
-                Yii::$app->session->setFlash('PushMessage',
-                    'Push-уведомление успешно отправлено пользователям (' . count($ids) . ')');
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено Ios-пользователям (' . count($ios_tokens) . ')');
+                }
             }
 
             $model->device_count = count($ids);
