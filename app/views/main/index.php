@@ -57,7 +57,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                 ],
                 [
                     'label' => 'Отправить заявку',
-                    'url' => Url::to(['/agent-request']),
+                    'url' => 'callback',
                     'linkOptions' => ['class' => 'btn-custom'],
                 ],
             ],
