@@ -14,7 +14,6 @@ $this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryA
 $this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
-
 ?>
 <div class="landing">
     <header>
@@ -29,7 +28,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
             'encodeLabels' => false,
             'items' => [
                 [
-                    'label' => 'Home',
+                    'label' => 'Главная',
                     'url' => '#info',
                     'options' => ['id' => 'link-info'],
                     'linkOptions' => ['class' => 'active'],

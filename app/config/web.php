@@ -6,11 +6,15 @@ $params = array_merge(
 
 $config = [
     'id' => 'basic',
-    'language'=>'ru',
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'controllerNamespace' => 'app\controllers',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'lang_selector'],
     'components' => [
+        'lang_selector'=>[
+            'class'=>'app\components\LangSelector'
+        ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
             'locale' => 'ru_RU',
