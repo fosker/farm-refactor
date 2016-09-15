@@ -5,12 +5,16 @@ $params = array_merge(
 );
 
 $config = [
-    'id' => 'app',
-    'language'=>'ru',
+    'id' => 'basic',
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'controllerNamespace' => 'app\controllers',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'lang_selector'],
     'components' => [
+        'lang_selector'=>[
+            'class'=>'app\components\LangSelector'
+        ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
             'locale' => 'ru_RU',
