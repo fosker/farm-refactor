@@ -3,7 +3,7 @@
 /public_html/uploads
 /common/config/main.php
 /admin/runtime
-.idea
+/.idea
 /app/runtime
 /company/runtime
 /factory/runtime

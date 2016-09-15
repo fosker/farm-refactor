@@ -165,14 +165,21 @@ class PushGroupsController extends Controller
             $ios_tokens = array_values($ios_tokens);
             $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
+            if($android_tokens) {
+                if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено Android-пользователям (' . count($android_tokens) . ')');
+                }
+            }
 
-            if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])
-                || Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
+            if($ios_tokens) {
+                if(Yii::$app->apns->sendMulti($ios_tokens, $model->message, ['link' => $model->link], [
                     'sound' => 'default',
                     'badge' => $model->link ? 1 : 0
                 ])) {
-                Yii::$app->session->setFlash('PushMessage',
-                    'Push-уведомление успешно отправлено пользователям (' . count($users) . ')');
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено Ios-пользователям (' . count($ios_tokens) . ')');
+                }
             }
 
             $model->device_count = count($users);
