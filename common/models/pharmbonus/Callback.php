@@ -6,19 +6,19 @@ use Yii;
 use yii\base\Model;
 
 
-class AgentRequest extends Model
+class Callback extends Model
 {
 
     public $name;
-    public $factory;
+    public $company;
     public $email;
     public $phone;
 
     public function rules()
     {
         return [
-            [['name', 'factory', 'email', 'phone'], 'required'],
-            [['name', 'factory', 'phone'], 'string'],
+            [['name', 'company', 'email', 'phone'], 'required'],
+            [['name', 'company', 'phone'], 'string'],
             [['email'], 'email'],
         ];
     }
@@ -30,7 +30,7 @@ class AgentRequest extends Model
     {
         return [
             'name' => 'Фамилия Имя',
-            'factory' => 'Фабрика',
+            'company' => 'Компания',
             'email' => 'Email',
             'phone' => 'Номер телефона',
         ];

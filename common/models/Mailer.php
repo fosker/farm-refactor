@@ -90,14 +90,14 @@ class Mailer
             ->send();
     }
 
-    public static function sendAgentRequest($agent)
+    public static function sendCallback($user)
     {
-        Yii::$app->mailer->compose('@common/mail/agent-request', [
-            'agent'=>$agent,
+        Yii::$app->mailer->compose('@common/mail/user-callback', [
+            'user'=>$user,
         ])
             ->setFrom("info@pharmbonus.by")
             ->setTo("pharmbonus@gmail.com")
-            ->setSubject('Новая заявка представителя')
+            ->setSubject('Новая заявка')
             ->send();
     }
 

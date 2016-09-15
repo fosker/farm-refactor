@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use common\models\Mailer;
 use Yii;
 
 use yii\web\Controller;
@@ -13,7 +12,6 @@ use common\models\location\City;
 use common\models\location\Region;
 use common\models\profile\Education;
 use common\models\profile\Position;
-use common\models\pharmbonus\AgentRequest;
 use common\models\Factory;
 
 class AuthController extends Controller
@@ -43,24 +41,6 @@ class AuthController extends Controller
             Yii::$app->user->logout();
         }
         return $this->goHome();
-    }
-
-    public function actionAgentRequest()
-    {
-        if(!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new AgentRequest();
-
-        if($model->load(Yii::$app->request->post()) && $model->validate()) {
-            Mailer::sendAgentRequest($model);
-            return $this->redirect(['/']);
-        } else {
-            return $this->render('agent-request', [
-                'model' => $model,
-            ]);
-        }
     }
 
     public function actionSignup()
