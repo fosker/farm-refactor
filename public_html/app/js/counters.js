@@ -1,4 +1,5 @@
-$.fn.isVisible = function() {
+$.fn.isVisible = function()
+{
     var rect = this[0].getBoundingClientRect();
     return (
     (rect.height > 0 || rect.width > 0) &&
@@ -9,48 +10,62 @@ $.fn.isVisible = function() {
     );
 };
 
-function doCheck() {
+var easingFn = function (t, b, c, d) {
+    var ts = (t /= d) * t;
+    var tc = ts * t;
+    return b + c * (tc + -3 * ts + 3 * t);
+};
 
-    $('.counter').css("visibility", "hidden");
+var options = {
+    useEasing : true,
+    easingFn: easingFn,
+    useGrouping : true,
+    separator : ',',
+    decimal : '.',
+    prefix : '',
+    suffix : ''
+};
 
-    setTimeout(function () {
-        var easingFn = function (t, b, c, d) {
-            var ts = (t /= d) * t;
-            var tc = ts * t;
-            return b + c * (tc + -3 * ts + 3 * t);
-        };
-        var options = {
-            useEasing : true,
-            easingFn: easingFn,
-            useGrouping : true,
-            separator : ',',
-            decimal : '.',
-            prefix : '',
-            suffix : ''
-        };
+var numbers = [];
 
-        var counters = $('.counter');
-        counters.css("visibility", "visible");
+var counters = [];
 
-        $.each(counters, function() {
-            if($(this).isVisible()) {
-                var counter = new CountUp(this, 0, $(this).text(), 0, 5, options);
-                counter.start(afterCount(this));
-            }
-        });
-    }, 1500);
+$.each($('.counter'), function() {
+    numbers.push($(this).text());
+    $(this).text("0");
+});
+
+$.each($('.counter'), function(index) {
+    counters.push(new CountUp(this, 0, numbers[index], 0, 4, options));
+});
+
+
+function count()
+{
+    var elements = $('.counter');
+
+    if($(elements[0]).isVisible()) {
+        setTimeout(function () {
+            $.each(counters, function(index) {
+                this.start(afterCount(elements[index]));
+            });
+        }, 1500);
+    }
 }
 
-function afterCount(item) {
+function afterCount(item)
+{
     $(item).attr('class', '');
 }
 
-$(document).ready(function(e){
-        doCheck();
-    });
+$(document).ready(function(e)
+{
+    count();
+});
 
-$(window).scroll(function(e){
-        doCheck();
-    });
+$(window).scroll(function(e)
+{
+    count();
+});
 
 
