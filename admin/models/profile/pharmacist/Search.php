@@ -19,13 +19,13 @@ class Search extends Pharmacist
         return [
             [['user.status', 'id', 'user.points', 'education_id', 'pharmacy_id', 'position_id',
                 'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to'], 'integer'],
-            [['user.name'], 'string'],
+            [['user.name', 'user.email'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.points',
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points',
             'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to']);
     }
 
@@ -97,7 +97,8 @@ class Search extends Pharmacist
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
             ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
             ->andFilterWhere(['<=', 'points', $this->getAttribute('points_to')])
-            ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);
+            ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
+            ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')]);
 
         return $dataProvider;
     }

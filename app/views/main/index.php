@@ -6,13 +6,12 @@ use yii\bootstrap\Carousel;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 $this->registerJsFile('js/wow.js');
-$this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 
 ?>

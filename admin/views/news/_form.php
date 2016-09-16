@@ -12,7 +12,7 @@ use common\models\Company;
 use common\models\profile\Type;
 use kartik\widgets\Select2;
 
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="news-form">
@@ -112,7 +112,7 @@ $this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryA
 
     <?= $form->field($model, 'text')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[

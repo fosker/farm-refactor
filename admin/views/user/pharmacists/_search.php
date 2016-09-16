@@ -23,6 +23,14 @@ use kartik\widgets\Select2;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'user.email')->widget(Select2::classname(), [
+        'data' => $emails,
+        'options' => ['placeholder' => 'Выберите email ...'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]); ?>
+
     <?= $form->field($model, 'pharmacy_id')->widget(Select2::classname(), [
         'data' => $pharmacies,
         'options' => ['placeholder' => 'Выберите аптеку ...'],

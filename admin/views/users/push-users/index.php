@@ -11,12 +11,29 @@ $url = Url::to(['/users/push-groups/link-list']);
 
 $this->title = 'Push-уведомления для пользователей';
 
-if(Yii::$app->session->hasFlash('PushMessage')) :
+if(Yii::$app->session->hasFlash('PushMessage_Android')) :
     echo Growl::widget([
         'type' => Growl::TYPE_SUCCESS,
         'title' => 'Успешно',
         'icon' => 'glyphicon glyphicon-ok-sign',
-        'body' => Yii::$app->session->getFlash('PushMessage'),
+        'body' => Yii::$app->session->getFlash('PushMessage_Android'),
+        'showSeparator' => true,
+        'delay' => 0,
+        'pluginOptions' => [
+            'placement' => [
+                'from' => 'top',
+                'align' => 'right',
+            ]
+        ]
+    ]);
+endif;
+
+if(Yii::$app->session->hasFlash('PushMessage_IOS')) :
+    echo Growl::widget([
+        'type' => Growl::TYPE_SUCCESS,
+        'title' => 'Успешно',
+        'icon' => 'glyphicon glyphicon-ok-sign',
+        'body' => Yii::$app->session->getFlash('PushMessage_IOS'),
         'showSeparator' => true,
         'delay' => 0,
         'pluginOptions' => [
@@ -28,6 +45,7 @@ if(Yii::$app->session->hasFlash('PushMessage')) :
     ]);
 endif;
 ?>
+
 <div class="user-push">
 
     <h1><?= Html::encode($this->title) ?></h1>

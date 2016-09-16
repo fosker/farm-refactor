@@ -15,11 +15,11 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
         'model' => $searchModel,
         'names' => $names,
         'factories' => $factories,
+        'emails' => $emails
     ]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
         'rowOptions' => function($model) {
             if($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
