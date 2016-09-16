@@ -8,15 +8,35 @@ use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 
 $this->registerJsFile('js/wow.js');
-$this->registerJsFile('js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 
 ?>
 <div class="landing">
     <header>
+        <div class="info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', '?lang=en', ['class' => Yii::$app->language == 'en-US' ? 'active' : '']) ?> / <?=Html::a('RU', '?lang=ru', ['class' => Yii::$app->language == 'ru-RU' ? 'active' : '']) ?>
+                    </div>
+                    <div class="col-lg-6 text-center col-lg-offset-1 col-md-offset-0 col-md-6">
+                        <?=Html::a('Фармацевтическия компания, медицинский представитель', '#', ['class' => 'active']) ?> / <?=Html::a('фармацевт,провизор', '#') ?>
+                    </div>
+                    <div class="col-lg-3 text-right col-md-4">
+                        <?=Html::img('img/info/email.png', ['width' => '18px'])?>
+                        <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
+                        <span class="phone">
+                        <?=Html::img('img/info/phone.png', ['width' => '10px'])?>
+                            <a href="tel:+375291953706">+375 29 195 37 06</a>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php NavBar::begin([
             'options' => [
                 'class' => 'navbar',
@@ -29,8 +49,8 @@ $this->registerJsFile('js/counters.js', ['depends' => [\yii\web\JqueryAsset::cla
             'items' => [
                 [
                     'label' => 'Главная',
-                    'url' => '#info',
-                    'options' => ['id' => 'link-info'],
+                    'url' => '#home',
+                    'options' => ['id' => 'link-home'],
                     'linkOptions' => ['class' => 'active'],
                 ],
                 [
@@ -64,28 +84,7 @@ $this->registerJsFile('js/counters.js', ['depends' => [\yii\web\JqueryAsset::cla
         NavBar::end();?>
     </header>
 
-    <div class="info" id="info">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-2">
-                    <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', '?lang=en', ['class' => Yii::$app->language == 'en-US' ? 'active' : '']) ?> / <?=Html::a('RU', '?lang=ru', ['class' => Yii::$app->language == 'ru-RU' ? 'active' : '']) ?>
-                </div>
-                <div class="col-lg-6 text-center col-lg-offset-1 col-md-offset-0 col-md-6">
-                    <?=Html::a('Фармацевтическия компания, медицинский представитель', '#', ['class' => 'active']) ?> / <?=Html::a('фармацевт,провизор', '#') ?>
-                </div>
-                <div class="col-lg-3 text-right col-md-4">
-                    <?=Html::img('img/info/email.png', ['width' => '18px'])?>
-                    <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
-                    <span class="phone">
-                        <?=Html::img('img/info/phone.png', ['width' => '10px'])?>
-                        <a href="tel:+375291953706">+375 29 195 37 06</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="home">
+    <div class="home" id="home">
         <?= Carousel::widget([
             'options' => ['class' => 'carousel slide'],
             'controls' => [Html::img('img/slider/arrow_left.png'),Html::img('img/slider/arrow_right.png')],

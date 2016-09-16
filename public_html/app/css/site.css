@@ -102,7 +102,6 @@ a.desc:after {
 
 header {
     padding: 0 20px;
-    margin-top: 30px;
     position: fixed;
     width: 100%;
     z-index: 10000;
@@ -114,6 +113,8 @@ header {
     border-radius: 0;
     height: 71px;
     margin-bottom: 0;
+    position: relative;
+    top:-35px;
 }
 
 .navbar-brand {
@@ -164,8 +165,10 @@ header {
     padding-top: 7px;
     color: white;
     font-size: 11px;
-    padding-bottom: 78px;
+    padding-bottom: 40px;
     background: #111111;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .info span.phone {
@@ -190,7 +193,7 @@ header {
 }
 
 .home {
-    padding: 0 30px 30px;
+    padding: 99px 30px 30px;
     background: #111111;
 }
 
@@ -236,7 +239,7 @@ header {
 }
 
 .home .carousel .carousel-caption i {
-    font-family: tinos;
+    font-family: tinos-italic;
 }
 
 .home .carousel .carousel-indicators {
@@ -423,7 +426,7 @@ header {
     }
 
     .functions .presentation .slide-link .col-md-9 h3 {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .functions .presentation .slide-link .col-md-9 p {
@@ -445,6 +448,8 @@ header {
 .functions .presentation ul li p {
     font-family: tinos-italic;
     color: #7d7d7d;
+    font-size: 16px;
+    margin-bottom: 0;
 }
 
 .functions .presentation ul li.active {

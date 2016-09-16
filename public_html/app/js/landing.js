@@ -11,7 +11,7 @@ $(function () {
     });
 
     $(document).scroll(function () {
-        $('#info, #advantages, #functions, #mobile-hr, #contacts').each(function () {
+        $('#home, #advantages, #functions, #mobile-hr, #contacts').each(function () {
             var top = window.pageYOffset;
             var distance = top - $(this).offset().top;
             var id = $(this).attr('id');
