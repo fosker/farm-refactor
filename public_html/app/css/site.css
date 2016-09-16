@@ -115,6 +115,7 @@ header {
     margin-bottom: 0;
     position: relative;
     top:-35px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
 .navbar-brand {
@@ -240,6 +241,7 @@ header {
 
 .home .carousel .carousel-caption i {
     font-family: tinos-italic;
+    line-height: 1.5;
 }
 
 .home .carousel .carousel-indicators {
@@ -569,7 +571,7 @@ header {
 }
 
 .mobile-hr .problem b {
-    font-family: tinos;
+    font-family: sans;
     color: #393939;
 }
 
@@ -577,7 +579,7 @@ header {
     background: url('../img/hr.jpg') no-repeat no-repeat;
     background-size: cover;
     color: white;
-    padding: 70px 30px;
+    padding: 70px 0 70px 70px;
     box-shadow: 0 0 20px #bbb;
 }
 
