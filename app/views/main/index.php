@@ -382,13 +382,17 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
         <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
         <div class="row task">
             <div class="col-md-7 wow fadeInLeft">
-                <div class="problem">
-                    Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+                <div class="problem clearfix">
+                    <div>
+                        Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+                    </div>
                 </div>
             </div>
             <div class="col-md-5 solving wow fadeInRight">
-                <h2>Мобильный HR</h2>
-                <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
+                <div>
+                    <h2>Мобильный HR</h2>
+                    <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
+                </div>
             </div>
         </div>
 
@@ -415,7 +419,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
         <div class="fast-notify">
             <div class="container">
-                <h2 class="wow fadeInDown">Быстрое оповещение о послежних новостях<br /> компании, для этого нужно только иметь:</h2>
+                <h2 class="wow fadeInDown">Быстрое оповещение о послежних новостях компании<br />, для этого нужно только иметь:</h2>
 
                 <div class="row">
                     <div class="col-md-4  wow fadeInLeft">

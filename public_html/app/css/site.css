@@ -545,10 +545,22 @@ header {
 .mobile-hr .problem {
     background: #f0f0f0;
     margin: 30px 0;
-    font-size: 30px;
-    padding: 70px;
+    font-size: 24px;
+    padding: 70px 30px;
     font-family: tinos-italic;
     color: #616161;
+}
+
+.mobile-hr .problem>div {
+    width: 530px;
+    float: right;
+}
+
+@media (min-width: 1200px) {
+    .mobile-hr .problem>div {
+        width: 650px;
+        font-size: 30px;
+    }
 }
 
 .mobile-hr .problem b {
@@ -560,18 +572,36 @@ header {
     background: url('../img/hr.jpg') no-repeat no-repeat;
     background-size: cover;
     color: white;
-    padding: 70px;
+    padding: 70px 30px;
     box-shadow: 0 0 20px #bbb;
 }
 
+.mobile-hr .task .solving > div {
+    width: 360px;
+}
+
 .mobile-hr .task .solving h2 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 700;
 }
 
 .mobile-hr .task .solving p {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+    .mobile-hr .task .solving > div {
+        width: 440px;
+    }
+
+    .mobile-hr .task .solving h2 {
+        font-size: 50px;
+    }
+
+    .mobile-hr .task .solving p {
+        font-size: 30px;
+    }
 }
 
 .mobile-hr .steps {
