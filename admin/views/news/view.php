@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 $this->title = $model->title;
 ?>
 <div class="news-view">
@@ -19,6 +20,7 @@ $this->title = $model->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Статистика просмотров', ['statistics', 'id' => $model->id],['class'=>'btn btn-info']) ?>
     </p>
 
     <?= DetailView::widget([

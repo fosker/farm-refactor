@@ -167,8 +167,8 @@ class PushGroupsController extends Controller
 
             if($android_tokens) {
                 if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
-                    Yii::$app->session->setFlash('PushMessage_Android',
-                        'Push-уведомление успешно отправлено Android-пользователям (' . count($android_tokens) . ')');
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено пользователям (' . count($users) . ')');
                 }
             }
 
@@ -177,8 +177,8 @@ class PushGroupsController extends Controller
                     'sound' => 'default',
                     'badge' => $model->link ? 1 : 0
                 ])) {
-                    Yii::$app->session->setFlash('PushMessage_IOS',
-                        'Push-уведомление успешно отправлено Ios-пользователям (' . count($ios_tokens) . ')');
+                    Yii::$app->session->setFlash('PushMessage',
+                        'Push-уведомление успешно отправлено пользователям (' . count($users) . ')');
                 }
             }
 
