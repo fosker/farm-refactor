@@ -10,6 +10,7 @@ use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
+use common\models\news\View;
 use common\models\News;
 use common\models\location\City;
 use common\models\location\Region;
@@ -73,6 +74,29 @@ class NewsController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionStatistics($id)
+    {
+        $model = $this->findModel($id);
+        $days_views = ArrayHelper::map(View::find()
+            ->select('news_id, dayofweek(date) as day, count(news_id) as count')
+            ->where(['news_id' => $id])
+            ->groupBy('news_id, day')
+            ->asArray()
+            ->all(), 'day', 'count');
+        $hours_views = ArrayHelper::map(View::find()
+            ->select('news_id, hour(date) as hour, count(news_id) as count')
+            ->where(['news_id' => $id])
+            ->groupBy('news_id, hour')
+            ->asArray()
+            ->all(), 'hour', 'count');
+
+        return $this->render('stats', [
+            'model' => $model,
+            'days_views' => $days_views,
+            'hours_views' => $hours_views
         ]);
     }
 
