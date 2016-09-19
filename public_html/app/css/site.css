@@ -107,6 +107,28 @@ header {
     z-index: 10000;
 }
 
+@media (max-width: 992px) {
+    header {
+        padding: 0;
+    }
+}
+
+header .lang-picker-toggle {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    header .lang-picker-toggle {
+        display: block;
+        position: absolute;
+        top: 57px;
+        right: 65px;
+        color: #848484;
+        font-size: 18px;
+        padding: 12px 5px;
+    }
+}
+
 .navbar {
     background: white;
     width: 100%;
@@ -116,6 +138,26 @@ header {
     position: relative;
     top:-35px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .navbar-nav {
+        width: 600px;
+        margin-right: -15px;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        margin: 0 -15px;
+        background: white;
+    }
 }
 
 .navbar-brand {
@@ -131,6 +173,7 @@ header {
     color: #888;
     padding: 25px 20px;
     background: white;
+    border-radius: 0;
 }
 
 .nav li a:hover {
@@ -144,6 +187,21 @@ header {
     position: relative;
     top: -5px;
     padding: 30px 20px;
+}
+
+@media (max-width: 767px) {
+    .nav {
+        text-align: center;
+    }
+
+    .nav li a.active {
+        top: 0;
+        padding: 25px 20px;
+    }
+
+    .nav li a {
+        border-bottom: 1px solid #a0a0a0;
+    }
 }
 
 .nav li a.btn-custom {
@@ -162,14 +220,72 @@ header {
     top: 0;
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+    .nav li a.btn-custom {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav li a.btn-custom {
+        padding: 25px 20px;
+        background: white;
+        color: #888;
+        margin: 0;
+    }
+}
+
+.navbar-toggle {
+    border-color: #a0a0a0;
+    margin-top: 10px;
+    padding: 13px 10px;
+    margin-bottom: 0;
+}
+
+.navbar-toggle .icon-bar {
+    background: #a0a0a0;
+    height: 3px;
+    width: 30px;
+}
+
+.navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 7px;
+}
+
 .info {
     padding-top: 7px;
     color: white;
     font-size: 11px;
     padding-bottom: 40px;
-    background: #111111;
+    background: #191919;
     margin-left: -20px;
     margin-right: -20px;
+}
+
+@media (max-width: 992px) {
+    .info {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
+    }
+}
+
+.visible-xs-inline {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .info {
+        padding-top: 10px;
+    }
+
+    .hidden-xs {
+        display: none;
+    }
+
+    .visible-xs-inline {
+        display: inline;
+    }
 }
 
 .info span.phone {
@@ -185,6 +301,30 @@ header {
     cursor: pointer;
 }
 
+@media (max-width: 767px) {
+
+    .info a {
+        display: block;
+        float: right;
+        padding: 10px;
+    }
+
+    .info a:nth-child(1) {
+        float: left;
+    }
+
+    .info a.active {
+        border-radius: 5px;
+        border: 1px solid white;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .info .text-right {
+        padding-right: 35px;
+    }
+}
+
 .info a:hover, .info a:focus {
     text-decoration: none;
 }
@@ -195,7 +335,19 @@ header {
 
 .home {
     padding: 99px 30px 30px;
-    background: #111111;
+    background: #191919;
+}
+
+@media (max-width: 991px) {
+    .home {
+        padding: 103px 0 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .home {
+        padding: 128px 0 0;
+    }
 }
 
 .home .carousel-control img {
@@ -218,6 +370,22 @@ header {
     .home .carousel .carousel-caption {
         bottom: 20%;
         text-shadow: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .home .carousel .carousel-caption {
+        bottom: 10%;
+        left: 15%;
+        right: 15%;
+    }
+}
+
+@media (max-width: 767px) {
+    .home .carousel .carousel-caption {
+        bottom: 0;
+        left: 15%;
+        right: 15%;
     }
 }
 
@@ -484,12 +652,19 @@ header {
     padding: 60px;
 }
 
-.functions .slide .capture i {
+.functions .slide .capture a.to-slide {
     color: #adcde5;
     font-size: 18px;
     position: absolute;
-    right: 20px;
     top: 50%;
+}
+
+.functions .slide .capture a.to-slide.left {
+    left: 20px;
+}
+
+.functions .slide .capture a.to-slide.right {
+    right: 20px;
 }
 
 .functions .slide .capture h2 {
@@ -658,7 +833,7 @@ header {
     }
 }
 
-.mobile-hr .fast-notify .container {
+.mobile-hr .fast-notify .container>.row {
     padding: 0 210px;
 }
 

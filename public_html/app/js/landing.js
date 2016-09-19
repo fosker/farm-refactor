@@ -43,6 +43,33 @@ $(function () {
         alwaysVisible: true,
         railVisible: true
     });
+
+    $(".to-slide").bind("click", function(e) {
+        var slideNumber = $(e.target).parent().data("slide");
+        var currentPosition = parseInt($(".functions .presentation .slimScrollBar").css("top"));
+        var slideLinkHeight = $(".slide-link").height();
+        var blockBottomLine = 440 + currentPosition*2;
+        var blockTopLine = currentPosition*2;
+        var bottomLine = slideNumber * slideLinkHeight;
+        var topLine = (slideNumber-1) * slideLinkHeight + 1;
+        if(bottomLine > blockBottomLine) {
+            $('.functions .presentation ul').slimScroll({
+                height: 'auto',
+                position: 'left',
+                alwaysVisible: true,
+                railVisible: true,
+                scrollTo: currentPosition*2 + 111 + "px"
+            });
+        } else if(topLine < blockTopLine) {
+            $('.functions .presentation ul').slimScroll({
+                height: 'auto',
+                position: 'left',
+                alwaysVisible: true,
+                railVisible: true,
+                scrollTo: currentPosition*2 - 111 + "px"
+            });
+        }
+    });
 });
 
 /* Presentation */
