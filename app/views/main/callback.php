@@ -3,23 +3,45 @@
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 
-$this->title = 'Оставить заявку';
+/** @var $model \common\models\pharmbonus\Callback */
+
+$this->title = 'Отправить заявку на получение демо-аккаунта';
+
 ?>
+<div class="callback-bg"></div>
 <div class="callback">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2 class="text-center"><?= Html::encode($this->title); ?></h2>
+    <div class="back"><?=Html::a(Html::img('/app/img/back.png'), '/')?></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6">
+                <h2 class="text-center"><?= Html::encode($this->title); ?></h2>
 
-            <?php $form = ActiveForm::begin(); ?>
+                <div class="form">
 
-            <?= $form->field($model, 'name')->textInput(); ?>
-            <?= $form->field($model, 'company')->textInput(); ?>
-            <?= $form->field($model, 'email')->textInput(); ?>
-            <?= $form->field($model, 'phone')->textInput(); ?>
+                    <?php $form = ActiveForm::begin(); ?>
 
-            <?= Html::submitButton('Отправить заявку', ['class' => 'btn btn-primary']); ?>
+                    <?= $form->field($model, 'name')->textInput(); ?>
+                    <?= $form->field($model, 'company')->textInput(); ?>
+                    <?= $form->field($model, 'email')->textInput(); ?>
+                    <?= $form->field($model, 'phone')->textInput(); ?>
 
-            <?php ActiveForm::end(); ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('Отправить заявку', ['class' => 'btn btn-success btn-block']); ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 visible-md-block visible-lg-block">
+                <div class="description">
+                    <p>Все еще сомневаетесь, стоит ли размещать информацию о себе и своей продукции в мобильном приложении <b>Фармбонус</b>?</p>
+                    <p><b>Предлагаем Вам установить мобильное приложение и увидеть все инструменты в действии!</b></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<div class="callback-copy">
+    &copy; PharmBonus, 2016
+</div>
+
