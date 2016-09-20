@@ -1,8 +1,10 @@
+// WOW
+
 new WOW().init();
 
-/* MENU */
-
 $(function () {
+    // SMOOTH SCROLL
+
     var $root = $('html, body');
     $('.navbar a').click(function() {
         $root.animate({
@@ -10,6 +12,7 @@ $(function () {
         return false;
     });
 
+    // MENU UPDATE WHEN SCROLLILNG
     $(document).scroll(function () {
         $('#home, #advantages, #functions, #mobile-hr, #contacts').each(function () {
             var top = window.pageYOffset;
@@ -26,6 +29,7 @@ $(function () {
         });
     });
 
+    // PRESENTATION
     $(".presentation .to-slide").click(function() {
         var id = $(this).data("slide");
         var slide = $("#slide" + id);
@@ -44,6 +48,7 @@ $(function () {
         railVisible: true
     });
 
+    //SCROLL SLIDE LIST WHEN VIEW
     $(".to-slide").bind("click", function(e) {
         var slideNumber = $(e.target).parent().data("slide");
         var currentPosition = parseInt($(".functions .presentation .slimScrollBar").css("top"));
@@ -70,6 +75,13 @@ $(function () {
             });
         }
     });
-});
 
-/* Presentation */
+    // SLIDE CAROUSEL ON SWIPE
+    var carousel = $(".carousel");
+    carousel.swiperight(function() {
+        $(this).carousel('prev');
+    });
+    carousel.swipeleft(function() {
+        $(this).carousel('next');
+    });
+});

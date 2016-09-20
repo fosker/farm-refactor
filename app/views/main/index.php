@@ -3,6 +3,7 @@
 $this->title = 'ФармБонус';
 
 use yii\bootstrap\Carousel;
+use yii\bootstrap\Collapse;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
@@ -12,6 +13,7 @@ $this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset'])
 $this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
 $this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('app/js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 
 ?>
@@ -121,45 +123,49 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
             <h4 class="section-sub-header wow fadeInDown">Эффективное продвижение бренда при минимальных затратах</h4>
 
             <div class="row infographics">
-                <div class="col-md-4">
+                <div class="col-xs-8 col-xs-offset-2 visible-xs-block clearfix">
+                    <?= Html::img('img/infographics.png', ['class' => 'info-background  wow fadeInDown']) ?>
+                    <?= Html::img('img/logo.png', ['class' => 'logo  wow fadeInUp']) ?>
+                </div>
+                <div class="col-sm-4 col-xs-12">
                     <div class="row advantage wow fadeInLeft">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12 col-xs-2">
                             <span class="number">01</span>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-sm-12 col-xs-10">
                             <h4>Многофункциональность</h4>
                             <p>Приложение может эффективно использоваться для продвижения бренда, увеличения лояльности провизоров, информирования целевой аудитории о новинках, а так же для удобной коммуникации внутри компании</p>
                         </div>
                     </div>
                     <div class="row advantage wow fadeInLeft">
-                        <div class="col-md-2">
-                            <span class="number">03</span>
-                        </div>
-                        <div class="col-md-10">
-                            <h4>Опыт</h4>
-                            <p>Опыт команды профессионалов с многолетним стажем работы в фармацевтической сфере, который задействован при создании Фармбонуса</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <?= Html::img('img/infographics.png', ['class' => 'info-background  wow fadeInDown']) ?>
-                    <?= Html::img('img/logo.png', ['class' => 'logo  wow fadeInUp']) ?>
-                </div>
-                <div class="col-md-4">
-                    <div class="row advantage wow fadeInRight">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12 col-xs-2">
                             <span class="number">02</span>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-sm-12 col-xs-10">
                             <h4>Минимизация затрат</h4>
                             <p>Приложение позволяет в короткие сроки достигать поставленных целей при сокращении расходов на продвижение</p>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-4 visible-sm-block visible-md-block visible-lg-block">
+                    <?= Html::img('img/infographics.png', ['class' => 'info-background  wow fadeInDown']) ?>
+                    <?= Html::img('img/logo.png', ['class' => 'logo  wow fadeInUp']) ?>
+                </div>
+                <div class="col-sm-4 col-xs-12">
                     <div class="row advantage wow fadeInRight">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12 col-xs-2">
+                            <span class="number">03</span>
+                        </div>
+                        <div class="col-md-10 col-sm-12 col-xs-10">
+                            <h4>Опыт</h4>
+                            <p>Опыт команды профессионалов с многолетним стажем работы в фармацевтической сфере, который задействован при создании Фармбонуса</p>
+                        </div>
+                    </div>
+                    <div class="row advantage wow fadeInRight">
+                        <div class="col-md-2 col-sm-12 col-xs-2">
                             <span class="number">04</span>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-sm-12 col-xs-10">
                             <h4>Только для работников фармацевтической сферы</h4>
                             <p>Данные о профильном образовании каждого пользователя проходят проверку прежде, чем будет получен доступ к приложению</p>
                         </div>
@@ -349,7 +355,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                         <div class="capture">
                             <a class="to-slide left" data-slide="6"><i class="glyphicon glyphicon-chevron-left"></i></a>
                             <h2>Вакансии</h2>
-                            <p>Одним из преимуществ использования этой функции является размещение вакансии в приложении, доступном только для работников фармацевтической сферы, что делает поиск сотрудников более оперативным и эффективным..</p>
+                            <p>Одним из преимуществ использования этой функции является размещение вакансии в приложении, доступном только для работников фармацевтической сферы, что делает поиск сотрудников более оперативным и эффективным.</p>
                             <a class="to-slide right" data-slide="8"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -365,26 +371,144 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
                 </div>
             </div>
+
+            <?= Collapse::widget([
+                'items' => [
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/1.png").'
+                                    </p>
+                                    <h3>Презентации</h3>
+                                    <p>Рассказывайте о своей продукции с помощью наглядных презентаций.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Почему стоит создавать и размещать презентации вашей компании в мобильном приложении ФармБонус?</h4>
+                            <p>Потому, что провизоры и фармацевты могут просмотреть ее в любое время: во время поездки в транспорте или за чашкой чая на кухне. Презентаци и по сей день являются серьезным инструментом для увеличения стоимости бренда. Грамотно составленная логически прописання презентаци способна подробно проинформировать , акцентировать внимание на ключевые выгоды и преимущества Вашей продукции. А художественное оформление имеет способность затронуть и эстетические, и эмоциональные страны провизора, фармацевта.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/2.png").'
+                                    </p>
+                                    <h3>Анкеты</h3>
+                                    <p>Создавайте и проводите опросы.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Для активного продвижения на фармацевтический рынок новой продукции, а также для обновления информации о уже существующем продукте, в мобильном приложении ФармБонус есть возможность проведения опросов или анкетирования.</h4>
+                            <p>Сильной стороной создания таких опросов является возможность задать локальность опрашиваемых, а участники опроса могут ответить, когда угодно и где угодно. Например, можно настроить опрос так, что он будет показываться только фармацевтам в г. Минске, в Октябрьском районе, провизорам Брестской области, города Микашевичи или провизорам, фармацевтам г.п.Зельва, Гомельской области.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/3.png").'
+                                    </p>
+                                    <h3>Новости</h3>
+                                    <p>Делитесь своими новостями с фармацевтической целевой аудиторией.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Ваша компания провела грандиозное исследование в определённой области фармакологии? Разработали новый уникальный препарат и успешно прошли все этапы регистрации нового продукта? Или произошли изменения в самой компании, о которых должен знать каждый работник фармацевтической сферы?</h4>
+                            <p>Именно для новостей Вашей компании создан этот раздел. Здесь вы можете указать все самые актуальные и важные новости компании.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/4.png").'
+                                    </p>
+                                    <h3>Акции</h3>
+                                    <p>Отличная возможность привлечь дополнительное внимание к вашему продукту.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Как правило, акции являются отличной возможностью привлечь дополнительное внимание к продукту, а грамотно составленная акция может сработать лучше, чем оплачиваемая реклама.</h4>
+                            <p>В мобильном приложении ФармБонус есть все необходимые инструменты для оповещения фармацевтических работников о проходящих акциях, а так же удобном сборе необходимых данных по ним.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/5.png").'
+                                    </p>
+                                    <h3>Обратная связь</h3>
+                                    <p>Создавайте актуальные темы и эффективно взаимодействуйте с провизорами, фармацевтами.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Своевременная обратная связь между фармацевтической компанией и провизорами, фармацевтами – залог успешного и длительного сотрудничества.</h4>
+                            <p>С помощью этой функции компания создает в приложении неограниченное количество актуальных тем, которые можно дополнить описанием или пояснением. Такое общение дает возможность максимально быстро решать возникающие трудности.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/6.png").'
+                                    </p>
+                                    <h3>Семинары, вебинары</h3>
+                                    <p>Оповещайте широкую аудиторию о своих мероприятиях.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>Ваша компания проводит обучающие семинары или вебинары? Мобильное приложение ФармБонус является отличной площадкой для информирования и продвижения таких мероприятий.</h4>
+                            <p>Вы можете разместить информацию о своем обучающем семинаре,вебинаре с возможностью личной записи на них.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/7.png").'
+                                    </p>
+                                    <h3>Вакансии</h3>
+                                    <p>Решайте кадровый вопрос эффективно, разместив вакансии в мобильном приложении.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<p>Одним из преимуществ использования этой функции является размещение вакансии в приложении, доступном только для работников фармацевтической сферы, что делает поиск сотрудников более оперативным и эффективным.</p>',
+                        'encode' => false,
+                    ],
+                    [
+                        'label' => '<p>
+                                        '.Html::img("img/functions/8.png").'
+                                    </p>
+                                    <h3>Фармацевтические компании</h3>
+                                    <p>Станьте ближе для провизоров, фармацевтов - расскажите о своей компании в мобильном приложении.</p>
+                                    <div class="arrow">
+                                        '.Html::img("img//arrow.png").'
+                                    </div>
+                                    ',
+                        'content' => '<h4>В этом разделе каждая фармацевтическая компания может разместить полное описание о своей продукции и в самом развёрнутом виде поделиться своей историей создания и развития, своими достижениями.</h4>
+                            <p>Это в значительной степени облегчит и ускорит работу фармацевтического работника, если ему нужно быстро найти информацию о продукте или компании, которая его производит.</p>',
+                        'encode' => false,
+                    ],
+                ]
+            ]);?>
         </div>
     </div>
 
     <div class="achievements">
         <h1 class="wow fadeInDown">Наши достижения в цифрах</h1>
         <div class="container">
-            <div class="col-md-4 wow fadeInLeft">
-                <h3>Показано</h3>
-                <p class="counter">17</p>
-                <h2>Презентаций</h2>
-            </div>
-            <div class="col-md-4 wow fadeInUp">
-                <h3>Проведено</h3>
-                <p class="counter">23</p>
-                <h2>Опроса</h2>
-            </div>
-            <div class="col-md-4 wow fadeInRight">
-                <h3>Опубликовано</h3>
-                <p class="counter">25</p>
-                <h2>Статей</h2>
+            <div class="row">
+                <div class="col-xs-4 wow fadeInLeft">
+                    <h3>Показано</h3>
+                    <p class="counter">17</p>
+                    <h2>Презентаций</h2>
+                </div>
+                <div class="col-xs-4 wow fadeInUp">
+                    <h3>Проведено</h3>
+                    <p class="counter">23</p>
+                    <h2>Опроса</h2>
+                </div>
+                <div class="col-xs-4 wow fadeInRight">
+                    <h3>Опубликовано</h3>
+                    <p class="counter">25</p>
+                    <h2>Статей</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -393,14 +517,14 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
         <h1 class="section-header wow fadeInDown">Мобильный HR</h1>
         <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
         <div class="row task">
-            <div class="col-md-7 wow fadeInLeft">
+            <div class="col-md-7 col-sm-6 wow fadeInLeft">
                 <div class="problem clearfix">
                     <div>
                         Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 solving wow fadeInRight">
+            <div class="col-md-5 col-sm-6 solving wow fadeInRight">
                 <div>
                     <h2>Мобильный HR</h2>
                     <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
@@ -410,7 +534,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
         <div class="container steps">
             <div class="row">
-                <div class="col-md-4 col-md-offset-1">
+                <div class="col-md-4 col-sm-6 col-sm-offset-0 col-md-offset-1">
                     <?=Html::img('img/a.png', ['class' => 'wow fadeInDown']) ?>
                     <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.1s']) ?>
                     <?=Html::img('img/b.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.2s']) ?>
@@ -418,7 +542,7 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                     <?=Html::img('img/c.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.4s']) ?>
                     <p class="wow fadeInUp">Ускоренная адаптация новых сотрудников</p>
                 </div>
-                <div class="col-md-6 col-md-offset-1">
+                <div class="col-md-6 col-sm-6 col-sm-offset-0 col-md-offset-1">
                     <?=Html::img('img/d.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.5s']) ?>
                     <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.6s']) ?>
                     <?=Html::img('img/e.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.7s']) ?>
@@ -434,15 +558,15 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
                 <h2 class="wow fadeInDown">Быстрое оповещение о последних новостях компании,<br />для этого нужно только иметь:</h2>
 
                 <div class="row">
-                    <div class="col-md-4  wow fadeInLeft">
+                    <div class="col-xs-4  wow fadeInLeft">
                         <?=Html::img('img/laptop.png') ?>
                         <p>Гаджет,<br />Ноутбук<br />или компьютер</p>
                     </div>
-                    <div class="col-md-4 wow fadeInUp">
+                    <div class="col-xs-4 wow fadeInUp">
                         <?=Html::img('img/world.png') ?>
                         <p>Интернет</p>
                     </div>
-                    <div class="col-md-4 wow fadeInRight">
+                    <div class="col-xs-4 wow fadeInRight">
                         <?=Html::img('img/app.png') ?>
                         <p>Мобильное приложение</p>
                     </div>
@@ -452,12 +576,14 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
 
         <div class="install-app clearfix">
             <div class="container">
-                <div class="col-lg-6 col-md-6">
-                    <h1 class="wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
-                    <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
-                </div>
-                <div class="col-lg-5  col-md-6 wow fadeInRight">
-                    <?= Html::img('img/phones.png') ?>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                        <h1 class="wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
+                        <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
+                    </div>
+                    <div class="col-lg-5  col-md-6 col-sm-5 wow fadeInRight visible-sm-block visible-md-block visible-lg-block">
+                        <?= Html::img('img/phones.png') ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -469,24 +595,24 @@ $this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset:
         <div class="details">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-lg-4">
+                    <div class="col-md-5 col-lg-4 visible-md-block visible-lg-block">
                         <div class="partner wow fadeInDown">
                             <h2><b>PharmBonus</b></h2>
                             <h4>Ваш надежный<br />партнер в цифровом<br />Мире!</h4>
                         </div>
                     </div>
-                    <div class="col-md-7 col-md-8">
+                    <div class="col-md-7 col-md-8 col-xs-12">
                         <div class="row">
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-                                <?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?>
+                            <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.2s">
+                                <p><?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?></p>
                                 <p><a href="mailto:info@pharbonus.by">info@pharbonus.by</a></p>
                             </div>
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.4s">
-                                <?=Html::img('img/contacts/phone.png', ['width' => '30px'])?>
+                            <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.4s">
+                                <p><?=Html::img('img/contacts/phone.png', ['width' => '30px'])?></p>
                                 <p><a href="tel:+375291953706">+375291953706</a></p>
                             </div>
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.6s">
-                                <?=Html::img('img/contacts/marker.png', ['width' => '30px'])?>
+                            <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.6s">
+                                <p><?=Html::img('img/contacts/marker.png', ['width' => '30px'])?></p>
                                 <p>г. Минск, пер. Корженевского, 28-115, пом. 2</p>
                             </div>
                         </div>
