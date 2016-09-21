@@ -84,4 +84,10 @@ $(function () {
     carousel.swipeleft(function() {
         $(this).carousel('next');
     });
+
+    // COLLAPSE MENU WHEN CLICK ON LINK
+
+    $(".nav a").click(function() {
+        $('.navbar-collapse.collapse').collapse("hide");
+    });
 });
