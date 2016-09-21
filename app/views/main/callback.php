@@ -10,7 +10,7 @@ $this->title = 'Отправить заявку на получение демо
 ?>
 <div class="callback-bg"></div>
 <div class="callback">
-    <div class="back"><?=Html::a(Html::img('/img/back.png'), '/')?></div>
+    <div class="back"><?=Html::a(Html::img('/app/img/back.png'), '/')?></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-6">
