@@ -667,8 +667,8 @@ class SurveyController extends Controller
             $image = new \pImage(1200,500,$data,1);
 
             $image->setFontProperties([
-                "FontName"=>__DIR__."/../components/pChart/fonts/tahoma.ttf",
-                "FontSize"=>10,
+                "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
+                "FontSize"=>15,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
