@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 
 use common\models\location\Region;
 use common\models\Company;
@@ -13,7 +14,7 @@ use common\models\company\Pharmacy;
 use common\models\user\Pharmacist;
 use common\models\user\Agent;
 use common\models\User;
-use yii\helpers\ArrayHelper;
+
 
 class MainController extends \yii\web\Controller
 {
@@ -36,6 +37,8 @@ class MainController extends \yii\web\Controller
             ],
         ];
     }
+
+
 
     public function actionIndex()
     {
@@ -90,7 +93,6 @@ class MainController extends \yii\web\Controller
             7 => 'июль', 8 => 'август', 9 => 'сентябрь', 10 => 'октябрь', 11 => 'ноябрь', 12 => 'декабрь'
         ];
 
-
         foreach($date_reg_array as $date_reg) {
             $year = substr($date_reg, 0, 4);
             if($year != '2015')
@@ -117,7 +119,6 @@ class MainController extends \yii\web\Controller
                 }
             }
         }
-
         $region_month = Pharmacist::find()
             ->select('count('.Pharmacist::tableName().'.id'.') as count, '.Region::tableName().'.name,
             month(date_reg) as month, year(date_reg) as year')
@@ -147,12 +148,6 @@ class MainController extends \yii\web\Controller
             ->orderBy('date_reg DESC')
             ->asArray()
             ->all();
-
-//        echo '<pre>';
-//        var_dump($region_month);
-//        echo '</pre>';
-//        die();
-
 
         $pharmacists = Pharmacist::find()->count();
         $agents = Agent::find()->count();
