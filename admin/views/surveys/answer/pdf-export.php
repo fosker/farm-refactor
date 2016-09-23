@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Андрей
- * Date: 22.09.2015
- * Time: 14:11
- */
 
 /* @var $answers array */
 ?>

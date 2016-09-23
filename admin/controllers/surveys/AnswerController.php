@@ -80,19 +80,19 @@ class AnswerController extends Controller
         }
     }
 
-    public function actionExportPdf($survey_id) {
+    public function actionExportPdf($survey_id)
+    {
 
         $answers = Answer::find()->joinWith('view')->where([View::tableName().'.survey_id'=>$survey_id])->all();
 
         $pdf = new Pdf([
             'content' => $this->renderPartial('pdf-export', ['answers'=>$answers]),
             'options' => [
-                'title' => 'Экспорт анкет',
-                'subject' => 'Отчет по заполненным анкетам',
+                'title' => 'Экспорт анкеты',
+                'subject' => 'Отчет по заполненной анкете',
                 'defaultfooterline'=>false,
                 'margin_footer'=>0,
             ],
-            'cssInline'=>file_get_contents('../admin/css/pdf-export.css'),
             'marginLeft'=>10,
             'marginTop'=>10,
             'marginRight'=>10,
@@ -102,7 +102,8 @@ class AnswerController extends Controller
         $pdf->render();
     }
 
-    public function actionExportXls($survey_id) {
+    public function actionExportXls($survey_id)
+    {
         $answers = Answer::find()->joinWith('view')->where([View::tableName().'.survey_id'=>$survey_id])->all();
 
         $xls = new PHPExcel();
@@ -141,7 +142,7 @@ class AnswerController extends Controller
                 $sheet->setCellValueByColumnAndRow(
                     3,
                     $i, $answer->view->user->pharmacist->pharmacy->company->title
-                . '/' . $answer->view->user->pharmacist->pharmacy->name . ' (' . $answer->view->user->pharmacist->pharmacy->address . ')'
+                    . '/' . $answer->view->user->pharmacist->pharmacy->name . ' (' . $answer->view->user->pharmacist->pharmacy->address . ')'
                 );
                 $sheet->setCellValueByColumnAndRow(
                     4,
@@ -170,7 +171,7 @@ class AnswerController extends Controller
         header ( "Cache-Control: no-cache, must-revalidate" );
         header ( "Pragma: no-cache" );
         header ( "Content-type: application/vnd.ms-excel" );
-        header ( "Content-Disposition: attachment; filename=Анкеты.xls" );
+        header ( "Content-Disposition: attachment; filename=Анкета.xls" );
 
         $objWriter = new PHPExcel_Writer_Excel5($xls);
         $objWriter->save('php://output');

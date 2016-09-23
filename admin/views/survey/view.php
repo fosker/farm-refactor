@@ -13,9 +13,11 @@ $this->title = $model->title;
         <?= Html::a('Список', ['index'],['class'=>'btn btn-info']) ?>
         <?= Html::a('Ответы ('.$model->answersCount.')', ['surveys/answer/index', 'Search[survey.id]' => $model->id], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('Экспорт pdf', ['surveys/answer/export-pdf', 'survey_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
-        <?= Html::a('Экспорт xls', ['surveys/answer/export-xls', 'survey_id' => $model->id], ['class' => 'btn btn-success'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
-
-
+        <?= Html::a('Экспорт xls', ['surveys/answer/export-xls', 'survey_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+    <div class="row">
+        <?= Html::a('Экспорт статистики (по регионам)', ['export-regions', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт статистики (по компаниям)', ['export-companies', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт свободных вопросов', ['export-docx', 'id' => $model->id], ['class' => 'btn btn-danger'.(!$model->devidedQuestions['free'] ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'pull-right btn btn-danger',
             'data' => [
@@ -33,6 +35,8 @@ $this->title = $model->title;
             [$model->status == $model::STATUS_HIDDEN ? 'approve' : 'hide' , 'id' => $model->id],
             ['class' => 'pull-right btn btn-success'])
         ?>
+    </div>
+
     </p>
 
     <h2>Информация об анкете</h2>

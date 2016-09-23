@@ -515,4 +515,22 @@ class Presentation extends ActiveRecord
         if($this->thumbnail) @unlink(Yii::getAlias('@uploads/presentations/thumbs/'.$this->thumbnail));
         parent::afterDelete();
     }
+
+    public function getDevidedQuestions()
+    {
+        foreach($this->questions as $question) {
+            if($question->right_answers == 1 && $question->options) {
+                $radio_questions[] = $question;
+            } elseif($question->right_answers > 1 && $question->options) {
+                $checkbox_questions[] = $question;
+            } else {
+                $free_questions[] = $question;
+            }
+        }
+        return [
+            'radio' => $radio_questions,
+            'checkbox' => $checkbox_questions,
+            'free' => $free_questions
+        ];
+    }
 }

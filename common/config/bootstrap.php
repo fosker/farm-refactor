@@ -10,5 +10,8 @@ Yii::setAlias('app', dirname(dirname(__DIR__)) . '/app');
 Yii::setAlias('uploads', dirname(dirname(__DIR__)) . '/public_html/uploads');
 
 Yii::setAlias('uploads_view', 'http://pharmbonus.by/uploads');
+
+Yii::setAlias('temp', 'http://farm.loc/admin/temp');
+
 Yii::setAlias('images', 'http://pharmbonus.by/img');
 Yii::setAlias('admin', 'http://admin.pharmbonus.by');
