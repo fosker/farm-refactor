@@ -8,7 +8,19 @@ use kartik\widgets\ActiveForm;
 $this->title = 'Отправить заявку на получение демо-аккаунта';
 
 ?>
+
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    .wrap {
+        height: 100%;
+    }
+</style>
+
 <div class="callback-bg"></div>
+
 <div class="callback">
     <div class="back"><?=Html::a(Html::img('/app/img/back.png'), '/')?></div>
     <div class="container">
@@ -44,4 +56,3 @@ $this->title = 'Отправить заявку на получение демо
 <div class="callback-copy">
     &copy; PharmBonus, 2016
 </div>
-
