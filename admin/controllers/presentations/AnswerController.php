@@ -79,8 +79,8 @@ class AnswerController extends Controller
         $pdf = new Pdf([
             'content' => $this->renderPartial('pdf-export', ['answers'=>$answers]),
             'options' => [
-                'title' => 'Экспорт презентаций',
-                'subject' => 'Отчет по заполненным презентациям',
+                'title' => 'Экспорт презентации',
+                'subject' => 'Отчет по заполненной презентации',
                 'defaultfooterline'=>false,
                 'margin_footer'=>0,
             ],
@@ -102,7 +102,7 @@ class AnswerController extends Controller
         $xls->setActiveSheetIndex(0);
         $sheet = $xls->getActiveSheet();
         $sheet->setTitle('Результаты по презентации');
-        $sheet->setCellValue("A1",'Результаты по анкете "'.$answers[0]->question->presentation->title.'"');
+        $sheet->setCellValue("A1",'Результаты по презентации "'.$answers[0]->question->presentation->title.'"');
         $sheet->setCellValue("C1",'Регион/Город');
         $sheet->setCellValue("D1",'Компания/Аптека');
         $sheet->setCellValue("E1",'Дата/Время');
@@ -163,7 +163,7 @@ class AnswerController extends Controller
         header ( "Cache-Control: no-cache, must-revalidate" );
         header ( "Pragma: no-cache" );
         header ( "Content-type: application/vnd.ms-excel" );
-        header ( "Content-Disposition: attachment; filename=Анкеты.xls" );
+        header ( "Content-Disposition: attachment; filename=Презентация.xls" );
 
         $objWriter = new PHPExcel_Writer_Excel5($xls);
         $objWriter->save('php://output');

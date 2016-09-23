@@ -281,6 +281,7 @@ class SurveyController extends Controller
         return $this->redirect(['index']);
     }
 
+
     public function actionExportRegions($id)
     {
         $model = $this->findModel($id);
@@ -290,8 +291,42 @@ class SurveyController extends Controller
         $radio_common = Question::transformCommon($radio_questions);
         $radio_regions = Question::transformForRegions($radio_questions);
 
+
+        $sums_radio = [];
+        foreach($radio_regions as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $region_id => $region) {
+                    $sums_radio[$question_id][$region_id] += $region;
+                }
+            }
+        }
+
+
+        foreach($radio_regions as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $region_id => $region) {
+                    $radio_regions[$question_id][$option_id][$region_id] = $radio_regions[$question_id][$option_id][$region_id]/$sums_radio[$question_id][$region_id]*100;
+                }
+            }
+        }
+
         $checkbox_common = Question::transformCommon($checkbox_questions);
         $checkbox_regions = Question::transformForRegions($checkbox_questions);
+
+
+        foreach($checkbox_common as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                $checkbox_common[$question_id][$option_id] = $checkbox_common[$question_id][$option_id]/$model->answersCount*100;
+            }
+        }
+
+        foreach($checkbox_regions as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $region_id => $region) {
+                    $checkbox_regions[$question_id][$option_id][$region_id] = $checkbox_regions[$question_id][$option_id][$region_id]/reset($sums_radio)[$region_id]*100;
+                }
+            }
+        }
 
         FileHelper::createDirectory('temp');
 
@@ -310,13 +345,43 @@ class SurveyController extends Controller
         $model = $this->findModel($id);
         $radio_questions = $model->devidedQuestions['radio'];
         $checkbox_questions = $model->devidedQuestions['checkbox'];
-        $free_questions = $model->devidedQuestions['free'];
 
         $radio_common = Question::transformCommon($radio_questions);
         $radio_companies = Question::transformForCompanies($radio_questions, $model);
 
+        $sums_radio = [];
+        foreach($radio_companies as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $company_id => $company) {
+                    $sums_radio[$question_id][$company_id] += $company;
+                }
+            }
+        }
+
+        foreach($radio_companies as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $company_id => $company) {
+                    $radio_companies[$question_id][$option_id][$company_id] = $radio_companies[$question_id][$option_id][$company_id]/$sums_radio[$question_id][$company_id]*100;
+                }
+            }
+        }
+
         $checkbox_common = Question::transformCommon($checkbox_questions);
         $checkbox_companies = Question::transformForCompanies($checkbox_questions, $model);
+
+        foreach($checkbox_common as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                $checkbox_common[$question_id][$option_id] = $checkbox_common[$question_id][$option_id]/$model->answersCount*100;
+            }
+        }
+
+        foreach($checkbox_companies as $question_id => $question) {
+            foreach($question as $option_id => $option) {
+                foreach($option as $company_id => $company) {
+                    $checkbox_companies[$question_id][$option_id][$company_id] = $checkbox_companies[$question_id][$option_id][$company_id]/reset($sums_radio)[$company_id]*100;
+                }
+            }
+        }
 
         FileHelper::createDirectory('temp');
 
@@ -336,10 +401,9 @@ class SurveyController extends Controller
         $this->exportDocx($model);
     }
 
-
     private function generateRadioLegend($pData, $name)
     {
-        $image = new \pImage(800,150,$pData,1);
+        $image = new \pImage(1000,200,$pData,1);
         $image->setFontProperties([
             "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
             "FontSize"=>18,
@@ -349,10 +413,10 @@ class SurveyController extends Controller
         ]);
 
         $pie = new \pPie($image,$pData);
-        $pie->drawPieLegend(120,10,[
+        $pie->drawPieLegend(0,10,[
             "Style"=>LEGEND_NOBORDER,
             "Mode"=>LEGEND_VERTICAL,
-            "FontSize"=>13,
+            "FontSize"=>12,
         ]);
         $legend_name = $name . "_legend";
         $image->render("temp/".$legend_name.'.png');
@@ -360,7 +424,7 @@ class SurveyController extends Controller
 
     private function generateCheckboxLegend($pData, $name)
     {
-        $image = new \pImage(800,150,$pData,1);
+        $image = new \pImage(1000,200,$pData,1);
         $image->setFontProperties([
             "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
             "FontSize"=>18,
@@ -390,10 +454,10 @@ class SurveyController extends Controller
             "G"=>139,
             "B"=>8,
         ]);
-        $pie->drawPieLegend(120,10,[
+        $pie->drawPieLegend(0,10,[
             "Style"=>LEGEND_NOBORDER,
             "Mode"=>LEGEND_VERTICAL,
-            "FontSize"=>13,
+            "FontSize"=>12,
         ]);
         $legend_name = $name . "_legend";
         $image->render("temp/".$legend_name.'.png');
@@ -516,11 +580,12 @@ class SurveyController extends Controller
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(300,20,500,400);
+            $image->setGraphArea(300,20,600,400);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
-                "Mode"=>SCALE_MODE_START0,
+                "Mode"=>SCALE_MODE_MANUAL,
+                "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
             $image->setShadow(1,[
                 "X"=>1,
@@ -594,11 +659,12 @@ class SurveyController extends Controller
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(350,20,500,400);
+            $image->setGraphArea(300,20,600,400);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
-                "Mode"=>SCALE_MODE_START0,
+                "Mode"=>SCALE_MODE_MANUAL,
+                "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
             $image->setShadow(1,[
                 "X"=>1,
@@ -679,7 +745,8 @@ class SurveyController extends Controller
                 "Pos"=>SCALE_POS_LEFTRIGHT,
                 "DrawSubTicks"=>0,
                 "LabelRotation"=>10,
-                "Mode"=>SCALE_MODE_START0,
+                "Mode"=>SCALE_MODE_MANUAL,
+                "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
             $image->setShadow(1,[
                 "X"=>1,
@@ -750,11 +817,12 @@ class SurveyController extends Controller
             ]);
 
 
-            $image->setGraphArea(300,20,500,400);
+            $image->setGraphArea(300,20,600,400);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
-                "Mode"=>SCALE_MODE_START0,
+                "Mode"=>SCALE_MODE_MANUAL,
+                "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
             $image->setShadow(1,[
                 "X"=>1,
@@ -830,11 +898,12 @@ class SurveyController extends Controller
             ]);
 
 
-            $image->setGraphArea(350,20,500,400);
+            $image->setGraphArea(300,20,600,400);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
-                "Mode"=>SCALE_MODE_START0,
+                "Mode"=>SCALE_MODE_MANUAL,
+                "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
             $image->setShadow(1,[
                 "X"=>1,

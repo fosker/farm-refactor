@@ -12,6 +12,8 @@ $this->title = $model->title;
     <p>
         <?= Html::a('Список', ['index'],['class'=>'btn btn-info']) ?>
         <?= Html::a('Ответы ('.$model->answersCount.')', ['presentations/answer/index', 'Search[presentation.id]' => $model->id], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Экспорт pdf', ['presentations/answer/export-pdf', 'presentation_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт xls', ['presentations/answer/export-xls', 'presentation_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
     <div class="row">
         <?= Html::a('Экспорт статистики (по регионам)', ['export-regions', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Экспорт статистики (по компаниям)', ['export-companies', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
