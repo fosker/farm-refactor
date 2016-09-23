@@ -35,7 +35,8 @@ class MainController extends Controller
 
         if($model->load(Yii::$app->request->post()) && $model->validate()) {
             Mailer::sendCallback($model);
-            return $this->redirect(['/']);
+            Yii::$app->session->setFlash('success', 'Сообщение успешно отправлено! С вами скоро свяжутся');
+            return $this->refresh();
         } else {
             return $this->render('callback', [
                 'model' => $model,

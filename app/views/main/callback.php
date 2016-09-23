@@ -28,6 +28,8 @@ $this->title = 'Отправить заявку на получение демо
             <div class="col-lg-5 col-md-6">
                 <h2 class="text-center"><?= Html::encode($this->title); ?></h2>
 
+                <?= Yii::$app->session->hasFlash('success') ?  '<div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'. Yii::$app->session->getFlash('success') . '</div>' : '' ?>
+
                 <div class="form">
 
                     <?php $form = ActiveForm::begin(); ?>
