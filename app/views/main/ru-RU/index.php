@@ -31,7 +31,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         </span>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-9 col-xs-12 clearfix">
-                        <?=Html::a('Pharm<span class="hidden-xs">aceutical</span><span class="visible-xs-ilnine">.</span> company, Med<span class="visible-xs-inline">.</span><span class="hidden-xs">ical</span> representative', '#', ['class' => 'active']) ?> <span class="hidden-xs">/</span> <?=Html::a('Pharmacy specialist', '#') ?>
+                        <?=Html::a('Фарм<span class="hidden-xs">ацевтическия</span><span class="visible-xs-ilnine">.</span> компания, мед<span class="visible-xs-inline">.</span><span class="hidden-xs">ицинский</span> представитель', '#', ['class' => 'active']) ?> <span class="hidden-xs">/</span> <?=Html::a('Фармацевт, провизор', '#') ?>
                     </div>
                     <div class="col-lg-2 col-lg-offset-1 col-md-2 col-sm-3 text-right visible-sm-block visible-md-block visible-lg-block">
                         <?=Html::img('img/info/earth.png', ['width' => '14px'])?> <?=Html::a('EN', '?lang=en', ['class' => Yii::$app->language == 'en-US' ? 'active' : '']) ?> / <?=Html::a('RU', '?lang=ru', ['class' => Yii::$app->language == 'ru-RU' ? 'active' : '']) ?>
@@ -51,34 +51,34 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
             'encodeLabels' => false,
             'items' => [
                 [
-                    'label' => 'Home',
+                    'label' => 'Главная',
                     'url' => '#home',
                     'options' => ['id' => 'link-home'],
                     'linkOptions' => ['class' => 'active'],
                 ],
                 [
-                    'label' => 'Advantages',
+                    'label' => 'Наши преимущества',
                     'url' => '#advantages',
                     'options' => ['id' => 'link-advantages'],
                 ],
                 [
-                    'label' => 'Features',
+                    'label' => 'Функционал',
                     'url' => '#functions',
                     'options' => ['id' => 'link-functions'],
                 ],
                 [
-                    'label' => 'Digital HR',
+                    'label' => 'Мобильный HR',
                     'url' => '#mobile-hr',
                     'options' => ['id' => 'link-mobile-hr'],
 
                 ],
                 [
-                    'label' => 'Contact',
+                    'label' => 'Контакты',
                     'url' => '#contacts',
                     'options' => ['id' => 'link-contacts'],
                 ],
                 [
-                    'label' => 'Send a request',
+                    'label' => 'Оставить заявку',
                     'url' => 'callback',
                     'linkOptions' => ['class' => 'btn btn-custom'],
                 ],
@@ -103,15 +103,15 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
             'items' => [
                 [
                     'content' => Html::img('img/slider/slide2.jpg'),
-                    'caption' => '<h2>Mobile application</h2><h1 class="text-uppercase"><b>Pharmbonus</b></h1><h3><i>Multifunctional tool that can quickly<br />and at minimum cost<br />help to achieve significant results for brand promotion</i></h3>',
+                    'caption' => '<h2>Мобильное приложение</h2><h1 class="text-uppercase"><b>Фармбонус</b></h1><h3><i>Многофункциональный инструмент, позволяющий<br />быстро и при минимальных затратах добиться<br />значимых результатов по продвижению бренда</i></h3>',
                 ],
                 [
                     'content' => Html::img('img/slider/slide3.jpg'),
-                    'caption' => '<h2>Mobile application</h2><h1 class="text-uppercase"><b>Pharmbonus</b></h1><h3><i>Effectively increases brand awareness and loyalty<br /> of pharmacists to the pharmace utical company,<br /> simplifies interaction between them</i></h3>',
+                    'caption' => '<h2>Мобильное приложение</h2><h1 class="text-uppercase"><b>Фармбонус</b></h1><h3><i>Эффективно повышает узнаваемость марки<br />и лояльность провизоров, фармацевтов<br />к фармацевтической компании, упрощает<br />взаимодействие между ними</i></h3>',
                 ],
                 [
                     'content' => Html::img('img/slider/slide1.jpg'),
-                    'caption' => '<h2>Mobile application</h2><h1 class="text-uppercase"><b>Pharmbonus</b></h1><h3><i>For easy communication<br />within the company.</i></h3>',
+                    'caption' => '<h2>Мобильное приложение</h2><h1 class="text-uppercase"><b>Фармбонус</b></h1><h3><i>Используйте для удобной<br />коммуникации внутри компании.</i></h3>',
                 ],
             ]
         ]); ?>
@@ -119,8 +119,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
 
     <div class="advantages" id="advantages">
         <div class="container">
-            <h1 class="section-header wow fadeInDown"><b>Advantages</b></h1>
-            <h4 class="section-sub-header wow fadeInDown">Effective brand promotion at a minimal cost</h4>
+            <h1 class="section-header wow fadeInDown"><b>Наши преимущества</b></h1>
+            <h4 class="section-sub-header wow fadeInDown">Эффективное продвижение бренда при минимальных затратах</h4>
 
             <div class="row infographics">
                 <div class="col-xs-8 col-xs-offset-2 visible-xs-block clearfix">
@@ -133,8 +133,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                             <span class="number">01</span>
                         </div>
                         <div class="col-md-10 col-sm-12 col-xs-10">
-                            <h4>Multifunctionality</h4>
-                            <p>Application can be effectively used to promote the brand to increase the loyalty of the target audience informing pharmacists of updates as well as for easy communication within the company</p>
+                            <h4>Многофункциональность</h4>
+                            <p>Приложение может эффективно использоваться для продвижения бренда, увеличения лояльности провизоров, информирования целевой аудитории о новинках, а так же для удобной коммуникации внутри компании</p>
                         </div>
                     </div>
                     <div class="row advantage wow fadeInLeft">
@@ -142,8 +142,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                             <span class="number">02</span>
                         </div>
                         <div class="col-md-10 col-sm-12 col-xs-10">
-                            <h4>Promotion cost minimization</h4>
-                            <p>Application allows you to quickly achieve goals while reducing promotion costs</p>
+                            <h4>Минимизация затрат</h4>
+                            <p>Приложение позволяет в короткие сроки достигать поставленных целей при сокращении расходов на продвижение</p>
                         </div>
                     </div>
                 </div>
@@ -157,8 +157,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                             <span class="number">03</span>
                         </div>
                         <div class="col-md-10 col-sm-12 col-xs-10">
-                            <h4>Experience</h4>
-                            <p>Team of professionals with years of experience in the pharmaceutical field that was involved in creating applications</p>
+                            <h4>Опыт</h4>
+                            <p>Опыт команды профессионалов с многолетним стажем работы в фармацевтической сфере, который задействован при создании Фармбонуса</p>
                         </div>
                     </div>
                     <div class="row advantage wow fadeInRight">
@@ -166,8 +166,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                             <span class="number">04</span>
                         </div>
                         <div class="col-md-10 col-sm-12 col-xs-10">
-                            <h4>Pharmacy staff only</h4>
-                            <p>Information about the profile of each user education is tested before it is accessed by the app</p>
+                            <h4>Только для работников фармацевтической сферы</h4>
+                            <p>Данные о профильном образовании каждого пользователя проходят проверку прежде, чем будет получен доступ к приложению</p>
                         </div>
                     </div>
                 </div>
@@ -176,8 +176,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     </div>
 
     <div class="functions" id="functions">
-        <h1 class="section-header wow fadeInDown">Features</h1>
-        <h4 class="section-sub-header wow fadeInDown">Usability and functionality for each client</h4>
+        <h1 class="section-header wow fadeInDown">Функционал сервиса</h1>
+        <h4 class="section-sub-header wow fadeInDown">Функциональность и удобство использования для каждого клиента</h4>
 
         <div class="container">
             <div class="row presentation">
@@ -190,8 +190,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/1.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Presentations</h3>
-                                        <p>Tell about your products using visual presentations.</p>
+                                        <h3>Презентации</h3>
+                                        <p>Рассказывайте о своей продукции с помощью наглядных презентаций.</p>
                                     </div>
                                 </div>
                             </a>
@@ -203,8 +203,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/2.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Questionary</h3>
-                                        <p>Create and conduct surveys.</p>
+                                        <h3>Анкеты</h3>
+                                        <p>Создавайте и проводите опросы.</p>
                                     </div>
                                 </div>
                             </a>
@@ -216,8 +216,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/3.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>News</h3>
-                                        <p>Share your news with the target audience of pharmaceutical company shares.</p>
+                                        <h3>Новости</h3>
+                                        <p>Делитесь своими новостями с фармацевтической целевой аудиторией.</p>
                                     </div>
                                 </div>
                             </a>
@@ -229,8 +229,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/4.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Company shares</h3>
-                                        <p>ОAn excellent opportunity to attract additional attention to your product.</p>
+                                        <h3>Акции</h3>
+                                        <p>Отличная возможность привлечь дополнительное внимание к вашему продукту.</p>
                                     </div>
                                 </div>
                             </a>
@@ -242,8 +242,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/5.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Feedback</h3>
-                                        <p>Create relevant topics and communicate effectively with pharmacists, pharmacists.</p>
+                                        <h3>Обратная связь</h3>
+                                        <p>Создавайте актуальные темы и эффективно взаимодействуйте с провизорами, фармацевтами.</p>
                                     </div>
                                 </div>
                             </a>
@@ -255,8 +255,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/6.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Seminars and Webinars</h3>
-                                        <p>Inform a wide audience about your events.</p>
+                                        <h3>Семинары, вебинары</h3>
+                                        <p>Оповещайте широкую аудиторию о своих мероприятиях.</p>
                                     </div>
                                 </div>
                             </a>
@@ -268,8 +268,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/7.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Vacancies</h3>
-                                        <p>Solve personnel issue effectively, post a job offers in a mobile application.</p>
+                                        <h3>Вакансии</h3>
+                                        <p>Решайте кадровый вопрос эффективно, разместив вакансии в мобильном приложении.</p>
                                     </div>
                                 </div>
                             </a>
@@ -281,8 +281,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                                         <?=Html::img('img/functions/8.png') ?>
                                     </div>
                                     <div class="col-md-9">
-                                        <h3>Pharmaceutical companies</h3>
-                                        <p>Get closer to pharmacists – tell about your company in mobile app.</p>
+                                        <h3>Фармацевтические компании</h3>
+                                        <p>Станьте ближе для провизоров, фармацевтов - расскажите о своей компании в мобильном приложении.</p>
                                     </div>
                                 </div>
                             </a>
@@ -294,9 +294,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                     <div class="slide active" id="slide1">
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
-                            <h2>Presentation</h2>
-                            <h4>Why is it necessary to create and publish your company's presentation in the mobile app <b>PharmBonus</b>?</h4>
-                            <p>Because pharmacists can view it at any time of the day: during a trip in transport or having a cup of tea in the kitchen. And to this day Presentation are a major tool for increasing brand value. Well-written presentation is able to inform in detail, focus on the key benefits and advantages of your products. A decoration and has the ability to affect the aesthetic and emotional country pharmacist, a pharmacist.</p>
+                            <h2>Презентации</h2>
+                            <h4>Почему стоит создавать и размещать презентации вашей компании в мобильном приложении <b>ФармБонус</b>?</h4>
+                            <p>Потому, что провизоры и фармацевты могут просмотреть ее в любое время: во время поездки в транспорте или за чашкой чая на кухне. Презентаци и по сей день являются серьезным инструментом для увеличения стоимости бренда. Грамотно составленная логически прописання презентаци способна подробно проинформировать , акцентировать внимание на ключевые выгоды и преимущества Вашей продукции. А художественное оформление имеет способность затронуть и эстетические, и эмоциональные страны провизора, фармацевта.</p>
                             <a class="to-slide right" data-slide="2"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -304,9 +304,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="1"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Questionnaires</h2>
-                            <h4>For the active promotion of new products to the pharmaceutical market, and to update information about an existing product, in a mobile application PharmBonus have the opportunity to conduct interviews or questionnaires.</h4>
-                            <p>The strong side of these surveys is the ability to specify the local respondents, for example, you can configure a survey so that it will appear only pharmacists in Minsk, in the October district, Brest region pharmacists, Mikashevichi or pharmacists, pharmacists g.p.Zelva, Gomel region.</p>
+                            <h2>Анкеты</h2>
+                            <h4>Для активного продвижения на фармацевтический рынок новой продукции, а также для обновления информации о уже существующем продукте, в мобильном приложении ФармБонус есть возможность проведения опросов или анкетирования.</h4>
+                            <p>Сильной стороной создания таких опросов является возможность задать локальность опрашиваемых, а участники опроса могут ответить, когда угодно и где угодно. Например, можно настроить опрос так, что он будет показываться только фармацевтам в г. Минске, в Октябрьском районе, провизорам Брестской области, города Микашевичи или провизорам, фармацевтам г.п.Зельва, Гомельской области.</p>
                             <a class="to-slide right" data-slide="3"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -314,9 +314,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="2"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>News</h2>
-                            <h4>Your company held a grand study in a particular area of pharmacology? Has developed a new and unique product successfully passed all stages of the registration of a new product? Or there were changes in the company itself, which everyone should know the pharmaceutical field worker?</h4>
-                            <p>Exactly for news of your company, this section is created. Here you can specify all of the most relevant and important company news.</p>
+                            <h2>Новости</h2>
+                            <h4>Ваша компания провела грандиозное исследование в определённой области фармакологии? Разработали новый уникальный препарат и успешно прошли все этапы регистрации нового продукта? Или произошли изменения в самой компании, о которых должен знать каждый работник фармацевтической сферы?</h4>
+                            <p>Именно для новостей Вашей компании создан этот раздел. Здесь вы можете указать все самые актуальные и важные новости компании.</p>
                             <a class="to-slide right" data-slide="4"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -324,9 +324,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="3"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Company shares</h2>
-                            <h4>As a rule, shares are an excellent opportunity to attract additional attention to the product, correctly composed shares might work better than advertising.</h4>
-                            <p>The mobile application PharmBonus have all the necessary tools to alert pharmacists about ongoing promotions, as well as a convenient collection of the necessary data on them.</p>
+                            <h2>Акции</h2>
+                            <h4>Как правило, акции являются отличной возможностью привлечь дополнительное внимание к продукту, а грамотно составленная акция может сработать лучше, чем оплачиваемая реклама.</h4>
+                            <p>В мобильном приложении ФармБонус есть все необходимые инструменты для оповещения фармацевтических работников о проходящих акциях, а так же удобном сборе необходимых данных по ним.</p>
                             <a class="to-slide right" data-slide="5"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -334,9 +334,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="4"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Feedback</h2>
-                            <h4>The timely feedback between pharmaceutical companies and pharmacists - the key to a successful and long-term cooperation.</h4>
-                            <p>With this feature, the company is creating in the application an unlimited number of relevant topics, which can be supplemented by a description or explanation. This communication makes it possible to quickly address emerging challenges.</p>
+                            <h2>Обратная связь</h2>
+                            <h4>Своевременная обратная связь между фармацевтической компанией и провизорами, фармацевтами – залог успешного и длительного сотрудничества.</h4>
+                            <p>С помощью этой функции компания создает в приложении неограниченное количество актуальных тем, которые можно дополнить описанием или пояснением. Такое общение дает возможность максимально быстро решать возникающие трудности.</p>
                             <a class="to-slide right" data-slide="6"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -344,9 +344,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="5"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Seminars</h2>
-                            <h4>Does your company conduct training seminars, or webinars? PharmBonus mobile application is an excellent platform to inform and promote of such events.</h4>
-                            <p>You can place information about your training seminar, webinar, with the possibility of personal records on them from pharmacists.</p>
+                            <h2>Семинары</h2>
+                            <h4>Ваша компания проводит обучающие семинары или вебинары? Мобильное приложение ФармБонус является отличной площадкой для информирования и продвижения таких мероприятий.</h4>
+                            <p>Вы можете разместить информацию о своем обучающем семинаре,вебинаре с возможностью личной записи на них.</p>
                             <a class="to-slide right" data-slide="7"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -354,8 +354,8 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="6"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Vacancies</h2>
-                            <p>One advantage of using this feature is the placement of job applications available only for the pharmaceutical sector employees, which makes the search for employees more quickly and efficiently.</p>
+                            <h2>Вакансии</h2>
+                            <p>Одним из преимуществ использования этой функции является размещение вакансии в приложении, доступном только для работников фармацевтической сферы, что делает поиск сотрудников более оперативным и эффективным.</p>
                             <a class="to-slide right" data-slide="8"><i class="glyphicon glyphicon-chevron-right"></i></a>
                         </div>
                     </div>
@@ -363,9 +363,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <?=Html::img('img/functions/bg/1.png')?>
                         <div class="capture">
                             <a class="to-slide left" data-slide="7"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                            <h2>Pharmaceutical companies</h2>
-                            <h4>In this section, each pharmaceutical company may place a full description of its products and in the expanded form to share your story of creation and development, your achievement.</h4>
-                            <p>This will greatly facilitate and speed up the work of the pharmaceutical worker, if he needs to quickly find information about a product or company that produces it.</p>
+                            <h2>Фармацевтические компании</h2>
+                            <h4>В этом разделе каждая фармацевтическая компания может разместить полное описание о своей продукции и в самом развёрнутом виде поделиться своей историей создания и развития, своими достижениями.</h4>
+                            <p>Это в значительной степени облегчит и ускорит работу фармацевтического работника, если ему нужно быстро найти информацию о продукте или компании, которая его производит.</p>
                         </div>
                     </div>
 
@@ -378,111 +378,111 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         'label' => '<p>
                                         '.Html::img("img/functions/1.png").'
                                     </p>
-                                    <h3>Presentations</h3>
-                                    <p>Tell about your products using visual presentations.</p>
+                                    <h3>Презентации</h3>
+                                    <p>Рассказывайте о своей продукции с помощью наглядных презентаций.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
                         'content' => '<h4>Почему стоит создавать и размещать презентации вашей компании в мобильном приложении ФармБонус?</h4>
-                            <p>Because pharmacists can view it at any time of the day: during a trip in transport or having a cup of tea in the kitchen. And to this day Presentation are a major tool for increasing brand value. Well-written presentation is able to inform in detail, focus on the key benefits and advantages of your products. A decoration and has the ability to affect the aesthetic and emotional country pharmacist, a pharmacist.</p>',
+                            <p>Потому, что провизоры и фармацевты могут просмотреть ее в любое время: во время поездки в транспорте или за чашкой чая на кухне. Презентаци и по сей день являются серьезным инструментом для увеличения стоимости бренда. Грамотно составленная логически прописання презентаци способна подробно проинформировать , акцентировать внимание на ключевые выгоды и преимущества Вашей продукции. А художественное оформление имеет способность затронуть и эстетические, и эмоциональные страны провизора, фармацевта.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/2.png").'
                                     </p>
-                                    <h3>Questionnaires</h3>
-                                    <p>Create and conduct surveys.</p>
+                                    <h3>Анкеты</h3>
+                                    <p>Создавайте и проводите опросы.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>For the active promotion of new products to the pharmaceutical market, and to update information about an existing product, in a mobile application PharmBonus have the opportunity to conduct interviews or questionnaires.</h4>
-                            <p>СThe strong side of these surveys is the ability to specify the local respondents, for example, you can configure a survey so that it will appear only pharmacists in Minsk, in the October district, Brest region pharmacists, Mikashevichi or pharmacists, pharmacists g.p.Zelva, Gomel region.</p>',
+                        'content' => '<h4>Для активного продвижения на фармацевтический рынок новой продукции, а также для обновления информации о уже существующем продукте, в мобильном приложении ФармБонус есть возможность проведения опросов или анкетирования.</h4>
+                            <p>Сильной стороной создания таких опросов является возможность задать локальность опрашиваемых, а участники опроса могут ответить, когда угодно и где угодно. Например, можно настроить опрос так, что он будет показываться только фармацевтам в г. Минске, в Октябрьском районе, провизорам Брестской области, города Микашевичи или провизорам, фармацевтам г.п.Зельва, Гомельской области.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/3.png").'
                                     </p>
-                                    <h3>News</h3>
-                                    <p>Share your news with the pharmaceutical target audience.</p>
+                                    <h3>Новости</h3>
+                                    <p>Делитесь своими новостями с фармацевтической целевой аудиторией.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>Your company held a grand study in a particular area of pharmacology? Has developed a new and unique product successfully passed all stages of the registration of a new product? Or there were changes in the company itself, which everyone should know the pharmaceutical field worker?</h4>
-                            <p>Exactly for news of your company, this section is created. Here you can specify all of the most relevant and important company news.</p>',
+                        'content' => '<h4>Ваша компания провела грандиозное исследование в определённой области фармакологии? Разработали новый уникальный препарат и успешно прошли все этапы регистрации нового продукта? Или произошли изменения в самой компании, о которых должен знать каждый работник фармацевтической сферы?</h4>
+                            <p>Именно для новостей Вашей компании создан этот раздел. Здесь вы можете указать все самые актуальные и важные новости компании.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/4.png").'
                                     </p>
-                                    <h3>Company shares</h3>
-                                    <p>An excellent opportunity to attract additional attention to your product.</p>
+                                    <h3>Акции</h3>
+                                    <p>Отличная возможность привлечь дополнительное внимание к вашему продукту.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>As a rule, shares are an excellent opportunity to attract additional attention to the product, correctly composed shares might work better than advertising.</h4>
-                            <p>The mobile application PharmBonus have all the necessary tools to alert pharmacists about ongoing promotions, as well as a convenient collection of the necessary data on them.</p>',
+                        'content' => '<h4>Как правило, акции являются отличной возможностью привлечь дополнительное внимание к продукту, а грамотно составленная акция может сработать лучше, чем оплачиваемая реклама.</h4>
+                            <p>В мобильном приложении ФармБонус есть все необходимые инструменты для оповещения фармацевтических работников о проходящих акциях, а так же удобном сборе необходимых данных по ним.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/5.png").'
                                     </p>
-                                    <h3>Feedback</h3>
-                                    <p>Create relevant topics and communicate effectively with pharmacists, pharmacists.</p>
+                                    <h3>Обратная связь</h3>
+                                    <p>Создавайте актуальные темы и эффективно взаимодействуйте с провизорами, фармацевтами.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>The timely feedback between pharmaceutical companies and pharmacists - the key to a successful and long-term cooperation.</h4>
-                            <p>With this feature, the company is creating in the application an unlimited number of relevant topics, which can be supplemented by a description or explanation. This communication makes it possible to quickly address emerging challenges.</p>',
+                        'content' => '<h4>Своевременная обратная связь между фармацевтической компанией и провизорами, фармацевтами – залог успешного и длительного сотрудничества.</h4>
+                            <p>С помощью этой функции компания создает в приложении неограниченное количество актуальных тем, которые можно дополнить описанием или пояснением. Такое общение дает возможность максимально быстро решать возникающие трудности.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/6.png").'
                                     </p>
-                                    <h3>Seminars and Webinars</h3>
-                                    <p>Inform a wide audience about your events.</p>
+                                    <h3>Семинары, вебинары</h3>
+                                    <p>Оповещайте широкую аудиторию о своих мероприятиях.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>Does your company conduct training seminars, or webinars? PharmBonus mobile application is an excellent platform to inform and promote of such events.</h4>
-                            <p>You can place information about your training seminar, webinar, with the possibility of personal records on them from pharmacists.</p>',
+                        'content' => '<h4>Ваша компания проводит обучающие семинары или вебинары? Мобильное приложение ФармБонус является отличной площадкой для информирования и продвижения таких мероприятий.</h4>
+                            <p>Вы можете разместить информацию о своем обучающем семинаре,вебинаре с возможностью личной записи на них.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/7.png").'
                                     </p>
-                                    <h3>Vacancies</h3>
-                                    <p>Solve personnel issue effectively, post a job offers in a mobile application</p>
+                                    <h3>Вакансии</h3>
+                                    <p>Решайте кадровый вопрос эффективно, разместив вакансии в мобильном приложении.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<p>One advantage of using this feature is the placement of job applications available only for the pharmaceutical sector employees, which makes the search for employees more quickly and efficiently.</p>',
+                        'content' => '<p>Одним из преимуществ использования этой функции является размещение вакансии в приложении, доступном только для работников фармацевтической сферы, что делает поиск сотрудников более оперативным и эффективным.</p>',
                         'encode' => false,
                     ],
                     [
                         'label' => '<p>
                                         '.Html::img("img/functions/8.png").'
                                     </p>
-                                    <h3>Pharmaceutical companies</h3>
-                                    <p>Get closer to pharmacists – tell about your company in mobile app.</p>
+                                    <h3>Фармацевтические компании</h3>
+                                    <p>Станьте ближе для провизоров, фармацевтов - расскажите о своей компании в мобильном приложении.</p>
                                     <div class="arrow">
                                         '.Html::img("img//arrow.png").'
                                     </div>
                                     ',
-                        'content' => '<h4>In this section, each pharmaceutical company may place a full description of its products and in the expanded form to share your story of creation and development, your achievement.</h4>
-                            <p>This will greatly facilitate and speed up the work of the pharmaceutical worker, if he needs to quickly find information about a product or company that produces it.</p>',
+                        'content' => '<h4>В этом разделе каждая фармацевтическая компания может разместить полное описание о своей продукции и в самом развёрнутом виде поделиться своей историей создания и развития, своими достижениями.</h4>
+                            <p>Это в значительной степени облегчит и ускорит работу фармацевтического работника, если ему нужно быстро найти информацию о продукте или компании, которая его производит.</p>',
                         'encode' => false,
                     ],
                 ]
@@ -491,43 +491,43 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     </div>
 
     <div class="achievements">
-        <h1 class="wow fadeInDown">Our achievements in numbers </h1>
+        <h1 class="wow fadeInDown">Наши достижения в цифрах</h1>
         <div class="container">
             <div class="row">
                 <div class="col-xs-4 wow fadeInLeft">
-                    <h3>It is shown to users</h3>
+                    <h3>Показано</h3>
                     <p class="counter">17</p>
-                    <h2>Presentations</h2>
+                    <h2>Презентаций</h2>
                 </div>
                 <div class="col-xs-4 wow fadeInUp">
-                    <h3>It is conduct</h3>
+                    <h3>Проведено</h3>
                     <p class="counter">23</p>
-                    <h2>surveys</h2>
+                    <h2>Опроса</h2>
                 </div>
                 <div class="col-xs-4 wow fadeInRight">
-                    <h3>It is published</h3>
+                    <h3>Опубликовано</h3>
                     <p class="counter">25</p>
-                    <h2>articles</h2>
+                    <h2>Статей</h2>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="mobile-hr" id="mobile-hr">
-        <h1 class="section-header wow fadeInDown">Digital HR</h1>
-        <h4 class="section-sub-header wow fadeInDown">Rapid alert about the latest news of the company and the industry</h4>
+        <h1 class="section-header wow fadeInDown">Мобильный HR</h1>
+        <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
         <div class="row task">
             <div class="col-md-7 col-sm-6 wow fadeInLeft">
                 <div class="problem clearfix">
                     <div>
-                        If your company is problematic to collect all the employees and discuss with them the latest innovations in the pharmaceutical field or events within the company, then you need a <b>Digital HR.</b>
+                        Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
                     </div>
                 </div>
             </div>
             <div class="col-md-5 col-sm-6 solving wow fadeInRight">
                 <div>
-                    <h2>Digital HR</h2>
-                    <p>- It is your interactive channel of communication with employees and operational tool for vocational training</p>
+                    <h2>Мобильный HR</h2>
+                    <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
                 </div>
             </div>
         </div>
@@ -540,7 +540,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                     <?=Html::img('img/b.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.2s']) ?>
                     <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.3s']) ?>
                     <?=Html::img('img/c.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.4s']) ?>
-                    <p class="wow fadeInUp">Fast adaptation of new employees</p>
+                    <p class="wow fadeInUp">Ускоренная адаптация новых сотрудников</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-sm-offset-0 col-md-offset-1">
                     <?=Html::img('img/d.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.5s']) ?>
@@ -548,27 +548,27 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                     <?=Html::img('img/e.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.7s']) ?>
                     <?=Html::img('img/g.png', ['class' => 'wow fadeInDown arrow', 'data-wow-delay' => '0.8s']) ?>
                     <?=Html::img('img/f.png', ['class' => 'wow fadeInDown', 'data-wow-delay' => '0.9s']) ?>
-                    <p class="wow fadeInUp">Loyal and professional <br />collective</p>
+                    <p class="wow fadeInUp">Лояльный и профессиональный<br />коллектив</p>
                 </div>
             </div>
         </div>
 
         <div class="fast-notify">
             <div class="container">
-                <h2 class="wow fadeInDown">Quick alert about the latest news of the company,<br /> you need to have:</h2>
+                <h2 class="wow fadeInDown">Быстрое оповещение о последних новостях компании,<br />для этого нужно только иметь:</h2>
 
                 <div class="row">
                     <div class="col-xs-4  wow fadeInLeft">
                         <?=Html::img('img/laptop.png') ?>
-                        <p>Gadget,<br />a laptop<br />or computer</p>
+                        <p>Гаджет,<br />Ноутбук<br />или компьютер</p>
                     </div>
                     <div class="col-xs-4 wow fadeInUp">
                         <?=Html::img('img/world.png') ?>
-                        <p>The Internet</p>
+                        <p>Интернет</p>
                     </div>
                     <div class="col-xs-4 wow fadeInRight">
                         <?=Html::img('img/app.png') ?>
-                        <p>Mobile app</p>
+                        <p>Мобильное приложение</p>
                     </div>
                 </div>
             </div>
@@ -578,7 +578,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
-                        <h1 class="wow fadeInLeft">GET THE APP <br />Pharmbonus!</h1>
+                        <h1 class="wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
                         <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
                     </div>
                     <div class="col-lg-5  col-md-6 col-sm-5 wow fadeInRight visible-sm-block visible-md-block visible-lg-block">
@@ -598,7 +598,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                     <div class="col-md-5 col-lg-4 visible-md-block visible-lg-block">
                         <div class="partner wow fadeInDown">
                             <h2><b>PharmBonus</b></h2>
-                            <h4>is Your reliable<br />partner in the digital<br />world!</h4>
+                            <h4>Ваш надежный<br />партнер в цифровом<br />Мире!</h4>
                         </div>
                     </div>
                     <div class="col-md-7 col-md-8 col-xs-12">
@@ -613,7 +613,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                             </div>
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.6s">
                                 <p><?=Html::img('img/contacts/marker.png', ['width' => '30px'])?></p>
-                                <p>Minsk, Korzhenevskogo lane, 28-115, room 2</p>
+                                <p>г. Минск, пер. Корженевского, 28-115, пом. 2</p>
                             </div>
                         </div>
                     </div>
