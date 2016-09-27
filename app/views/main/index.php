@@ -86,9 +86,9 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
         ]);
         NavBar::end();?>
 
-        <a href="?lang=en">
+        <a href="?lang=ru">
             <button type="button" class="navbar-toggle collapsed lang-picker-toggle">
-                EN<i class="glyphicon glyphicon-chevron-right"></i>
+                RU<i class="glyphicon glyphicon-chevron-right"></i>
             </button>
         </a>
     </header>
@@ -491,11 +491,11 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     </div>
 
     <div class="achievements">
-        <h1 class="wow fadeInDown">Our achievements in numbers </h1>
+        <h1 class="wow fadeInDown">Our achievements in numbers</h1>
         <div class="container">
             <div class="row">
                 <div class="col-xs-4 wow fadeInLeft">
-                    <h3>It is shown to users</h3>
+                    <h3>It is shown</h3>
                     <p class="counter">17</p>
                     <h2>Presentations</h2>
                 </div>
