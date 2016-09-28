@@ -1,6 +1,8 @@
 // WOW
 
-new WOW().init();
+if($(window).width() > 992) {
+    new WOW().init();
+}
 
 $(function () {
     // SMOOTH SCROLL

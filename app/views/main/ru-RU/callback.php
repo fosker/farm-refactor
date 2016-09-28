@@ -5,7 +5,7 @@ use kartik\widgets\ActiveForm;
 
 /** @var $model \common\models\pharmbonus\Callback */
 
-$this->title = 'Send a request for a demo account ';
+$this->title = 'Отправить заявку на получение демо-аккаунта';
 
 ?>
 
@@ -34,13 +34,13 @@ $this->title = 'Send a request for a demo account ';
 
                     <?php $form = ActiveForm::begin(); ?>
 
-                    <?= $form->field($model, 'name')->label('Name')->textInput(); ?>
-                    <?= $form->field($model, 'company')->label('Company')->textInput(); ?>
+                    <?= $form->field($model, 'name')->textInput(); ?>
+                    <?= $form->field($model, 'company')->textInput(); ?>
                     <?= $form->field($model, 'email')->textInput(); ?>
-                    <?= $form->field($model, 'phone')->label('Contact Number')->textInput(); ?>
+                    <?= $form->field($model, 'phone')->textInput(); ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Send request', ['class' => 'btn btn-success btn-block']); ?>
+                        <?= Html::submitButton('Отправить заявку', ['class' => 'btn btn-success btn-block']); ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>
@@ -48,8 +48,8 @@ $this->title = 'Send a request for a demo account ';
             </div>
             <div class="col-lg-7 col-md-6 visible-md-block visible-lg-block">
                 <div class="description">
-                    <p>Still unsure whether to place informatio n about your company and its products in a mobile application <b>PharmBonus</b>?</p>
-                    <p><b>We suggest you to install mobile app and see all the tools in action!</b></p>
+                    <p>Все еще сомневаетесь, стоит ли размещать информацию о себе и своей продукции в мобильном приложении <b>Фармбонус</b>?</p>
+                    <p><b>Предлагаем Вам установить мобильное приложение и увидеть все инструменты в действии!</b></p>
                 </div>
             </div>
         </div>
