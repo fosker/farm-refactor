@@ -84,7 +84,7 @@ class Comment extends \yii\db\ActiveRecord
 
     public static function findByNews($news_id)
     {
-        return static::find()->where(['news_id'=>$news_id])->orderBy(['date_add'=>SORT_DESC]);
+        return static::find()->where(['news_id'=>$news_id])->orderBy('date_add desc');
     }
 
     public function getUser()

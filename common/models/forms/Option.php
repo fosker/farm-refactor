@@ -5,7 +5,7 @@ namespace common\models\forms;
 use Yii;
 
 /**
- * This is the model class for table "forms_fields_options".
+ * This is the model class for table "form_section_field_options".
  *
  * @property integer $id
  * @property integer $field_id
@@ -18,7 +18,7 @@ class Option extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'forms_fields_options';
+        return 'form_section_field_options';
     }
 
     /**
@@ -48,7 +48,7 @@ class Option extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'field_id' => 'Field ID',
+            'field_id' => 'Поле',
             'value' => 'Значение',
         ];
     }

@@ -44,15 +44,15 @@ class MainController extends \yii\web\Controller
     {
         $regionQuery = Region::find();
         $regionCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(), Pharmacy::tableName(), City::tableName(), Region::tableName()])
             ->select('count('.Pharmacist::tableName().'.id'.') as count, region_id')
-            ->joinWith('pharmacy')
-            ->join('LEFT JOIN', City::tableName(),
-                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
-            ->join('LEFT JOIN', Region::tableName(),
-                Region::tableName().'.id = '.City::tableName().'.region_id')
+            ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.city_id ='.City::tableName().'.id')
+            ->andWhere(City::tableName().'.region_id ='.Region::tableName().'.id')
             ->groupBy('region_id');
         $regionQuery->leftJoin(['regionCount' => $regionCount], 'regionCount.region_id = id')
             ->orderBy(['regionCount.count' => SORT_DESC]);
+
         $regions = new ActiveDataProvider([
             'query' => $regionQuery,
             'pagination' => [
@@ -62,9 +62,10 @@ class MainController extends \yii\web\Controller
 
         $companyQuery = Company::find();
         $companyCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(),Pharmacy::tableName(),Company::tableName()])
             ->select('count('.Pharmacist::tableName().'.id'.') as count, company_id')
-            ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->where(Pharmacist::tableName().'.pharmacy_id ='.Pharmacy::tableName().'.id')
+            ->andWhere(Company::tableName().'.id ='.Pharmacy::tableName().'.company_id')
             ->groupBy('company_id');
         $companyQuery->leftJoin(['companyCount' => $companyCount], 'companyCount.company_id = id')
             ->orderBy(['companyCount.count' => SORT_DESC]);
@@ -72,15 +73,6 @@ class MainController extends \yii\web\Controller
             'query' => $companyQuery,
             'pagination' => [
                 'pageSize' => 10,
-            ],
-        ]);
-
-        $dateQuery = User::find()->select('date_reg')->orderBy('date_reg DESC');
-
-        $dates = new ActiveDataProvider([
-            'query' => $dateQuery,
-            'pagination' => [
-                'pageSize' => 100,
             ],
         ]);
 
@@ -131,6 +123,7 @@ class MainController extends \yii\web\Controller
                 Region::tableName().'.id = '.City::tableName().'.region_id')
             ->where('year(date_reg) > 2015')
             ->groupBy([Region::tableName().'.id', 'month', 'year'])
+            ->orderBy('count DESC')
             ->asArray()
             ->all();
 

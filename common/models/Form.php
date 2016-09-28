@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use common\models\forms\Field;
+use common\models\forms\Section;
 
 /**
  * This is the model class for table "forms".
@@ -40,7 +40,7 @@ class Form extends \yii\db\ActiveRecord
         return [
             'id',
             'title',
-            'fields',
+            'sections',
         ];
     }
 
@@ -56,8 +56,8 @@ class Form extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getFields()
+    public function getSections()
     {
-        return $this->hasMany(Field::className(),['form_id'=>'id']);
+        return $this->hasMany(Section::className(),['form_id'=>'id']);
     }
 }

@@ -81,7 +81,7 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $days_views = ArrayHelper::map(View::find()
-            ->select('news_id, dayofweek(date) as day, count(news_id) as count')
+            ->select('news_id, weekday(date)+1 as day, count(news_id) as count')
             ->where(['news_id' => $id])
             ->groupBy('news_id, day')
             ->asArray()

@@ -16,7 +16,7 @@
 <div class="row pharmacies" style="display: none">
     <div class="col-md-12">
         <ul style="list-style: none">
-            <?php foreach($model->pharmacies as $pharmacy):?>
+            <?php foreach($model->pharmaciesCount as $pharmacy):?>
                 <?php if($pharmacy->userCount):?>
                     <li>
                         <br>

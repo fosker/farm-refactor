@@ -84,11 +84,13 @@ class PresentationController extends Controller
         }
 
         if(Answer::loadMultiple($answers,$_POST,'answer')) {
-            $answers = Answer::filterModels($answers);
-            if(Answer::validateMultiple($answers,['question_id','value'])) {
-                View::addByCurrentUser($answers);
-                Yii::$app->user->identity->viewPresentation(reset($answers)->question->presentation);
-                return ['success'=>true];
+            if(!View::find()->where(['user_id'=>Yii::$app->user->id, 'presentation_id'=>reset($answers)->question->presentation_id])->exists()) {
+                $answers = Answer::filterModels($answers);
+                if(Answer::validateMultiple($answers,['question_id','value'])) {
+                    View::addByCurrentUser($answers);
+                    Yii::$app->user->identity->viewPresentation(reset($answers)->question->presentation);
+                    return ['success'=>true];
+                }
             }
         }
         return $answers;

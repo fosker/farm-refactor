@@ -362,48 +362,18 @@ class PresentationController extends Controller
     public function actionExportRegions($id)
     {
         $model = $this->findModel($id);
+
         $radio_questions = $model->devidedQuestions['radio'];
         $checkbox_questions = $model->devidedQuestions['checkbox'];
 
-        $radio_common = Question::transformCommon($radio_questions);
-        $radio_regions = Question::transformForRegions($radio_questions);
+        $radio_sums = Question::getRegionSums($radio_questions);
+        $checkbox_sums = Question::getRegionSums($checkbox_questions);
 
+        $radio_common = Question::transformRadioCommon($radio_questions);
+        $radio_regions = Question::transformRadioRegions($radio_questions, $radio_sums);
 
-        $sums_radio = [];
-        foreach($radio_regions as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $region_id => $region) {
-                    $sums_radio[$question_id][$region_id] += $region;
-                }
-            }
-        }
-
-
-        foreach($radio_regions as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $region_id => $region) {
-                    $radio_regions[$question_id][$option_id][$region_id] = $radio_regions[$question_id][$option_id][$region_id]/$sums_radio[$question_id][$region_id]*100;
-                }
-            }
-        }
-
-        $checkbox_common = Question::transformCommon($checkbox_questions);
-        $checkbox_regions = Question::transformForRegions($checkbox_questions);
-
-
-        foreach($checkbox_common as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                $checkbox_common[$question_id][$option_id] = $checkbox_common[$question_id][$option_id]/$model->answersCount*100;
-            }
-        }
-
-        foreach($checkbox_regions as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $region_id => $region) {
-                    $checkbox_regions[$question_id][$option_id][$region_id] = $checkbox_regions[$question_id][$option_id][$region_id]/reset($sums_radio)[$region_id]*100;
-                }
-            }
-        }
+        $checkbox_common = Question::transformCheckboxCommon($checkbox_questions, $model);
+        $checkbox_regions = Question::transformCheckboxRegions($checkbox_questions, $checkbox_sums);
 
         FileHelper::createDirectory('temp');
 
@@ -420,50 +390,24 @@ class PresentationController extends Controller
     public function actionExportCompanies($id)
     {
         $model = $this->findModel($id);
+
         $radio_questions = $model->devidedQuestions['radio'];
         $checkbox_questions = $model->devidedQuestions['checkbox'];
 
-        $radio_common = Question::transformCommon($radio_questions);
-        $radio_companies = Question::transformForCompanies($radio_questions, $model);
+        $radio_sums = Question::getCompanySums($radio_questions);
+        $checkbox_sums = Question::getCompanySums($checkbox_questions);
 
-        $sums_radio = [];
-        foreach($radio_companies as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $company_id => $company) {
-                    $sums_radio[$question_id][$company_id] += $company;
-                }
-            }
-        }
+        $radio_common = Question::transformRadioCommon($radio_questions);
+        $radio_companies = Question::transformRadioCompanies($radio_questions, $model, $radio_sums);
 
-        foreach($radio_companies as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $company_id => $company) {
-                    $radio_companies[$question_id][$option_id][$company_id] = $radio_companies[$question_id][$option_id][$company_id]/$sums_radio[$question_id][$company_id]*100;
-                }
-            }
-        }
-
-        $checkbox_common = Question::transformCommon($checkbox_questions);
-        $checkbox_companies = Question::transformForCompanies($checkbox_questions, $model);
-
-        foreach($checkbox_common as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                $checkbox_common[$question_id][$option_id] = $checkbox_common[$question_id][$option_id]/$model->answersCount*100;
-            }
-        }
-
-        foreach($checkbox_companies as $question_id => $question) {
-            foreach($question as $option_id => $option) {
-                foreach($option as $company_id => $company) {
-                    $checkbox_companies[$question_id][$option_id][$company_id] = $checkbox_companies[$question_id][$option_id][$company_id]/reset($sums_radio)[$company_id]*100;
-                }
-            }
-        }
+        $checkbox_common = Question::transformCheckboxCommon($checkbox_questions, $model);
+        $checkbox_companies = Question::transformCheckboxCompanies($checkbox_questions, $model, $checkbox_sums);
 
         FileHelper::createDirectory('temp');
 
         $this->generateRadioCommon($radio_common);
         $this->generateRadioCompanies($radio_companies, $model);
+
         $this->generateCheckboxCommon($checkbox_common);
         $this->generateCheckboxCompanies($checkbox_companies, $model);
 
@@ -480,7 +424,7 @@ class PresentationController extends Controller
 
     private function generateRadioLegend($pData, $name)
     {
-        $image = new \pImage(100,200,$pData,1);
+        $image = new \pImage(500,200,$pData,1);
         $image->setFontProperties([
             "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
             "FontSize"=>18,
@@ -490,7 +434,7 @@ class PresentationController extends Controller
         ]);
 
         $pie = new \pPie($image,$pData);
-        $pie->drawPieLegend(0,10,[
+        $pie->drawPieLegend(50,10,[
             "Style"=>LEGEND_NOBORDER,
             "Mode"=>LEGEND_VERTICAL,
             "FontSize"=>12,
@@ -499,9 +443,10 @@ class PresentationController extends Controller
         $image->render("temp/".$legend_name.'.png');
     }
 
-    private function generateCheckboxLegend($pData, $name)
+    private function generateCheckboxLegend($pData, $name, $options)
     {
-        $image = new \pImage(1000,200,$pData,1);
+        $height = $options * 45;
+        $image = new \pImage(500,$height,$pData,1);
         $image->setFontProperties([
             "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
             "FontSize"=>18,
@@ -512,26 +457,46 @@ class PresentationController extends Controller
 
         $pie = new \pPie($image,$pData);
         $pie->setSliceColor(0, [
-            "R"=>30,
-            "G"=>105,
-            "B"=>172,
+            "R"=>244,
+            "G"=>67,
+            "B"=>54,
         ]);
         $pie->setSliceColor(1, [
-            "R"=>18,
-            "G"=>145,
-            "B"=>15,
+            "R"=>33,
+            "G"=>150,
+            "B"=>243,
         ]);
         $pie->setSliceColor(2, [
-            "R"=>138,
-            "G"=>179,
-            "B"=>61,
+            "R"=>139,
+            "G"=>195,
+            "B"=>74,
         ]);
         $pie->setSliceColor(3, [
-            "R"=>242,
-            "G"=>139,
-            "B"=>8,
+            "R"=>255,
+            "G"=>235,
+            "B"=>59,
         ]);
-        $pie->drawPieLegend(0,10,[
+        $pie->setSliceColor(4, [
+            "R"=>121,
+            "G"=>85,
+            "B"=>72,
+        ]);
+        $pie->setSliceColor(5, [
+            "R"=>255,
+            "G"=>87,
+            "B"=>34,
+        ]);
+        $pie->setSliceColor(6, [
+            "R"=>49,
+            "G"=>27,
+            "B"=>146,
+        ]);
+        $pie->setSliceColor(7, [
+            "R"=>91,
+            "G"=>12,
+            "B"=>39,
+        ]);
+        $pie->drawPieLegend(50,20,[
             "Style"=>LEGEND_NOBORDER,
             "Mode"=>LEGEND_VERTICAL,
             "FontSize"=>12,
@@ -543,18 +508,22 @@ class PresentationController extends Controller
     private function generateRadioCommon($questions)
     {
         foreach($questions as $question_id => $question) {
+            $legend = [];
+            foreach(array_keys($question) as $option) {
+                $legend[] = wordwrap($option,100,"\n",0);
+            }
             $data = new \pData();
             $data->addPoints(array_values($question),"ScoreA");
             $data->setSerieDescription("ScoreA","Количество ответов");
 
-            $data->addPoints(array_keys($question),"Labels");
+            $data->addPoints($legend,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(1000,400,$data,1);
+            $image = new \pImage(850,400,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>24,
+                "FontSize"=>20,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
@@ -572,32 +541,53 @@ class PresentationController extends Controller
             $pie = new \pPie($image,$data);
 
             $pie->setSliceColor(0, [
-                "R"=>30,
-                "G"=>105,
-                "B"=>172,
+                "R"=>244,
+                "G"=>67,
+                "B"=>54,
             ]);
             $pie->setSliceColor(1, [
-                "R"=>18,
-                "G"=>145,
-                "B"=>15,
+                "R"=>33,
+                "G"=>150,
+                "B"=>243,
             ]);
             $pie->setSliceColor(2, [
-                "R"=>138,
-                "G"=>179,
-                "B"=>61,
+                "R"=>139,
+                "G"=>195,
+                "B"=>74,
             ]);
             $pie->setSliceColor(3, [
-                "R"=>242,
-                "G"=>139,
-                "B"=>8,
+                "R"=>255,
+                "G"=>235,
+                "B"=>59,
+            ]);
+            $pie->setSliceColor(4, [
+                "R"=>121,
+                "G"=>85,
+                "B"=>72,
+            ]);
+            $pie->setSliceColor(5, [
+                "R"=>255,
+                "G"=>87,
+                "B"=>34,
+            ]);
+            $pie->setSliceColor(6, [
+                "R"=>49,
+                "G"=>27,
+                "B"=>146,
+            ]);
+            $pie->setSliceColor(7, [
+                "R"=>91,
+                "G"=>12,
+                "B"=>39,
             ]);
 
-            $pie->draw2DPie(450,190,[
+            $pie->draw2DPie(400,200,[
                 "DrawLabels"=>0,
-                "Radius"=>190,
+                "LabelStacked"=>0,
+                "Radius"=>140,
                 "Border"=>1,
                 "WriteValues"=>PIE_VALUE_PERCENTAGE,
-                "ValuePosition"=>PIE_VALUE_INSIDE,
+                "ValuePosition"=>PIE_VALUE_OUTSIDE,
                 'ValueR'=>0,
                 'ValueG'=>0,
                 'ValueB'=>0
@@ -625,39 +615,59 @@ class PresentationController extends Controller
                 $data->addPoints($option[$j],"Probe "."$j");
             }
             $data->setPalette("Probe 0", [
-                "R"=>30,
-                "G"=>105,
-                "B"=>172,
+                "R"=>244,
+                "G"=>67,
+                "B"=>54,
             ]);
             $data->setPalette("Probe 1", [
-                "R"=>18,
-                "G"=>145,
-                "B"=>15,
+                "R"=>33,
+                "G"=>150,
+                "B"=>243,
             ]);
             $data->setPalette("Probe 2", [
-                "R"=>138,
-                "G"=>179,
-                "B"=>61,
+                "R"=>139,
+                "G"=>195,
+                "B"=>74,
             ]);
             $data->setPalette("Probe 3", [
-                "R"=>242,
-                "G"=>139,
-                "B"=>8,
+                "R"=>255,
+                "G"=>235,
+                "B"=>59,
+            ]);
+            $data->setPalette("Probe 4", [
+                "R"=>121,
+                "G"=>85,
+                "B"=>72,
+            ]);
+            $data->setPalette("Probe 5", [
+                "R"=>255,
+                "G"=>87,
+                "B"=>34,
+            ]);
+            $data->setPalette("Probe 6", [
+                "R"=>49,
+                "G"=>27,
+                "B"=>146,
+            ]);
+            $data->setPalette("Probe 7", [
+                "R"=>91,
+                "G"=>12,
+                "B"=>39,
             ]);
             $data->addPoints($regions,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(700,500,$data,1);
+            $image = new \pImage(800,800,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>15,
+                "FontSize"=>12,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(300,20,600,400);
+            $image->setGraphArea(350,20,700,800);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -672,7 +682,10 @@ class PresentationController extends Controller
                 "B"=>0,
                 "Alpha"=>10
             ]);
-            $image->drawBarChart();
+            $image->drawBarChart([
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>1
+            ]);
             $image->setShadow(0);
 
             $bar_name = $question_id.'_region';
@@ -704,39 +717,59 @@ class PresentationController extends Controller
                 $data->addPoints($option[$j],"Probe "."$j");
             }
             $data->setPalette("Probe 0", [
-                "R"=>30,
-                "G"=>105,
-                "B"=>172,
+                "R"=>244,
+                "G"=>67,
+                "B"=>54,
             ]);
             $data->setPalette("Probe 1", [
-                "R"=>18,
-                "G"=>145,
-                "B"=>15,
+                "R"=>33,
+                "G"=>150,
+                "B"=>243,
             ]);
             $data->setPalette("Probe 2", [
-                "R"=>138,
-                "G"=>179,
-                "B"=>61,
+                "R"=>139,
+                "G"=>195,
+                "B"=>74,
             ]);
             $data->setPalette("Probe 3", [
-                "R"=>242,
-                "G"=>139,
-                "B"=>8,
+                "R"=>255,
+                "G"=>235,
+                "B"=>59,
+            ]);
+            $data->setPalette("Probe 4", [
+                "R"=>121,
+                "G"=>85,
+                "B"=>72,
+            ]);
+            $data->setPalette("Probe 5", [
+                "R"=>255,
+                "G"=>87,
+                "B"=>34,
+            ]);
+            $data->setPalette("Probe 6", [
+                "R"=>49,
+                "G"=>27,
+                "B"=>146,
+            ]);
+            $data->setPalette("Probe 7", [
+                "R"=>91,
+                "G"=>12,
+                "B"=>39,
             ]);
             $data->addPoints($companies,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(700,500,$data,1);
+            $image = new \pImage(800,800,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>15,
+                "FontSize"=>12,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(300,20,600,400);
+            $image->setGraphArea(350,20,700,800);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -751,7 +784,10 @@ class PresentationController extends Controller
                 "B"=>0,
                 "Alpha"=>10
             ]);
-            $image->drawBarChart();
+            $image->drawBarChart([
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>1
+            ]);
             $image->setShadow(0);
 
             $bar_name = $question_id.'_company';
@@ -762,11 +798,15 @@ class PresentationController extends Controller
     private function generateCheckboxCommon($questions)
     {
         foreach($questions as $question_id => $question) {
+            $legend = [];
+            foreach(array_keys($question) as $option) {
+                $legend[] = wordwrap($option,150,"\n",0);
+            }
             $data = new \pData();
             $data->addPoints(array_values($question),"ScoreA");
             $data->setSerieDescription("ScoreA","Количество ответов");
 
-            $data->addPoints(array_keys($question),"Labels");
+            $data->addPoints($legend,"Labels");
             $data->setAbscissa("Labels");
 
             $image = new \pImage(1000,260,$data,1);
@@ -793,13 +833,17 @@ class PresentationController extends Controller
 
             $name = $question_id.'_common';
 
-            $this->generateCheckboxLegend($data, $name);
+            $this->generateCheckboxLegend($data, $name, count($legend));
         }
 
         foreach($questions as $question_id => $question) {
+            $legend = [];
+            foreach(array_keys($question) as $option) {
+                $legend[] = wordwrap($option,70,"\n",0);
+            }
             $data = new \pData();
             $data->addPoints(array_values($question),"Probe 1");
-            $data->addPoints(array_keys($question), "Labels");
+            $data->addPoints($legend, "Labels");
             $data->setAbscissa("Labels");
             $data->setPalette("Probe 1", [
                 "R"=>30,
@@ -807,21 +851,20 @@ class PresentationController extends Controller
                 "B"=>172
             ]);
 
-            $image = new \pImage(1200,500,$data,1);
+            $image = new \pImage(800,450,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>15,
+                "FontSize"=>12,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(400,20,1000,400);
+            $image->setGraphArea(320,20,700,400);
             $image->drawScale([
-                "Pos"=>SCALE_POS_LEFTRIGHT,
+                "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
-                "LabelRotation"=>10,
                 "Mode"=>SCALE_MODE_MANUAL,
                 "ManualScale"=>[0=>["Min"=>0, "Max"=>100]]
             ]);
@@ -834,7 +877,8 @@ class PresentationController extends Controller
                 "Alpha"=>10
             ]);
             $image->drawBarChart([
-                'LabelRotation'=>50
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>1
             ]);
             $image->setShadow(0);
 
@@ -861,40 +905,59 @@ class PresentationController extends Controller
                 $data->addPoints($option[$j],"Probe "."$j");
             }
             $data->setPalette("Probe 0", [
-                "R"=>30,
-                "G"=>105,
-                "B"=>172,
+                "R"=>244,
+                "G"=>67,
+                "B"=>54,
             ]);
             $data->setPalette("Probe 1", [
-                "R"=>18,
-                "G"=>145,
-                "B"=>15,
+                "R"=>33,
+                "G"=>150,
+                "B"=>243,
             ]);
             $data->setPalette("Probe 2", [
-                "R"=>138,
-                "G"=>179,
-                "B"=>61,
+                "R"=>139,
+                "G"=>195,
+                "B"=>74,
             ]);
             $data->setPalette("Probe 3", [
-                "R"=>242,
-                "G"=>139,
-                "B"=>8,
+                "R"=>255,
+                "G"=>235,
+                "B"=>59,
+            ]);
+            $data->setPalette("Probe 4", [
+                "R"=>121,
+                "G"=>85,
+                "B"=>72,
+            ]);
+            $data->setPalette("Probe 5", [
+                "R"=>255,
+                "G"=>87,
+                "B"=>34,
+            ]);
+            $data->setPalette("Probe 6", [
+                "R"=>49,
+                "G"=>27,
+                "B"=>146,
+            ]);
+            $data->setPalette("Probe 7", [
+                "R"=>91,
+                "G"=>12,
+                "B"=>39,
             ]);
             $data->addPoints($regions,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(700,500,$data,1);
+            $image = new \pImage(800,800,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>15,
+                "FontSize"=>12,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
             ]);
 
-
-            $image->setGraphArea(300,20,600,400);
+            $image->setGraphArea(350,20,700,800);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -909,7 +972,10 @@ class PresentationController extends Controller
                 "B"=>0,
                 "Alpha"=>10
             ]);
-            $image->drawBarChart();
+            $image->drawBarChart([
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>1
+            ]);
             $image->setShadow(0);
 
             $bar_name = $question_id.'_region';
@@ -942,40 +1008,60 @@ class PresentationController extends Controller
                 $data->addPoints($option[$j],"Probe "."$j");
             }
             $data->setPalette("Probe 0", [
-                "R"=>30,
-                "G"=>105,
-                "B"=>172,
+                "R"=>244,
+                "G"=>67,
+                "B"=>54,
             ]);
             $data->setPalette("Probe 1", [
-                "R"=>18,
-                "G"=>145,
-                "B"=>15,
+                "R"=>33,
+                "G"=>150,
+                "B"=>243,
             ]);
             $data->setPalette("Probe 2", [
-                "R"=>138,
-                "G"=>179,
-                "B"=>61,
+                "R"=>139,
+                "G"=>195,
+                "B"=>74,
             ]);
             $data->setPalette("Probe 3", [
-                "R"=>242,
-                "G"=>139,
-                "B"=>8,
+                "R"=>255,
+                "G"=>235,
+                "B"=>59,
+            ]);
+            $data->setPalette("Probe 4", [
+                "R"=>121,
+                "G"=>85,
+                "B"=>72,
+            ]);
+            $data->setPalette("Probe 5", [
+                "R"=>255,
+                "G"=>87,
+                "B"=>34,
+            ]);
+            $data->setPalette("Probe 6", [
+                "R"=>49,
+                "G"=>27,
+                "B"=>146,
+            ]);
+            $data->setPalette("Probe 7", [
+                "R"=>91,
+                "G"=>12,
+                "B"=>39,
             ]);
             $data->addPoints($companies,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(700,500,$data,1);
+            $image = new \pImage(800,800,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>15,
+                "FontSize"=>12,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
             ]);
 
 
-            $image->setGraphArea(300,20,600,400);
+            $image->setGraphArea(350,20,700,800);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -990,7 +1076,10 @@ class PresentationController extends Controller
                 "B"=>0,
                 "Alpha"=>10
             ]);
-            $image->drawBarChart();
+            $image->drawBarChart([
+                "DisplayPos"=>LABEL_POS_INSIDE,
+                "DisplayValues"=>1
+            ]);
             $image->setShadow(0);
 
             $bar_name = $question_id.'_company';
@@ -1004,7 +1093,7 @@ class PresentationController extends Controller
         $pdf = new Pdf([
             'content' => $this->renderPartial($company ? 'export-company' : 'export-region', ['presentation' => $presentation]),
             'options' => [
-                'title' => 'Статистика. Анкета: '.$presentation->title.'.pdf',
+                'title' => 'Статистика. Презентация: '.$presentation->title.'.pdf',
                 'subject' => 'Статистика',
                 'defaultfooterline'=>false,
                 'margin_footer'=>0,

@@ -15,7 +15,8 @@ use common\models\Mailer;
  * @property integer $item_id
  * @property integer $count
  * @property string $promo
- * @property string date_buy
+ * @property string $date_buy
+ * @property string $comment
  */
 class Present extends \yii\db\ActiveRecord
 {
@@ -25,6 +26,16 @@ class Present extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'user_presents';
+    }
+
+    public function scenarios()
+    {
+        return array_merge(
+            parent::scenarios(),
+            [
+                'comment' => ['comment'],
+            ]
+        );
     }
 
     public function usePromo() {
@@ -60,7 +71,7 @@ class Present extends \yii\db\ActiveRecord
     {
         return [
             [['item_id', 'count', 'user_id'], 'required'],
-            ['date_buy', 'string'],
+            [['date_buy', 'comment'], 'string'],
             [['count'], 'integer','min'=>1],
             [['count'], 'validatePoints'],
             [['item_id'], 'isAvailable'],
@@ -101,6 +112,7 @@ class Present extends \yii\db\ActiveRecord
             'count' => 'Количество',
             'promo' => 'Промо-код',
             'date_buy'=>'Дата покупки',
+            'comment'=>'Комментарий'
         ];
     }
 

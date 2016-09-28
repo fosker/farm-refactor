@@ -268,8 +268,8 @@
 
          if ( $ValuePosition == PIE_VALUE_OUTSIDE )
           {
-           $Xc = cos(($Angle-90)*PI/180) * ($Radius+$ValuePadding) + $X;
-           $Yc = sin(($Angle-90)*PI/180) * ($Radius+$ValuePadding) + $Y;
+           $Xc = cos(($Angle-90)*PI/180) * ($Radius+$ValuePadding+15) + $X;
+           $Yc = sin(($Angle-90)*PI/180) * ($Radius+$ValuePadding+15) + $Y;
           }
          else
           {
@@ -719,7 +719,7 @@
 
      if ( $Surrounding != NULL ) { $BorderR = $R + $Surrounding; $BorderG = $G + $Surrounding; $BorderB = $B + $Surrounding; }
 
-     $YStep = max($this->pChartObject->FontSize,$BoxSize) + 5;
+     $YStep = 40;
      $XStep = $BoxSize + 5;
 
      /* Data Processing */

@@ -4,11 +4,12 @@ namespace common\models\forms;
 
 use Yii;
 /**
- * This is the model class for table "forms_fields".
+ * This is the model class for table "form_section_fields".
  *
  * @property integer $id
- * @property integer $form_id
+ * @property integer $section_id
  * @property integer $type
+ * @property string $placeholder
  * @property string $label
  * @property string $isRequired
  */
@@ -26,7 +27,7 @@ class Field extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'forms_fields';
+        return 'form_section_fields';
     }
 
     /**
@@ -35,8 +36,9 @@ class Field extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['form_id', 'type', 'label'], 'required'],
-            [['form_id', 'type', 'isRequired'], 'integer'],
+            [['section_id', 'type', 'label'], 'required'],
+            [['section_id', 'type', 'isRequired'], 'integer'],
+            [['label', 'placeholder'], 'string']
         ];
     }
 
@@ -46,11 +48,8 @@ class Field extends \yii\db\ActiveRecord
             'id',
             'type',
             'label',
-            'options' => function() {
-                if($this->options) {
-                    return $this->options;
-                }
-            }
+            'options',
+            'relations'
         ];
     }
 
@@ -61,7 +60,7 @@ class Field extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'form_id' => 'Форма',
+            'section_id' => 'Раздел',
             'type' => 'Тип поля',
             'isRequired' => 'Обязательное поле',
             'label' => 'Поле'
@@ -71,5 +70,12 @@ class Field extends \yii\db\ActiveRecord
     public function getOptions()
     {
         return $this->hasMany(Option::className(),['field_id'=>'id']);
+    }
+
+    public function getRelations()
+    {
+        return Relation::find()
+            ->where(['parent_id' => $this->id])
+            ->all();
     }
 }

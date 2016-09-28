@@ -62,9 +62,10 @@ class City extends \yii\db\ActiveRecord
 
     public function getUserCount()
     {
-        return Pharmacist::find()->joinWith('pharmacy')
-            ->join('LEFT JOIN', City::tableName(),
-                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
+        return Pharmacist::find()
+            ->from([Pharmacist::tableName(), Pharmacy::tableName(), City::tableName()])
+            ->where(Pharmacist::tableName().'.pharmacy_id='.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.city_id='.City::tableName().'.id')
             ->andWhere([static::tableName().'.id' => $this->id])
             ->count();
     }

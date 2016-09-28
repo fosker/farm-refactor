@@ -16,7 +16,7 @@
 <div class="row cities" style="display: none">
     <div class="col-md-12">
         <ul style="list-style: none">
-            <?php foreach($model->cities as $city):?>
+            <?php foreach($model->citiesCount as $city):?>
                 <?php if($city->userCount):?>
                     <li>
                         <br>

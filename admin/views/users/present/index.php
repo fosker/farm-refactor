@@ -6,6 +6,7 @@ use kartik\widgets\Select2;
 use kartik\date\DatePicker;
 
 $this->title = 'Подарки';
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="present-index">
 
@@ -75,11 +76,18 @@ $this->title = 'Подарки';
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view} {use} {delete}',
+                'template'=>'{view} {use} {delete}{comment}',
                 'buttons'=>[
                     'use'=>function ($url, $model, $key) {
                         return $model->promo ? Html::a('<i class="glyphicon glyphicon-gift"></i>', [ 'use', 'id'=>$model->id],
                             ['title'=>'Использовать']) : '';
+                    },
+                    'comment'=>function ($url, $model, $key) {
+                        return Html::a('<i class="glyphicon glyphicon-tag"></i>', ['comment', 'id'=>$model->id],
+                            [
+                                'class' => 'list-comment',
+                                'title'=>$model->comment,
+                            ]);
                     },
                 ],
             ],

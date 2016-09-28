@@ -65,10 +65,12 @@ class SurveyController extends Controller
 
         if(Answer::loadMultiple($answers,$_POST,'answer')) {
             $answers = Answer::filterModels($answers);
-            if(Answer::validateMultiple($answers,['question_id','value'])) {
-                View::addByCurrentUser($answers);
-                Yii::$app->user->identity->answerSurvey(reset($answers)->question->survey);
-                return ['success'=>true];
+            if(!View::find()->where(['user_id'=>Yii::$app->user->id, 'survey_id'=>reset($answers)->question->survey_id])->exists()) {
+                if(Answer::validateMultiple($answers,['question_id','value'])) {
+                    View::addByCurrentUser($answers);
+                    Yii::$app->user->identity->answerSurvey(reset($answers)->question->survey);
+                    return ['success'=>true];
+                }
             }
         }
         return $answers;
