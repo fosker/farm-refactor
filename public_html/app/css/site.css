@@ -1106,6 +1106,10 @@ header .lang-picker-toggle {
         width: 100%;
         text-align: center;
     }
+
+    .mobile-hr .task .solving {
+        padding: 20px;
+    }
 }
 
 .mobile-hr .steps {
@@ -1500,6 +1504,42 @@ header .lang-picker-toggle {
 @media (max-width: 767px) {
     .contacts .copy {
         padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    .info a {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    header .lang-picker-toggle {
+        top: 46px;
+    }
+
+    .home{
+        padding-top: 117px;
+    }
+
+    .achievements h1 {
+        padding: 15px 0;
+        font-size: 22px;
+    }
+
+    .mobile-hr .install-app a:first-child img {
+        margin-right: 20px;
+    }
+
+    .advantages .infographics .advantage h4 {
+        font-size: 18px;
+    }
+
+    .functions .panel-default > .panel-heading h3 {
+        font-size: 24px;
+    }
+
+    .achievements .col-xs-4 {
+        padding: 0 6px;
     }
 }
 
