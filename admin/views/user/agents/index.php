@@ -15,7 +15,8 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
         'model' => $searchModel,
         'names' => $names,
         'factories' => $factories,
-        'emails' => $emails
+        'emails' => $emails,
+        'logins' => $logins
     ]); ?>
 
     <?= GridView::widget([
@@ -32,6 +33,12 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
             [
                 'attribute' => 'id',
                 'contentOptions'=>['style'=>'width: 150px;'],
+            ],
+            [
+                'label' => 'Логин',
+                'attribute' => 'user.login',
+                'value'=>'user.login',
+                'contentOptions'=>['style'=>'width: 300px;'],
             ],
             [
                 'label' => 'Имя',

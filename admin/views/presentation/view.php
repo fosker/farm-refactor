@@ -18,29 +18,26 @@ $this->title = $model->title;
         <?= Html::a('Экспорт статистики (по регионам)', ['export-regions', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Экспорт статистики (по компаниям)', ['export-companies', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Экспорт свободных вопросов', ['export-docx', 'id' => $model->id], ['class' => 'btn btn-danger'.(!$model->devidedQuestions['free'] ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт изображений статистики', ['export-images', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+    </div>
+    </br>
+    <div class="row">
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'pull-right btn btn-danger',
+            'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Удалить презентацию и все ответы?',
+                'confirm' => 'Удалить анкету и все ответы?',
                 'method' => 'post',
             ],
         ]) ?>
-
         <?= Html::a(
             'Редактировать',
             ['update', 'id' => $model->id],
-            ['class' => 'pull-right btn btn-primary'])
+            ['class' => 'btn btn-primary'])
         ?>
         <?= Html::a(
             $model->status == $model::STATUS_HIDDEN ? 'Утвердить' : 'Скрыть',
             [$model->status == $model::STATUS_HIDDEN ? 'approve' : 'hide' , 'id' => $model->id],
-            ['class' => 'pull-right btn btn-success'])
-        ?>
-
-        <?= Html::a(
-            $model->home == $model::HOME_HIDDEN ? 'Разместить на главной' : 'Убрать с главной',
-            [$model->home == $model::HOME_HIDDEN ? 'approve-home' : 'hide-home' , 'id' => $model->id],
-            ['class' => 'pull-right btn btn-success'])
+            ['class' => ' btn btn-success'])
         ?>
     </div>
 

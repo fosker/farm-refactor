@@ -11,18 +11,18 @@ $i = 1;
         <pagebreak />
         <div class="text-center"><h4>Вопрос: <?=$question->question?></h4></div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common_legend.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
         </div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common.png'))?>
         </div>
         <div class="text-center"><p>К.<?php echo $i; $i++?></p></div>
         <pagebreak />
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common_legend.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
         </div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_company.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_company.png'))?>
         </div>
         <div class="text-center"><p>К.<?php echo $i; $i++?></p></div>
     <?php endif;?>
@@ -31,18 +31,18 @@ $i = 1;
         <pagebreak />
         <div class="text-center"><h4>Вопрос: <?=$question->question?></h4></div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common_legend.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
         </div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common.png'))?>
         </div>
         <div class="text-center"><p>К.<?php echo $i; $i++?></p></div>
         <pagebreak />
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_common_legend.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
         </div>
         <div>
-            <?=Html::img(Yii::getAlias('@temp/'.$question->id.'_company.png'))?>
+            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_company.png'))?>
         </div>
         <div class="text-center"><p>К.<?php echo $i; $i++?></p></div>
     <?php endif;?>

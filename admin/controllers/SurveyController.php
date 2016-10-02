@@ -14,6 +14,9 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use kartik\mpdf\Pdf;
 use yii\helpers\FileHelper;
+use PhpOffice\PhpWord\Shared\ZipArchive;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
 
 use common\models\Company;
 use common\models\Survey;
@@ -298,12 +301,12 @@ class SurveyController extends Controller
         $checkbox_common = Question::transformCheckboxCommon($checkbox_questions, $model);
         $checkbox_regions = Question::transformCheckboxRegions($checkbox_questions, $checkbox_sums);
 
-        FileHelper::createDirectory('temp');
+        FileHelper::createDirectory('temp/survey/'.$id);
 
-        $this->generateRadioCommon($radio_common);
-        $this->generateRadioRegions($radio_regions);
-        $this->generateCheckboxCommon($checkbox_common);
-        $this->generateCheckboxRegions($checkbox_regions);
+        $this->generateRadioCommon($radio_common, $model->id);
+        $this->generateRadioRegions($radio_regions, $model->id);
+        $this->generateCheckboxCommon($checkbox_common, $model->id);
+        $this->generateCheckboxRegions($checkbox_regions, $model->id);
 
         $this->exportPDF($model, false);
 
@@ -326,12 +329,12 @@ class SurveyController extends Controller
         $checkbox_common = Question::transformCheckboxCommon($checkbox_questions, $model);
         $checkbox_companies = Question::transformCheckboxCompanies($checkbox_questions, $model, $checkbox_sums);
 
-        FileHelper::createDirectory('temp');
+        FileHelper::createDirectory('temp/survey/'.$id);
 
-        $this->generateRadioCommon($radio_common);
+        $this->generateRadioCommon($radio_common, $model->id);
         $this->generateRadioCompanies($radio_companies, $model);
 
-        $this->generateCheckboxCommon($checkbox_common);
+        $this->generateCheckboxCommon($checkbox_common, $model->id);
         $this->generateCheckboxCompanies($checkbox_companies, $model);
 
         $this->exportPDF($model, true);
@@ -345,90 +348,62 @@ class SurveyController extends Controller
         $this->exportDocx($model);
     }
 
-    private function generateRadioLegend($pData, $name)
+    public function actionExportImages($id)
     {
-        $image = new \pImage(500,200,$pData,1);
-        $image->setFontProperties([
-            "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-            "FontSize"=>18,
-            "R"=>0,
-            "G"=>0,
-            "B"=>0,
-        ]);
+        $model = $this->findModel($id);
 
-        $pie = new \pPie($image,$pData);
-        $pie->drawPieLegend(50,10,[
-            "Style"=>LEGEND_NOBORDER,
-            "Mode"=>LEGEND_VERTICAL,
-            "FontSize"=>12,
-        ]);
-        $legend_name = $name . "_legend";
-        $image->render("temp/".$legend_name.'.png');
+        $radio_questions = $model->devidedQuestions['radio'];
+        $checkbox_questions = $model->devidedQuestions['checkbox'];
+
+        $radio_sums = Question::getRegionSums($radio_questions);
+        $checkbox_sums = Question::getRegionSums($checkbox_questions);
+
+        $radio_common = Question::transformRadioCommon($radio_questions);
+        $radio_regions = Question::transformRadioRegions($radio_questions, $radio_sums);
+        $radio_companies = Question::transformRadioCompanies($radio_questions, $model, $radio_sums);
+
+        $checkbox_common = Question::transformCheckboxCommon($checkbox_questions, $model);
+        $checkbox_regions = Question::transformCheckboxRegions($checkbox_questions, $checkbox_sums);
+        $checkbox_companies = Question::transformCheckboxCompanies($checkbox_questions, $model, $checkbox_sums);
+
+        FileHelper::createDirectory('temp/survey/'.$id);
+
+        $this->generateRadioCommon($radio_common, $model->id);
+        $this->generateRadioRegions($radio_regions, $model->id);
+        $this->generateRadioCompanies($radio_companies, $model);
+
+        $this->generateCheckboxCommon($checkbox_common, $model->id);
+        $this->generateCheckboxRegions($checkbox_regions, $model->id);
+        $this->generateCheckboxCompanies($checkbox_companies, $model);
+
+        $path = realpath('temp/survey/'.$id);
+        $title = 'survey_'.$id;
+        $zip = new ZipArchive();
+        $zip->open($title.'.zip', ZipArchive::CREATE);
+
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+
+        foreach ($files as $name => $file)
+        {
+            if (!$file->isDir())
+            {
+                $filePath = $file->getRealPath();
+                $relativePath = substr($filePath, strlen($path) + 1);
+                $zip->addFile($filePath, $relativePath);
+            }
+        }
+        $zip->close();
+        FileHelper::removeDirectory('temp');
+        $file = 'survey_'.$id.'.zip';
+        if (file_exists($file)) {
+            Yii::$app->response->sendFile($file);
+        }
     }
 
-    private function generateCheckboxLegend($pData, $name, $options)
-    {
-        $height = $options * 45;
-        $image = new \pImage(500,$height,$pData,1);
-        $image->setFontProperties([
-            "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-            "FontSize"=>18,
-            "R"=>0,
-            "G"=>0,
-            "B"=>0,
-        ]);
-
-        $pie = new \pPie($image,$pData);
-        $pie->setSliceColor(0, [
-            "R"=>244,
-            "G"=>67,
-            "B"=>54,
-        ]);
-        $pie->setSliceColor(1, [
-            "R"=>33,
-            "G"=>150,
-            "B"=>243,
-        ]);
-        $pie->setSliceColor(2, [
-            "R"=>139,
-            "G"=>195,
-            "B"=>74,
-        ]);
-        $pie->setSliceColor(3, [
-            "R"=>255,
-            "G"=>235,
-            "B"=>59,
-        ]);
-        $pie->setSliceColor(4, [
-            "R"=>121,
-            "G"=>85,
-            "B"=>72,
-        ]);
-        $pie->setSliceColor(5, [
-            "R"=>255,
-            "G"=>87,
-            "B"=>34,
-        ]);
-        $pie->setSliceColor(6, [
-            "R"=>49,
-            "G"=>27,
-            "B"=>146,
-        ]);
-        $pie->setSliceColor(7, [
-            "R"=>91,
-            "G"=>12,
-            "B"=>39,
-        ]);
-        $pie->drawPieLegend(50,20,[
-            "Style"=>LEGEND_NOBORDER,
-            "Mode"=>LEGEND_VERTICAL,
-            "FontSize"=>12,
-        ]);
-        $legend_name = $name . "_legend";
-        $image->render("temp/".$legend_name.'.png');
-    }
-
-    private function generateRadioCommon($questions)
+    private function generateRadioCommon($questions, $id)
     {
         foreach($questions as $question_id => $question) {
             $legend = [];
@@ -517,14 +492,36 @@ class SurveyController extends Controller
             ]);
             $image->setShadow(0);
 
-            $pie_name = $question_id.'_common';
-            $image->render("temp/".$pie_name.'.png');
+            $pie_name = "temp/survey/$id/".$question_id.'_common';
+            $image->render($pie_name.'.png');
 
-            $this->generateRadioLegend($data, $pie_name);
+            $this->generateRadioLegend($data, $pie_name, count($legend));
         }
     }
 
-    private function generateRadioRegions($questions)
+    private function generateRadioLegend($pData, $name, $options)
+    {
+        $height = $options * 48;
+        $image = new \pImage(500,$height,$pData,1);
+        $image->setFontProperties([
+            "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
+            "FontSize"=>18,
+            "R"=>0,
+            "G"=>0,
+            "B"=>0,
+        ]);
+
+        $pie = new \pPie($image,$pData);
+        $pie->drawPieLegend(50,15,[
+            "Style"=>LEGEND_NOBORDER,
+            "Mode"=>LEGEND_VERTICAL,
+            "FontSize"=>12,
+        ]);
+        $legend_name = $name . "_legend";
+        $image->render($legend_name.'.png');
+    }
+
+    private function generateRadioRegions($questions, $id)
     {
         $regions = ArrayHelper::map(Region::find()
             ->orderBy('id')
@@ -611,8 +608,8 @@ class SurveyController extends Controller
             ]);
             $image->setShadow(0);
 
-            $bar_name = $question_id.'_region';
-            $image->render("temp/".$bar_name.'.png');
+            $bar_name = "temp/survey/$id/".$question_id.'_region';
+            $image->render($bar_name.'.png');
         }
     }
 
@@ -712,13 +709,13 @@ class SurveyController extends Controller
                 "DisplayValues"=>1
             ]);
             $image->setShadow(0);
-
-            $bar_name = $question_id.'_company';
-            $image->render("temp/".$bar_name.'.png');
+            $id = $survey->id;
+            $bar_name = "temp/survey/$id/".$question_id.'_company';
+            $image->render($bar_name.'.png');
         }
     }
 
-    private function generateCheckboxCommon($questions)
+    private function generateCheckboxCommon($questions, $id)
     {
         foreach($questions as $question_id => $question) {
             $legend = [];
@@ -754,7 +751,7 @@ class SurveyController extends Controller
             $pie = new \pPie($image,$data);
             $image->setShadow(0);
 
-            $name = $question_id.'_common';
+            $name = "temp/survey/$id/".$question_id.'_common';
 
             $this->generateCheckboxLegend($data, $name, count($legend));
         }
@@ -799,21 +796,127 @@ class SurveyController extends Controller
                 "B"=>0,
                 "Alpha"=>10
             ]);
+            $palette = [
+                "0"=>[
+                    "R"=>244,
+                    "G"=>67,
+                    "B"=>54,
+                ],
+                "1"=>[
+                    "R"=>33,
+                    "G"=>150,
+                    "B"=>243,
+                ],
+                "2"=>[
+                    "R"=>139,
+                    "G"=>195,
+                    "B"=>74,
+                ],
+                "3"=>[
+                    "R"=>255,
+                    "G"=>235,
+                    "B"=>59,
+                ],
+                "4"=>[
+                    "R"=>121,
+                    "G"=>85,
+                    "B"=>72,
+                ],
+                "5"=>[
+                    "R"=>255,
+                    "G"=>87,
+                    "B"=>34,
+                ],
+                "6"=>[
+                    "R"=>49,
+                    "G"=>27,
+                    "B"=>146,
+                ],
+                "7"=>[
+                    "R"=>91,
+                    "G"=>12,
+                    "B"=>39,
+                ]
+            ];
+
             $image->drawBarChart([
                 "DisplayPos"=>LABEL_POS_INSIDE,
-                "DisplayValues"=>1
+                "DisplayValues"=>1,
+                "OverrideColors"=>$palette
             ]);
             $image->setShadow(0);
 
-            $bar_name = $question_id.'_common';
-            $image->render("temp/".$bar_name.'.png');
+            $bar_name = "temp/survey/$id/".$question_id.'_common';
+            $image->render($bar_name.'.png');
 
-            $this->generateCheckboxLegend($data, $bar_name);
+            $this->generateCheckboxLegend($data, $bar_name, count($legend));
         }
 
     }
 
-    private function generateCheckboxRegions($questions)
+    private function generateCheckboxLegend($pData, $name, $options)
+    {
+        $height = $options * 45;
+        $image = new \pImage(500,$height,$pData,1);
+        $image->setFontProperties([
+            "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
+            "FontSize"=>18,
+            "R"=>0,
+            "G"=>0,
+            "B"=>0,
+        ]);
+
+        $pie = new \pPie($image,$pData);
+        $pie->setSliceColor(0, [
+            "R"=>244,
+            "G"=>67,
+            "B"=>54,
+        ]);
+        $pie->setSliceColor(1, [
+            "R"=>33,
+            "G"=>150,
+            "B"=>243,
+        ]);
+        $pie->setSliceColor(2, [
+            "R"=>139,
+            "G"=>195,
+            "B"=>74,
+        ]);
+        $pie->setSliceColor(3, [
+            "R"=>255,
+            "G"=>235,
+            "B"=>59,
+        ]);
+        $pie->setSliceColor(4, [
+            "R"=>121,
+            "G"=>85,
+            "B"=>72,
+        ]);
+        $pie->setSliceColor(5, [
+            "R"=>255,
+            "G"=>87,
+            "B"=>34,
+        ]);
+        $pie->setSliceColor(6, [
+            "R"=>49,
+            "G"=>27,
+            "B"=>146,
+        ]);
+        $pie->setSliceColor(7, [
+            "R"=>91,
+            "G"=>12,
+            "B"=>39,
+        ]);
+        $pie->drawPieLegend(50,20,[
+            "Style"=>LEGEND_NOBORDER,
+            "Mode"=>LEGEND_VERTICAL,
+            "FontSize"=>12,
+        ]);
+        $legend_name = $name . "_legend";
+        $image->render($legend_name.'.png');
+    }
+
+    private function generateCheckboxRegions($questions, $id)
     {
 
         $regions = ArrayHelper::map(Region::find()
@@ -901,8 +1004,8 @@ class SurveyController extends Controller
             ]);
             $image->setShadow(0);
 
-            $bar_name = $question_id.'_region';
-            $image->render("temp/".$bar_name.'.png');
+            $bar_name = "temp/survey/$id/".$question_id.'_region';
+            $image->render($bar_name.'.png');
         }
     }
 
@@ -1005,8 +1108,9 @@ class SurveyController extends Controller
             ]);
             $image->setShadow(0);
 
-            $bar_name = $question_id.'_company';
-            $image->render("temp/".$bar_name.'.png');
+            $id = $survey->id;
+            $bar_name = "temp/survey/$id/".$question_id.'_company';
+            $image->render($bar_name.'.png');
         }
     }
 
@@ -1039,8 +1143,8 @@ class SurveyController extends Controller
         $phpWord->setDefaultFontName('Times New Roman');
         $phpWord->setDefaultFontSize(14);
         $questions = $survey->devidedQuestions['free'];
-        $array = [];
         foreach($questions as $question) {
+            $array = [];
             $values = Answer::find()
                 ->select('value')
                 ->where(['question_id' => $question->id])
@@ -1073,13 +1177,13 @@ class SurveyController extends Controller
                     $array[$i][$j] = $values[$i*5+$j];
                 }
             }
-
             foreach($array as $row) {
                 $table->addRow();
                 foreach($row as $cell) {
                     $table->addCell(2000)->addText($cell['value']);
                 }
             }
+
 
         }
 

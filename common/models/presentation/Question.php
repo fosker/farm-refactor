@@ -98,7 +98,7 @@ class Question extends ActiveRecord
                 ->where(['question_id' => $question->id])
                 ->groupBy(Option::tableName().'.value');
             $array[$question->id] = ArrayHelper::map($query
-                ->orderBy('value')
+                ->orderBy('id')
                 ->asArray()
                 ->all(),'value','count');
         }
@@ -111,7 +111,7 @@ class Question extends ActiveRecord
         foreach($questions as $question) {
             $options = Option::find()->select('value')
                 ->where(['question_id'=>$question->id])
-                ->orderBy('value')
+                ->orderBy('id')
                 ->asArray()
                 ->all();
             $all_answers = Answer::find()->select('id, value, question_id')
@@ -180,7 +180,7 @@ class Question extends ActiveRecord
                     ->where('question_id ='.$question->id)
                     ->groupBy(Option::tableName().'.value');
                 $pre_array[$question->id][$region->id] = ArrayHelper::map($query
-                    ->orderBy('value')
+                    ->orderBy('id')
                     ->asArray()
                     ->all(),'value','count');
             }
@@ -213,7 +213,7 @@ class Question extends ActiveRecord
         foreach($questions as $question) {
             $options = Option::find()->select('value')
                 ->where(['question_id'=>$question->id])
-                ->orderBy('value')
+                ->orderBy('id')
                 ->asArray()
                 ->all();
             foreach ($regions as $region) {
@@ -313,7 +313,7 @@ class Question extends ActiveRecord
                     ->where('question_id ='.$question->id)
                     ->groupBy(Option::tableName().'.value');
                 $pre_array[$question->id][$company->id] = ArrayHelper::map($query
-                    ->orderBy('value')
+                    ->orderBy('id')
                     ->asArray()
                     ->all(),'value','count');
             }
@@ -356,7 +356,7 @@ class Question extends ActiveRecord
         foreach($questions as $question) {
             $options = Option::find()->select('value')
                 ->where(['question_id'=>$question->id])
-                ->orderBy('value')
+                ->orderBy('id')
                 ->asArray()
                 ->all();
             foreach ($companies as $company) {
