@@ -24,7 +24,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                 <div class="row">
                     <div class="col-lg-4 text-left col-md-4 visible-md-block visible-lg-block">
                         <?=Html::img('img/info/email.png', ['width' => '18px'])?>
-                        <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
+                        <a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a>
                         <span class="phone">
                         <?=Html::img('img/info/phone.png', ['width' => '10px'])?>
                             <a href="tel:+375291953706">+375 29 195 37 06</a>
@@ -605,7 +605,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <div class="row">
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.2s">
                                 <p><?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?></p>
-                                <p><a href="mailto:info@pharbonus.by">info@pharbonus.by</a></p>
+                                <p><a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a></p>
                             </div>
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.4s">
                                 <p><?=Html::img('img/contacts/phone.png', ['width' => '30px'])?></p>
