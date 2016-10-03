@@ -516,21 +516,23 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     <div class="mobile-hr" id="mobile-hr">
         <h1 class="section-header wow fadeInDown">Мобильный HR</h1>
         <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
-        <div class="row task">
-            <div class="col-md-7 col-sm-6 wow fadeInLeft">
-                <div class="problem clearfix">
-                    <div>
-                        Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+        <div class="container">
+            <div class="row task">
+                <div class="col-md-7 col-sm-6 wow fadeInLeft">
+                    <div class="problem clearfix">
+                        <div>
+                            Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 wow fadeInRight">
+                    <div class="solving">
+                        <h2>Мобильный HR</h2>
+                        <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-sm-6 solving wow fadeInRight">
-                <div>
-                    <h2>Мобильный HR</h2>
-                    <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
-                </div>
             </div>
-        </div>
 
         <div class="container steps">
             <div class="row">

@@ -984,10 +984,6 @@ header .lang-picker-toggle {
     }
 }
 
-.mobile-hr .task {
-    margin: 0;
-}
-
 .mobile-hr .task>div {
     padding: 0;
 }
@@ -1001,47 +997,6 @@ header .lang-picker-toggle {
     color: #616161;
 }
 
-@media (max-width: 991px) {
-    .mobile-hr .problem {
-        font-size: 20px;
-        padding: 57px 20px;
-    }
-}
-
-@media (max-width: 767px) {
-    .mobile-hr .problem {
-        background: white;
-        margin: 0;
-        padding: 20px;
-    }
-}
-
-.mobile-hr .problem>div {
-    width: 530px;
-    float: right;
-}
-
-@media (min-width: 1199px) {
-    .mobile-hr .problem>div {
-        width: 650px;
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 991px) {
-    .mobile-hr .problem>div {
-        width: 348px;
-    }
-}
-
-@media (max-width: 767px) {
-    .mobile-hr .problem>div {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-}
-
 .mobile-hr .problem b {
     font-family: sans;
     color: #393939;
@@ -1051,12 +1006,8 @@ header .lang-picker-toggle {
     background: url('../img/hr.jpg') no-repeat no-repeat;
     background-size: cover;
     color: white;
-    padding: 70px 0 70px 70px;
+    padding: 45px;
     box-shadow: 0 0 20px #bbb;
-}
-
-.mobile-hr .task .solving > div {
-    width: 360px;
 }
 
 .mobile-hr .task .solving h2 {
@@ -1069,46 +1020,52 @@ header .lang-picker-toggle {
     font-weight: 700;
 }
 
-@media (min-width: 1199px) {
-    .mobile-hr .task .solving > div {
-        width: 440px;
+@media (max-width: 1199px) {
+
+    .mobile-hr .task .solving {
+        padding: 43px;
     }
 
     .mobile-hr .task .solving h2 {
-        font-size: 50px;
+        font-size: 40px;
     }
 
     .mobile-hr .task .solving p {
-        font-size: 30px;
+        font-size: 25px;
     }
 }
 
 @media (max-width: 991px) {
-    .mobile-hr .task .solving {
-        padding: 50px;
-    }
-
-    .mobile-hr .task .solving > div {
-        width: 288px;
+    .mobile-hr .problem {
+        padding: 50px 30px;
+        font-size: 20px;
     }
 
     .mobile-hr .task .solving h2 {
-        font-size: 36px;
+        font-size: 34px;
     }
 
     .mobile-hr .task .solving p {
-        font-size: 21px;
+        font-size: 24px;
     }
 }
 
 @media (max-width: 767px) {
-    .mobile-hr .task .solving > div {
+    .mobile-hr .problem {
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .mobile-hr .problem>div {
         width: 100%;
         text-align: center;
+        margin-bottom: 15px;
     }
 
     .mobile-hr .task .solving {
-        padding: 20px;
+        width: 100%;
+        text-align: center;
     }
 }
 

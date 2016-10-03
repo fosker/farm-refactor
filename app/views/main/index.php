@@ -9,11 +9,11 @@ use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 
 $this->registerJsFile('js/wow.js');
-$this->registerJsFile('app/js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('app/js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
-$this->registerJsFile('app/js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('app/js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('app/js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/landing.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('js/slimscroll.min.js', ['depends' => 'yii\web\JqueryAsset']);
+$this->registerJsFile('js/countUp.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/counters.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 
 ?>
@@ -516,18 +516,20 @@ $this->registerJsFile('app/js/jquery.touch.min.js', ['depends' => [\yii\web\Jque
     <div class="mobile-hr" id="mobile-hr">
         <h1 class="section-header wow fadeInDown">Digital HR</h1>
         <h4 class="section-sub-header wow fadeInDown">Rapid alert about the latest news of the company and the industry</h4>
-        <div class="row task">
-            <div class="col-md-7 col-sm-6 wow fadeInLeft">
-                <div class="problem clearfix">
-                    <div>
-                        If your company is problematic to collect all the employees and discuss with them the latest innovations in the pharmaceutical field or events within the company, then you need a <b>Digital HR.</b>
+        <div class="container">
+            <div class="row task">
+                <div class="col-md-7 col-sm-6 wow fadeInLeft">
+                    <div class="problem clearfix">
+                        <div>
+                            If your company is problematic to collect all the employees and discuss with them the latest innovations in the pharmaceutical field or events within the company, then you need a <b>Digital HR.</b>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5 col-sm-6 solving wow fadeInRight">
-                <div>
-                    <h2>Digital HR</h2>
-                    <p>- It is your interactive channel of communication with employees and operational tool for vocational training</p>
+                <div class="col-md-5 col-sm-6 wow fadeInRight">
+                    <div class="solving">
+                        <h2>Digital HR</h2>
+                        <p>- It is your interactive channel of communication with employees and operational tool for vocational training</p>
+                    </div>
                 </div>
             </div>
         </div>
