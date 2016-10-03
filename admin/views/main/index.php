@@ -9,8 +9,8 @@ use common\models\Vacancy;
 use common\models\User;
 
 $this->title = 'Главная';
-$this->registerJsFile('admin/js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="main-index">
