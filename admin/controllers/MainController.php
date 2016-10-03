@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\db\Expression;
 
 use common\models\location\Region;
 use common\models\Company;
@@ -14,6 +16,11 @@ use common\models\company\Pharmacy;
 use common\models\user\Pharmacist;
 use common\models\user\Agent;
 use common\models\User;
+
+use common\models\news\Comment as News_comment;
+use common\models\presentation\Comment as Presentation_comment;
+use common\models\seminar\Comment as Seminar_comment;
+use common\models\vacancy\Comment as Vacancy_comment;
 
 
 class MainController extends \yii\web\Controller
@@ -42,17 +49,39 @@ class MainController extends \yii\web\Controller
 
     public function actionIndex()
     {
+        $news_comments = News_comment::find()->select(['id','user_id','comment','news_id as content_id','date_add','admin_comment',new Expression("'news' as content")])
+            ->orderBy('date_add desc')
+            ->limit(10);
+        $presentation_comments = Presentation_comment::find()->select(['id','user_id','comment','presentation_id as content_id','date_add','admin_comment',new Expression("'presentation' as content")])
+            ->orderBy('date_add desc')
+            ->limit(10);
+        $seminar_comments = Seminar_comment::find()->select(['id','user_id','comment','seminar_id as content_id','date_add','admin_comment',new Expression("'seminar' as content")])
+            ->orderBy('date_add desc')
+            ->limit(10);
+        $vacancy_comments = Vacancy_comment::find()->select(['id','user_id','comment','vacancy_id as content_id','date_add','admin_comment',new Expression("'vacancy' as content")])
+            ->orderBy('date_add desc')
+            ->limit(10);
+
+        $union = $news_comments->union($presentation_comments)
+            ->union($seminar_comments)
+            ->union($vacancy_comments);
+        $comments = (new \yii\db\Query())
+            ->from(['union'=>$union])
+            ->orderBy('date_add desc')
+            ->limit(10)
+            ->all();
+
         $regionQuery = Region::find();
         $regionCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(), Pharmacy::tableName(), City::tableName(), Region::tableName()])
             ->select('count('.Pharmacist::tableName().'.id'.') as count, region_id')
-            ->joinWith('pharmacy')
-            ->join('LEFT JOIN', City::tableName(),
-                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
-            ->join('LEFT JOIN', Region::tableName(),
-                Region::tableName().'.id = '.City::tableName().'.region_id')
+            ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.city_id ='.City::tableName().'.id')
+            ->andWhere(City::tableName().'.region_id ='.Region::tableName().'.id')
             ->groupBy('region_id');
         $regionQuery->leftJoin(['regionCount' => $regionCount], 'regionCount.region_id = id')
             ->orderBy(['regionCount.count' => SORT_DESC]);
+
         $regions = new ActiveDataProvider([
             'query' => $regionQuery,
             'pagination' => [
@@ -62,9 +91,10 @@ class MainController extends \yii\web\Controller
 
         $companyQuery = Company::find();
         $companyCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(),Pharmacy::tableName(),Company::tableName()])
             ->select('count('.Pharmacist::tableName().'.id'.') as count, company_id')
-            ->join('LEFT JOIN', Pharmacy::tableName(),
-                Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->where(Pharmacist::tableName().'.pharmacy_id ='.Pharmacy::tableName().'.id')
+            ->andWhere(Company::tableName().'.id ='.Pharmacy::tableName().'.company_id')
             ->groupBy('company_id');
         $companyQuery->leftJoin(['companyCount' => $companyCount], 'companyCount.company_id = id')
             ->orderBy(['companyCount.count' => SORT_DESC]);
@@ -72,15 +102,6 @@ class MainController extends \yii\web\Controller
             'query' => $companyQuery,
             'pagination' => [
                 'pageSize' => 10,
-            ],
-        ]);
-
-        $dateQuery = User::find()->select('date_reg')->orderBy('date_reg DESC');
-
-        $dates = new ActiveDataProvider([
-            'query' => $dateQuery,
-            'pagination' => [
-                'pageSize' => 100,
             ],
         ]);
 
@@ -131,6 +152,7 @@ class MainController extends \yii\web\Controller
                 Region::tableName().'.id = '.City::tableName().'.region_id')
             ->where('year(date_reg) > 2015')
             ->groupBy([Region::tableName().'.id', 'month', 'year'])
+            ->orderBy('count DESC')
             ->asArray()
             ->all();
 
@@ -161,7 +183,8 @@ class MainController extends \yii\web\Controller
             'years' => $years,
             'calendar' => $calendar,
             'region_month' => $region_month,
-            'user_region_month' => $user_region_month
+            'user_region_month' => $user_region_month,
+            'comments' => $comments
         ]);
     }
 

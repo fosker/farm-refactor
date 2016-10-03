@@ -81,7 +81,7 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $days_views = ArrayHelper::map(View::find()
-            ->select('news_id, dayofweek(date) as day, count(news_id) as count')
+            ->select('news_id, weekday(date)+1 as day, count(news_id) as count')
             ->where(['news_id' => $id])
             ->groupBy('news_id, day')
             ->asArray()
@@ -189,6 +189,20 @@ class NewsController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('Новость не найдена. ');
+        }
+    }
+
+    public function actionComment($id)
+    {
+        $model = Comment::findOne($id);
+        $model->scenario = 'comment';
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['/']);
+        } else {
+            return $this->render('comment', [
+                'model' => $model,
+            ]);
         }
     }
 }

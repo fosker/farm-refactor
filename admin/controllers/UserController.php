@@ -69,6 +69,7 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'name', 'name'),
+            'logins' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'login', 'login'),
             'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
             'emails' => ArrayHelper::map(User::find()->where(['type_id' => 2])->asArray()->all(), 'email', 'email'),
         ]);
@@ -83,6 +84,7 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'name', 'name'),
+            'logins' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'login', 'login'),
             'pharmacies' => ArrayHelper::map(Pharmacy::find()
                 ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
                 ->asArray()->all(), 'id','name'),

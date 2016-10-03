@@ -18,6 +18,7 @@ use common\models\company\Admin as CompanyAdmin;
  * @property integer $news_id
  * @property string $date_add
  * @property integer $admin_type
+ * @property string $admin_comment
  */
 
 class Comment extends \yii\db\ActiveRecord
@@ -30,6 +31,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return array_merge(parent::scenarios(),[
             'add'=> ['comment','news_id'],
+            'comment' => ['admin_comment'],
         ]);
     }
 
@@ -45,7 +47,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'news_id'], 'required'],
-            [['comment'], 'string'],
+            [['comment', 'admin_comment'], 'string'],
             [['news_id'], 'exist', 'targetClass'=>News::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
             ['isAdmin', 'integer']
@@ -79,12 +81,13 @@ class Comment extends \yii\db\ActiveRecord
             'comment' => 'Комментарий',
             'news_id' => 'Новость',
             'date_add' => 'Дата добавления',
+            'admin_comment' => 'Комментарий',
         ];
     }
 
     public static function findByNews($news_id)
     {
-        return static::find()->where(['news_id'=>$news_id])->orderBy(['date_add'=>SORT_DESC]);
+        return static::find()->where(['news_id'=>$news_id])->orderBy('date_add desc');
     }
 
     public function getUser()

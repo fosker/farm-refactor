@@ -99,7 +99,7 @@ class PresentController extends Controller
         if (($model = Present::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('�������� �� �������. ');
+            throw new NotFoundHttpException('Подарок не найден. ');
         }
     }
 
@@ -108,6 +108,20 @@ class PresentController extends Controller
         $this->findModel($id)->usePromo();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionComment($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'comment';
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('comment', [
+                'model' => $model,
+            ]);
+        }
     }
 
 }

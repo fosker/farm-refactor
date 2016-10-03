@@ -41,6 +41,7 @@ $this->title = $model->user->name .' приобрел "'.$model->item->title.'"'
             ],'count',
             'promo',
             'date_buy:datetime',
+            'comment'
         ],
     ]) ?>
 

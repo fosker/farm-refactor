@@ -1891,7 +1891,7 @@
 
        if ( $Mode == SCALE_MODE_ADDALL_START0 ) { $Data["Axis"][$AxisID]["Min"] = 0; }
 
-       $Scale   = $this->computeScale($Data["Axis"][$AxisID]["Min"],$Data["Axis"][$AxisID]["Max"],$MaxDivs,$Factors,$AxisID);
+       $Scale   = $this->computeScale($Data["Axis"][$AxisID]["Min"],$Data["Axis"][$AxisID]["Max"],1,$Factors,$AxisID);
 
        $Data["Axis"][$AxisID]["Margin"]    = $AxisParameter["Identity"] == AXIS_X ? $XMargin : $YMargin;
        $Data["Axis"][$AxisID]["ScaleMin"]  = $Scale["XMin"];
@@ -4650,9 +4650,9 @@
            $Y = $this->GraphAreaY1 + $XMargin;
 
            if ( $AroundZero ) { $X1 = $YZero; } else { $X1 = $this->GraphAreaX1+1; }
-           if ( $XDivs == 0 ) { $YSize = ($this->GraphAreaY2-$this->GraphAreaY1)/($SeriesCount+$Interleave); } else { $YSize   = ($YStep / ($SeriesCount+$Interleave) ); }
+           if ( $XDivs == 0 ) { $YSize = ($this->GraphAreaY2-$this->GraphAreaY1)/($SeriesCount+$Interleave); } else { $YSize   = ($YStep / ($SeriesCount+$Interleave)); }
            
-           $YOffset = -($YSize*$SeriesCount)/2 + $CurrentSerie * $YSize;
+           $YOffset = -($YSize*$SeriesCount)/2 + $CurrentSerie * $YSize+5;
            if ( $Y + $YOffset <= $this->GraphAreaY1 ) { $YOffset = $this->GraphAreaY1 - $Y + 1 ; }
 
            $this->DataSet->Data["Series"][$SerieName]["XOffset"] = $YOffset + $YSize / 2;
@@ -4696,7 +4696,7 @@
                   $this->drawRoundedFilledRectangle($X1+1,$Y+$YOffset+$YSpace,$X2,$Y+$YOffset+$YSize-$YSpace,$RoundRadius,$Color);
                  else
                   {
-                   $this->drawFilledRectangle($X1,$Y+$YOffset+$YSpace,$X2,$Y+$YOffset+$YSize-$YSpace,$Color);
+                   $this->drawFilledRectangle($X1,$Y+$YOffset,$X2,$Y+$YOffset+$YSize-8,$Color);
 
                    if ( $InnerColor != NULL ) { $this->drawRectangle(min($X1,$X2)+1,$Y+$YOffset+$YSpace+1,max($X1,$X2)-1,$Y+$YOffset+$YSize-$YSpace-1,$InnerColor); }
 
@@ -4743,20 +4743,20 @@
                  if ( $DisplayShadow ) { $this->Shadow = TRUE; }
 
                  $Caption   = $this->scaleFormat($Serie["Data"][$Key],$Mode,$Format,$Unit);
+                    $Caption = (int)$Caption;
                  $TxtPos    = $this->getTextBox(0,0,$DisplayFont,$DisplaySize,0,$Caption);
                  $TxtWidth  = $TxtPos[1]["X"] - $TxtPos[0]["X"] + $TxtMargin;
 
                  if ( $DisplayPos == LABEL_POS_INSIDE && abs($TxtWidth) < abs($BarWidth) )
                   {
-                   $CenterX = ($X2-$X1)/2 + $X1;
+                   $CenterX = $X2+20;
                    $CenterY = (($Y+$YOffset+$YSize-$YSpace)-($Y+$YOffset+$YSpace))/2 + ($Y+$YOffset+$YSpace);
-
-                   $this->drawText($CenterX,$CenterY,$Caption,array("R"=>$DisplayR,"G"=>$DisplayG,"B"=>$DisplayB,"Align"=>TEXT_ALIGN_MIDDLEMIDDLE,"FontSize"=>$DisplaySize));
+                      $this->drawText($CenterX,$CenterY-5,$Caption."%",array("R"=>$DisplayR,"G"=>$DisplayG,"B"=>$DisplayB,"Align"=>TEXT_ALIGN_MIDDLEMIDDLE,"FontSize"=>$DisplaySize));
                   }
                  else
                   {
-                   if ( $Serie["Data"][$Key] >= 0 ) { $Align = TEXT_ALIGN_MIDDLELEFT; $Offset = $DisplayOffset; } else { $Align = TEXT_ALIGN_MIDDLERIGHT; $Offset = -$DisplayOffset; }
-                   $this->drawText($X2+$Offset,$Y+$YOffset+$YSize/2,$Caption,array("R"=>$DisplayR,"G"=>$DisplayG,"B"=>$DisplayB,"Align"=>$Align,"FontSize"=>$DisplaySize));
+                      if ( $Serie["Data"][$Key] >= 0) { $Align = TEXT_ALIGN_MIDDLELEFT; $Offset = $DisplayOffset; } else { $Align = TEXT_ALIGN_MIDDLERIGHT; $Offset = -$DisplayOffset; }
+                      $this->drawText($X2+$Offset+5,($Y+$YOffset+$YSize/2)-2,$Caption.'%',array("R"=>$DisplayR,"G"=>$DisplayG,"B"=>$DisplayB,"Align"=>$Align,"FontSize"=>$DisplaySize));
                   }
 
                  $this->Shadow = $RestoreShadow;

@@ -38,7 +38,7 @@ class ListController extends Controller
                 ->select(['id','name'])
                 ->where(['region_id'=>$region])
                 ->andFilterWhere(['like', 'name', $search])
-                ->orderBy("(CASE WHEN name LIKE '$search' THEN 1 WHEN name LIKE '$search%' THEN 2 ELSE 3 END)"),
+                ->orderBy("(CASE WHEN name LIKE '$search' THEN 1 WHEN name LIKE '$search%' THEN 2 ELSE 3 END), name asc"),
             'pagination' => [
                 'pageSize' => 10000,
             ]

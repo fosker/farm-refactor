@@ -13,7 +13,13 @@ use kartik\widgets\Select2;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'user.login')->widget(Select2::classname(), [
+        'data' => $logins,
+        'options' => ['placeholder' => 'Выберите логин ...'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'user.name')->widget(Select2::classname(), [
         'data' => $names,

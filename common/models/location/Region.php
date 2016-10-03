@@ -46,13 +46,28 @@ class Region extends \yii\db\ActiveRecord
         return $this->hasMany(City::className(), ['region_id' => 'id'])->orderBy('name');
     }
 
+    public function getCitiesCount()
+    {
+        $cityCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(), Pharmacy::tableName(), City::tableName(), Region::tableName()])
+            ->select('count('.Pharmacist::tableName().'.id'.') as count, city_id')
+            ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.city_id ='.City::tableName().'.id')
+            ->andWhere(City::tableName().'.region_id ='.Region::tableName().'.id')
+            ->andWhere([Region::tableName().'.id'=>$this->id])
+            ->groupBy('city_id');
+        return $this->hasMany(City::className(), ['region_id' => 'id'])
+            ->leftJoin(['cityCount' => $cityCount], 'cityCount.city_id = id')
+            ->orderBy(['cityCount.count' => SORT_DESC]);
+    }
+
     public function getUserCount()
     {
-        return Pharmacist::find()->joinWith('pharmacy')
-            ->join('LEFT JOIN', City::tableName(),
-                Pharmacy::tableName().'.city_id = '.City::tableName().'.id')
-            ->join('LEFT JOIN', static::tableName(),
-                static::tableName().'.id = '.City::tableName().'.region_id')
+        return Pharmacist::find()
+            ->from([Pharmacist::tableName(),Pharmacy::tableName(),City::tableName(),static::tableName()])
+            ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.city_id ='.City::tableName().'.id')
+            ->andWhere(City::tableName().'.region_id ='.static::tableName().'.id')
             ->andWhere([static::tableName().'.id' => $this->id])
             ->count();
     }

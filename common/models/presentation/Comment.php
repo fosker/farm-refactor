@@ -16,6 +16,7 @@ use common\models\User;
  * @property string $comment
  * @property integer $presentation_id
  * @property string $date_add
+ * @property string $admin_comment
  */
 class Comment extends ActiveRecord
 {
@@ -30,6 +31,7 @@ class Comment extends ActiveRecord
     public function scenarios() {
         return array_merge(parent::scenarios(),[
             'add'=> ['comment','presentation_id'],
+            'comment' => ['admin_comment'],
         ]);
     }
 
@@ -40,7 +42,7 @@ class Comment extends ActiveRecord
     {
         return [
             [['comment', 'presentation_id', 'user_id'], 'required'],
-            [['comment'], 'string'],
+            [['comment','admin_comment'], 'string'],
             [['presentation_id'], 'validatePresentation'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];
@@ -66,6 +68,7 @@ class Comment extends ActiveRecord
             'comment' => 'Комментарий',
             'presentation_id' => 'Презентация',
             'date_add' => 'Дата добавления',
+            'admin_comment' => 'Комментарий',
         ];
     }
 
@@ -93,7 +96,7 @@ class Comment extends ActiveRecord
 
     public static function findByPresentation($presentation_id)
     {
-        return static::find()->where(['presentation_id'=>$presentation_id])->orderBy(['date_add'=>SORT_DESC]);
+        return static::find()->where(['presentation_id'=>$presentation_id])->orderBy('date_add desc');
     }
 
 }

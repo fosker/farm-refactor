@@ -1,13 +1,74 @@
 <?php
 
 use yii\widgets\ListView;
+use yii\bootstrap\Html;
+use common\models\News;
+use common\models\Presentation;
+use common\models\Seminar;
+use common\models\Vacancy;
+use common\models\User;
 
 $this->title = 'Главная';
 $this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="main-index">
     <h1 class="text-center">Добро пожаловать</h1>
+</div>
+
+
+<div class="comments_wrap">
+    <div class="row text-center">
+        <button type="button" class="btn btn-info more-comments">показать 10 последних комментариев</button>
+    </div>
+    </br>
+    <div class="comments" style="display: none">
+    <?php foreach($comments as $comment):
+        switch($comment['content']) {
+            case 'news':
+                $url = Html::a('Новость: '.News::findOne($comment['content_id'])->title, ['/news/view', 'id'=>$comment['content_id']]);
+                $comment_url = ['/news/comment', 'id'=>$comment['id']];
+                break;
+            case 'presentation':
+                $url = Html::a('Презентация: '.Presentation::findOne($comment['content_id'])->title, ['/presentation/view', 'id'=>$comment['content_id']]);
+                $comment_url = ['/presentation/comment', 'id'=>$comment['id']];
+                break;
+            case 'vacancy':
+                $url = Html::a('Вакансия: '.Vacancy::findOne($comment['content_id'])->title, ['/vacancy/view', 'id'=>$comment['content_id']]);
+                $comment_url = ['/vacancy/comment', 'id'=>$comment['id']];
+                break;
+            case 'seminar':
+                $url = Html::a('Семинар: '.Seminar::findOne($comment['content_id'])->title, ['/seminar/view', 'id'=>$comment['content_id']]);
+                $comment_url = ['/seminar/comment', 'id'=>$comment['id']];
+                break;
+        }
+        ?>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 well">
+                <div class="row text-center"><?=$url?></div>
+                </br>
+                <div class="row">
+                    <div class="col-md-3"><?=Html::a(User::findOne($comment['user_id'])->login, ['/user/view', 'id' => $comment['user_id']])?></div>
+                    <div class="col-md-9"><?=$comment['comment']?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6><?=$comment['date_add']?></h6>
+                    </div>
+                    <div class="col-md-9">
+                        <?=Html::a('<i class="glyphicon glyphicon-tag"></i>', $comment_url,
+                            [
+                                'class' => 'list-comment pull-right',
+                                'title'=>$comment['admin_comment'],
+                            ]);?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    </div>
 </div>
 
 <div class="col-md-12">

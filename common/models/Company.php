@@ -128,6 +128,19 @@ class Company extends ActiveRecord
         return $this->hasMany(Pharmacy::className(),['company_id'=>'id']);
     }
 
+    public function getPharmaciesCount()
+    {
+        $pharmacyCount = Pharmacist::find()
+            ->from([Pharmacist::tableName(), Pharmacy::tableName(), Company::tableName()])
+            ->select('count('.Pharmacist::tableName().'.id'.') as count, pharmacy_id')
+            ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
+            ->andWhere(Pharmacy::tableName().'.company_id ='.Company::tableName().'.id')
+            ->groupBy('pharmacy_id');
+        return $this->hasMany(Pharmacy::className(), ['company_id' => 'id'])
+            ->leftJoin(['pharmacyCount' => $pharmacyCount], 'pharmacyCount.pharmacy_id = id')
+            ->orderBy(['pharmacyCount.count' => SORT_DESC]);
+    }
+
     public function getImagePath()
     {
         return Yii::getAlias('@uploads_view/companies/'.$this->image);

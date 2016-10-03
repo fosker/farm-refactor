@@ -13,12 +13,14 @@ use common\models\Vacancy;
  * @property string $comment
  * @property integer $vacancy_id
  * @property string $date_add
+ * @property string $admin_comment
  */
 class Comment extends \yii\db\ActiveRecord
 {
     public function scenarios() {
         return array_merge(parent::scenarios(),[
             'add'=> ['comment','vacancy_id'],
+            'comment' => ['admin_comment'],
         ]);
     }
 
@@ -46,7 +48,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'vacancy_id'], 'required'],
-            [['comment'], 'string'],
+            [['comment', 'admin_comment'], 'string'],
             [['vacancy_id'], 'exist', 'targetClass'=>Vacancy::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];
@@ -63,12 +65,13 @@ class Comment extends \yii\db\ActiveRecord
             'comment' => 'Комментарий',
             'seminar_id' => 'Вакансия',
             'date_add' => 'Дата добавления',
+            'admin_comment' => 'Комментарий'
         ];
     }
 
     public static function findByVacancy($vacancy_id)
     {
-        return static::find()->where(['vacancy_id'=>$vacancy_id])->orderBy(['date_add'=>SORT_DESC]);
+        return static::find()->where(['vacancy_id'=>$vacancy_id])->orderBy('date_add desc');
     }
 
     public function getUser() {

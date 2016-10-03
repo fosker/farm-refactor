@@ -14,12 +14,14 @@ use common\models\User;
  * @property integer $user_id
  * @property string $comment
  * @property integer $seminar_id
+ * @property integer $admin_comment
  */
 class Comment extends \yii\db\ActiveRecord
 {
     public function scenarios() {
         return array_merge(parent::scenarios(),[
             'add'=> ['comment','seminar_id'],
+            'comment' => ['admin_comment'],
         ]);
     }
 
@@ -52,7 +54,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['comment', 'seminar_id'], 'required'],
-            [['comment'], 'string'],
+            [['comment', 'admin_comment'], 'string'],
             [['seminar_id'], 'exist', 'targetClass'=>Seminar::className(), 'targetAttribute'=>'id'],
             [['user_id'], 'exist', 'targetClass'=>User::className(), 'targetAttribute'=>'id'],
         ];
@@ -69,12 +71,13 @@ class Comment extends \yii\db\ActiveRecord
             'comment' => 'Комментарий',
             'seminar_id' => 'Семинар',
             'date_add' => 'Дата добавления',
+            'admin_comment' => 'Комментарий',
         ];
     }
 
     public static function findBySeminar($seminar_id)
     {
-        return static::find()->where(['seminar_id'=>$seminar_id])->orderBy(['date_add'=>SORT_DESC]);
+        return static::find()->where(['seminar_id'=>$seminar_id])->orderBy('date_add desc');
     }
 
     public function getUser() {

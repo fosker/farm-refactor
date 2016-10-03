@@ -176,4 +176,18 @@ class SeminarController extends Controller
         $model->delete();
         $this->redirect(['view', 'id' => $seminar_id]);
     }
+
+    public function actionComment($id)
+    {
+        $model = Comment::findOne($id);
+        $model->scenario = 'comment';
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['/']);
+        } else {
+            return $this->render('comment', [
+                'model' => $model,
+            ]);
+        }
+    }
 }
