@@ -83,6 +83,7 @@ class UserController extends Controller
         return $this->render('pharmacists/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id', 'name'),
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'name', 'name'),
             'logins' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'login', 'login'),
             'pharmacies' => ArrayHelper::map(Pharmacy::find()
