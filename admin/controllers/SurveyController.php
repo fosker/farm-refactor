@@ -1180,7 +1180,7 @@ class SurveyController extends Controller
             foreach($array as $row) {
                 $table->addRow();
                 foreach($row as $cell) {
-                    $table->addCell(2000)->addText($cell['value']);
+                    $table->addCell(2000)->addText(htmlspecialchars($cell['value']));
                 }
             }
 
