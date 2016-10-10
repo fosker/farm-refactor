@@ -24,7 +24,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                 <div class="row">
                     <div class="col-lg-4 text-left col-md-4 visible-md-block visible-lg-block">
                         <?=Html::img('img/info/email.png', ['width' => '18px'])?>
-                        <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
+                        <a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a>
                         <span class="phone">
                         <?=Html::img('img/info/phone.png', ['width' => '10px'])?>
                             <a href="tel:+375291953706">+375 29 195 37 06</a>
@@ -516,18 +516,20 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     <div class="mobile-hr" id="mobile-hr">
         <h1 class="section-header wow fadeInDown">Digital HR</h1>
         <h4 class="section-sub-header wow fadeInDown">Rapid alert about the latest news of the company and the industry</h4>
-        <div class="row task">
-            <div class="col-md-7 col-sm-6 wow fadeInLeft">
-                <div class="problem clearfix">
-                    <div>
-                        If your company is problematic to collect all the employees and discuss with them the latest innovations in the pharmaceutical field or events within the company, then you need a <b>Digital HR.</b>
+        <div class="container">
+            <div class="row task">
+                <div class="col-md-7 col-sm-6 wow fadeInLeft">
+                    <div class="problem clearfix">
+                        <div>
+                            If your company is problematic to collect all the employees and discuss with them the latest innovations in the pharmaceutical field or events within the company, then you need a <b>Digital HR.</b>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5 col-sm-6 solving wow fadeInRight">
-                <div>
-                    <h2>Digital HR</h2>
-                    <p>- It is your interactive channel of communication with employees and operational tool for vocational training</p>
+                <div class="col-md-5 col-sm-6 wow fadeInRight">
+                    <div class="solving">
+                        <h2>Digital HR</h2>
+                        <p>- It is your interactive channel of communication with employees and operational tool for vocational training</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -605,7 +607,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <div class="row">
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.2s">
                                 <p><?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?></p>
-                                <p><a href="mailto:info@pharbonus.by">info@pharbonus.by</a></p>
+                                <p><a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a></p>
                             </div>
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.4s">
                                 <p><?=Html::img('img/contacts/phone.png', ['width' => '30px'])?></p>

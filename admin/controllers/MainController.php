@@ -51,16 +51,16 @@ class MainController extends \yii\web\Controller
     {
         $news_comments = News_comment::find()->select(['id','user_id','comment','news_id as content_id','date_add','admin_comment',new Expression("'news' as content")])
             ->orderBy('date_add desc')
-            ->limit(10);
+            ->limit(20);
         $presentation_comments = Presentation_comment::find()->select(['id','user_id','comment','presentation_id as content_id','date_add','admin_comment',new Expression("'presentation' as content")])
             ->orderBy('date_add desc')
-            ->limit(10);
+            ->limit(20);
         $seminar_comments = Seminar_comment::find()->select(['id','user_id','comment','seminar_id as content_id','date_add','admin_comment',new Expression("'seminar' as content")])
             ->orderBy('date_add desc')
-            ->limit(10);
+            ->limit(20);
         $vacancy_comments = Vacancy_comment::find()->select(['id','user_id','comment','vacancy_id as content_id','date_add','admin_comment',new Expression("'vacancy' as content")])
             ->orderBy('date_add desc')
-            ->limit(10);
+            ->limit(20);
 
         $union = $news_comments->union($presentation_comments)
             ->union($seminar_comments)
@@ -68,7 +68,7 @@ class MainController extends \yii\web\Controller
         $comments = (new \yii\db\Query())
             ->from(['union'=>$union])
             ->orderBy('date_add desc')
-            ->limit(10)
+            ->limit(20)
             ->all();
 
         $regionQuery = Region::find();

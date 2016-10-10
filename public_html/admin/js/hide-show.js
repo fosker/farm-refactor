@@ -41,12 +41,12 @@ $( document ).ready(function() {
     });
 
     $(".more-comments").on("click", function() {
-        if($(this).text() == 'показать 10 последних комментариев') {
+        if($(this).text() == 'показать 20 последних комментариев') {
             $($(this).parents()[2]).find(".comments").css("display", "block");
             $(this).html('скрыть комментарии');
         } else if($(this).text() == 'скрыть комментарии') {
             $($(this).parents()[2]).find(".comments").css("display", "none");
-            $(this).html('показать 10 последних комментариев');
+            $(this).html('показать 20 последних комментариев');
         }
     });
 });

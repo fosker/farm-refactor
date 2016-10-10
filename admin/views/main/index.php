@@ -9,8 +9,8 @@ use common\models\Vacancy;
 use common\models\User;
 
 $this->title = 'Главная';
-$this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="main-index">
@@ -20,7 +20,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
 
 <div class="comments_wrap">
     <div class="row text-center">
-        <button type="button" class="btn btn-info more-comments">показать 10 последних комментариев</button>
+        <button type="button" class="btn btn-info more-comments">показать 20 последних комментариев</button>
     </div>
     </br>
     <div class="comments" style="display: none">

@@ -24,7 +24,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                 <div class="row">
                     <div class="col-lg-4 text-left col-md-4 visible-md-block visible-lg-block">
                         <?=Html::img('img/info/email.png', ['width' => '18px'])?>
-                        <a href="mailto:info@pharbonus.by">info@pharbonus.by</a>
+                        <a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a>
                         <span class="phone">
                         <?=Html::img('img/info/phone.png', ['width' => '10px'])?>
                             <a href="tel:+375291953706">+375 29 195 37 06</a>
@@ -158,7 +158,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         </div>
                         <div class="col-md-10 col-sm-12 col-xs-10">
                             <h4>Опыт</h4>
-                            <p>Опыт команды профессионалов с многолетним стажем работы в фармацевтической сфере, который задействован при создании Фармбонуса</p>
+                            <p>Опыт команды профессионалов с многолетним стажем работы в фармацевтической сфере, который задействован при создании ФармБонуса</p>
                         </div>
                     </div>
                     <div class="row advantage wow fadeInRight">
@@ -516,21 +516,23 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
     <div class="mobile-hr" id="mobile-hr">
         <h1 class="section-header wow fadeInDown">Мобильный HR</h1>
         <h4 class="section-sub-header wow fadeInDown">Быстрое оповещение о последних новостях компании и отрасли</h4>
-        <div class="row task">
-            <div class="col-md-7 col-sm-6 wow fadeInLeft">
-                <div class="problem clearfix">
-                    <div>
-                        Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+        <div class="container">
+            <div class="row task">
+                <div class="col-md-7 col-sm-6 wow fadeInLeft">
+                    <div class="problem clearfix">
+                        <div>
+                            Если в Вашей компании проблематично собрать всех сотрудников и обсудить с ними последние нововведения в фармацевтической сфере или события внутри компании, то Вам необходим <b>Мобильный HR.</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 wow fadeInRight">
+                    <div class="solving">
+                        <h2>Мобильный HR</h2>
+                        <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-sm-6 solving wow fadeInRight">
-                <div>
-                    <h2>Мобильный HR</h2>
-                    <p>- Это Ваш интерактивный канал общения с работниками и оперативный инструмент для профессионального обучения</p>
-                </div>
             </div>
-        </div>
 
         <div class="container steps">
             <div class="row">
@@ -605,7 +607,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                         <div class="row">
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.2s">
                                 <p><?=Html::img('img/contacts/email.png', ['width' => '40px', 'style' =>'margin-top: 24px;'])?></p>
-                                <p><a href="mailto:info@pharbonus.by">info@pharbonus.by</a></p>
+                                <p><a href="mailto:info@pharmbonus.by">info@pharmbonus.by</a></p>
                             </div>
                             <div class="col-xs-4 clearfix wow fadeInDown" data-wow-delay="0.4s">
                                 <p><?=Html::img('img/contacts/phone.png', ['width' => '30px'])?></p>

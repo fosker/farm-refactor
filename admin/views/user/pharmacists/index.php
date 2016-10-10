@@ -15,6 +15,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
         'names' => $names,
         'pharmacies' => $pharmacies,
         'cities' => $cities,
+        'positions' => $positions,
         'companies' => $companies,
         'emails' => $emails,
         'logins' => $logins
