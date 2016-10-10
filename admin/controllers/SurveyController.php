@@ -577,7 +577,7 @@ class SurveyController extends Controller
             $data->addPoints($regions,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(800,800,$data,1);
+            $image = new \pImage(800,1000,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
@@ -587,7 +587,7 @@ class SurveyController extends Controller
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(350,20,700,800);
+            $image->setGraphArea(350,20,700,1000);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -759,7 +759,7 @@ class SurveyController extends Controller
         foreach($questions as $question_id => $question) {
             $legend = [];
             foreach(array_keys($question) as $option) {
-                $legend[] = wordwrap($option,70,"\n",0);
+                $legend[] = wordwrap($option,90,"\n",0);
             }
             $data = new \pData();
             $data->addPoints(array_values($question),"Probe 1");
@@ -775,7 +775,7 @@ class SurveyController extends Controller
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
-                "FontSize"=>12,
+                "FontSize"=>10,
                 "R"=>0,
                 "G"=>0,
                 "B"=>0,
@@ -973,7 +973,7 @@ class SurveyController extends Controller
             $data->addPoints($regions,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(800,800,$data,1);
+            $image = new \pImage(800,1000,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
@@ -983,7 +983,7 @@ class SurveyController extends Controller
                 "B"=>0,
             ]);
 
-            $image->setGraphArea(350,20,700,800);
+            $image->setGraphArea(350,20,700,1000);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
@@ -1076,7 +1076,7 @@ class SurveyController extends Controller
             $data->addPoints($companies,"Labels");
             $data->setAbscissa("Labels");
 
-            $image = new \pImage(800,800,$data,1);
+            $image = new \pImage(800,1000,$data,1);
 
             $image->setFontProperties([
                 "FontName"=>__DIR__."/../components/pChart/fonts/times.ttf",
@@ -1087,7 +1087,7 @@ class SurveyController extends Controller
             ]);
 
 
-            $image->setGraphArea(350,20,700,800);
+            $image->setGraphArea(350,20,700,1000);
             $image->drawScale([
                 "Pos"=>SCALE_POS_TOPBOTTOM,
                 "DrawSubTicks"=>0,
