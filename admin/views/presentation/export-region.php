@@ -19,9 +19,6 @@ $i = 1;
         <div class="text-center"><p>Р.<?php echo $i; $i++?></p></div>
         <pagebreak />
         <div>
-            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
-        </div>
-        <div>
             <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_region.png'))?>
         </div>
         <div class="text-center"><p>Р.<?php echo $i; $i++?></p></div>
@@ -38,9 +35,6 @@ $i = 1;
         </div>
         <div class="text-center"><p>Р.<?php echo $i; $i++?></p></div>
         <pagebreak />
-        <div>
-            <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_common_legend.png'))?>
-        </div>
         <div>
             <?=Html::img(Yii::getAlias('@temp/presentation/'.$presentation->id.'/'.$question->id.'_region.png'))?>
         </div>
