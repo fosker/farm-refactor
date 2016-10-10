@@ -72,6 +72,11 @@ class Field extends \yii\db\ActiveRecord
         return $this->hasMany(Option::className(),['field_id'=>'id']);
     }
 
+    public function getSection()
+    {
+        return $this->hasOne(Section::className(),['id'=>'section_id']);
+    }
+
     public function getRelations()
     {
         return Relation::find()

@@ -62,4 +62,9 @@ class Section extends \yii\db\ActiveRecord
         $not_in = Relation::find()->select('child_id');
         return Field::find()->where(['section_id' => $this->id])->andWhere(['not in', 'id', $not_in])->all();
     }
+
+    public function getAllFields()
+    {
+        return $this->hasMany(Field::className(),['section_id'=>'id']);
+    }
 }

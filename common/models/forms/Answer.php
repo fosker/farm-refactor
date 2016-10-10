@@ -7,10 +7,7 @@ use yii\base\Model;
 use common\models\User;
 use common\models\Theme;
 use yii\helpers\ArrayHelper;
-use common\models\forms\Field;
-use common\models\forms\Option;
 use common\models\Form;
-use yii\web\BadRequestHttpException;
 
 class Answer extends Model
 {
@@ -62,15 +59,21 @@ class Answer extends Model
 
     public static function filterModels($models)
     {
-        $form = Form::findOne(Field::findOne(['id' => $models[0]->field_id])->form_id);
+        $form = Form::findOne(Field::findOne(['id' => $models[0]->field_id])->section->form_id);
 
-        $fields = ArrayHelper::map($form->fields,'id','id');
+        $sections = [];
+
+        foreach($form->sections as $section) {
+            $sections[] = ArrayHelper::map($section->allFields,'id','id');
+        }
 
         $answers = [];
 
         foreach($models as $answer) {
-            if(in_array($answer->field_id,$fields))
-                $answers[$answer->field_id] = $answer;
+            foreach($sections as $fields) {
+                if(in_array($answer->field_id,$fields))
+                    $answers[$answer->field_id] = $answer;
+            }
         }
 
         return $answers;

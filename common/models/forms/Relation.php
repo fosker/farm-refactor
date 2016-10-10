@@ -4,7 +4,7 @@ namespace common\models\forms;
 
 use Yii;
 /**
- * This is the model class for table "form_section_field_ralations".
+ * This is the model class for table "form_section_field_relations".
  *
  * @property integer $id
  * @property integer $parent_id

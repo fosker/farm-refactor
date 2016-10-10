@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use common\models\forms\Section;
-
 /**
  * This is the model class for table "forms".
  *
@@ -59,5 +58,14 @@ class Form extends \yii\db\ActiveRecord
     public function getSections()
     {
         return $this->hasMany(Section::className(),['form_id'=>'id']);
+    }
+
+    public function getFields()
+    {
+        $fields = [];
+        foreach($this->sections as $section) {
+            $fields[] = $section->allFields;
+        }
+        return $fields;
     }
 }
