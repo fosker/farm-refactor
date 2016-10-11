@@ -77,7 +77,7 @@ class Comment extends \yii\db\ActiveRecord
 
     public static function findBySeminar($seminar_id)
     {
-        return static::find()->where(['seminar_id'=>$seminar_id])->orderBy('date_add desc');
+        return static::find()->where(['seminar_id'=>$seminar_id])->orderBy('date_add asc');
     }
 
     public function getUser() {

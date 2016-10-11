@@ -96,7 +96,7 @@ class Comment extends ActiveRecord
 
     public static function findByPresentation($presentation_id)
     {
-        return static::find()->where(['presentation_id'=>$presentation_id])->orderBy('date_add desc');
+        return static::find()->where(['presentation_id'=>$presentation_id])->orderBy('date_add asc');
     }
 
 }

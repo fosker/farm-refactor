@@ -1143,14 +1143,11 @@ class SurveyController extends Controller
         $phpWord->setDefaultFontName('Times New Roman');
         $phpWord->setDefaultFontSize(14);
         $questions = $survey->devidedQuestions['free'];
-        foreach($questions as $question) {
-            $array = [];
-            $values = Answer::find()
-                ->select('value')
-                ->where(['question_id' => $question->id])
-                ->asArray()
-                ->all();
+        $regions = Region::find()
+            ->orderBy('id')
+            ->all();
 
+        foreach($questions as $question) {
             $section = $phpWord->addSection();
             $text = $question->question;
             $fontStyle = [
@@ -1161,30 +1158,53 @@ class SurveyController extends Controller
             $parStyle = [
                 'align'=>'center'
             ];
-            $section->addText($text, $fontStyle, $parStyle);
+            $section->addText(htmlspecialchars($text), $fontStyle, $parStyle);
+            foreach($regions as $region) {
+                $text = $region->name;
+                $fontStyle = [
+                    'name'=>'Times New Roman',
+                    'size'=>14,
+                    'color'=>'000000',
+                ];
+                $parStyle = [
+                    'align'=>'center'
+                ];
+                $section->addText(htmlspecialchars($text), $fontStyle, $parStyle);
 
-            $styleTable = [
-                'borderSize'=>6,
-                'borderColor'=>'000000',
-                'cellMargin'=>80
-            ];
-            $phpWord->addTableStyle('table', $styleTable);
+                $array = [];
+                $values = Answer::find()
+                    ->select('value')
+                    ->from([Answer::tableName(), View::tableName(), Pharmacist::tableName(), Pharmacy::tableName(), City::tableName()])
+                    ->andWhere(Answer::tableName().'.view_id ='.View::tableName().'.id')
+                    ->andWhere(View::tableName().'.user_id ='.Pharmacist::tableName().'.id')
+                    ->andWhere(Pharmacist::tableName().'.pharmacy_id ='.Pharmacy::tableName().'.id')
+                    ->andWhere(City::tableName().'.id ='.Pharmacy::tableName().'.city_id')
+                    ->andWhere(City::tableName().'.region_id='.$region->id)
+                    ->andWhere(['question_id' => $question->id])
+                    ->asArray()
+                    ->all();
 
-            $table = $section->addTable('table');
+                $styleTable = [
+                    'borderSize'=>6,
+                    'borderColor'=>'000000',
+                    'cellMargin'=>80
+                ];
+                $phpWord->addTableStyle('table', $styleTable);
 
-            for($i = 0; $i < count($values)/5; $i++) {
-                for($j = 0; $j < 5; $j++) {
-                    $array[$i][$j] = $values[$i*5+$j];
+                $table = $section->addTable('table');
+
+                for($i = 0; $i < count($values)/5; $i++) {
+                    for($j = 0; $j < 5; $j++) {
+                        $array[$i][$j] = $values[$i*5+$j];
+                    }
+                }
+                foreach($array as $row) {
+                    $table->addRow();
+                    foreach($row as $cell) {
+                        $table->addCell(2000)->addText(htmlspecialchars($cell['value']));
+                    }
                 }
             }
-            foreach($array as $row) {
-                $table->addRow();
-                foreach($row as $cell) {
-                    $table->addCell(2000)->addText(htmlspecialchars($cell['value']));
-                }
-            }
-
-
         }
 
         header("Content-Description: File Transfer");

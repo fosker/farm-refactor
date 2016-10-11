@@ -71,7 +71,7 @@ class Comment extends \yii\db\ActiveRecord
 
     public static function findByVacancy($vacancy_id)
     {
-        return static::find()->where(['vacancy_id'=>$vacancy_id])->orderBy('date_add desc');
+        return static::find()->where(['vacancy_id'=>$vacancy_id])->orderBy('date_add asc');
     }
 
     public function getUser() {
