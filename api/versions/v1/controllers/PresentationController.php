@@ -44,7 +44,14 @@ class PresentationController extends Controller
     public function actionHomeList()
     {
         return new ActiveDataProvider([
-            'query' => Presentation::getForCurrentUser()->andWhere(['home'=>1])->orderBy(['home_priority'=>SORT_DESC]),
+            'query' => Presentation::getForCurrentUser()
+                ->andWhere(['home'=>1])
+                ->andWhere(['or', ['!=', 'views_limit', '0'], [
+                    'exists',
+                    View::findByCurrentUser()
+                        ->andWhere(View::tableName().'.presentation_id='.Presentation::tableName().'.id')
+                ]])
+                ->orderBy(['home_priority'=>SORT_DESC]),
         ]);
     }
 
