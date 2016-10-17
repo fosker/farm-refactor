@@ -580,7 +580,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
-                        <h1 class="wow fadeInLeft">Установите мобильное<br />приложение Фармбонус!</h1>
+                        <h1 class="wow fadeInLeft">Установите мобильное<br />приложение ФармБонус!</h1>
                         <p class="wow fadeInUp"><?=Html::a(Html::img('img/apple.png'), 'https://itunes.apple.com/ru/app/pharmbonus/id1062954210?l=en&mt=8', ['target' => '_blank'])?> <?=Html::a(Html::img('img/google.png'), 'https://play.google.com/store/apps/details?id=com.pharmbonus.by&hl=ru', ['target' => '_blank']) ?></p>
                     </div>
                     <div class="col-lg-5  col-md-6 col-sm-5 wow fadeInRight visible-sm-block visible-md-block visible-lg-block">
@@ -599,7 +599,7 @@ $this->registerJsFile('js/jquery.touch.min.js', ['depends' => [\yii\web\JqueryAs
                 <div class="row">
                     <div class="col-md-5 col-lg-4 visible-md-block visible-lg-block">
                         <div class="partner wow fadeInDown">
-                            <h2><b>PharmBonus</b></h2>
+                            <h2><b>ФармБонус</b></h2>
                             <h4>Ваш надежный<br />партнер в цифровом<br />Мире!</h4>
                         </div>
                     </div>
