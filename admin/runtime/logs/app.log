@@ -53963,3 +53963,226 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-10-17 10:31:22 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: C:/OpenServer/domains/farm-old.loc/public_html/admin/assets' 
+
+in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php:211
+
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(373): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(154): yii\di\Container->build('yii\\web\\AssetMa...', Array, Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('yii\\web\\AssetMa...', Array, Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(223): yii\base\Application->getAssetManager()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php(130): yii\web\View->getAssetManager()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\panels\AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\LogTarget.php(54): yii\debug\panels\AssetPanel->save()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\LogTarget.php(118): yii\debug\LogTarget->export()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\log\Dispatcher.php(188): yii\debug\LogTarget->collect(Array, true)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\log\Logger.php(173): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2016-10-17 10:31:22 [127.0.0.1][-][-][info][application] $_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/public_html/admin/'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/public_html/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '23670'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/public_html/admin/'
+    'SCRIPT_NAME' => '/public_html/admin/index.php'
+    'PHP_SELF' => '/public_html/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1476689482.026
+    'REQUEST_TIME' => 1476689482
+    'argv' => []
+    'argc' => 0
+]
+2016-10-17 10:31:23 [127.0.0.1][-][s75ugvrf8f7id81ao8eju5r084][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The directory does not exist: C:/OpenServer/domains/farm-old.loc/public_html/admin/assets in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php:211
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(373): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(154): yii\di\Container->build('yii\\web\\AssetMa...', Array, Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('yii\\web\\AssetMa...', Array, Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(223): yii\base\Application->getAssetManager()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(283): yii\web\View->getAssetManager()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('backend\\assets\\...')
+#10 C:\OpenServer\domains\farm-old.loc\admin\views\auth\login.php(28): yii\web\AssetBundle::register(Object(yii\web\View))
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\AuthController))
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(409): yii\base\View->render('login', Array, Object(backend\controllers\AuthController))
+#15 C:\OpenServer\domains\farm-old.loc\admin\controllers\AuthController.php(22): yii\base\Controller->renderPartial('login', Array)
+#16 [internal function]: backend\controllers\AuthController->actionLogin()
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('login', Array)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('auth/login', Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#23 {main}
+2016-10-17 10:31:23 [127.0.0.1][-][s75ugvrf8f7id81ao8eju5r084][info][application] $_GET = [
+    'r' => 'auth/login'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 's75ugvrf8f7id81ao8eju5r084'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/public_html/admin/'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/public_html/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'PHPSESSID=s75ugvrf8f7id81ao8eju5r084'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '23670'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=auth%2Flogin'
+    'REQUEST_URI' => '/public_html/admin/index.php?r=auth%2Flogin'
+    'SCRIPT_NAME' => '/public_html/admin/index.php'
+    'PHP_SELF' => '/public_html/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1476689483.254
+    'REQUEST_TIME' => 1476689483
+    'argv' => [
+        0 => 'r=auth%2Flogin'
+    ]
+    'argc' => 1
+]
+2016-10-17 10:31:24 [127.0.0.1][-][s75ugvrf8f7id81ao8eju5r084][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: C:/OpenServer/domains/farm-old.loc/public_html/admin/assets' 
+
+in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php:211
+
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(373): ReflectionClass->newInstanceArgs(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(154): yii\di\Container->build('yii\\web\\AssetMa...', Array, Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('yii\\web\\AssetMa...', Array, Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(223): yii\base\Application->getAssetManager()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php(130): yii\web\View->getAssetManager()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\panels\AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\LogTarget.php(54): yii\debug\panels\AssetPanel->save()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2-debug\LogTarget.php(118): yii\debug\LogTarget->export()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\log\Dispatcher.php(188): yii\debug\LogTarget->collect(Array, true)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\log\Logger.php(173): yii\log\Dispatcher->dispatch(Array, true)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\ErrorHandler.php(111): yii\log\Logger->flush(true)
+#15 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\InvalidConfigException))
+#16 {main}
+2016-10-17 10:31:23 [127.0.0.1][-][s75ugvrf8f7id81ao8eju5r084][info][application] $_GET = [
+    'r' => 'auth/login'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 's75ugvrf8f7id81ao8eju5r084'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/public_html/admin/'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/public_html/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'PHPSESSID=s75ugvrf8f7id81ao8eju5r084'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '23670'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=auth%2Flogin'
+    'REQUEST_URI' => '/public_html/admin/index.php?r=auth%2Flogin'
+    'SCRIPT_NAME' => '/public_html/admin/index.php'
+    'PHP_SELF' => '/public_html/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1476689483.254
+    'REQUEST_TIME' => 1476689483
+    'argv' => [
+        0 => 'r=auth%2Flogin'
+    ]
+    'argc' => 1
+]

@@ -73,6 +73,26 @@ class PushController extends Controller
         }
     }
 
+    public function actionRead()
+    {
+        if($id = Yii::$app->request->post('push_id')) {
+            $push = Push::findOne($id);
+            $push->save(false);
+            if($push->companyPushes) {
+                $pushForUser = CompanyUsers::findOne(['push_id' => $id, 'user_id' => Yii::$app->user->id]);
+                $pushForUser->isRead = true;
+                $pushForUser->save(false);
+            } elseif($push->pharmPushes) {
+                $pushForUser = Users::findOne(['push_id' => $id, 'user_id' => Yii::$app->user->id]);
+                $pushForUser->isRead = true;
+                $pushForUser->save(false);
+            }
+            return ['success' => true];
+        } else {
+            throw new BadRequestHttpException;
+        }
+    }
+
     public function actionDelete($id)
     {
         if($push = Push::findOne($id)) {

@@ -17,6 +17,7 @@ use common\models\factory\Users as FactoryUsers;
  * @property integer $views
  * @property integer $date_send
  * @property integer $grayList
+ * @property integer $type
  */
 class Push extends \yii\db\ActiveRecord
 {
@@ -41,9 +42,9 @@ class Push extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['message', 'users'], 'required'],
+            [['message', 'users', 'type'], 'required'],
             [['message', 'date_send'], 'string'],
-            [['device_count', 'views', 'grayList'], 'integer'],
+            [['device_count', 'views', 'grayList', 'type'], 'integer'],
             [['link'], 'string', 'max' => 255],
         ];
     }
@@ -65,7 +66,8 @@ class Push extends \yii\db\ActiveRecord
             'link' => 'Ссылка',
             'views' => 'Количество просмотров',
             'date_send' => 'Дата отправки',
-            'grayList' => 'Отправлять серому списку'
+            'grayList' => 'Отправлять серому списку',
+            'type' => 'Тип'
         ];
     }
 
@@ -90,9 +92,19 @@ class Push extends \yii\db\ActiveRecord
                     return FactoryUsers::findOne(['push_id' => $this->id, 'user_id' => Yii::$app->user->id])->isViewed;
                 }
             },
+            'isRead' => function() {
+                if($this->companyPushes) {
+                    return CompanyUsers::findOne(['push_id' => $this->id, 'user_id' => Yii::$app->user->id])->isRead;
+                } elseif($this->pharmPushes) {
+                    return Users::findOne(['push_id' => $this->id, 'user_id' => Yii::$app->user->id])->isRead;
+                } elseif($this->factoryPushes) {
+                    return FactoryUsers::findOne(['push_id' => $this->id, 'user_id' => Yii::$app->user->id])->isRead;
+                }
+            },
             'date_send'=>function($model) {
                 return strtotime($model->date_send);
-            }
+            },
+            'type'
         ];
     }
 
