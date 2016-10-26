@@ -16,6 +16,7 @@ use common\models\Stock;
  * @property integer $user_id
  * @property string $photo
  * @property string $date_add
+ * @property string $comment
  * @property string $downloaded
  */
 class Reply extends ActiveRecord
@@ -53,6 +54,7 @@ class Reply extends ActiveRecord
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
             ],
+            ['comment', 'string']
         ];
     }
 
@@ -64,6 +66,7 @@ class Reply extends ActiveRecord
             'user_id' => 'Пользователь',
             'photo' => 'Фото',
             'date_add' => 'Дата добавления',
+            'comment' => 'Комментарий'
         ];
     }
 

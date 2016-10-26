@@ -20,10 +20,12 @@ $this->title = 'Изменить новость: ' . ' ' . $model->title;
         'pharmacies'=>$pharmacies,
         'types'=>$types,
         'factories'=>$factories,
+        'news'=>$news,
         'old_cities'=>$old_cities,
         'old_companies'=>$old_companies,
         'old_types' => $old_types,
-        'old_education' => $old_education
+        'old_education' => $old_education,
+        'old_relations' => $old_relations
     ]) ?>
 
 </div>

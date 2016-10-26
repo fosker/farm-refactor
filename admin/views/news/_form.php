@@ -12,6 +12,10 @@ use common\models\Company;
 use common\models\profile\Type;
 use kartik\widgets\Select2;
 
+use yii\helpers\ArrayHelper;
+use common\models\News;
+
+
 $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
@@ -132,6 +136,20 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     ]); ?>
 
     <?= $form->field($model, 'views_added')->textInput() ?>
+
+    <?php
+    echo '<label class="control-label">Рекомендуемые новости</label>';
+    echo Select2::widget([
+        'name' => 'relations[]',
+        'value' => array_keys($old_relations),
+        'data' => $news,
+        'options' => [
+            'placeholder' => 'Выберите рекомендуемые новости ...',
+            'multiple' => true,
+        ],
+    ]);
+    ?>
+    </br>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

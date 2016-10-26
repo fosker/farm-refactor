@@ -18,6 +18,7 @@ $this->title = 'Добавить новость';
         'pharmacies'=>$pharmacies,
         'types'=>$types,
         'factories'=>$factories,
+        'news'=>$news,
     ]) ?>
 
 </div>

@@ -25,6 +25,7 @@ use common\models\news\Comment;
 use backend\models\news\Search;
 
 
+
 class NewsController extends Controller
 {
 
@@ -124,6 +125,7 @@ class NewsController extends Controller
                 'pharmacies'=>Pharmacy::find()->asArray()->all(),
                 'companies'=>Company::find()->asArray()->all(),
                 'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
+                'news' => ArrayHelper::map(News::find()->asArray()->all(),'id','title'),
             ]);
         }
     }
@@ -138,6 +140,7 @@ class NewsController extends Controller
             ->where(['news_id' => $id])->asArray()->all();
         $old_education = News_Education::find()->select('education_id')->where(['news_id' => $id])->asArray()->all();
         $old_types = News_Type::find()->select('type_id')->where(['news_id' => $id])->asArray()->all();
+        $old_relations = ArrayHelper::map(News::findOne($model->id)->recommended, 'id', 'title');;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
@@ -148,6 +151,8 @@ class NewsController extends Controller
                 }
                 $model->updateEducation(Yii::$app->request->post('education'));
                 $model->updateTypes(Yii::$app->request->post('types'));
+                $model->updateRelations(Yii::$app->request->post('relations'));
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -160,10 +165,12 @@ class NewsController extends Controller
                 'pharmacies'=>Pharmacy::find()->asArray()->all(),
                 'companies'=>Company::find()->asArray()->all(),
                 'factories'=>ArrayHelper::map(Factory::find()->asArray()->all(), 'id','title'),
+                'news' => ArrayHelper::map(News::find()->asArray()->all(),'id','title'),
                 'old_types' => $old_types,
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
-                'old_education' => $old_education
+                'old_education' => $old_education,
+                'old_relations' => $old_relations
             ]);
         }
     }

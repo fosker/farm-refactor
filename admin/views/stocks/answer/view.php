@@ -39,6 +39,7 @@ use kartik\widgets\Select2;
                 'value'=>Html::img($model->imagePath, ['alt' => 'Изображение', 'width' => '50%', 'height' => '350px']),
                 'format'=>'html',
             ],
+            'comment'
         ],
     ]) ?>
 
