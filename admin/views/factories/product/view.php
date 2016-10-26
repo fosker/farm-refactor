@@ -29,7 +29,7 @@ $this->title = $model->title;
             'id',
             [
                 'attribute'=>'thumbnail',
-                'value'=>Html::img($model->thumbnailPath, ['alt' => 'Превью', 'width' => '50%', 'height' => '200px']),
+                'value'=>Html::img($model->thumbPath, ['alt' => 'Превью', 'width' => '50%', 'height' => '200px']),
                 'format'=>'html',
             ],
             [
