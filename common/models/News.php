@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\news\Relation;
 use Yii;
 use yii\imagine\Image;
 use yii\helpers\ArrayHelper;
@@ -79,14 +80,16 @@ class News extends \yii\db\ActiveRecord
             'date' => 'Дата публикации',
             'views' => 'Уникальных просмотров',
             'views_added' => 'Добавленные просмотры',
-            'factory_id' => 'Фабрика Автор'
+            'factory_id' => 'Фабрика Автор',
         ];
     }
 
     public function fields()
     {
         return [
-            'id', 'title', 'thumb'=>'thumbPath'
+            'id', 'title', 'thumb'=>'thumbPath',
+            'author' => 'factory',
+            'recommended'
         ];
     }
 
@@ -105,6 +108,12 @@ class News extends \yii\db\ActiveRecord
                 return strtotime($model->date);
             }
         ];
+    }
+
+    public function getRecommended()
+    {
+        $ids = Relation::find()->select('child_id')->where(['parent_id' => $this->id]);
+        return News::find()->where(['in', 'id', $ids])->all();
     }
 
     public function getComments()
@@ -410,6 +419,19 @@ class News extends \yii\db\ActiveRecord
                 $type->type_id = $types[$i];
                 $type->news_id = $this->id;
                 $type->save();
+            }
+        }
+    }
+
+    public function updateRelations($relations)
+    {
+        Relation::deleteAll(['parent_id' => $this->id]);
+        if($relations) {
+            for ($i = 0; $i < count($relations); $i++) {
+                $relation = new Relation();
+                $relation->child_id = $relations[$i];
+                $relation->parent_id = $this->id;
+                $relation->save();
             }
         }
     }

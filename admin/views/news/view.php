@@ -69,6 +69,15 @@ $this->title = $model->title;
         ],
     ]) ?>
 
+    <h4>Рекомендуемые новости</h4>
+    <ul>
+    <?php foreach($model->recommended as $recommend):?>
+        <li>
+            <?php echo Html::a($recommend->title,['/news/view','id'=>$recommend->id])?>
+        </li>
+    <?php endforeach;?>
+    </ul>
+
     <h4>Комментарии</h4>
     <div class="col-md-8">
         <?php if(!$model->comments) {

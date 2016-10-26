@@ -15,6 +15,7 @@ use common\models\Company;
  * @property integer $user_id
  * @property integer $company_id
  * @property integer $isViewed
+ * @property integer $isRead
  *
  */
 class Users extends \yii\db\ActiveRecord
@@ -34,7 +35,7 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             [['push_id', 'user_id', 'company_id'], 'required'],
-            [['push_id', 'user_id', 'isViewed'], 'integer'],
+            [['push_id', 'user_id', 'isViewed', 'isRead'], 'integer'],
         ];
     }
 
