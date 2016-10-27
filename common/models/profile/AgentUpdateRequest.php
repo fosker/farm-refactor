@@ -35,7 +35,7 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'factory_id', 'city_id'], 'required'],
+            [['name', 'factory_id'], 'required'],
             [['name','email'], 'string', 'max'=>100],
             [['phone'], 'string', 'max' => 30],
             [['email'],'email'],
