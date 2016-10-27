@@ -41,7 +41,7 @@ $this->title = $model->title;
         ?>
         <?= Html::a(
             $model->home == 0 ? 'Разместить на главной' : 'Убрать с главной',
-            [$model->status == 0 ? 'approve-home' : 'hide-home' , 'id' => $model->id],
+            [$model->home == 0 ? 'approve-home' : 'hide-home' , 'id' => $model->id],
             ['class' => ' btn btn-success'])
         ?>
     </div>
