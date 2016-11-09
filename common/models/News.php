@@ -89,13 +89,7 @@ class News extends \yii\db\ActiveRecord
         return [
             'id', 'title', 'thumb'=>'thumbPath',
             'author' => 'factory',
-            'recommended'
-        ];
-    }
-
-    public function extraFields()
-    {
-        return [
+            'recommended',
             'text',
             'views' => function () {
                 return $this->countUniqueViews();
@@ -107,6 +101,13 @@ class News extends \yii\db\ActiveRecord
             'date'=>function($model) {
                 return strtotime($model->date);
             }
+        ];
+    }
+
+    public function extraFields()
+    {
+        return [
+
         ];
     }
 
@@ -173,9 +174,17 @@ class News extends \yii\db\ActiveRecord
         return static::find()->where(['id' => $id])->one();
     }
 
-    public function countUniqueViews() {
+    public function countUniqueViews()
+    {
         $this->views = View::find()->select('user_id')->
             distinct()->where(['news_id' => $this->id])->count() + $this->views_added;
+        return $this->views;
+    }
+
+    public function countRealViews()
+    {
+        $this->views = View::find()->select('user_id')->
+            distinct()->where(['news_id' => $this->id])->count();
         return $this->views;
     }
 
@@ -380,6 +389,18 @@ class News extends \yii\db\ActiveRecord
                 $type->type_id = $types[$i];
                 $type->news_id = $this->id;
                 $type->save();
+            }
+        }
+    }
+
+    public function loadRelations($relations)
+    {
+        if($relations) {
+            for ($i = 0; $i < count($relations); $i++) {
+                $relation = new Relation();
+                $relation->child_id = $relations[$i];
+                $relation->parent_id = $this->id;
+                $relation->save();
             }
         }
     }

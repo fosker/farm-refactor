@@ -111,10 +111,10 @@ $this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryA
 
     <?= $form->field($model, 'points')->textInput() ?>
 
-    <?= $form->field($model, 'description')->widget(Editor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'click'
-    ]); ?>
+<!--    --><?//= $form->field($model, 'description')->widget(Editor::className(), [
+//        'options' => ['rows' => 6],
+//        'preset' => 'click'
+//    ]); ?>
 
     <?= $form->field($model, 'home_priority')->textInput() ?>
 

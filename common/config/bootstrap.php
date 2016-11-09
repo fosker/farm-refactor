@@ -6,6 +6,7 @@ Yii::setAlias('rest', dirname(dirname(__DIR__)) . '/api');
 Yii::setAlias('factory', dirname(dirname(__DIR__)) . '/factory');
 Yii::setAlias('company', dirname(dirname(__DIR__)) . '/company');
 Yii::setAlias('app', dirname(dirname(__DIR__)) . '/app');
+Yii::setAlias('test', dirname(dirname(__DIR__)) . '/test');
 
 Yii::setAlias('uploads', dirname(dirname(__DIR__)) . '/public_html/uploads');
 

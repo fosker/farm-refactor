@@ -130,6 +130,9 @@ class PresentationController extends Controller
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
             if ($model->save()) {
+                if(!Yii::$app->request->post('companies')) {
+                    $model->deletePharmacies();
+                }
                 if(Yii::$app->request->post('pharmacies')) {
                     $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
                 }

@@ -63,7 +63,7 @@ $this->title = $model->title;
             'text:html',
             [
                 'attribute'=>'views',
-                'value'=>$model->countUniqueViews()
+                'value'=>$model->countUniqueViews() . ' (' . $model->countRealViews() . ')'
             ],
             'date:datetime',
         ],

@@ -85,6 +85,7 @@ return [
                 'GET v1/presentations/home' => 'v1/presentation/home-list',
                 'GET v1/presentations/viewed' => 'v1/presentation/viewed-list',
                 'GET v1/presentations/not-viewed' => 'v1/presentation/not-viewed-list',
+                'GET v1/presentations' => 'v1/presentation/index',
                 'GET v1/presentation/<id>' => 'v1/presentation/view',
                 'POST v1/presentation' => 'v1/presentation/answer',
                 'GET v1/presentation/is-viewed/<id>' => 'v1/presentation/is-presentation-viewed',
@@ -153,9 +154,6 @@ return [
                 'DELETE v1/push/<id>' => 'v1/push/delete',
                 'POST v1/push/view' => 'v1/push/add-view',
                 'POST v1/push/read' => 'v1/push/read'
-                
-
-                'GET v1/surveys-presentations' => 'v1/content/index'
             ],
         ],
     ],

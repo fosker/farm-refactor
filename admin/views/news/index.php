@@ -91,7 +91,7 @@ $this->title = 'Новости';
             [
                 'attribute'=>'views',
                 'value'=>function($model) {
-                    return $model->countUniqueViews();
+                    return $model->countUniqueViews() . ' (' . $model->countRealViews() . ')';
                 },
             ],
             [

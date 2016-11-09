@@ -113,6 +113,7 @@ class NewsController extends Controller
                 $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
                 $model->loadEducation(Yii::$app->request->post('education'));
                 $model->loadTypes(Yii::$app->request->post('types'));
+                $model->loadRelations(Yii::$app->request->post('relations'));
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

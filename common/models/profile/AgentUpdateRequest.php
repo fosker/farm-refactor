@@ -15,7 +15,6 @@ use common\models\Factory;
  * @property string $name
  * @property string $email
  * @property integer $factory_id
- * @property integer $city_id
  * @property string $phone
  * @property string $details
  * @property string date_add
@@ -40,7 +39,6 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
             [['phone'], 'string', 'max' => 30],
             [['email'],'email'],
             ['email', 'customUnique'],
-            [['city_id'], 'exist', 'targetClass'=> City::className(), 'targetAttribute'=>'id'],
             [['details'],'string'],
         ];
     }
@@ -80,17 +78,11 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
         $this->attributes = $user->attributes;
         $this->agent_id = $user->id;
         $this->factory_id = $user->agent->factory_id;
-        $this->city_id = $user->agent->city_id;
     }
 
     public function getFactory()
     {
         return $this->hasOne(Factory::className(), ['id' => 'factory_id']);
-    }
-
-    public function getCity()
-    {
-        return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
 
     public function getUser()
@@ -100,7 +92,7 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
 
     public function fields() {
         return [
-            'agent_id', 'name', 'factory_id', 'city_id', 'details', 'phone', 'email'
+            'agent_id', 'name', 'factory_id', 'details', 'phone', 'email'
         ];
     }
 }

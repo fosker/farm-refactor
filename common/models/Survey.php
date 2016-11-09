@@ -457,6 +457,11 @@ class Survey extends ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Survey_Pharmacy::deleteAll(['survey_id' => $this->id]);
+    }
+
     public function updateTypes($types)
     {
         Survey_Type::deleteAll(['survey_id' => $this->id]);

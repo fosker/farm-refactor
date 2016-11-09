@@ -41,6 +41,15 @@ class PresentationController extends Controller
         ];
     }
 
+    public function actionIndex()
+    {
+        return new ActiveDataProvider([
+            'query' => Presentation::getForCurrentUser()
+                ->andWhere(['!=', 'views_limit', '0'])
+                ->orderBy(['home_priority'=>SORT_DESC]),
+        ]);
+    }
+
     public function actionHomeList()
     {
         return new ActiveDataProvider([

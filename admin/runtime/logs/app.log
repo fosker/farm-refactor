@@ -56117,3 +56117,910 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-11-02 12:40:40 [127.0.0.1][-][lkni21v3241810cufju3cvkv42][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(118): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\update.php(28): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(173): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\NewsController->actionUpdate('66')
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/update', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-02 12:40:39 [127.0.0.1][-][lkni21v3241810cufju3cvkv42][info][application] $_GET = [
+    'r' => 'news/update'
+    'id' => '66'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => 'lkni21v3241810cufju3cvkv42'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news%2Fview&id=66'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=lkni21v3241810cufju3cvkv42'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '14231'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fupdate&id=66'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fupdate&id=66'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478079639.501
+    'REQUEST_TIME' => 1478079639
+    'argv' => [
+        0 => 'r=news%2Fupdate&id=66'
+    ]
+    'argc' => 1
+]
+2016-11-02 12:43:43 [127.0.0.1][-][lkni21v3241810cufju3cvkv42][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: common\models\News::countRealViews in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('countRealViews')
+#1 C:\OpenServer\domains\farm-old.loc\admin\views\news\view.php(66): yii\db\BaseActiveRecord->__get('countRealViews')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\NewsController))
+#6 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(77): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\NewsController->actionView('66')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/view', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#14 {main}
+2016-11-02 12:43:42 [127.0.0.1][-][lkni21v3241810cufju3cvkv42][info][application] $_GET = [
+    'r' => 'news/view'
+    'id' => '66'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => 'lkni21v3241810cufju3cvkv42'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=lkni21v3241810cufju3cvkv42'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '14282'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fview&id=66'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fview&id=66'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478079822.985
+    'REQUEST_TIME' => 1478079822
+    'argv' => [
+        0 => 'r=news%2Fview&id=66'
+    ]
+    'argc' => 1
+]
+2016-11-06 11:30:57 [127.0.0.1][-][1l9fr3qm16o48enu42cbtnjpq6][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\presentation\_form.php(115): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\presentation\update.php(25): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PresentationController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\PresentationController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\PresentationController.php(152): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\PresentationController->actionUpdate('34')
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('presentation/up...', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-06 11:30:56 [127.0.0.1][-][1l9fr3qm16o48enu42cbtnjpq6][info][application] $_GET = [
+    'r' => 'presentation/update'
+    'id' => '34'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '1l9fr3qm16o48enu42cbtnjpq6'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=presentation'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=1l9fr3qm16o48enu42cbtnjpq6; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '39047'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=presentation%2Fupdate&id=34'
+    'REQUEST_URI' => '/admin/index.php?r=presentation%2Fupdate&id=34'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478421056.826
+    'REQUEST_TIME' => 1478421056
+    'argv' => [
+        0 => 'r=presentation%2Fupdate&id=34'
+    ]
+    'argc' => 1
+]
+2016-11-09 11:49:27 [127.0.0.1][-][1l9fr3qm16o48enu42cbtnjpq6][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php:602
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(602): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(863): yii\db\Connection->open()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(219): yii\db\Connection->getSlavePdo()
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(894): yii\db\Command->prepare(true)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(147): yii\db\mysql\Schema->loadTableSchema('administrators')
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(296): yii\db\Schema->getTableSchema('administrators')
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(320): yii\db\ActiveRecord::getTableSchema()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(176): yii\db\ActiveRecord::primaryKey()
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): yii\db\ActiveRecord::findByCondition(1)
+#14 C:\OpenServer\domains\farm-old.loc\admin\models\Admin.php(91): yii\db\BaseActiveRecord::findOne(1)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(572): backend\models\Admin::findIdentity(1)
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(294): yii\web\User->getIdentityAndDurationFromCookie()
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(682): yii\web\User->loginByCookie()
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(188): yii\web\User->renewAuthStatus()
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(340): yii\web\User->getIdentity()
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessRule.php(148): yii\web\User->getIsGuest()
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessRule.php(103): yii\filters\AccessRule->matchRole(Object(yii\web\User))
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(yii\web\User), Object(yii\web\Request))
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\ActionFilter.php(73): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#24 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php(540): call_user_func(Array, Object(yii\base\ActionEvent))
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(269): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php(108): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#28 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#29 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#30 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#31 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#32 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#33 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php:549
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(863): yii\db\Connection->open()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(219): yii\db\Connection->getSlavePdo()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(894): yii\db\Command->prepare(true)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(147): yii\db\mysql\Schema->loadTableSchema('administrators')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(296): yii\db\Schema->getTableSchema('administrators')
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(320): yii\db\ActiveRecord::getTableSchema()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(176): yii\db\ActiveRecord::primaryKey()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): yii\db\ActiveRecord::findByCondition(1)
+#12 C:\OpenServer\domains\farm-old.loc\admin\models\Admin.php(91): yii\db\BaseActiveRecord::findOne(1)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(572): backend\models\Admin::findIdentity(1)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(294): yii\web\User->getIdentityAndDurationFromCookie()
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(682): yii\web\User->loginByCookie()
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(188): yii\web\User->renewAuthStatus()
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\User.php(340): yii\web\User->getIdentity()
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessRule.php(148): yii\web\User->getIsGuest()
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessRule.php(103): yii\filters\AccessRule->matchRole(Object(yii\web\User))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\filters\AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(yii\web\User), Object(yii\web\Request))
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\ActionFilter.php(73): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#22 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php(540): call_user_func(Array, Object(yii\base\ActionEvent))
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(269): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php(108): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#28 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#29 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#31 {main}
+Additional Information:
+
+2016-11-09 11:49:20 [127.0.0.1][-][1l9fr3qm16o48enu42cbtnjpq6][info][application] $_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '1l9fr3qm16o48enu42cbtnjpq6'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=1l9fr3qm16o48enu42cbtnjpq6; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13783'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681358.619
+    'REQUEST_TIME' => 1478681358
+    'argv' => []
+    'argc' => 0
+]
+2016-11-09 11:49:59 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(118): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(128): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-09 11:49:57 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '9rq1q44qmts0b5sdf11nif2h17'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=9rq1q44qmts0b5sdf11nif2h17; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13806'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681397.984
+    'REQUEST_TIME' => 1478681397
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-09 11:52:25 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][error][ParseError] ParseError: syntax error, unexpected '?>', expecting ']' in C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php:120
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#2 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#7 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(128): yii\base\Controller->render('create', Array)
+#8 [internal function]: backend\controllers\NewsController->actionCreate()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#15 {main}
+2016-11-09 11:52:24 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '9rq1q44qmts0b5sdf11nif2h17'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=9rq1q44qmts0b5sdf11nif2h17; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13835'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681544.947
+    'REQUEST_TIME' => 1478681544
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-09 11:52:35 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][error][ParseError] ParseError: syntax error, unexpected '?>' in C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php:120
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#2 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#7 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(128): yii\base\Controller->render('create', Array)
+#8 [internal function]: backend\controllers\NewsController->actionCreate()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#15 {main}
+2016-11-09 11:52:35 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '9rq1q44qmts0b5sdf11nif2h17'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=9rq1q44qmts0b5sdf11nif2h17; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13834'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681555.146
+    'REQUEST_TIME' => 1478681555
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-09 11:53:44 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1364 Field 'text' doesn't have a default value in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:844
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(844): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('news', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(112): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\NewsController->actionCreate()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1364 Field 'text' doesn't have a default value
+The SQL being executed was: INSERT INTO `news` (`title`, `factory_id`, `views_added`) VALUES ('qweqw', 10, NULL) in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `ne...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('news', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(112): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\NewsController->actionCreate()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1364
+    [2] => Field 'text' doesn't have a default value
+)
+
+2016-11-09 11:53:44 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_POST = [
+    '_csrf' => 'dUdWQXpLemlFIDECTQhKGSU1IgwbJUo4AXMSJCwpPkQELT8YKyk8Xg=='
+    'News' => [
+        'title' => 'qweqw'
+        'factory_id' => '10'
+        'imageFile' => ''
+        'thumbFile' => ''
+        'views_added' => ''
+    ]
+    'relations' => [
+        0 => '32'
+        1 => '34'
+    ]
+]
+
+$_FILES = [
+    'News' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '9rq1q44qmts0b5sdf11nif2h17'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1218'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farma.old'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryM8Hay9IeMUotBaKG'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=9rq1q44qmts0b5sdf11nif2h17; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13875'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681624.104
+    'REQUEST_TIME' => 1478681624
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-09 11:54:01 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1364 Field 'image' doesn't have a default value in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:844
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(844): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('news', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(113): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\NewsController->actionCreate()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1364 Field 'image' doesn't have a default value
+The SQL being executed was: INSERT INTO `news` (`title`, `factory_id`, `views_added`, `text`) VALUES ('qweqw', 10, NULL, 'asdasdas') in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `ne...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('news', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(113): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\NewsController->actionCreate()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1364
+    [2] => Field 'image' doesn't have a default value
+)
+
+2016-11-09 11:54:01 [127.0.0.1][-][9rq1q44qmts0b5sdf11nif2h17][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_POST = [
+    '_csrf' => 'dUdWQXpLemlFIDECTQhKGSU1IgwbJUo4AXMSJCwpPkQELT8YKyk8Xg=='
+    'News' => [
+        'title' => 'qweqw'
+        'factory_id' => '10'
+        'imageFile' => ''
+        'thumbFile' => ''
+        'views_added' => ''
+    ]
+    'relations' => [
+        0 => '32'
+        1 => '34'
+    ]
+]
+
+$_FILES = [
+    'News' => [
+        'name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'type' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'tmp_name' => [
+            'imageFile' => ''
+            'thumbFile' => ''
+        ]
+        'error' => [
+            'imageFile' => 4
+            'thumbFile' => 4
+        ]
+        'size' => [
+            'imageFile' => 0
+            'thumbFile' => 0
+        ]
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '9rq1q44qmts0b5sdf11nif2h17'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '1218'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farma.old'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryM8Hay9IeMUotBaKG'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=9rq1q44qmts0b5sdf11nif2h17; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '13883'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478681641.225
+    'REQUEST_TIME' => 1478681641
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]

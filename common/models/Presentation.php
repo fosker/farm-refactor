@@ -483,6 +483,11 @@ class Presentation extends ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Presentation_Pharmacy::deleteAll(['presentation_id' => $this->id]);
+    }
+
     public function updateTypes($types)
     {
         Presentation_Type::deleteAll(['presentation_id' => $this->id]);

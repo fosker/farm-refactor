@@ -196,6 +196,9 @@ class SurveyController extends Controller
             // save deposit data
             if ($valid) {
                 if ($this->saveSurvey($model,$questions,$options)) {
+                    if(!Yii::$app->request->post('companies')) {
+                        $model->deletePharmacies();
+                    }
                     if(Yii::$app->request->post('pharmacies')) {
                         $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
                     }
