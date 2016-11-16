@@ -20,8 +20,14 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php if(Yii::$app->language == "en-US") : ?>
+        <link rel="alternate" hreflang="ru" href="http://pharmbonus.by/?lang=ru" />
+    <?php else : ?>
+        <link rel="alternate" hreflang="en" href="http://pharmbonus.by/?lang=en" />
+    <?php endif; ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
