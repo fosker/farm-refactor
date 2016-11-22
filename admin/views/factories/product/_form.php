@@ -37,7 +37,7 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'thumbFile')->widget(FileInput::classname(),[
         'pluginOptions' => [
-            'initialPreview'=> $model->thumbnail ? Html::img($model->thumbnailPath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Превью']) : '',
+            'initialPreview'=> $model->thumbnail ? Html::img($model->thumbPath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Превью']) : '',
             'showUpload' => false,
             'showRemove' => false,
         ]
