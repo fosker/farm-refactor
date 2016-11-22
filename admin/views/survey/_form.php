@@ -116,7 +116,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'views_limit')->textInput() ?>

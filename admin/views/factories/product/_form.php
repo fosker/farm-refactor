@@ -16,7 +16,7 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
