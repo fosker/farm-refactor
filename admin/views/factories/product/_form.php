@@ -6,6 +6,7 @@ use kartik\widgets\FileInput;
 use backend\components\Editor;
 use kartik\widgets\Select2;
 
+$this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
 ?>
 
 <div class="product-form">
@@ -16,7 +17,17 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'clientOptions' => [
+            'extraPlugins' => 'dropler',
+            'droplerConfig' => [
+                'backend' => 'basic',
+                'settings' => [
+                    'uploadUrl' => 'upload.php'
+                ]
+            ],
+            'height' => 800
+        ],
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [

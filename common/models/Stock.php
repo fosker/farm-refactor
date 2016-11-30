@@ -24,9 +24,14 @@ use common\models\profile\Type;
  * @property string $description
  * @property string $image
  * @property integer $status
+ * @property string $email
+ * @property integer $comment_type
  */
 class Stock extends ActiveRecord
 {
+    const COMMENT_REQUIRED = 1;
+    const COMMENT_NOT_REQUIRED = 2;
+    const COMMENT_NOT = 3;
 
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 0;
@@ -44,7 +49,7 @@ class Stock extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'factory_id'], 'required'],
+            [['title', 'description', 'factory_id', 'email', 'comment_type'], 'required'],
             ['imageFile', 'required', 'on' => 'create'],
         ];
     }
@@ -61,21 +66,29 @@ class Stock extends ActiveRecord
             'description' => 'Описание',
             'image' => 'Изображение',
             'imageFile' => 'Изображение',
-            'status' => 'Статус'
+            'status' => 'Статус',
+            'email' => 'Email',
+            'comment_type' => 'Тип комментария'
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'factory_id', 'imageFile'];
+        $scenarios['create'] = ['title', 'description', 'factory_id', 'imageFile', 'email', 'comment_type'];
         return $scenarios;
     }
 
     public function fields()
     {
         return [
-            'id','image'=>'imagePath','title'
+            'id','image'=>'imagePath','title',
+            'withComment' => function() {
+                if ($this->comment_type == static::COMMENT_REQUIRED || $this->comment_type == static::COMMENT_NOT_REQUIRED) {
+                    return true;
+                } else
+                    return false;
+            }
         ];
     }
 

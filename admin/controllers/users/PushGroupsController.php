@@ -165,6 +165,7 @@ class PushGroupsController extends Controller
             $ios_tokens = array_values($ios_tokens);
             $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
 
+
             if($android_tokens) {
                 if(Yii::$app->gcm->sendMulti($android_tokens, $model->message, ['link' => $model->link])) {
                     Yii::$app->session->setFlash('PushMessage',

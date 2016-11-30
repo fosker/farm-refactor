@@ -127,6 +127,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             [['old_password'], 'check_old_password'],
             [['reset_token'], 'check_reset_token'],
             ['email', 'unique'],
+            [['login', 'password'], 'trim']
         ];
     }
 

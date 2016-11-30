@@ -2,7 +2,9 @@
 
 namespace rest\versions\v1\controllers;
 
+use common\models\Mailer;
 use common\models\Theme;
+use common\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -10,6 +12,7 @@ use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\Controller;
+use kartik\mpdf\Pdf;
 
 use common\models\Factory;
 use common\models\Stock;
@@ -82,8 +85,8 @@ class FactoryController extends Controller
         return Stock::getOneForCurrentUser($id);
     }
 
-    public function actionReply() {
-
+    public function actionReply()
+    {
         $reply = new Reply();
 
         if($reply->load(Yii::$app->request->post(),'')) {
@@ -92,10 +95,27 @@ class FactoryController extends Controller
                 if ($reply->validate()) {
                     $reply->saveImage();
                     $reply->save(false);
+                    $this->sendPdf($reply, $reply->user);
                     return ['success'=>true];
                 }
         }
         return $reply;
+    }
+
+    private function sendPdf($reply, $user)
+    {
+        $filename = 'info.pdf';
+        $pdf = new Pdf([
+            'content' => $this->renderPartial('pdf-stock-reply', ['user' => $user]),
+            'options' => [
+                'title' => 'Информация о пользователе',
+            ],
+            'filename' => Yii::getAlias('@uploads/temp/'.$filename),
+            'destination' => Pdf::DEST_FILE,
+        ]);
+        $pdf->render();
+        Mailer::sendStockReply(Yii::getAlias('@uploads_view/temp/'.$filename), $reply);
+        @unlink(Yii::getAlias('@uploads/temp/'.$filename));
     }
 
 }

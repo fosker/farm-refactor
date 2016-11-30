@@ -11,7 +11,9 @@ use common\models\profile\Education;
 use common\models\profile\Type;
 use common\models\location\Region;
 use yii\bootstrap\Modal;
+use common\models\Stock;
 
+$this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
 $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
@@ -110,9 +112,27 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
         ],
     ]); ?>
 
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'comment_type')->radioList([
+        Stock::COMMENT_NOT => 'без комментария',
+        Stock::COMMENT_REQUIRED => 'комментарий обязателен',
+        Stock::COMMENT_NOT_REQUIRED => 'комментарий необязателен'
+    ]) ?>
+
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'clientOptions' => [
+            'extraPlugins' => 'dropler',
+            'droplerConfig' => [
+                'backend' => 'basic',
+                'settings' => [
+                    'uploadUrl' => 'upload.php'
+                ]
+            ],
+            'height' => 800
+        ],
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[

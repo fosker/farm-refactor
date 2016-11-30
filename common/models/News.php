@@ -89,8 +89,6 @@ class News extends \yii\db\ActiveRecord
         return [
             'id', 'title', 'thumb'=>'thumbPath',
             'author' => 'factory',
-            'recommended',
-            'text',
             'views' => function () {
                 return $this->countUniqueViews();
             },
@@ -107,7 +105,8 @@ class News extends \yii\db\ActiveRecord
     public function extraFields()
     {
         return [
-
+            'text',
+            'recommended',
         ];
     }
 

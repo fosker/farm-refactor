@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f76ab65aabc7a819e207c8f8ce34d58",
-    "content-hash": "55dfde99bbd9da5da58b24c77918bc54",
+    "hash": "069db5304118a29cb326f99189305150",
+    "content-hash": "f71985f20ab168180161660e7c33fbdd",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
-            "version": "dev-master",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2amigos/yii2-ckeditor-widget.git",
-                "reference": "82b7179f338208bd0427ff204d6d3b002330ff06"
+                "reference": "a842bbf4c5b3adc48d4cd58aa294d593dd005c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-ckeditor-widget/zipball/82b7179f338208bd0427ff204d6d3b002330ff06",
-                "reference": "82b7179f338208bd0427ff204d6d3b002330ff06",
+                "url": "https://api.github.com/repos/2amigos/yii2-ckeditor-widget/zipball/a842bbf4c5b3adc48d4cd58aa294d593dd005c24",
+                "reference": "a842bbf4c5b3adc48d4cd58aa294d593dd005c24",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2016-09-25 11:23:21"
+            "time": "2016-09-21 09:50:22"
         },
         {
             "name": "bower-asset/bootstrap",

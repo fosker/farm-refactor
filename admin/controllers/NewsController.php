@@ -24,11 +24,8 @@ use common\models\Factory;
 use common\models\news\Comment;
 use backend\models\news\Search;
 
-
-
 class NewsController extends Controller
 {
-
     public function behaviors()
     {
         return [
@@ -198,6 +195,11 @@ class NewsController extends Controller
         } else {
             throw new NotFoundHttpException('Новость не найдена. ');
         }
+    }
+
+    public function actionLoadImage()
+    {
+        echo "KY";
     }
 
     public function actionComment($id)

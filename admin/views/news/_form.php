@@ -1,9 +1,7 @@
 <?php
-
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
-use backend\components\Editor;
 use yii\bootstrap\Modal;
 use backend\components\CheckWidget;
 use common\models\location\Region;
@@ -12,10 +10,12 @@ use common\models\Company;
 use common\models\profile\Type;
 use kartik\widgets\Select2;
 
-use yii\helpers\ArrayHelper;
 use common\models\News;
 
+use backend\components\Editor;
 
+
+$this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
 $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
@@ -116,6 +116,16 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'text')->widget(Editor::className(), [
         'options' => ['rows' => 6],
+        'clientOptions' => [
+            'extraPlugins' => 'dropler',
+            'droplerConfig' => [
+                'backend' => 'basic',
+                'settings' => [
+                    'uploadUrl' => 'upload.php'
+                ]
+            ],
+            'height' => 800
+        ],
         'preset' => 'basic'
     ]); ?>
 

@@ -28,6 +28,7 @@ class LoginForm extends Model
             // password is validated by validatePassword()
             ['password', 'check_password'],
             ['login', 'check_status'],
+            [['login', 'password'], 'trim']
         ];
     }
 

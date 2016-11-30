@@ -153,7 +153,9 @@ return [
                 'GET v1/push/<id>' => 'v1/push/view',
                 'DELETE v1/push/<id>' => 'v1/push/delete',
                 'POST v1/push/view' => 'v1/push/add-view',
-                'POST v1/push/read' => 'v1/push/read'
+                'POST v1/push/read' => 'v1/push/read',
+
+                'GET v1/surveys-presentations' => 'v1/content/index'
             ],
         ],
     ],

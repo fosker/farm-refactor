@@ -57024,3 +57024,1927 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-11-10 11:50:59 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(118): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:50:58 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20087'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478767858.592
+    'REQUEST_TIME' => 1478767858
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 11:51:59 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(118): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:51:59 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20134'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478767919.188
+    'REQUEST_TIME' => 1478767919
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 11:53:04 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(117): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:53:03 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20177'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478767983.885
+    'REQUEST_TIME' => 1478767983
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 11:54:14 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(117): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:54:13 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20209'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478768053.868
+    'REQUEST_TIME' => 1478768053
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 11:54:28 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(117): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:54:28 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20218'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478768068.565
+    'REQUEST_TIME' => 1478768068
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 11:56:19 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Trying to copy a directory to itself or a subdirectory. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseFileHelper.php:260
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(542): yii\helpers\BaseFileHelper::copyDirectory('C:\\OpenServer\\d...', 'C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(458): yii\web\AssetManager->publishDirectory('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(183): yii\web\AssetManager->publish('assets', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetManager.php(237): yii\web\AssetManager->loadBundle('dosamigos\\ckedi...', Array, true)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\View.php(284): yii\web\AssetManager->getBundle('dosamigos\\ckedi...')
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\AssetBundle.php(123): yii\web\View->registerAssetBundle('dosamigos\\ckedi...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(57): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 C:\OpenServer\domains\farm-old.loc\vendor\2amigos\yii2-ckeditor-widget\src\CKEditor.php(44): dosamigos\ckeditor\CKEditor->registerPlugin()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): dosamigos\ckeditor\CKEditor->run()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(703): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(703): yii\widgets\ActiveField->widget('backend\\compone...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php(117): kartik\form\ActiveField->widget('backend\\compone...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(129): yii\base\Controller->render('create', Array)
+#22 [internal function]: backend\controllers\NewsController->actionCreate()
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-11-10 11:56:19 [127.0.0.1][-][0ccai84dtat97jrp907ig44h35][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => 'e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"0ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7\";}'
+    'PHPSESSID' => '0ccai84dtat97jrp907ig44h35'
+    '_admin' => '0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a:2:{i:0;s:6:\"_admin\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farma.old'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farma.old/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=e4e3118e03e9f50cc93b71061411ab3f1656fa33c3f5bf1ed4a8fecbcff5ecc8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%220ggC7C0pPrtMan0Qt4DeVbD-qjiYQbF7%22%3B%7D; PHPSESSID=0ccai84dtat97jrp907ig44h35; _admin=0bb70fae7398a7c5804a5d1620ce925183963d1ef00eec3eec9eb7ad52ab34c0a%3A2%3A%7Bi%3A0%3Bs%3A6%3A%22_admin%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farma.old'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '20331'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478768179.629
+    'REQUEST_TIME' => 1478768179
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:27:18 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:27:18 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => 'ET0br5O4vTQ.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php9E14.tmp'
+        'error' => 0
+        'size' => 37494
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '37683'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarywQUA7XbwjR4osFHu'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21077'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770038.067
+    'REQUEST_TIME' => 1478770038
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:31:31 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:31:31 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => 'ET0br5O4vTQ.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php7BD4.tmp'
+        'error' => 0
+        'size' => 37494
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '37683'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryLHJnn3A4NZGl0YU0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21293'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770291.444
+    'REQUEST_TIME' => 1478770291
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:31:58 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:31:58 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => 'ET0br5O4vTQ.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\phpE4D0.tmp'
+        'error' => 0
+        'size' => 37494
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '37683'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryH3EjQzz7hCgirfnT'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21305'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770318.307
+    'REQUEST_TIME' => 1478770318
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:32:39 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:32:39 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php845C.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary4ibXRpD2fQUvKAy5'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21320'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770359.132
+    'REQUEST_TIME' => 1478770359
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:34:30 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:34:30 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php371E.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryq7Si4TSIySU7pX5N'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21349'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770470.448
+    'REQUEST_TIME' => 1478770470
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:35:59 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:35:59 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php920C.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryCi3FKt3zbfLUTGIp'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21376'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770559.26
+    'REQUEST_TIME' => 1478770559
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:40:00 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:40:00 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php3FC3.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryoGZRWqrT5yAqV5uK'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21444'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770800.342
+    'REQUEST_TIME' => 1478770800
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:40:23 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:40:23 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php9AA6.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryFI33Fs0bFVt3X3rt'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21455'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478770823.603
+    'REQUEST_TIME' => 1478770823
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:49:21 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:49:21 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\phpCE91.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarysZB7rIvjrATrD95m'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21609'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478771361.195
+    'REQUEST_TIME' => 1478771361
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 12:55:40 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 12:55:40 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php970A.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryAMpZkDX9WhG4KJJB'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21825'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478771740.193
+    'REQUEST_TIME' => 1478771740
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 13:01:35 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 13:01:35 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php1E2.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryB9nSlho7MHM1MSAq'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '21931'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478772095.224
+    'REQUEST_TIME' => 1478772095
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:14:37 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 14:14:37 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\phpDF61.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryWAlkmIK0BUPBeHhq'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '22648'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478776477.297
+    'REQUEST_TIME' => 1478776477
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:22:33 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][Error] Error: Class 'CKEditor' not found in C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php:117
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#3 C:\OpenServer\domains\farm-old.loc\admin\views\news\create.php(21): yii\base\View->render('_form', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('create', Array, Object(backend\controllers\NewsController))
+#8 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(126): yii\base\Controller->render('create', Array)
+#9 [internal function]: backend\controllers\NewsController->actionCreate()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('create', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/create', Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#16 {main}
+2016-11-10 14:22:32 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/create'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '22808'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fcreate'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fcreate'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478776952.944
+    'REQUEST_TIME' => 1478776952
+    'argv' => [
+        0 => 'r=news%2Fcreate'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:22:47 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 14:22:47 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php5A3D.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryXEqgQsGlthRpSsmI'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '22817'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478776967.497
+    'REQUEST_TIME' => 1478776967
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:25:16 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 14:25:16 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php9E62.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarywGUiGRjbDSq3jEAL'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '22865'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478777116.023
+    'REQUEST_TIME' => 1478777116
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:26:40 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 14:26:40 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\phpE8E4.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary0XBBbfWd8aW6razu'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '22881'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478777200.617
+    'REQUEST_TIME' => 1478777200
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-10 14:46:31 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Не удалось проверить переданные данные. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Controller.php:110
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('load-image', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/load-image', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#4 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#5 {main}
+2016-11-10 14:46:31 [127.0.0.1][-][3o5imlngr8qcco7th676grrih1][info][application] $_GET = [
+    'r' => 'news/load-image'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '0IypVduH3KU.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OpenServer\\userdata\\temp\\php13EB.tmp'
+        'error' => 0
+        'size' => 42964
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => '3o5imlngr8qcco7th676grrih1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/index.php?r=news%2Fcreate'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '43153'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarywLXxSNRbB4LgjH5k'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=3o5imlngr8qcco7th676grrih1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '23172'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=news%2Fload-image'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fload-image'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1478778391.275
+    'REQUEST_TIME' => 1478778391
+    'argv' => [
+        0 => 'r=news%2Fload-image'
+    ]
+    'argc' => 1
+]
+2016-11-15 12:47:40 [127.0.0.1][-][vi323o4pj1lh1hp0d99ue5rkq1][error][ParseError] ParseError: syntax error, unexpected 'use' (T_USE) in C:\OpenServer\domains\farm-old.loc\admin\views\news\_form.php:15
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#2 C:\OpenServer\domains\farm-old.loc\admin\views\news\update.php(28): yii\base\View->render('_form', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\NewsController))
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\NewsController))
+#7 C:\OpenServer\domains\farm-old.loc\admin\controllers\NewsController.php(171): yii\base\Controller->render('update', Array)
+#8 [internal function]: backend\controllers\NewsController->actionUpdate('69')
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('news/update', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#15 {main}
+2016-11-15 12:47:39 [127.0.0.1][-][vi323o4pj1lh1hp0d99ue5rkq1][info][application] $_GET = [
+    'r' => 'news/update'
+    'id' => '69'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'vi323o4pj1lh1hp0d99ue5rkq1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=news'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=vi323o4pj1lh1hp0d99ue5rkq1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '57044'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=news%2Fupdate&id=69'
+    'REQUEST_URI' => '/admin/index.php?r=news%2Fupdate&id=69'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1479203259.993
+    'REQUEST_TIME' => 1479203259
+    'argv' => [
+        0 => 'r=news%2Fupdate&id=69'
+    ]
+    'argc' => 1
+]

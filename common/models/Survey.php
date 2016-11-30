@@ -140,6 +140,7 @@ class Survey extends ActiveRecord
                 ])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
+                ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
                     View::findByCurrentUser()

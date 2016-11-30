@@ -51,6 +51,18 @@ class Mailer
             ->send();
     }
 
+    public static function sendStockReply($attach, $reply)
+    {
+        Yii::$app->mailer->compose('@common/mail/stock-reply', [
+            'reply' => $reply
+        ])
+            ->setFrom("feedback@pharmbonus.by")
+            ->setTo($reply->stock->email)
+            ->setSubject("Новый ответ на акцию")
+            ->attach($attach)
+            ->send();
+    }
+
     public static function sendPresent($user, $item, $present)
     {
         Yii::$app->mailer->compose('@common/mail/buy-present', [

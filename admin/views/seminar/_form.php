@@ -12,6 +12,7 @@ use common\models\Company;
 use common\models\profile\Education;
 use common\models\profile\Type;
 
+$this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
 $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="seminar-form">
@@ -111,7 +112,17 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'clientOptions' => [
+            'extraPlugins' => 'dropler',
+            'droplerConfig' => [
+                'backend' => 'basic',
+                'settings' => [
+                    'uploadUrl' => 'upload.php'
+                ]
+            ],
+            'height' => 800
+        ],
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[

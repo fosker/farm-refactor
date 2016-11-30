@@ -56,6 +56,7 @@ $this->title = $model->title;
                 'value'=>$model->getTypesView(true)
             ],
             'description:html',
+            'email',
             [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],

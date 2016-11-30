@@ -21,7 +21,6 @@ use common\models\Stock;
  */
 class Reply extends ActiveRecord
 {
-
     public $image;
 
     const DOWNLOADED = true;
@@ -43,6 +42,7 @@ class Reply extends ActiveRecord
     {
         return [
             [['stock_id', 'user_id', 'image'], 'required'],
+            [['comment'], 'validateComment', 'skipOnEmpty' => false, 'skipOnError' => false],
             [['stock_id'],function($model,$attr) {
                 if (!$this->hasErrors()) {
                     if (!Stock::getOneForCurrentUser($this->stock_id)) {
@@ -54,8 +54,24 @@ class Reply extends ActiveRecord
                 'extensions' => 'png, jpg, jpeg',
                 'checkExtensionByMimeType'=>false,
             ],
-            ['comment', 'string']
         ];
+    }
+
+    public function validateComment($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $type = Stock::findOne($this->stock_id)->comment_type;
+            if ($type == Stock::COMMENT_REQUIRED) {
+                if (!$this->comment) {
+                    $this->addError($attribute, 'Необходимо ввести комментарий.');
+                }
+            }
+            if ($type == Stock::COMMENT_NOT) {
+                if ($this->comment) {
+                    $this->addError($attribute, 'Нельзя вводить комментарий.');
+                }
+            }
+        }
     }
 
     public function attributeLabels()

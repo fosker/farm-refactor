@@ -16,7 +16,7 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 
 $this->title = 'Push-уведомления для групп';
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $url = Url::to(['/users/push-groups/link-list']);
 

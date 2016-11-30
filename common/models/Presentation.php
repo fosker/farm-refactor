@@ -134,6 +134,7 @@ class Presentation extends ActiveRecord
                     Presentation_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
+                ->andWhere(['!=', 'views_limit', '0'])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
