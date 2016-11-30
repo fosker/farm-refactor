@@ -46,6 +46,7 @@ class NewsController extends Controller
 
     public function actionView($id)
     {
+        $_GET['expand'] .= ',recommended';
         if(!View::find()->where(['user_id' => Yii::$app->user->id, 'news_id' => $id])->exists()) {
             $view = new View();
             $view->user_id = Yii::$app->user->id;

@@ -15,7 +15,7 @@ use backend\components\Editor;
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[
