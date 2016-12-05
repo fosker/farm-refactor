@@ -26,6 +26,7 @@ use common\models\shop\Present;
  * @property integer $priority
  * @property integer $count
  * @property integer $status
+ * @property integer $forList
  */
 class Item extends ActiveRecord
 {
@@ -50,7 +51,7 @@ class Item extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'vendor_id', 'points', 'priority', 'count'], 'required'],
+            [['title', 'description', 'vendor_id', 'points', 'priority', 'count', 'forList'], 'required'],
             [['points', 'priority', 'count'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
@@ -59,7 +60,7 @@ class Item extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'vendor_id', 'points', 'priority', 'imageFile','thumbFile', 'count'];
+        $scenarios['create'] = ['title', 'description', 'vendor_id', 'points', 'priority', 'imageFile','thumbFile', 'count', 'forList'];
         return $scenarios;
     }
 
@@ -81,7 +82,8 @@ class Item extends ActiveRecord
             'status' => 'Статус',
             'thumbFile' => 'Превью',
             'imageFile' => 'Изображение',
-            'count' => 'Количество'
+            'count' => 'Количество',
+            'forList' => 'Показывать списку'
         ];
     }
 
@@ -106,8 +108,24 @@ class Item extends ActiveRecord
             ->andWhere([Item_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
             ->andWhere(['status'=>static::STATUS_ACTIVE])
             ->andWhere(['>', 'count', '0'])
+            ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
             ->orderBy(["priority"=>SORT_DESC,static::tableName().".id"=>SORT_DESC])
             ->groupBy(static::tableName().'.id');
+    }
+
+    public function getLists()
+    {
+        $values = array(
+            0 => 'нейтральному и белому',
+            1 => 'всем',
+            2 => 'только белому',
+            3 => 'только серому'
+        );
+        if(isset($values[$this->forList])) {
+            return $values[$this->forList];
+        }
     }
 
     public static function getOneForCurrentUser($id)

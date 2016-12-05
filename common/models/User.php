@@ -176,7 +176,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         if($this->scenario == 'default')
             return [
-                'name', 'login', 'email', 'points', 'phone', 'avatar'=>'avatarPath'
+                'name', 'login', 'email', 'points', 'phone', 'avatar'=>'avatarPath', 'inList'
             ];
         else
             return $this->scenarios()[$this->scenario];

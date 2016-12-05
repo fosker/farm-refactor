@@ -60,8 +60,8 @@ class Presentation extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'points', 'factory_id'], 'required'],
-            [['points', 'home_priority', 'views_limit', 'forList'], 'integer'],
+            [['title', 'description', 'points', 'factory_id', 'forList'], 'required'],
+            [['points', 'home_priority', 'views_limit'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -121,7 +121,8 @@ class Presentation extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
                 ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
@@ -136,7 +137,8 @@ class Presentation extends ActiveRecord
                 ])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->orderBy(['id'=>SORT_DESC])
                 ->groupBy(static::tableName().'.id');
@@ -149,6 +151,7 @@ class Presentation extends ActiveRecord
             0 => 'нейтральному и белому',
             1 => 'всем',
             2 => 'только белому',
+            3 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

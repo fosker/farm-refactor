@@ -147,6 +147,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'views_added')->textInput() ?>
 
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому', 3 => 'только серому'])?>
+
     <?php
     echo '<label class="control-label">Рекомендуемые новости</label>';
     echo Select2::widget([

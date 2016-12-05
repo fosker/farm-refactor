@@ -66,6 +66,10 @@ $this->title = $model->title;
                 'value'=>$model->countUniqueViews() . ' (' . $model->countRealViews() . ')'
             ],
             'date:datetime',
+            [
+                'attribute'=>'forList',
+                'value'=>$model->lists,
+            ],
         ],
     ]) ?>
 

@@ -58,6 +58,10 @@ $this->title = $model->title;
             'description:html',
             'email',
             [
+                'attribute'=>'forList',
+                'value'=>$model->lists,
+            ],
+            [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],

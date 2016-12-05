@@ -54,8 +54,8 @@ class Survey extends ActiveRecord
     public function rules()
     {
         return [
-            [['points', 'views_limit', 'forList'], 'integer'],
-            [['title', 'description', 'points', 'factory_id'], 'required'],
+            [['points', 'views_limit'], 'integer'],
+            [['title', 'description', 'points', 'factory_id', 'forList'], 'required'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create']
 
         ];
@@ -119,7 +119,8 @@ class Survey extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
@@ -139,7 +140,8 @@ class Survey extends ActiveRecord
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2']])
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
@@ -171,6 +173,7 @@ class Survey extends ActiveRecord
             0 => 'нейтральному и белому',
             1 => 'всем',
             2 => 'только белому',
+            3 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

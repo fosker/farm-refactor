@@ -27,6 +27,7 @@ use common\models\profile\Type;
  * @property string $link
  * @property string $status
  * @property integer $factory_id
+ * @property integer $forList
  */
 class Banner extends ActiveRecord
 {
@@ -44,7 +45,7 @@ class Banner extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'position', 'link', 'factory_id'], 'required'],
+            [['title', 'position', 'link', 'factory_id', 'forList'], 'required'],
             [['factory_id'], 'integer'],
             ['imageFile', 'required', 'on' => 'create']
         ];
@@ -53,7 +54,7 @@ class Banner extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'position', 'link', 'imageFile', 'factory_id'];
+        $scenarios['create'] = ['title', 'position', 'link', 'imageFile', 'factory_id', 'forList'];
         return $scenarios;
     }
 
@@ -67,7 +68,8 @@ class Banner extends ActiveRecord
             'imageFile' => 'Изображение',
             'image' => 'Изображение',
             'position' => 'Позиция',
-            'factory_id' => 'Фабрика Автор'
+            'factory_id' => 'Фабрика Автор',
+            'forList' => 'Показывать списку'
         ];
     }
 
@@ -88,7 +90,10 @@ class Banner extends ActiveRecord
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
-                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies]);
+                ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             $base = static::find()
                 ->joinWith('types')
@@ -100,6 +105,9 @@ class Banner extends ActiveRecord
                     Banner_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->groupBy(static::tableName().'.id');
         }
@@ -113,6 +121,19 @@ class Banner extends ActiveRecord
         return Banner::find()
             ->from(['u' => $slider->union($banners)])
             ->orderBy('position ASC, RAND()');
+    }
+
+    public function getLists()
+    {
+        $values = array(
+            0 => 'нейтральному и белому',
+            1 => 'всем',
+            2 => 'только белому',
+            3 => 'только серому'
+        );
+        if(isset($values[$this->forList])) {
+            return $values[$this->forList];
+        }
     }
 
     public static function getOneForCurrentUser($id)

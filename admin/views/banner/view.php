@@ -69,6 +69,10 @@ $this->title = $model->title;
                 'value'=>$model->getTypesView(true)
             ],
             [
+                'attribute'=>'forList',
+                'value'=>$model->lists,
+            ],
+            [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],

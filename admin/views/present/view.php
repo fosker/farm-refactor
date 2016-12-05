@@ -61,6 +61,10 @@ $this->title = $model->title;
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],
+            [
+                'attribute'=>'forList',
+                'value'=>$model->lists,
+            ],
         ],
     ]) ?>
 
