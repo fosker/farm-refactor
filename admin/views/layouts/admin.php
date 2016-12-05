@@ -123,6 +123,11 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'presents/vendor')
                             ],
                             [
+                                'label'=>'Фарм. компании',
+                                'url'=>['/pharm-company'],
+                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'pharm-company')
+                            ],
+                            [
                                 'label' => 'Вещества',
                                 'url' => ['/substance'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'substance')

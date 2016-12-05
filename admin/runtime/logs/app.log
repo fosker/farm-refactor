@@ -58948,3 +58948,1070 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-12-05 14:16:03 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "pharm-companies". in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-companies', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#2 {main}
+2016-12-05 14:16:03 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-companies'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '16830'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-companies'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-companies'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480936563.295
+    'REQUEST_TIME' => 1480936563
+    'argv' => [
+        0 => 'r=pharm-companies'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:26:36 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "pharm-companies". in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-companies', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#2 {main}
+2016-12-05 14:26:36 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-companies'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17004'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-companies'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-companies'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937196.919
+    'REQUEST_TIME' => 1480937196
+    'argv' => [
+        0 => 'r=pharm-companies'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:26:55 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "pharm-companies". in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php:460
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-companies', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#2 {main}
+2016-12-05 14:26:55 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-companies'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17033'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-companies'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-companies'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937215.205
+    'REQUEST_TIME' => 1480937215
+    'argv' => [
+        0 => 'r=pharm-companies'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:27:00 [127.0.0.1][-][-][error][Error] Error: Class 'admin\models\pharm_company\Search' not found in C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php:29
+Stack trace:
+#0 [internal function]: backend\controllers\PharmCompanyController->actionIndex()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#7 {main}
+2016-12-05 14:27:00 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17033'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937220.907
+    'REQUEST_TIME' => 1480937220
+    'argv' => [
+        0 => 'r=pharm-company'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:29:35 [127.0.0.1][-][-][error][Error] Error: Class 'admin\models\pharm_company\Search' not found in C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php:29
+Stack trace:
+#0 [internal function]: backend\controllers\PharmCompanyController->actionIndex()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#7 {main}
+2016-12-05 14:29:35 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17060'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937375.872
+    'REQUEST_TIME' => 1480937375
+    'argv' => [
+        0 => 'r=pharm-company'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:30:24 [127.0.0.1][-][-][error][Error] Error: Class 'admin\models\pharm_company\Search' not found in C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php:29
+Stack trace:
+#0 [internal function]: backend\controllers\PharmCompanyController->actionIndex()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#7 {main}
+2016-12-05 14:30:23 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17072'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937423.975
+    'REQUEST_TIME' => 1480937423
+    'argv' => [
+        0 => 'r=pharm-company'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:30:39 [127.0.0.1][-][-][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'backend\controllers\PharmCompanyController' in file: C:\OpenServer\domains\farm-old.loc/admin/controllers/PharmCompanyController.php. Namespace missing? in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('backend\\control...')
+#1 [internal function]: spl_autoload_call('backend\\control...')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(562): class_exists('backend\\control...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(520): yii\base\Module->createControllerByID('pharm-company')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(448): yii\base\Module->createController('')
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company', Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#8 {main}
+2016-12-05 14:30:39 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17084'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480937439.15
+    'REQUEST_TIME' => 1480937439
+    'argv' => [
+        0 => 'r=pharm-company'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:43:22 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: The requested page does not exist. in C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php:84
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(41): backend\controllers\PharmCompanyController->findModel('1')
+#1 [internal function]: backend\controllers\PharmCompanyController->actionView('1')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/v...', Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#8 {main}
+2016-12-05 14:43:22 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company/view'
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fcreate'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17403'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fview&id=1'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fview&id=1'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480938202.359
+    'REQUEST_TIME' => 1480938202
+    'argv' => [
+        0 => 'r=pharm-company%2Fview&id=1'
+    ]
+    'argc' => 1
+]
+2016-12-05 14:55:21 [127.0.0.1][-][-][error][Error] Error: Class 'DatePicker' not found in C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\_search.php:32
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#3 C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\index.php(14): yii\base\View->render('_search', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PharmCompanyController))
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\PharmCompanyController))
+#8 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(34): yii\base\Controller->render('index', Array)
+#9 [internal function]: backend\controllers\PharmCompanyController->actionIndex()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/i...', Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#16 {main}
+2016-12-05 14:55:21 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company/index'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fview&id=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '17569'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Findex'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Findex'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480938921.732
+    'REQUEST_TIME' => 1480938921
+    'argv' => [
+        0 => 'r=pharm-company%2Findex'
+    ]
+    'argc' => 1
+]
+2016-12-05 15:33:46 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException in C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php:67
+Stack trace:
+#0 [internal function]: backend\controllers\PharmCompanyController->actionUpdate('2')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/u...', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#7 {main}
+2016-12-05 15:33:46 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'pharm-company/update'
+    'id' => '2'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Findex'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18378'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fupdate&id=2'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fupdate&id=2'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480941226.691
+    'REQUEST_TIME' => 1480941226
+    'argv' => [
+        0 => 'r=pharm-company%2Fupdate&id=2'
+    ]
+    'argc' => 1
+]
+2016-12-05 15:54:35 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][Error] Error: Call to a member function getActiveValidators() on null in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php:1265
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1294): yii\helpers\BaseHtml::normalizeMaxLength(NULL, 'comment', '<span class="st...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(387): yii\helpers\BaseHtml::activeTextInput(NULL, 'comment', '<span class="st...')
+#2 C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\view.php(52): yii\widgets\ActiveField->textInput(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PharmCompanyController))
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\PharmCompanyController))
+#7 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(44): yii\base\Controller->render('view', Array)
+#8 [internal function]: backend\controllers\PharmCompanyController->actionView('2')
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/v...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#15 {main}
+2016-12-05 15:54:35 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'pharm-company/view'
+    'id' => '2'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18603'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fview&id=2'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fview&id=2'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480942475.052
+    'REQUEST_TIME' => 1480942475
+    'argv' => [
+        0 => 'r=pharm-company%2Fview&id=2'
+    ]
+    'argc' => 1
+]
+2016-12-05 16:02:55 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:844
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(844): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('pharm_company_c...', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(47): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\PharmCompanyController->actionAddComment()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('add-comment', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/a...', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+The SQL being executed was: INSERT INTO `pharm_company_comments` (`text`, `author_id`, `pharm_company_id`) VALUES ('привет', 1, 2) in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(854): yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO `ph...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php(449): yii\db\Command->execute()
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(457): yii\db\Schema->insert('pharm_company_c...', Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveRecord.php(427): yii\db\ActiveRecord->insertInternal(NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(632): yii\db\ActiveRecord->insert(false, NULL)
+#5 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(47): yii\db\BaseActiveRecord->save(false)
+#6 [internal function]: backend\controllers\PharmCompanyController->actionAddComment()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('add-comment', Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/a...', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1364
+    [2] => Field 'id' doesn't have a default value
+)
+
+2016-12-05 16:02:55 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'pharm-company/add-comment'
+]
+
+$_POST = [
+    '_csrf' => 'Skg2V0VGWnMiK3NiDXFoHT8AUz0cKW4ABHhUFCQSHCUaEl4BcRBjLA=='
+    'Comment' => [
+        'text' => 'привет'
+        'author_id' => '1'
+        'pharm_company_id' => '2'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '178'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://farm-old.loc'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fview&id=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18793'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=pharm-company%2Fadd-comment'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fadd-comment'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480942975.071
+    'REQUEST_TIME' => 1480942975
+    'argv' => [
+        0 => 'r=pharm-company%2Fadd-comment'
+    ]
+    'argc' => 1
+]
+2016-12-05 16:07:09 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: common\models\pharm_company\Comment::user in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('user')
+#1 C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\view.php(76): yii\db\BaseActiveRecord->__get('user')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PharmCompanyController))
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\PharmCompanyController))
+#6 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(58): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\PharmCompanyController->actionView('2')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/v...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#14 {main}
+2016-12-05 16:07:08 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'pharm-company/view'
+    'id' => '2'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fview&id=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18881'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fview&id=2'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fview&id=2'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480943228.908
+    'REQUEST_TIME' => 1480943228
+    'argv' => [
+        0 => 'r=pharm-company%2Fview&id=2'
+    ]
+    'argc' => 1
+]
+2016-12-05 16:07:29 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: common\models\pharm_company\Comment::admin in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('admin')
+#1 C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\view.php(76): yii\db\BaseActiveRecord->__get('admin')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PharmCompanyController))
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\PharmCompanyController))
+#6 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(58): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\PharmCompanyController->actionView('2')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/v...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#14 {main}
+2016-12-05 16:07:29 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'pharm-company/view'
+    'id' => '2'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fview&id=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18897'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fview&id=2'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fview&id=2'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480943249.028
+    'REQUEST_TIME' => 1480943249
+    'argv' => [
+        0 => 'r=pharm-company%2Fview&id=2'
+    ]
+    'argc' => 1
+]
+2016-12-05 16:08:08 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: common\models\pharm_company\Comment::comment in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('comment')
+#1 C:\OpenServer\domains\farm-old.loc\admin\views\pharm-company\view.php(81): yii\db\BaseActiveRecord->__get('comment')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\PharmCompanyController))
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\PharmCompanyController))
+#6 C:\OpenServer\domains\farm-old.loc\admin\controllers\PharmCompanyController.php(58): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\PharmCompanyController->actionView('2')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('pharm-company/v...', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#14 {main}
+2016-12-05 16:08:08 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'pharm-company/view'
+    'id' => '2'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=pharm-company%2Fview&id=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '18903'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=pharm-company%2Fview&id=2'
+    'REQUEST_URI' => '/admin/index.php?r=pharm-company%2Fview&id=2'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1480943288.079
+    'REQUEST_TIME' => 1480943288
+    'argv' => [
+        0 => 'r=pharm-company%2Fview&id=2'
+    ]
+    'argc' => 1
+]
