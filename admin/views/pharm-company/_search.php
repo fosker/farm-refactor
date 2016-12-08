@@ -53,6 +53,8 @@ use kartik\widgets\DatePicker;
         ]
     ]) ?>
 
+    <?= $form->field($model, 'address') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Сброс', ['class' => 'btn btn-default']) ?>

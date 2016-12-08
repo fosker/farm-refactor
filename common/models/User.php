@@ -61,9 +61,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const STATUS_ACTIVE = 1;
     const STATUS_NOTE_VERIFIED = 2;
 
-    const IN_GRAY = 1;
+    const IN_BLACK = 1;
     const IN_WHITE = 2;
-    const NOT_IN_LIST = 0;
+    const IN_GRAY = 0;
 
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
@@ -74,7 +74,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             parent::scenarios(),
             [
                 'update' => ['name', 'email', 'phone'],
-                'gray' => ['inList', 'comment'],
+                'black' => ['inList', 'comment'],
                 'white' => ['inList', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'update-password' => ['old_password', 'password', 're_password'],
@@ -488,8 +488,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         $values = array(
             self::IN_WHITE => 'в белом',
+            self::IN_BLACK => 'в черном',
             self::IN_GRAY => 'в сером',
-            self::NOT_IN_LIST => 'нет',
         );
         if(isset($values[$this->inList])) {
             return $values[$this->inList];
@@ -530,9 +530,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->save(false);
     }
 
-    public function outList()
+    public function toGray()
     {
-        $this->inList = static::NOT_IN_LIST;
+        $this->inList = static::IN_GRAY;
         $this->comment = "";
         $this->save(false);
     }
@@ -545,9 +545,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     }
 
 
-    public function toGray()
+    public function toBlack()
     {
-        $this->inList = static::IN_GRAY;
+        $this->inList = static::IN_BLACK;
         $this->save(false);
     }
 

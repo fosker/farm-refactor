@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 
 $this->title = $model->title;
 ?>
+
 <div class="banner-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -49,7 +50,7 @@ $this->title = $model->title;
             ],
             [
                 'attribute'=>'link',
-                'value'=> $model->linktitleHref,
+                'value'=> strstr($model->link, 'http') ? $model->link : $model->linktitleHref,
                 'format'=>'html',
             ],
             [

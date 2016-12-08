@@ -49,7 +49,6 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                             [
                                 'label' => 'Главная',
                                 'url' => ['/main/index'],
-                                'visible' => Right::HasAdmin(Yii::$app->admin->id, 'main')
                             ],
                             [
                                 'label' => 'Администраторы',
@@ -234,9 +233,9 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                         'visible' => Right::HasAdmin(Yii::$app->admin->id, 'theme')
                                     ],
                                     [
-                                        'label'=>'Формы',
-                                        'url'=>['/form'],
-                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'form')
+                                        'label'=>'Ответы',
+                                        'url'=>['/themes/answer'],
+                                        'visible' => Right::HasAdmin(Yii::$app->admin->id, 'themes/answer')
                                     ],
                                 ],
                                 'visible' => Admin::showTheme(Yii::$app->admin->id)

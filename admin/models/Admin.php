@@ -368,7 +368,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showTheme($id)
     {
-        $list = ['theme', 'form'];
+        $list = ['theme', 'themes/answer'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;
@@ -381,7 +381,7 @@ class Admin extends ActiveRecord  implements IdentityInterface
 
     public static function showMain($id)
     {
-        $list = ['main', 'admin', 'contact-form'];
+        $list = ['admin', 'contact-form'];
         foreach($list as $item) {
             if (Right::HasAdmin($id, $item)) {
                 return true;

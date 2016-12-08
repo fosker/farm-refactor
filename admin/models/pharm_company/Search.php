@@ -15,7 +15,7 @@ class Search extends PharmCompany
     {
         return [
             [['id', 'admin_id'], 'integer'],
-            [['name', 'type', 'location', 'size', 'rx_otc', 'first_visit', 'planned_visit'], 'safe'],
+            [['name', 'type', 'location', 'size', 'rx_otc', 'first_visit', 'planned_visit', 'address'], 'safe'],
         ];
     }
 
@@ -57,6 +57,7 @@ class Search extends PharmCompany
             ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'location', $this->location])
             ->andFilterWhere(['like', 'size', $this->size])
+            ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'rx_otc', $this->rx_otc]);
 
         return $dataProvider;

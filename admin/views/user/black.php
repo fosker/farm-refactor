@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use backend\components\Editor;
 use kartik\widgets\Select2;
 
-$this->title = 'Добавить в серый список';
+$this->title = 'Добавить в черный список';
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>

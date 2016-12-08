@@ -31,30 +31,21 @@ $this->title = 'Представитель: '.$model->name;
 
         <?php
 
-        if($model->inList == User::IN_GRAY && $model->inList != User::IN_WHITE) {
-            echo Html::a('Убрать из серого списка', ['not-gray', 'id' => $model->id], [
+        if($model->inList == User::IN_BLACK || $model->inList == User::IN_WHITE) {
+            echo Html::a('Убрать из списка', ['gray', 'id' => $model->id], [
                 'class' => 'btn btn-success',
                 'data' => [
-                    'confirm' => 'Вы уверены, что хотите убрать пользователя из серого списка?',
+                    'confirm' => 'Вы уверены, что хотите добавить пользователя в серый список?',
                     'method' => 'post',
                 ]
             ]);
         }
-        if($model->inList != User::IN_GRAY && $model->inList != User::IN_WHITE) {
-            echo Html::a('В серый список', ['gray', 'id' => $model->id], [
+        if($model->inList != User::IN_BLACK && $model->inList != User::IN_WHITE) {
+            echo Html::a('В черный список', ['black', 'id' => $model->id], [
                 'class' => 'btn btn-warning',
             ]);
         }
-        if($model->inList == User::IN_WHITE&& $model->inList != User::IN_GRAY) {
-            echo Html::a('Убрать из белого списка', ['not-white', 'id' => $model->id], [
-                'class' => 'btn btn-success',
-                'data' => [
-                    'confirm' => 'Вы уверены, что хотите убрать пользователя из белого списка?',
-                    'method' => 'post',
-                ],
-            ]);
-        }
-        if($model->inList != User::IN_GRAY && $model->inList != User::IN_WHITE) {
+        if($model->inList != User::IN_BLACK && $model->inList != User::IN_WHITE) {
             echo Html::a('В белый список', ['white', 'id' => $model->id], [
                 'class' => 'btn btn-warning',
             ]);

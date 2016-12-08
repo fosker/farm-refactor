@@ -10,7 +10,6 @@ use common\models\Theme;
 
 class Reply extends Model
 {
-
     public $image;
     public $theme_id;
     public $user_id;
@@ -74,5 +73,10 @@ class Reply extends Model
             $this->photo = $filename;
             move_uploaded_file($this->photo, Yii::getAlias('@uploads/themes-replies/'));
         }
+    }
+
+    public function getTheme()
+    {
+        return Theme::findOne($this->theme_id);
     }
 }

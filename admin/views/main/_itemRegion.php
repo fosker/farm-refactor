@@ -1,37 +1,30 @@
 <?php
 ?>
 
-</br>
 <div class="row">
-    <div class="col-md-12">
-        <div class="col-md-4">
-            <b><?=$model->name;?></b>
-        </div>
-        <?php if($model->userCount):?>
-            <div class="col-md-3"><button type="button" class="btn btn-info more-cities">+</button></div>
-        <?php endif;?>
-        <div class="col-md-2"><i><?=$model->userCount?></i></div>
+    <div class="col-md-5">
+        <b><?= $model->name; ?></b>
     </div>
+    <?php if ($model->userCount): ?>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-info more-cities">+</button>
+        </div>
+    <?php endif; ?>
+    <div class="col-md-4"><i><?= $model->userCount ?></i></div>
 </div>
 <div class="row cities" style="display: none">
-    <div class="col-md-12">
-        <ul style="list-style: none">
-            <?php foreach($model->citiesCount as $city):?>
-                <?php if($city->userCount):?>
-                    <li>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <?=$city->name;?>
-                            </div>
-                        <div>
-                            <div class="col-md-4"><i><?=$city->userCount?></i></div>
-                        </div>
-                            <br>
-                    </li>
-                <?php endif;?>
-            <?php endforeach;?>
-        </ul>
-    </div>
+    <?php foreach ($model->citiesCount as $city): ?>
+        <?php if ($city->userCount): ?>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="city" data-key="<?= $city->id?>"><?= $city->name; ?></p>
+                </div>
+                <div class="col-md-4">
+                    <i><?= $city->userCount ?></i>
+                </div>
+            </div>
+            <br>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
-</br>
+<br>

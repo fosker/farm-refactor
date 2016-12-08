@@ -40,7 +40,7 @@ class UserController extends Controller
                     'accept' => ['post'],
                     'ban' => ['post'],
                     'not-verify' => ['post'],
-                    'out-list' => ['post'],
+                    'gray' => ['post'],
                 ],
             ],
             'access' => [
@@ -229,12 +229,12 @@ class UserController extends Controller
         }
     }
 
-    public function actionGray($id)
+    public function actionBlack($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'gray';
+        $model->scenario = 'black';
         if($model->load(Yii::$app->request->post())) {
-            $model->toGray();
+            $model->toBlack();
             switch($model->type_id) {
                 case 1:
                     return $this->redirect(['pharmacists']);
@@ -242,7 +242,7 @@ class UserController extends Controller
                     return $this->redirect(['agents']);
             }
         } else {
-            return $this->render('gray', [
+            return $this->render('black', [
                 'model' => $model,
                 'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
             ]);
@@ -270,10 +270,10 @@ class UserController extends Controller
     }
 
 
-    public function actionOutList($id)
+    public function actionGray($id)
     {
         $model = $this->findModel($id);
-        $model->outList();
+        $model->toGray();
         switch($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);

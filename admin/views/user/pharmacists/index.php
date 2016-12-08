@@ -27,9 +27,6 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
             if($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
             };
-            if($model->user->inList == User::IN_GRAY) {
-                return ['style' => 'background: #C0C0C0'];
-            }
         },
         'columns' => [
             [
@@ -90,13 +87,13 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
             [
                 'attribute'=>'user.inList',
                 'value' => function($model) {
-                    return [0 => 'нет', 1 => 'в сером', 2 => 'в белом'][$model->user->inList];
+                    return [0 => 'в сером', 1 => 'в черном', 2 => 'в белом'][$model->user->inList];
                 },
                 'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {gray} {white} {out-list} ',
+                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {gray} ',
                 'buttons'=>[
                     'accept' => function ($url, $model, $key) {
                         if($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
@@ -124,19 +121,19 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                             'data-method'=>'post',
                         ]) : '';
                     },
-                    'gray' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_GRAY && $model->user->inList != User::IN_WHITE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['gray', 'id' => $model->id], [
-                            'title'=>'Добавить в серый список',
+                    'black' => function ($url, $model, $key) {
+                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
+                            'title'=>'Добавить в черный список',
                         ]) : '';
                     },
                     'white' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
                             'title'=>'Добавить в белый список',
                         ]) : '';
                     },
-                    'out-list' => function ($url, $model, $key) {
-                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['out-list', 'id'=>$model->id], [
-                            'data-confirm' => 'Вы уверены, что хотите убрать пользователя из списка?',
+                    'gray' => function ($url, $model, $key) {
+                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_BLACK) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['gray', 'id'=>$model->id], [
+                            'data-confirm' => 'Добавить в серый список',
                             'class' => 'list-comment',
                             'title'=>$model->user->comment,
                             'data-pjax'=>0,

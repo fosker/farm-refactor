@@ -17,6 +17,11 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 $url = Url::to(['/banner/link-list']);
 ?>
 
+<?php
+    if (strstr($model->link, 'http')) {
+        $model->httpLink = $model->link;
+    }
+?>
 <div class="banner-form">
 
     <input type="checkbox" class="btn btn-info all-groups">Выбрать все</input>
@@ -118,7 +123,7 @@ $url = Url::to(['/banner/link-list']);
         [
             'initValueText' => $model->linkTitle,
             'pluginOptions' => [
-                'allowClear' => false,
+                'allowClear' => true,
                 'minimumInputLength' => 0,
                 'ajax' => [
                     'url' => $url,
@@ -132,6 +137,8 @@ $url = Url::to(['/banner/link-list']);
         ]
     ); ?>
 
+    <?= $form->field($model, 'httpLink')->textInput(['maxlength' => true])->label('Или внешняя ссылка') ?>
+
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[
         'pluginOptions' => [
             'initialPreview'=> $model->image ? Html::img($model->imagePath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
@@ -141,7 +148,7 @@ $url = Url::to(['/banner/link-list']);
     ]);
     ?>
 
-    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому', 3 => 'только серому'])?>
+    <?= $form->field($model, 'forList')->radioList([0 => 'серому и белому', 1 => 'всем', 2 => 'только белому', 3 => 'только черному', 4 => 'только серому'])?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

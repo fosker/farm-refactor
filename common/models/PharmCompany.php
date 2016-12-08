@@ -18,6 +18,8 @@ use common\models\pharm_company\Comment;
  * @property string $rx_otc
  * @property string $first_visit
  * @property string $planned_visit
+ * @property string $address
+ * @property string $contact_person
  */
 class PharmCompany extends \yii\db\ActiveRecord
 {
@@ -38,7 +40,7 @@ class PharmCompany extends \yii\db\ActiveRecord
             [['name', 'admin_id', 'type', 'location', 'size', 'rx_otc'], 'required'],
             [['admin_id'], 'integer'],
             [['first_visit', 'planned_visit'], 'safe'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'address', 'contact_person'], 'string', 'max' => 255],
             [['type', 'location', 'size'], 'string', 'max' => 100],
             [['rx_otc'], 'string', 'max' => 10],
         ];
@@ -59,6 +61,8 @@ class PharmCompany extends \yii\db\ActiveRecord
             'rx_otc' => 'RX/OTX',
             'first_visit' => 'Дата первого визита',
             'planned_visit' => 'Дата запланированного визита',
+            'address' => 'Адрес',
+            'contact_person' => 'С кем общались'
         ];
     }
 

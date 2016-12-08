@@ -31,11 +31,11 @@ use common\models\profile\Type;
  */
 class Banner extends ActiveRecord
 {
-
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 0;
 
     public $imageFile;
+    public $httpLink;
 
     public static function tableName()
     {
@@ -45,16 +45,17 @@ class Banner extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'position', 'link', 'factory_id', 'forList'], 'required'],
+            [['title', 'position', 'factory_id', 'forList'], 'required'],
             [['factory_id'], 'integer'],
-            ['imageFile', 'required', 'on' => 'create']
+            ['imageFile', 'required', 'on' => 'create'],
+            [['link', 'httpLink'], 'string']
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'position', 'link', 'imageFile', 'factory_id', 'forList'];
+        $scenarios['create'] = ['title', 'position', 'link', 'imageFile', 'factory_id', 'forList', 'link', 'httpLink'];
         return $scenarios;
     }
 
@@ -69,7 +70,7 @@ class Banner extends ActiveRecord
             'image' => 'Изображение',
             'position' => 'Позиция',
             'factory_id' => 'Фабрика Автор',
-            'forList' => 'Показывать списку'
+            'forList' => 'Показывать списку',
         ];
     }
 
@@ -93,7 +94,9 @@ class Banner extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']]);
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
+                ]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             $base = static::find()
                 ->joinWith('types')
@@ -107,7 +110,9 @@ class Banner extends ActiveRecord
                 ])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0']
+                ])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->groupBy(static::tableName().'.id');
         }
@@ -126,10 +131,11 @@ class Banner extends ActiveRecord
     public function getLists()
     {
         $values = array(
-            0 => 'нейтральному и белому',
+            0 => 'серому и белому',
             1 => 'всем',
             2 => 'только белому',
-            3 => 'только серому'
+            3 => 'только черному',
+            4 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];
@@ -394,6 +400,9 @@ class Banner extends ActiveRecord
     public function beforeSave($insert)
     {
         if(parent::beforeSave($insert)) {
+            if ($this->httpLink) {
+                $this->link = $this->httpLink;
+            }
             $this->loadImage();
             return true;
         } else return false;

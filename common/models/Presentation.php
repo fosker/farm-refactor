@@ -122,7 +122,9 @@ class Presentation extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
+                ])
                 ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
@@ -138,7 +140,9 @@ class Presentation extends ActiveRecord
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1']])
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0']
+                ])
                 ->andWhere(['status'=>static::STATUS_ACTIVE])
                 ->orderBy(['id'=>SORT_DESC])
                 ->groupBy(static::tableName().'.id');
@@ -148,10 +152,11 @@ class Presentation extends ActiveRecord
     public function getLists()
     {
         $values = array(
-            0 => 'нейтральному и белому',
+            0 => 'серому и белому',
             1 => 'всем',
             2 => 'только белому',
-            3 => 'только серому'
+            3 => 'только черному',
+            4 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

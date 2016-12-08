@@ -60015,3 +60015,891 @@ $_SERVER = [
     ]
     'argc' => 1
 ]
+2016-12-07 12:13:13 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\db\Exception] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Харьков' in 'where clause' in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:900
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(900): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(188): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Харьков' in 'where clause'
+The SQL being executed was: SELECT COUNT(*) FROM `regions` LEFT JOIN (SELECT count(pharmacists.id) as count, `region_id` FROM `pharmacists`, `company_pharmacies`, `region_cities`, `regions` WHERE (((pharmacists.pharmacy_id = company_pharmacies.id) AND (company_pharmacies.city_id =region_cities.id)) AND (region_cities.region_id =regions.id)) AND (region_cities.name LIKE Харьков) GROUP BY `region_id`) `regionCount` ON regionCount.region_id = id in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(915): yii\db\Schema->convertException(Object(PDOException), 'SELECT COUNT(*)...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(188): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'Харьков' in 'where clause'
+)
+
+2016-12-07 12:13:13 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '36614'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481101993.101
+    'REQUEST_TIME' => 1481101993
+    'argv' => []
+    'argc' => 0
+]
+2016-12-07 12:15:05 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in on clause is ambiguous in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:900
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(900): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(187): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in on clause is ambiguous
+The SQL being executed was: SELECT COUNT(*) FROM `regions` LEFT JOIN `region_cities` ON `regions`.`id` = `region_cities`.`region_id` LEFT JOIN (SELECT count(pharmacists.id) as count, `region_id` FROM `pharmacists`, `company_pharmacies`, `region_cities`, `regions` WHERE ((pharmacists.pharmacy_id = company_pharmacies.id) AND (company_pharmacies.city_id =region_cities.id)) AND (region_cities.region_id =regions.id) GROUP BY `region_id`) `regionCount` ON regionCount.region_id = id WHERE `region_cities`.`name` LIKE '%Харьков%' ORDER BY `name` in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(915): yii\db\Schema->convertException(Object(PDOException), 'SELECT COUNT(*)...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(187): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1052
+    [2] => Column 'id' in on clause is ambiguous
+)
+
+2016-12-07 12:15:04 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '36667'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481102104.839
+    'REQUEST_TIME' => 1481102104
+    'argv' => []
+    'argc' => 0
+]
+2016-12-07 12:16:15 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'name' in order clause is ambiguous in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php:900
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(900): PDOStatement->execute()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(187): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'name' in order clause is ambiguous
+The SQL being executed was: SELECT COUNT(*) FROM `regions` LEFT JOIN `region_cities` ON `regions`.`id` = `region_cities`.`region_id` LEFT JOIN (SELECT count(pharmacists.id) as count, `region_id` FROM `pharmacists`, `company_pharmacies`, `region_cities`, `regions` WHERE ((pharmacists.pharmacy_id = company_pharmacies.id) AND (company_pharmacies.city_id =region_cities.id)) AND (region_cities.region_id =regions.id) GROUP BY `region_id`) `regionCount` ON regionCount.region_id =regions.id WHERE `region_cities`.`name` LIKE '%Харьков%' ORDER BY `name` in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Schema.php:631
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(915): yii\db\Schema->convertException(Object(PDOException), 'SELECT COUNT(*)...')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Command.php(388): yii\db\Command->queryInternal('fetchColumn', 0)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(396): yii\db\Command->queryScalar()
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\ActiveQuery.php(334): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\Query.php(303): yii\db\ActiveQuery->queryScalar('COUNT(*)', NULL)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): yii\widgets\BaseListView->run()
+#13 C:\OpenServer\domains\farm-old.loc\admin\views\main\index.php(173): yii\base\Widget::widget(Array)
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', '[<span class="s...')
+#16 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\MainController))
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\MainController))
+#18 C:\OpenServer\domains\farm-old.loc\admin\controllers\MainController.php(187): yii\base\Controller->render('index', Array)
+#19 [internal function]: backend\controllers\MainController->actionIndex(NULL)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#22 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('index', Array)
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('', Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#26 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1052
+    [2] => Column 'name' in order clause is ambiguous
+)
+
+2016-12-07 12:16:14 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '36692'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481102174.804
+    'REQUEST_TIME' => 1481102174
+    'argv' => []
+    'argc' => 0
+]
+2016-12-07 14:37:50 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][ReflectionException] ReflectionException: Class httpLink does not exist in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php:422
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(422): ReflectionClass->__construct('httpLink')
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(362): yii\di\Container->getDependencies('httpLink')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\di\Container.php(154): yii\di\Container->build('httpLink', Array, Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('httpLink', Array, Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\validators\Validator.php(222): yii\BaseYii::createObject(Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Model.php(445): yii\validators\Validator::createValidator('httpLink', Object(common\models\Banner), Array, Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Model.php(409): yii\base\Model->createValidators()
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Model.php(424): yii\base\Model->getValidators()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1265): yii\base\Model->getActiveValidators('title')
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseHtml.php(1294): yii\helpers\BaseHtml::normalizeMaxLength(Object(common\models\Banner), 'title', '<span class="st...')
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\widgets\ActiveField.php(387): yii\helpers\BaseHtml::activeTextInput(Object(common\models\Banner), 'title', '<span class="st...')
+#11 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-activeform\ActiveField.php(681): yii\widgets\ActiveField->textInput(Array)
+#12 C:\OpenServer\domains\farm-old.loc\admin\views\banner\_form.php(105): kartik\form\ActiveField->textInput(Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#15 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, NULL)
+#16 C:\OpenServer\domains\farm-old.loc\admin\views\banner\update.php(27): yii\base\View->render('_form', Array)
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\BannerController))
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('update', Array, Object(backend\controllers\BannerController))
+#21 C:\OpenServer\domains\farm-old.loc\admin\controllers\BannerController.php(144): yii\base\Controller->render('update', Array)
+#22 [internal function]: backend\controllers\BannerController->actionUpdate('46')
+#23 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#25 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('update', Array)
+#26 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('banner/update', Array)
+#27 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#29 {main}
+2016-12-07 14:37:49 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'banner/update'
+    'id' => '46'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=banner%2Fview&id=46'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '39286'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=banner%2Fupdate&id=46'
+    'REQUEST_URI' => '/admin/index.php?r=banner%2Fupdate&id=46'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481110669.779
+    'REQUEST_TIME' => 1481110669
+    'argv' => [
+        0 => 'r=banner%2Fupdate&id=46'
+    ]
+    'argc' => 1
+]
+2016-12-07 14:51:11 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: common\models\Banner::httpLink in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('httpLink')
+#1 C:\OpenServer\domains\farm-old.loc\admin\views\banner\view.php(52): yii\db\BaseActiveRecord->__get('httpLink')
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\BannerController))
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\BannerController))
+#6 C:\OpenServer\domains\farm-old.loc\admin\controllers\BannerController.php(80): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\BannerController->actionView('46')
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#10 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('banner/view', Array)
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#14 {main}
+2016-12-07 14:51:11 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'banner/view'
+    'id' => '46'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=banner%2Fupdate&id=46'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '39480'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=banner%2Fview&id=46'
+    'REQUEST_URI' => '/admin/index.php?r=banner%2Fview&id=46'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481111471.572
+    'REQUEST_TIME' => 1481111471
+    'argv' => [
+        0 => 'r=banner%2Fview&id=46'
+    ]
+    'argc' => 1
+]
+2016-12-07 17:54:32 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][Error] Error: Class 'backend\controllers\themes\User' not found in C:\OpenServer\domains\farm-old.loc\admin\controllers\themes\AnswerController.php:50
+Stack trace:
+#0 [internal function]: backend\controllers\themes\AnswerController->actionIndex()
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('themes/answer', Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#7 {main}
+2016-12-07 17:54:31 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'themes/answer'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=theme'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '44002'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=themes%2Fanswer'
+    'REQUEST_URI' => '/admin/index.php?r=themes%2Fanswer'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481122471.93
+    'REQUEST_TIME' => 1481122471
+    'argv' => [
+        0 => 'r=themes%2Fanswer'
+    ]
+    'argc' => 1
+]
+2016-12-07 17:54:46 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\OpenServer\domains\farm-old.loc\admin\views\themes/answer\index.php in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php:227
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\themes\AnswerController))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\themes\AnswerController))
+#2 C:\OpenServer\domains\farm-old.loc\admin\controllers\themes\AnswerController.php(52): yii\base\Controller->render('index', Array)
+#3 [internal function]: backend\controllers\themes\AnswerController->actionIndex()
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('themes/answer', Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#10 {main}
+2016-12-07 17:54:46 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'themes/answer'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=theme'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '44018'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=themes%2Fanswer'
+    'REQUEST_URI' => '/admin/index.php?r=themes%2Fanswer'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481122486.4
+    'REQUEST_TIME' => 1481122486
+    'argv' => [
+        0 => 'r=themes%2Fanswer'
+    ]
+    'argc' => 1
+]
+2016-12-07 17:58:11 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\InvalidParamException] yii\base\InvalidParamException: Malformed UTF-8 characters, possibly incorrectly encoded. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseJson.php:123
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseJson.php(61): yii\helpers\BaseJson::handleJsonError(5)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\helpers\BaseJson.php(79): yii\helpers\BaseJson::encode(Array, 271)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-krajee-base\WidgetTrait.php(99): yii\helpers\BaseJson::htmlEncode(Array)
+#3 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-krajee-base\WidgetTrait.php(111): kartik\base\InputWidget->hashPluginOptions('select2')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-krajee-base\WidgetTrait.php(131): kartik\base\InputWidget->registerPluginOptions('select2')
+#5 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-krajee-base\WidgetTrait.php(161): kartik\base\InputWidget->getPluginScript('select2', 'jQuery('#search...', 'initS2Loading('...', NULL)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-select2\Select2.php(388): kartik\base\InputWidget->registerPlugin('select2', 'jQuery('#search...', 'initS2Loading('...')
+#7 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-select2\Select2.php(220): kartik\select2\Select2->registerAssets()
+#8 C:\OpenServer\domains\farm-old.loc\vendor\kartik-v\yii2-widget-select2\Select2.php(183): kartik\select2\Select2->renderWidget()
+#9 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Widget.php(102): kartik\select2\Select2->run()
+#10 C:\OpenServer\domains\farm-old.loc\admin\views\themes\answer\index.php(26): yii\base\Widget::widget(Array)
+#11 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(326): require('C:\\OpenServer\\d...')
+#12 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile('C:\\OpenServer\\d...', Array)
+#13 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\themes\AnswerController))
+#14 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('index', Array, Object(backend\controllers\themes\AnswerController))
+#15 C:\OpenServer\domains\farm-old.loc\admin\controllers\themes\AnswerController.php(54): yii\base\Controller->render('index', Array)
+#16 [internal function]: backend\controllers\themes\AnswerController->actionIndex()
+#17 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#18 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#19 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('', Array)
+#20 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('themes/answer', Array)
+#21 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#23 {main}
+2016-12-07 17:58:11 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'themes/answer'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?r=theme'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '44034'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=themes%2Fanswer'
+    'REQUEST_URI' => '/admin/index.php?r=themes%2Fanswer'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481122691.78
+    'REQUEST_TIME' => 1481122691
+    'argv' => [
+        0 => 'r=themes%2Fanswer'
+    ]
+    'argc' => 1
+]
+2016-12-07 18:01:50 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: C:\OpenServer\domains\farm-old.loc\admin\views\themes/answer\view.php in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php:227
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile('C:\\OpenServer\\d...', Array, Object(backend\controllers\themes\AnswerController))
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render('view', Array, Object(backend\controllers\themes\AnswerController))
+#2 C:\OpenServer\domains\farm-old.loc\admin\controllers\themes\AnswerController.php(61): yii\base\Controller->render('view', Array)
+#3 [internal function]: backend\controllers\themes\AnswerController->actionView('1')
+#4 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#6 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view', Array)
+#7 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('themes/answer/v...', Array)
+#8 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#10 {main}
+2016-12-07 18:01:50 [127.0.0.1][-][c9hvhvlkq2lqq8upg0f0ak01t5][info][application] $_GET = [
+    'r' => 'themes/answer/view'
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/admin/'
+    '__adminId' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?Search%5Buser.login%5D=&Search%5Buser.name%5D=&Search%5Btheme.title%5D=&Search%5Bdate_added%5D=&Search%5Buser_id%5D=13&Search%5Buser_id%5D=&r=themes%2Fanswer'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '44099'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=themes%2Fanswer%2Fview&id=1'
+    'REQUEST_URI' => '/admin/index.php?r=themes%2Fanswer%2Fview&id=1'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481122910.255
+    'REQUEST_TIME' => 1481122910
+    'argv' => [
+        0 => 'r=themes%2Fanswer%2Fview&id=1'
+    ]
+    'argc' => 1
+]
+2016-12-07 18:04:49 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: themes/answer/answered in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('answered', Array)
+#1 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php(100): yii\base\Module->runAction('themes/answer/a...', Array)
+#2 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\web\Application.php:112
+Stack trace:
+#0 C:\OpenServer\domains\farm-old.loc\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\OpenServer\domains\farm-old.loc\public_html\admin\index.php(25): yii\base\Application->run()
+#2 {main}
+2016-12-07 18:04:49 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'themes/answer/answered'
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_\";}'
+    'PHPSESSID' => 'c9hvhvlkq2lqq8upg0f0ak01t5'
+    '__lfcc' => '1'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'farm-old.loc'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://farm-old.loc/admin/index.php?Search%5Buser.login%5D=&Search%5Buser.name%5D=&Search%5Btheme.title%5D=&Search%5Bdate_added%5D=&Search%5Buser_id%5D=13&Search%5Buser_id%5D=&r=themes%2Fanswer'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=72f895770590dcb1236fde5847212c37e94507ebcf882edca55e3f44d66bb87ea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hcE5H72nuHejYo4sN0bCaTFVPZhV4V9_%22%3B%7D; PHPSESSID=c9hvhvlkq2lqq8upg0f0ak01t5; __lfcc=1'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-7\\ext;c:\\openserver\\modules\\php\\PHP-7\\pear;c:\\openserver\\modules\\php\\PHP-7\\pear\\bin;c:\\openserver\\modules\\php\\PHP-7;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\database\\MySQL-5.7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7\\bin;c:\\openserver\\modules\\http\\Apache-PHP-7;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'farm-old.loc'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/farm-old.loc/public_html'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/farm-old.loc/public_html/admin/index.php'
+    'REMOTE_PORT' => '44134'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=themes%2Fanswer%2Fanswered&id=1'
+    'REQUEST_URI' => '/admin/index.php?r=themes%2Fanswer%2Fanswered&id=1'
+    'SCRIPT_NAME' => '/admin/index.php'
+    'PHP_SELF' => '/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1481123089.371
+    'REQUEST_TIME' => 1481123089
+    'argv' => [
+        0 => 'r=themes%2Fanswer%2Fanswered&id=1'
+    ]
+    'argc' => 1
+]

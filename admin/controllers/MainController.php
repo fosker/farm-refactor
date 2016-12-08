@@ -101,7 +101,7 @@ class MainController extends \yii\web\Controller
         $companies = new ActiveDataProvider([
             'query' => $companyQuery,
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => false,
             ],
         ]);
 

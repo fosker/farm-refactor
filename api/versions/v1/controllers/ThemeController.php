@@ -2,7 +2,6 @@
 
 namespace rest\versions\v1\controllers;
 
-
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -11,6 +10,8 @@ use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 
 use rest\components\Controller;
+
+use common\models\theme\Answer as ThemeAnswer;
 use common\models\Theme;
 use common\models\theme\Reply;
 use common\models\forms\Answer;
@@ -69,6 +70,12 @@ class ThemeController extends Controller
                 $user = User::findOne($reply->user_id);
                 $theme = Theme::findOne($reply->theme_id);
                 $this->sendPdf($user, $theme, null, $reply);
+                if ($reply->theme->factory_id == 10) {
+                    $answer = new ThemeAnswer();
+                    $answer->theme_id = $reply->theme_id;
+                    $answer->user_id = Yii::$app->user->id;
+                    $answer->save(false);
+                }
                 return [
                     'success' => true,
                 ];
@@ -98,6 +105,12 @@ class ThemeController extends Controller
                         $form = Answer::filterModels($form);
                         if (Answer::validateMultiple($form, ['field_id', 'value'])) {
                             $this->sendPdf($user, $theme, $form, $reply);
+                            if ($reply->theme->factory_id == 10) {
+                                $answer = new ThemeAnswer();
+                                $answer->theme_id = $reply->theme_id;
+                                $answer->user_id = Yii::$app->user->id;
+                                $answer->save(false);
+                            }
                             return [
                                 'success' => true,
                             ];

@@ -8,82 +8,88 @@ use common\models\Seminar;
 use common\models\Vacancy;
 use common\models\User;
 
+use backend\models\admin\Right;
+
 $this->title = 'Главная';
+$this->registerJsFile('admin/js/search.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->registerJsFile('admin/js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
-<div class="main-index">
-    <h1 class="text-center">Добро пожаловать</h1>
-</div>
-
-
-<div class="comments_wrap">
-    <div class="row text-center">
-        <button type="button" class="btn btn-info more-comments">показать 20 последних комментариев</button>
+    <div class="main-index">
+        <h1 class="text-center">Добро пожаловать</h1>
     </div>
-    </br>
-    <div class="comments" style="display: none">
-    <?php foreach($comments as $comment):
-        switch($comment['content']) {
-            case 'news':
-                $url = Html::a('Новость: '.News::findOne($comment['content_id'])->title, ['/news/view', 'id'=>$comment['content_id']]);
-                $comment_url = ['/news/comment', 'id'=>$comment['id']];
-                break;
-            case 'presentation':
-                $url = Html::a('Презентация: '.Presentation::findOne($comment['content_id'])->title, ['/presentation/view', 'id'=>$comment['content_id']]);
-                $comment_url = ['/presentation/comment', 'id'=>$comment['id']];
-                break;
-            case 'vacancy':
-                $url = Html::a('Вакансия: '.Vacancy::findOne($comment['content_id'])->title, ['/vacancy/view', 'id'=>$comment['content_id']]);
-                $comment_url = ['/vacancy/comment', 'id'=>$comment['id']];
-                break;
-            case 'seminar':
-                $url = Html::a('Семинар: '.Seminar::findOne($comment['content_id'])->title, ['/seminar/view', 'id'=>$comment['content_id']]);
-                $comment_url = ['/seminar/comment', 'id'=>$comment['id']];
-                break;
-        }
-        ?>
 
+<?php if (Right::HasAdmin(Yii::$app->admin->id, 'main')): ?>
+
+
+    <div class="comments_wrap">
+        <div class="row text-center">
+            <button type="button" class="btn btn-info more-comments">показать 20 последних комментариев</button>
+        </div>
+        </br>
+        <div class="comments" style="display: none">
+            <?php foreach ($comments as $comment):
+                switch ($comment['content']) {
+                    case 'news':
+                        $url = Html::a('Новость: ' . News::findOne($comment['content_id'])->title, ['/news/view', 'id' => $comment['content_id']]);
+                        $comment_url = ['/news/comment', 'id' => $comment['id']];
+                        break;
+                    case 'presentation':
+                        $url = Html::a('Презентация: ' . Presentation::findOne($comment['content_id'])->title, ['/presentation/view', 'id' => $comment['content_id']]);
+                        $comment_url = ['/presentation/comment', 'id' => $comment['id']];
+                        break;
+                    case 'vacancy':
+                        $url = Html::a('Вакансия: ' . Vacancy::findOne($comment['content_id'])->title, ['/vacancy/view', 'id' => $comment['content_id']]);
+                        $comment_url = ['/vacancy/comment', 'id' => $comment['id']];
+                        break;
+                    case 'seminar':
+                        $url = Html::a('Семинар: ' . Seminar::findOne($comment['content_id'])->title, ['/seminar/view', 'id' => $comment['content_id']]);
+                        $comment_url = ['/seminar/comment', 'id' => $comment['id']];
+                        break;
+                }
+                ?>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 well">
+                        <div class="row text-center"><?= $url ?></div>
+                        </br>
+                        <div class="row">
+                            <div
+                                class="col-md-3"><?= Html::a(User::findOne($comment['user_id'])->login, ['/user/view', 'id' => $comment['user_id']]) ?></div>
+                            <div class="col-md-9"><?= $comment['comment'] ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6><?= $comment['date_add'] ?></h6>
+                            </div>
+                            <div class="col-md-9">
+                                <?= Html::a('<i class="glyphicon glyphicon-tag"></i>', $comment_url,
+                                    [
+                                        'class' => 'list-comment pull-right',
+                                        'title' => $comment['admin_comment'],
+                                    ]); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 well">
-                <div class="row text-center"><?=$url?></div>
-                </br>
-                <div class="row">
-                    <div class="col-md-3"><?=Html::a(User::findOne($comment['user_id'])->login, ['/user/view', 'id' => $comment['user_id']])?></div>
-                    <div class="col-md-9"><?=$comment['comment']?></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <h6><?=$comment['date_add']?></h6>
-                    </div>
-                    <div class="col-md-9">
-                        <?=Html::a('<i class="glyphicon glyphicon-tag"></i>', $comment_url,
-                            [
-                                'class' => 'list-comment pull-right',
-                                'title'=>$comment['admin_comment'],
-                            ]);?>
-                    </div>
-                </div>
+            <div class="col-md-5 col-md-offset-1">
+                <h4>Всего пользователей: <?= $pharmacists ?></h4>
             </div>
         </div>
-    <?php endforeach;?>
-    </div>
-</div>
-
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-            <h4>Всего пользователей: <?=$pharmacists?></h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <h3 class="text-center">Время регистрации</h3>
-            </div>
-            <div class="row">
-                <?php foreach($years as $year):?>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <h3 class="text-center">Время регистрации</h3>
+                </div>
+                <div class="row">
+                    <?php foreach($years as $year):?>
                     <?php foreach($months as $index => $month):?>
                     </br>
                     <div class="month">
@@ -120,7 +126,7 @@ $this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\Jquery
                                                                 <li>
                                                                     <br>
                                                                     <div class="row">
-                                                                        <div class="col-md-8">
+                                                                        <div class="col-md-6">
                                                                             <?=$user['name'];?>
                                                                         </div>
                                                                     <div>
@@ -144,46 +150,79 @@ $this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\Jquery
                     </div>
                     <?php endforeach;?>
                     <hr>
-                <?php endforeach;?>
+                <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <h3>Пользователи в городах</h3>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="has-feedback text-right">
+                            <input type="text" class="form-control city-query" placeholder="Поиск городов"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success search-city">Найти</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Пользователи в городах</h3>
+                </div>
+                <div class="row">
+                    <?php
+                    echo ListView::widget([
+                        'dataProvider' => $regions,
+                        'itemView' => '_itemRegion',
+                        'options' => [
+                            'tag' => 'div',
+                            'class' => 'cities-to-search'
+                        ],
+                        'itemOptions' => [
+                            'class' => 'region'
+                        ],
+                    ]);
+                    ?>
+                </div>
             </div>
-            <div class="row">
-                <?php
-                echo ListView::widget([
-                    'dataProvider' => $regions,
-                    'itemView' => '_itemRegion',
-                    'options' => [
-                        'tag' => 'div',
-                    ],
-                    'itemOptions' => [
-                        'class' => 'region'
-                    ],
-                ]);
-                ?>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <h3>Пользователи в аптеках</h3>
-            </div>
-            <div class="row">
-                <?php
-                echo ListView::widget([
-                    'dataProvider' => $companies,
-                    'itemView' => '_itemCompany',
-                    'options' => [
-                        'tag' => 'div',
-                    ],
-                    'itemOptions' => [
-                        'class' => 'company'
-                    ],
-                ]);
-                ?>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="has-feedback text-right">
+                            <input type="text" class="form-control pharmacy-query" placeholder="Поиск аптек"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success search-pharmacy">Найти</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="has-feedback text-right">
+                            <input type="text" class="form-control company-query" placeholder="Поиск компаний"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success search-company">Найти</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Пользователи в аптеках</h3>
+                </div>
+                <div class="row">
+                    <?php
+                    echo ListView::widget([
+                        'dataProvider' => $companies,
+                        'itemView' => '_itemCompany',
+                        'options' => [
+                            'tag' => 'div',
+                            'class' => 'company-pharmacy-to-search'
+                        ],
+                        'itemOptions' => [
+                            'class' => 'company'
+                        ],
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php endif; ?>

@@ -43,6 +43,8 @@ $this->title = $model->name;
             'rx_otc',
             'first_visit',
             'planned_visit',
+            'address',
+            'contact_person'
         ],
     ]) ?>
 

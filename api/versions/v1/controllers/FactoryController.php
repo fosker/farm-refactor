@@ -3,6 +3,7 @@
 namespace rest\versions\v1\controllers;
 
 use common\models\Mailer;
+use common\models\profile\Type;
 use common\models\Theme;
 use common\models\User;
 use Yii;
@@ -58,8 +59,13 @@ class FactoryController extends Controller
     }
 
     public function actionAll() {
+        if (Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $query = Factory::find()->where(['!=', 'id', 10]);
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            $query = Factory::find()->where(['id' => Yii::$app->user->identity->agent->factory_id]);
+        }
         return new ActiveDataProvider([
-            'query' => Factory::find(),
+            'query' => $query
         ]);
     }
 

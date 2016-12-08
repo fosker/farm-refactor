@@ -77,7 +77,7 @@ use kartik\widgets\Select2;
         ['prompt' => 'Выберите статус']
     ); ?>
 
-    <?= $form->field($model, 'user.inList')->dropDownList([0 => 'нет', 1 => 'в сером', 2 => 'в белом'],
+    <?= $form->field($model, 'user.inList')->dropDownList([0 => 'в сером', 1 => 'в черном', 2 => 'в белом'],
         ['prompt' => 'Выберите список']); ?>
 
     <div class="form-group">
