@@ -15,6 +15,7 @@ use common\models\company\Pharmacy;
 use common\models\Factory;
 use common\models\news\View;
 use common\models\profile\Type;
+use common\models\news\ForList;
 
 /**
  * This is the model class for table "news".
@@ -27,10 +28,10 @@ use common\models\profile\Type;
  * @property string $date
  * @property integer $views_added
  * @property integer $factory_id
- * @property integer $forList
  */
 class News extends \yii\db\ActiveRecord
 {
+    public $forLists = [];
 
     public $imageFile;
     public $thumbFile;
@@ -51,17 +52,18 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'text', 'factory_id', 'forList'], 'required'],
+            [['title', 'text', 'factory_id'], 'required'],
             [['views_added', 'factory_id'], 'integer'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create'],
             [['title', 'text', 'date'], 'string'],
+            ['forLists', 'each', 'rule' => ['integer']],
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added', 'forList'];
+        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added'];
         return $scenarios;
     }
 
@@ -82,7 +84,7 @@ class News extends \yii\db\ActiveRecord
             'views' => 'Уникальных просмотров',
             'views_added' => 'Добавленные просмотры',
             'factory_id' => 'Фабрика Автор',
-            'forList' => 'Показывать списку'
+            'forLists' => 'Показывать спискам'
         ];
     }
 
@@ -149,15 +151,12 @@ class News extends \yii\db\ActiveRecord
             $education = News_Education::find()->select('news_id')->andFilterWhere(['education_id' => Yii::$app->user->identity->pharmacist->education_id]);
             $types = News_Type::find()->select('news_id')->andFilterWhere(['type_id' => Yii::$app->user->identity->type_id]);
             $pharmacies = News_Pharmacy::find()->select('news_id')->andFilterWhere(['pharmacy_id' => Yii::$app->user->identity->pharmacist->pharmacy_id]);
+            $lists = ForList::find()->select('news_id')->andFilterWhere(['list' => Yii::$app->user->identity->inList]);
             return static::find()
                 ->andFilterWhere(['in', static::tableName() . '.id', $education])
                 ->andFilterWhere(['in', static::tableName() . '.id', $types])
                 ->andFilterWhere(['in', static::tableName() . '.id', $pharmacies])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList . '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList . '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList . '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList . '=0'],
-                ])
+                ->andFilterWhere(['in', static::tableName() . '.id', $lists])
                 ->orderBy(['date' => SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
@@ -170,27 +169,8 @@ class News extends \yii\db\ActiveRecord
                     News_Type::tableName() . '.type_id' => Type::TYPE_AGENT,
                     'factory_id' => [Yii::$app->user->identity->agent->factory_id, '1']
                 ])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList . '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList . '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList . '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList . '=0'],
-                ])
                 ->orderBy(['date' => SORT_DESC])
                 ->groupBy(static::tableName() . '.id');
-        }
-    }
-
-    public function getLists()
-    {
-        $values = array(
-            0 => 'серому и белому',
-            1 => 'всем',
-            2 => 'только белому',
-            3 => 'только черному',
-            4 => 'только серому'
-        );
-        if (isset($values[$this->forList])) {
-            return $values[$this->forList];
         }
     }
 
@@ -431,6 +411,18 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
+    public function loadLists($lists)
+    {
+        if ($lists) {
+            for ($i = 0; $i < count($lists); $i++) {
+                $list = new ForList();
+                $list->list = $lists[$i];
+                $list->news_id = $this->id;
+                $list->save();
+            }
+        }
+    }
+
     public function updateEducation($educations)
     {
         News_Education::deleteAll(['news_id' => $this->id]);
@@ -479,6 +471,19 @@ class News extends \yii\db\ActiveRecord
                 $relation->child_id = $relations[$i];
                 $relation->parent_id = $this->id;
                 $relation->save();
+            }
+        }
+    }
+
+    public function updateLists($lists)
+    {
+        ForList::deleteAll(['news_id' => $this->id]);
+        if ($lists) {
+            for ($i = 0; $i < count($lists); $i++) {
+                $list = new ForList();
+                $list->list = $lists[$i];
+                $list->news_id = $this->id;
+                $list->save();
             }
         }
     }

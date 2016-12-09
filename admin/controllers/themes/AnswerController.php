@@ -55,6 +55,22 @@ class AnswerController extends Controller
         ]);
     }
 
+    public function actionAnswered($id)
+    {
+        $model = $this->findModel($id);
+        $model->answered();
+
+        return $this->redirect(['index']);
+    }
+
+    public function actionNotAnswered($id)
+    {
+        $model = $this->findModel($id);
+        $model->not_answered();
+
+        return $this->redirect(['index']);
+    }
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -67,6 +83,20 @@ class AnswerController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionComment($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'comment';
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('comment', [
+                'model' => $model,
+            ]);
+        }
     }
 
     protected function findModel($id)

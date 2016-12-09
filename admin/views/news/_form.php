@@ -129,17 +129,17 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
         'preset' => 'basic'
     ]); ?>
 
-    <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[
+    <?= $form->field($model, 'imageFile')->widget(FileInput::classname(), [
         'pluginOptions' => [
-            'initialPreview'=> $model->image ? Html::img($model->imagePath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
+            'initialPreview' => $model->image ? Html::img($model->imagePath, ['class' => 'file-preview-image', 'alt' => 'image', 'title' => 'Image']) : '',
             'showUpload' => false,
             'showRemove' => false,
         ]
     ]); ?>
 
-    <?= $form->field($model, 'thumbFile')->widget(FileInput::classname(),[
+    <?= $form->field($model, 'thumbFile')->widget(FileInput::classname(), [
         'pluginOptions' => [
-            'initialPreview'=> $model->thumbnail ? Html::img($model->thumbPath, ['class'=>'file-preview-image', 'alt'=>'thumb', 'title'=>'thumb']) : '',
+            'initialPreview' => $model->thumbnail ? Html::img($model->thumbPath, ['class' => 'file-preview-image', 'alt' => 'thumb', 'title' => 'thumb']) : '',
             'showUpload' => false,
             'showRemove' => false,
         ]
@@ -147,7 +147,13 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'views_added')->textInput() ?>
 
-    <?= $form->field($model, 'forList')->radioList([0 => 'серому и белому', 1 => 'всем', 2 => 'только белому', 3 => 'только черному', 4 => 'только серому'])?>
+    <?= $form->field($model, 'forLists')
+        ->checkboxList([
+            '1' => 'серый список',
+            '2' => 'черный список',
+            '3' => 'белый список',
+        ]);
+    ?>
 
     <?php
     echo '<label class="control-label">Рекомендуемые новости</label>';

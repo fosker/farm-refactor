@@ -16,6 +16,9 @@ use yii\db\ActiveRecord;
  * @property string $date_added
  * @property integer $is_answered
  * @property string $comment
+ * @property string $phone
+ * @property string $text
+ * @property string $email
  */
 class Answer extends ActiveRecord
 {
@@ -27,6 +30,16 @@ class Answer extends ActiveRecord
         return 'theme_answers';
     }
 
+    public function scenarios()
+    {
+        return array_merge(
+            parent::scenarios(),
+            [
+                'comment' => ['comment'],
+            ]
+        );
+    }
+
     /**
      * @inheritdoc
      */
@@ -35,7 +48,7 @@ class Answer extends ActiveRecord
         return [
             [['theme_id'], 'required'],
             [['is_answered'], 'integer'],
-            [['comment'], 'string'],
+            [['comment', 'phone', 'text', 'email'], 'string'],
         ];
     }
 
@@ -50,8 +63,23 @@ class Answer extends ActiveRecord
             'theme_id' => 'Тема',
             'is_answered' => 'Отвечено',
             'comment' => 'Комментарий',
-            'date_added' => 'Дата'
+            'date_added' => 'Дата',
+            'phone' => 'Телефон',
+            'text' => 'Текст',
+            'email' => 'Email'
         ];
+    }
+
+    public function answered()
+    {
+        $this->is_answered = true;
+        $this->save(false);
+    }
+
+    public function not_answered()
+    {
+        $this->is_answered = false;
+        $this->save(false);
     }
 
     public function getUser()

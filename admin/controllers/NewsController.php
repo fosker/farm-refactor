@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\news\ForList;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -101,7 +102,15 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
-        $model->scenario = 'create';
+        //$model->scenario = 'create';
+
+//        if (Yii::$app->request->post()) {
+//            $model->load(Yii::$app->request->post());
+//            echo '<pre>';
+//            var_dump($model->forLists);
+//            echo '</pre>';
+//            die();
+//        }
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
@@ -111,6 +120,7 @@ class NewsController extends Controller
                 $model->loadEducation(Yii::$app->request->post('education'));
                 $model->loadTypes(Yii::$app->request->post('types'));
                 $model->loadRelations(Yii::$app->request->post('relations'));
+                $model->loadLists($model->forLists);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -138,7 +148,14 @@ class NewsController extends Controller
             ->where(['news_id' => $id])->asArray()->all();
         $old_education = News_Education::find()->select('education_id')->where(['news_id' => $id])->asArray()->all();
         $old_types = News_Type::find()->select('type_id')->where(['news_id' => $id])->asArray()->all();
-        $old_relations = ArrayHelper::map(News::findOne($model->id)->recommended, 'id', 'title');;
+        $old_relations = ArrayHelper::map(News::findOne($model->id)->recommended, 'id', 'title');
+        $old_lists = ForList::find()->select('list')->where(['news_id' => $id])->all();
+        $checked_lists = [];
+        foreach ($old_lists as $list) {
+            $checked_lists[$list->list] = $list->list;
+        }
+
+        $model->forLists = $checked_lists;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
@@ -150,6 +167,7 @@ class NewsController extends Controller
                 $model->updateEducation(Yii::$app->request->post('education'));
                 $model->updateTypes(Yii::$app->request->post('types'));
                 $model->updateRelations(Yii::$app->request->post('relations'));
+                $model->updateLists($model->forLists);
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -168,7 +186,7 @@ class NewsController extends Controller
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
                 'old_education' => $old_education,
-                'old_relations' => $old_relations
+                'old_relations' => $old_relations,
             ]);
         }
     }

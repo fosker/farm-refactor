@@ -7,6 +7,7 @@ use kartik\date\DatePicker;
 use common\models\stock\Reply;
 
 $this->title = 'Ответы на темы';
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="reply-index">
 
@@ -78,11 +79,18 @@ $this->title = 'Ответы на темы';
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view} {delete}{answered}',
+                'template'=>'{view} {delete} {answered} {comment}',
                 'buttons'=>[
                     'answered'=>function ($url, $model, $key) {
-                        return Html::a($model->is_answered ? '<i class="glyphicon glyphicon-ok" style="color:lime"></i>' : '<i class="glyphicon glyphicon-ok text-muted"></i>', [$model->is_answered ? 'not_answered' : 'answered', 'id'=>$model->id],
+                        return Html::a($model->is_answered ? '<i class="glyphicon glyphicon-ok" style="color:lime"></i>' : '<i class="glyphicon glyphicon-ok text-muted"></i>', [$model->is_answered ? 'not-answered' : 'answered', 'id'=>$model->id],
                             ['title'=>$model->is_answered ? 'Не отвечено' : "Отвечено"]);
+                    },
+                    'comment'=>function ($url, $model, $key) {
+                        return Html::a('<i class="glyphicon glyphicon-tag"></i>', ['comment', 'id'=>$model->id],
+                            [
+                                'class' => 'list-comment',
+                                'title'=>$model->comment,
+                            ]);
                     },
                 ],
             ],

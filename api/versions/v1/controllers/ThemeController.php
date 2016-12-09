@@ -74,6 +74,10 @@ class ThemeController extends Controller
                     $answer = new ThemeAnswer();
                     $answer->theme_id = $reply->theme_id;
                     $answer->user_id = Yii::$app->user->id;
+                    $answer->phone = $reply->phone;
+                    $answer->email = $reply->email;
+                    $answer->text = $reply->text;
+
                     $answer->save(false);
                 }
                 return [
@@ -109,6 +113,8 @@ class ThemeController extends Controller
                                 $answer = new ThemeAnswer();
                                 $answer->theme_id = $reply->theme_id;
                                 $answer->user_id = Yii::$app->user->id;
+                                $answer->phone = $reply->phone;
+                                $answer->email = $reply->email;
                                 $answer->save(false);
                             }
                             return [
