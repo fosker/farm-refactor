@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use kartik\widgets\Select2;
 use yii\helpers\Html;
@@ -11,7 +11,7 @@ use common\models\profile\Education;
 use common\models\profile\Type;
 use common\models\Company;
 use yii\bootstrap\Modal;
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="presentation-form">
@@ -111,10 +111,10 @@ $this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryA
 
     <?= $form->field($model, 'points')->textInput() ?>
 
-<!--    --><?//= $form->field($model, 'description')->widget(Editor::className(), [
-//        'options' => ['rows' => 6],
-//        'preset' => 'click'
-//    ]); ?>
+    <?= $form->field($model, 'description')->widget(Editor::className(), [
+        'options' => ['rows' => 6],
+        'preset' => 'basic'
+    ]); ?>
 
     <?= $form->field($model, 'home_priority')->textInput() ?>
 
