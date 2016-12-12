@@ -271,6 +271,10 @@ class Item extends ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Item_Pharmacy::deleteAll(['item_id' => $this->id]);
+    }
 
     public function loadImage()
     {

@@ -55,7 +55,6 @@ class News extends \yii\db\ActiveRecord
             [['views_added', 'factory_id'], 'integer'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create'],
             [['title', 'text', 'date'], 'string'],
-            ['forLists', 'each', 'rule' => ['integer']],
         ];
     }
 
@@ -460,6 +459,11 @@ class News extends \yii\db\ActiveRecord
                 $pharmacy->save();
             }
         }
+    }
+
+    public function deletePharmacies()
+    {
+        News_Pharmacy::deleteAll(['news_id' => $this->id]);
     }
 
     public function updateTypes($types)

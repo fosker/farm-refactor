@@ -122,10 +122,12 @@ class BannerController extends Controller
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save()) {
                 $model->hide();
-                if(Yii::$app->request->post('pharmacies')) {
-                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                if (!Yii::$app->request->post('companies') || !Yii::$app->request->post('cities')) {
+                    $model->deletePharmacies();
                 }
-                $model->updateEducation(Yii::$app->request->post('education'));
+                if (Yii::$app->request->post('pharmacies')) {
+                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                }                $model->updateEducation(Yii::$app->request->post('education'));
                 $model->updateTypes(Yii::$app->request->post('types'));
                 return $this->redirect(['view', 'id' => $model->id]);
             }

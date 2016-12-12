@@ -411,6 +411,11 @@ class Seminar extends \yii\db\ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Seminar_Pharmacy::deleteAll(['seminar_id' => $this->id]);
+    }
+
     public function updateTypes($types)
     {
         Seminar_Type::deleteAll(['seminar_id' => $this->id]);

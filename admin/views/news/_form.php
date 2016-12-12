@@ -16,7 +16,7 @@ use backend\components\Editor;
 
 
 $this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="news-form">
@@ -146,14 +146,6 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     ]); ?>
 
     <?= $form->field($model, 'views_added')->textInput() ?>
-
-    <?= $form->field($model, 'forLists')
-        ->checkboxList([
-            '1' => 'серый список',
-            '2' => 'черный список',
-            '3' => 'белый список',
-        ]);
-    ?>
 
     <?php
     echo '<label class="control-label">Рекомендуемые новости</label>';

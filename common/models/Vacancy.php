@@ -270,6 +270,11 @@ class Vacancy extends \yii\db\ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Vacancy_Pharmacy::deleteAll(['vacancy_id' => $this->id]);
+    }
+
     public function loadImage() {
         if($this->imageFile) {
             $path = Yii::getAlias('@uploads/vacancies/');

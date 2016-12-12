@@ -106,10 +106,12 @@ class PresentController extends Controller
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
             if ($model->save()) {
-                if(Yii::$app->request->post('pharmacies')) {
-                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                if (!Yii::$app->request->post('companies') || !Yii::$app->request->post('cities')) {
+                    $model->deletePharmacies();
                 }
-                return $this->redirect(['view', 'id' => $model->id]);
+                if (Yii::$app->request->post('pharmacies')) {
+                    $model->updatePharmacies(Yii::$app->request->post('pharmacies'));
+                }                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             return $this->render('update', [

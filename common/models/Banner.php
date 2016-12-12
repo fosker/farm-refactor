@@ -470,6 +470,11 @@ class Banner extends ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Banner_Pharmacy::deleteAll(['banner_id' => $this->id]);
+    }
+
     public function updateTypes($types)
     {
         Banner_Type::deleteAll(['banner_id' => $this->id]);

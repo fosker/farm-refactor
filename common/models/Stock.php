@@ -361,6 +361,11 @@ class Stock extends ActiveRecord
         }
     }
 
+    public function deletePharmacies()
+    {
+        Stock_Pharmacy::deleteAll(['stock_id' => $this->id]);
+    }
+
     public function updateTypes($types)
     {
         Stock_Type::deleteAll(['stock_id' => $this->id]);
