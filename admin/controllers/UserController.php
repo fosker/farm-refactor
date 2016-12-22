@@ -45,7 +45,7 @@ class UserController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'user'=>'admin',
+                'user' => 'admin',
                 'rules' => [
                     [
                         'allow' => true,
@@ -88,7 +88,7 @@ class UserController extends Controller
             'logins' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'login', 'login'),
             'pharmacies' => ArrayHelper::map(Pharmacy::find()
                 ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
-                ->asArray()->all(), 'id','name'),
+                ->asArray()->all(), 'id', 'name'),
             'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
             'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id', 'title'),
             'emails' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'email', 'email'),
@@ -98,7 +98,7 @@ class UserController extends Controller
     public function actionView($id)
     {
         $type = $this->findModel($id)->type_id;
-        return $this->render('view_'.$type, [
+        return $this->render('view_' . $type, [
             'model' => $this->findModel($id),
         ]);
     }
@@ -107,56 +107,63 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario = 'update';
-        switch($model->type_id) {
-            case Type::TYPE_PHARMACIST: $type = Pharmacist::findOne($id);
-                                        $type->scenario = 'update';
+        switch ($model->type_id) {
+            case Type::TYPE_PHARMACIST:
+                $type = Pharmacist::findOne($id);
+                $type->scenario = 'update';
                 break;
-            case Type::TYPE_AGENT: $type = Agent::findOne($id);
+            case Type::TYPE_AGENT:
+                $type = Agent::findOne($id);
                 break;
         }
-        if($update_id) {
-            switch($model->type_id) {
-                case Type::TYPE_PHARMACIST: $update = PharmacistUpdateRequest::findOne(['pharmacist_id' => $update_id]);
+        if ($update_id) {
+            switch ($model->type_id) {
+                case Type::TYPE_PHARMACIST:
+                    $update = PharmacistUpdateRequest::findOne(['pharmacist_id' => $update_id]);
                     break;
-                case Type::TYPE_AGENT: $update = AgentUpdateRequest::findOne(['agent_id' => $update_id]);
+                case Type::TYPE_AGENT:
+                    $update = AgentUpdateRequest::findOne(['agent_id' => $update_id]);
                     break;
             }
         }
         if (($model->load(Yii::$app->request->post()) && $type->load(Yii::$app->request->post()) &&
-            ($model->validate() && $type->validate()))) {
-            if($model->save(false) && $type->save(false))
-                if($update_id) {
-                    switch($model->type_id) {
-                        case Type::TYPE_PHARMACIST: PharmacistUpdateRequest::deleteAll(['pharmacist_id' => $update_id]);
+            ($model->validate() && $type->validate()))
+        ) {
+            if ($model->save(false) && $type->save(false))
+                if ($update_id) {
+                    switch ($model->type_id) {
+                        case Type::TYPE_PHARMACIST:
+                            PharmacistUpdateRequest::deleteAll(['pharmacist_id' => $update_id]);
                             break;
-                        case Type::TYPE_AGENT: AgentUpdateRequest::deleteAll(['agent_id' => $update_id]);
+                        case Type::TYPE_AGENT:
+                            AgentUpdateRequest::deleteAll(['agent_id' => $update_id]);
                             break;
                     }
                 }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            switch($model->type_id) {
+            switch ($model->type_id) {
                 case Type::TYPE_PHARMACIST:
                     return $this->render('pharmacists/update', [
                         'model' => $model,
-                        'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id','title'),
-                        'regions' => ArrayHelper::map(Region::find()->asArray()->all(), 'id','name'),
-                        'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id','name'),
+                        'companies' => ArrayHelper::map(Company::find()->asArray()->all(), 'id', 'title'),
+                        'regions' => ArrayHelper::map(Region::find()->asArray()->all(), 'id', 'name'),
+                        'cities' => ArrayHelper::map(City::find()->asArray()->all(), 'id', 'name'),
                         'pharmacies' => ArrayHelper::map(Pharmacy::find()
                             ->select(['id', new \yii\db\Expression("CONCAT(`name`, ' (', `address`,')') as name")])
-                            ->asArray()->all(), 'id','name'),
-                        'education' => ArrayHelper::map(Education::find()->asArray()->all(), 'id','name'),
-                        'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id','name'),
+                            ->asArray()->all(), 'id', 'name'),
+                        'education' => ArrayHelper::map(Education::find()->asArray()->all(), 'id', 'name'),
+                        'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id', 'name'),
                         'update' => $update,
                         'type' => $type
-                ]);
+                    ]);
                 case Type::TYPE_AGENT:
                     return $this->render('agents/update', [
                         'model' => $model,
                         'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
                         'update' => $update,
                         'type' => $type,
-                ]);
+                    ]);
             }
         }
     }
@@ -164,7 +171,7 @@ class UserController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        switch($model->type_id) {
+        switch ($model->type_id) {
             case Type::TYPE_PHARMACIST:
                 Pharmacist::findOne($id)->delete();
                 return $this->redirect(['pharmacists']);
@@ -190,13 +197,13 @@ class UserController extends Controller
         $model->verified();
 
         $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
-            ->andWhere(['not',['push_token' => null]])
+            ->andWhere(['not', ['push_token' => null]])
             ->andWhere(['type' => 1])
             ->asArray()
             ->all(), 'id', 'push_token');
 
         $ios_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
-            ->andWhere(['not',['push_token' => null]])
+            ->andWhere(['not', ['push_token' => null]])
             ->andWhere(['type' => 2])
             ->asArray()
             ->all(), 'id', 'push_token');
@@ -208,20 +215,18 @@ class UserController extends Controller
 
         $message = 'Ваш аккаунт верифицирован. ';
 
-        if($ios_tokens)
-        {
+        if ($ios_tokens) {
             Yii::$app->apns->sendMulti($ios_tokens, $message, [], [
                 'sound' => 'default',
                 'badge' => 0
             ]);
         }
 
-        if($android_tokens)
-        {
+        if ($android_tokens) {
             Yii::$app->gcm->sendMulti($android_tokens, $message);
         }
 
-        switch($model->type_id) {
+        switch ($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
             case 2:
@@ -233,9 +238,9 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario = 'black';
-        if($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->toBlack();
-            switch($model->type_id) {
+            switch ($model->type_id) {
                 case 1:
                     return $this->redirect(['pharmacists']);
                 case 2:
@@ -253,9 +258,9 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario = 'white';
-        if($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->toWhite();
-            switch($model->type_id) {
+            switch ($model->type_id) {
                 case 1:
                     return $this->redirect(['pharmacists']);
                 case 2:
@@ -274,7 +279,7 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->toGray();
-        switch($model->type_id) {
+        switch ($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
             case 2:
@@ -288,7 +293,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
         $model->ban();
 
-        switch($model->type_id) {
+        switch ($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
             case 2:
@@ -301,7 +306,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
         $model->notVerify();
 
-        switch($model->type_id) {
+        switch ($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
             case 2:
@@ -309,21 +314,44 @@ class UserController extends Controller
         }
     }
 
-    public function actionCityList() {
+    public function actionCreateAgent()
+    {
+        $model = new User(['scenario' => 'without-device']);
+        $model->type_id = Type::TYPE_AGENT;
+        $user = new Agent();
+        if (($model->load(Yii::$app->request->post()) && $user->load(Yii::$app->request->post()) &&
+            ($model->validate() && $user->validate()))
+        ) {
+            $model->register();
+            $user->id = $model->id;
+            $user->save(false);
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('agents/create', [
+                'model' => $model,
+                'user' => $user,
+                'factories' => ArrayHelper::map(Factory::find()->asArray()->all(), 'id', 'title'),
+            ]);
+        }
+    }
+
+    public function actionCityList()
+    {
         $out = [];
         if (isset($_POST['depdrop_parents'])) {
             $parents = $_POST['depdrop_parents'];
             if ($parents != null) {
                 $region_id = $parents[0];
                 $out = City::getCityList($region_id);
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                echo Json::encode(['output' => $out, 'selected' => '']);
                 return;
             }
         }
-        echo Json::encode(['output'=>'', 'selected'=>'']);
+        echo Json::encode(['output' => '', 'selected' => '']);
     }
 
-    public function actionPharmacyList() {
+    public function actionPharmacyList()
+    {
         $out = [];
         if (isset($_POST['depdrop_parents'])) {
             $parents = $_POST['depdrop_parents'];
@@ -331,11 +359,11 @@ class UserController extends Controller
                 $company_id = $parents[0];
                 $city_id = $parents[1];
                 $out = Pharmacy::getPharmacyList($company_id, $city_id);
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                echo Json::encode(['output' => $out, 'selected' => '']);
                 return;
             }
         }
-        echo Json::encode(['output'=>'', 'selected'=>'']);
+        echo Json::encode(['output' => '', 'selected' => '']);
     }
 
 }

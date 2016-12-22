@@ -15,6 +15,7 @@ use common\models\presentation\Answer;
  * @property integer $user_id
  * @property integer $presentation_id
  * @property string $added
+ * @property string $time_answer
  */
 class View extends ActiveRecord
 {
@@ -67,10 +68,15 @@ class View extends ActiveRecord
 
     public static function addByCurrentUser($answers)
     {
+        $start = Start::findOne(['presentation_id' => reset($answers)->question->presentation_id, 'user_id' => Yii::$app->user->id]);
+
         $view = new static();
         $view->user_id = Yii::$app->user->id;
         $view->presentation_id =reset($answers)->question->presentation_id;
+        $view->time_answer = strtotime("now") - strtotime($start->date_start);
         $view->save(false);
+
+        $start->delete();
         $presentation = Presentation::findOne($view->presentation_id);
         $presentation->updateCounters(['views_limit' => -1]);
         foreach($answers as $answer) {

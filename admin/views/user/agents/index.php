@@ -19,6 +19,10 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
         'logins' => $logins
     ]); ?>
 
+    <p>
+        <?= Html::a('Создать представителя', ['create-agent'], ['class' => 'btn btn-success']) ?>
+    </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'rowOptions' => function($model) {

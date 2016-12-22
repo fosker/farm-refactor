@@ -17,10 +17,11 @@ use common\models\User;
  * @property integer $pharmacy_id
  * @property integer $position_id
  * @property string $mail_address
+ * @property string $date_birth
+ * @property string $pharmacy_phone_number
  */
 class Pharmacist extends \yii\db\ActiveRecord
 {
-
     const STATUS_VERIFY = 0;
     const STATUS_ACTIVE = 1;
 
@@ -42,7 +43,8 @@ class Pharmacist extends \yii\db\ActiveRecord
         return array_merge(
             parent::scenarios(),
             [
-                'update' => ['pharmacy_id', 'education_id', 'sex', 'position_id', 'mail_address'],
+                'update' => ['pharmacy_id', 'education_id', 'sex', 'position_id', 'mail_address', 'date_birth',
+                'pharmacy_phone_number'],
             ]
         );
     }
@@ -54,6 +56,8 @@ class Pharmacist extends \yii\db\ActiveRecord
             [['education_id', 'pharmacy_id', 'position_id', 'region_id', 'company_id', 'city_id'], 'integer'],
             [['sex'], 'string', 'max' => 6],
             [['mail_address'], 'string', 'max' => 100],
+            [['date_birth', 'pharmacy_phone_number'], 'required'],
+            [['pharmacy_phone_number'], 'date']
         ];
     }
 
@@ -72,12 +76,15 @@ class Pharmacist extends \yii\db\ActiveRecord
             'city_id' => 'Город',
             'company_id' => 'Компания',
             'mail_address' => 'Почтовый адрес',
+            'date_birth' => 'Дата рождения',
+            'pharmacy_phone_number' => 'Телефонный номер аптеки'
         ];
     }
 
     public function fields() {
 
-        return ['id', 'sex','education','pharmacy','position','region', 'city', 'company', 'mail_address'];
+        return ['id', 'sex','education','pharmacy','position','region', 'city', 'company', 'mail_address',
+        'date_birth', 'pharmacy_phone_number'];
     }
 
     public function getPharmacy()

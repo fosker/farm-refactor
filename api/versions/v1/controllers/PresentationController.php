@@ -10,6 +10,7 @@ use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 
+use common\models\presentation\Start;
 use common\models\presentation\Comment;
 use common\models\presentation\View;
 use common\models\Presentation;
@@ -85,6 +86,10 @@ class PresentationController extends Controller
             $view->user_id = Yii::$app->user->id;
             $view->save();
         }
+        $start = new Start();
+        $start->user_id = Yii::$app->user->id;
+        $start->presentation_id = $id;
+        $start->save();
         return Presentation::getOneForCurrentUser($id);
     }
 

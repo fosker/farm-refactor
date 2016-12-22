@@ -102,15 +102,7 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
-        //$model->scenario = 'create';
-
-//        if (Yii::$app->request->post()) {
-//            $model->load(Yii::$app->request->post());
-//            echo '<pre>';
-//            var_dump($model->forLists);
-//            echo '</pre>';
-//            die();
-//        }
+        $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
@@ -120,7 +112,6 @@ class NewsController extends Controller
                 $model->loadEducation(Yii::$app->request->post('education'));
                 $model->loadTypes(Yii::$app->request->post('types'));
                 $model->loadRelations(Yii::$app->request->post('relations'));
-                $model->loadLists($model->forLists);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -208,11 +199,6 @@ class NewsController extends Controller
         } else {
             throw new NotFoundHttpException('Новость не найдена. ');
         }
-    }
-
-    public function actionLoadImage()
-    {
-        echo "KY";
     }
 
     public function actionComment($id)

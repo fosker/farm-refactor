@@ -51,7 +51,6 @@ use common\models\Mailer;
  */
 class User extends ActiveRecord implements IdentityInterface , RateLimitInterface
 {
-
     public $image;
     public $re_password;
     public $old_password;
@@ -77,6 +76,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
                 'black' => ['inList', 'comment'],
                 'white' => ['inList', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
+                'without-device' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone'],
                 'update-password' => ['old_password', 'password', 're_password'],
                 'reset-password' => ['reset_token', 'password', 're_password'],
                 'update-photo' => ['image'],

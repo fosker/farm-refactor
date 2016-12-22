@@ -14,6 +14,7 @@ use common\models\survey\Answer;
 use common\models\survey\View;
 use common\models\Survey;
 use common\models\survey\Unique;
+use common\models\survey\Start;
 
 class SurveyController extends Controller
 {
@@ -53,6 +54,10 @@ class SurveyController extends Controller
             $view->user_id = Yii::$app->user->id;
             $view->save();
         }
+        $start = new Start();
+        $start->user_id = Yii::$app->user->id;
+        $start->survey_id = $id;
+        $start->save();
         return Survey::getOneForCurrentUser($id);
     }
 

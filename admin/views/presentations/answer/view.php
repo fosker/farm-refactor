@@ -6,6 +6,8 @@ use yii\helpers\HtmlPurifier;
 
 $this->title = 'Ответ презентации';
 $title = Html::a($answers[0]->view->user->name,['/user/view','id'=>$answers[0]->view->user->id]).' ответил на "'.Html::a($answers[0]->view->presentation->title,['/presentation/view','id'=>$answers[0]->view->presentation->id]).'"';
+$time = $answers[0]->view->time_answer;
+
 ?>
 <div class="answer-view">
 
@@ -22,6 +24,8 @@ $title = Html::a($answers[0]->view->user->name,['/user/view','id'=>$answers[0]->
             'class'=>'btn btn-danger',
         ]) ?>
     </p>
+
+    <p>Время заполнения: <?= gmdate("H:i:s", $time); ?></p>
 
     <table class="table">
         <thead>
