@@ -36,6 +36,10 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             'title',
+            [
+                'attribute' => 'is_shown',
+                'value' => $model->is_shown ? 'да' : 'нет'
+            ],
             'description:html',
         ],
     ]) ?>

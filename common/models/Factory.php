@@ -25,6 +25,7 @@ use common\models\Theme;
  * @property string $description
  * @property string $image
  * @property string $logo
+ * @property integer $is_shown
  */
 class Factory extends ActiveRecord
 {
@@ -39,7 +40,7 @@ class Factory extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'required'],
+            [['title', 'description', 'is_shown'], 'required'],
             [['imageFile','logoFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -47,7 +48,7 @@ class Factory extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'imageFile','logoFile'];
+        $scenarios['create'] = ['title', 'description', 'imageFile','logoFile', 'is_shown'];
         return $scenarios;
     }
 
@@ -60,7 +61,8 @@ class Factory extends ActiveRecord
             'image' => 'Изображение',
             'logo' => 'Лого',
             'logoFile' => 'Лого',
-            'imageFile' => 'Изображение'
+            'imageFile' => 'Изображение',
+            'is_shown' => 'Показывать'
         ];
     }
 

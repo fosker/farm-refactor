@@ -13,6 +13,8 @@ use kartik\widgets\Select2;
         'method' => 'get',
     ]); ?>
 
+    <?= $form->field($model, 'id')->textInput() ?>
+
     <?= $form->field($model, 'user.login')->widget(Select2::classname(), [
         'data' => $logins,
         'options' => ['placeholder' => 'Выберите логин ...'],
@@ -77,7 +79,7 @@ use kartik\widgets\Select2;
         ['prompt' => 'Выберите статус']
     ); ?>
 
-    <?= $form->field($model, 'user.inList')->dropDownList([0 => 'в сером', 1 => 'в черном', 2 => 'в белом'],
+    <?= $form->field($model, 'user.inList')->dropDownList([0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в синем'],
         ['prompt' => 'Выберите список']); ?>
 
     <div class="form-group">

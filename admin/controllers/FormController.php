@@ -18,31 +18,6 @@ use backend\models\form\Search;
 class FormController extends Controller
 {
 
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'user'=>'admin',
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->admin->identity->can($action);
-                        }
-                    ],
-                ],
-            ],
-        ];
-    }
-
     public function actionIndex()
     {
         $searchModel = new Search();

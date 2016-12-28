@@ -40,7 +40,7 @@ class UserController extends Controller
                     'accept' => ['post'],
                     'ban' => ['post'],
                     'not-verify' => ['post'],
-                    'gray' => ['post'],
+                    'neutral' => ['post'],
                 ],
             ],
             'access' => [
@@ -275,10 +275,10 @@ class UserController extends Controller
     }
 
 
-    public function actionGray($id)
+    public function actionNeutral($id)
     {
         $model = $this->findModel($id);
-        $model->toGray();
+        $model->toNeutral();
         switch ($model->type_id) {
             case 1:
                 return $this->redirect(['pharmacists']);
@@ -287,6 +287,25 @@ class UserController extends Controller
         }
     }
 
+    public function actionBlue($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'blue';
+        if ($model->load(Yii::$app->request->post())) {
+            $model->toBlue();
+            switch ($model->type_id) {
+                case 1:
+                    return $this->redirect(['pharmacists']);
+                case 2:
+                    return $this->redirect(['agents']);
+            }
+        } else {
+            return $this->render('blue', [
+                'model' => $model,
+                'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
+            ]);
+        }
+    }
 
     public function actionBan($id)
     {

@@ -107,6 +107,7 @@ $this->title = $model->title;
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],
+            'date_added:datetime'
         ],
     ]) ?>
 

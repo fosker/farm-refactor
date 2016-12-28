@@ -16,7 +16,7 @@ use backend\components\Editor;
 
 
 $this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by/admin/js/dropler/');");
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <div class="news-form">
@@ -146,6 +146,9 @@ $this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryA
     ]); ?>
 
     <?= $form->field($model, 'views_added')->textInput() ?>
+
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
+        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только синему'])?>
 
     <?php
     echo '<label class="control-label">Рекомендуемые новости</label>';

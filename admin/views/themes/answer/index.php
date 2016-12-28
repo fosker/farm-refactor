@@ -32,6 +32,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                     ],
                 ]),
             ],
+            'user.email:email',
             [
                 'attribute'=>'user.name',
                 'value'=>function($model) {

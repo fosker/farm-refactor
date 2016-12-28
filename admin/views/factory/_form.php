@@ -18,6 +18,8 @@ use backend\components\Editor;
         'preset' => 'basic'
     ]); ?>
 
+    <?= $form->field($model, 'is_shown')->dropDownList([1 => 'да', 0 => 'нет']) ?>
+
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[
         'pluginOptions' => [
             'initialPreview'=> $model->image ? Html::img($model->imagePath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
@@ -33,6 +35,8 @@ use backend\components\Editor;
             'showRemove' => false,
         ]
     ]); ?>
+
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

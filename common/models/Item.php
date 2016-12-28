@@ -112,6 +112,7 @@ class Item extends ActiveRecord
                 ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
                 ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
                 ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
+                ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
             ])
             ->orderBy(["priority"=>SORT_DESC,static::tableName().".id"=>SORT_DESC])
             ->groupBy(static::tableName().'.id');

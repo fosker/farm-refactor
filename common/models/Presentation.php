@@ -33,6 +33,7 @@ use common\models\profile\Type;
  * @property integer $home_priority
  * @property integer $views_limit
  * @property integer $forList
+ * @property string $date_added
  */
 class Presentation extends ActiveRecord
 {
@@ -63,13 +64,14 @@ class Presentation extends ActiveRecord
             [['title', 'description', 'points', 'factory_id', 'forList'], 'required'],
             [['points', 'home_priority', 'views_limit'], 'integer'],
             [['imageFile','thumbFile'], 'required', 'on' => 'create'],
+            [['date_added'], 'safe']
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id', 'forList'];
+        $scenarios['create'] = ['title', 'description', 'points', 'imageFile','thumbFile', 'views_limit', 'factory_id', 'forList', 'date_added'];
         return $scenarios;
     }
 
@@ -90,6 +92,7 @@ class Presentation extends ActiveRecord
             'views_limit' => 'Ограничение просмотров',
             'factory_id' => 'Фабрика Автор',
             'forList' => 'Показывать списку',
+            'date_added' => 'Дата и время публикации'
         ];
     }
 
@@ -124,6 +127,7 @@ class Presentation extends ActiveRecord
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
                     ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
                     ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
+                    ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
                 ])
                 ->orderBy(['id'=>SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
@@ -152,11 +156,12 @@ class Presentation extends ActiveRecord
     public function getLists()
     {
         $values = array(
-            0 => 'серому и белому',
+            0 => 'нейтральному и белому',
             1 => 'всем',
             2 => 'только белому',
             3 => 'только черному',
-            4 => 'только серому'
+            4 => 'только нейтральному',
+            5 => 'только синему'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

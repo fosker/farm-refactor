@@ -60,9 +60,11 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const STATUS_ACTIVE = 1;
     const STATUS_NOTE_VERIFIED = 2;
 
+    const IN_NEUTRAL = 0;
     const IN_BLACK = 1;
     const IN_WHITE = 2;
-    const IN_GRAY = 0;
+    const IN_BLUE = 3;
+
 
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
@@ -75,6 +77,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
                 'update' => ['name', 'email', 'phone'],
                 'black' => ['inList', 'comment'],
                 'white' => ['inList', 'comment'],
+                'blue' => ['inList', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'without-device' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone'],
                 'update-password' => ['old_password', 'password', 're_password'],
@@ -489,7 +492,8 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $values = array(
             self::IN_WHITE => 'в белом',
             self::IN_BLACK => 'в черном',
-            self::IN_GRAY => 'в сером',
+            self::IN_NEUTRAL => 'в нейтральном',
+            self::IN_BLUE => 'в синем',
         );
         if(isset($values[$this->inList])) {
             return $values[$this->inList];
@@ -530,9 +534,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->save(false);
     }
 
-    public function toGray()
+    public function toNeutral()
     {
-        $this->inList = static::IN_GRAY;
+        $this->inList = static::IN_NEUTRAL;
         $this->comment = "";
         $this->save(false);
     }
@@ -548,6 +552,12 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function toBlack()
     {
         $this->inList = static::IN_BLACK;
+        $this->save(false);
+    }
+
+    public function toBlue()
+    {
+        $this->inList = static::IN_BLUE;
         $this->save(false);
     }
 

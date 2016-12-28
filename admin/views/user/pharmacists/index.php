@@ -87,57 +87,62 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
             [
                 'attribute'=>'user.inList',
                 'value' => function($model) {
-                    return [0 => 'в сером', 1 => 'в черном', 2 => 'в белом'][$model->user->inList];
+                    return [0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в синем'][$model->user->inList];
                 },
                 'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template'=>'{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {gray} ',
-                'buttons'=>[
+                'template' => '{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {blue} {neutral} ',
+                'buttons' => [
                     'accept' => function ($url, $model, $key) {
-                        if($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
-                            return Html::a('<i class="glyphicon glyphicon-ok"></i>', ['accept', 'id'=>$model->id], [
-                                'title'=>'Утвердить',
+                        if ($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
+                            return Html::a('<i class="glyphicon glyphicon-ok"></i>', ['accept', 'id' => $model->id], [
+                                'title' => 'Утвердить',
                                 'data-confirm' => 'Вы уверены, что хотите подтвердить пользователя?',
-                                'data-pjax'=>0,
-                                'data-method'=>'post',
+                                'data-pjax' => 0,
+                                'data-method' => 'post',
                             ]);
                         }
                     },
                     'ban' => function ($url, $model, $key) {
-                        return $model->user->status == User::STATUS_ACTIVE ? Html::a('<i class="glyphicon glyphicon-remove"></i>', ['ban', 'id'=>$model->id], [
+                        return $model->user->status == User::STATUS_ACTIVE ? Html::a('<i class="glyphicon glyphicon-remove"></i>', ['ban', 'id' => $model->id], [
                             'data-confirm' => 'Вы уверены, что хотите забанить пользователя?',
-                            'title'=>'Забанить',
-                            'data-pjax'=>0,
-                            'data-method'=>'post',
+                            'title' => 'Забанить',
+                            'data-pjax' => 0,
+                            'data-method' => 'post',
                         ]) : '';
                     },
                     'not-verify' => function ($url, $model, $key) {
-                        return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-thumbs-down"></i>', ['not-verify', 'id'=>$model->id], [
+                        return $model->user->status == User::STATUS_VERIFY ? Html::a('<i class="glyphicon glyphicon-thumbs-down"></i>', ['not-verify', 'id' => $model->id], [
                             'data-confirm' => 'Вы уверены, что хотите отменить верификацию пользователя?',
-                            'title'=>'Не прошёл верификацию',
-                            'data-pjax'=>0,
-                            'data-method'=>'post',
+                            'title' => 'Не прошёл верификацию',
+                            'data-pjax' => 0,
+                            'data-method' => 'post',
                         ]) : '';
                     },
                     'black' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
-                            'title'=>'Добавить в черный список',
+                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
+                            'title' => 'Добавить в черный список',
                         ]) : '';
                     },
                     'white' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
-                            'title'=>'Добавить в белый список',
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
+                            'title' => 'Добавить в белый список',
                         ]) : '';
                     },
-                    'gray' => function ($url, $model, $key) {
-                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_BLACK) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['gray', 'id'=>$model->id], [
-                            'data-confirm' => 'Добавить в серый список',
+                    'blue' => function ($url, $model, $key) {
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-align-left"></i>', ['blue', 'id' => $model->id], [
+                            'title' => 'Добавить в синий список',
+                        ]) : '';
+                    },
+                    'neutral' => function ($url, $model, $key) {
+                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_BLACK || $model->user->inList == User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['neutral', 'id' => $model->id], [
+                            'data-confirm' => 'Добавить в нейтральный список',
                             'class' => 'list-comment',
-                            'title'=>$model->user->comment,
-                            'data-pjax'=>0,
-                            'data-method'=>'post',
+                            'title' => $model->user->comment,
+                            'data-pjax' => 0,
+                            'data-method' => 'post',
                         ]) : '';
                     },
                 ]

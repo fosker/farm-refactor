@@ -16,7 +16,7 @@ class Search extends Answer
     {
         return [
             [['theme_id'], 'integer'],
-            [['theme.title', 'user.login', 'user.name', 'date_added'], 'string'],
+            [['theme.title', 'user.login', 'user.name', 'date_added', 'user.email'], 'string'],
         ];
     }
 
@@ -27,7 +27,7 @@ class Search extends Answer
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['theme.title', 'user.login', 'user.name']);
+        return array_merge(parent::attributes(), ['theme.title', 'user.login', 'user.name', 'user.email']);
     }
 
     public function search($params)
@@ -69,6 +69,7 @@ class Search extends Answer
         ]);
 
         $query->andFilterWhere(['like', Answer::tableName().'.date_added', $this->date_added])
+            ->andFilterWhere(['like', User::tableName().'.email', $this->getAttribute('user.email')])
             ->andFilterWhere(['like', Theme::tableName().'.title', $this->getAttribute('theme.title')])
             ->andFilterWhere(['like', User::tableName().'.login', $this->getAttribute('user.login')])
             ->andFilterWhere(['like', User::tableName().'.name', $this->getAttribute('user.name')]);

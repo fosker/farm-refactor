@@ -137,8 +137,8 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
         ]
     ]); ?>
 
-    <?= $form->field($model, 'forList')->radioList([0 => 'серому и белому', 1 => 'всем', 2 => 'только белому', 3 => 'только черному', 4 => 'только серому'])?>
-
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
+        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только синему'])?>
 
     <!-- The Questions on the Survey -->
     <div class="row panel-body">

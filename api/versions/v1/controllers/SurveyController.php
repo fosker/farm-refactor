@@ -54,10 +54,20 @@ class SurveyController extends Controller
             $view->user_id = Yii::$app->user->id;
             $view->save();
         }
-        $start = new Start();
-        $start->user_id = Yii::$app->user->id;
-        $start->survey_id = $id;
-        $start->save();
+        $start = Start::find()->where(['user_id' => Yii::$app->user->id, 'survey_id' => $id])->one();
+        if (!$start) {
+            $start = new Start();
+            $start->user_id = Yii::$app->user->id;
+            $start->survey_id = $id;
+            $start->save();
+        } else {
+            $start->delete();
+
+            $start = new Start();
+            $start->user_id = Yii::$app->user->id;
+            $start->survey_id = $id;
+            $start->save();
+        }
         return Survey::getOneForCurrentUser($id);
     }
 
