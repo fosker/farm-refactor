@@ -16,7 +16,7 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 
 $this->title = 'Push-уведомления для групп';
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $url = Url::to(['/users/push-groups/link-list']);
 
@@ -126,7 +126,7 @@ endif;
     ]);
     Modal::end();
 
-    echo $form->field($model, 'grayList')->checkbox();
+    echo $form->field($model, 'grayList')->checkbox(['value' => 3]);
 
     ?>
     <?= $form->field($model, 'type')->radioList([

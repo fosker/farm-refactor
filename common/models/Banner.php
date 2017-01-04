@@ -92,11 +92,14 @@ class Banner extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
+                ->andFilterWhere(
+                    ['or', ['forList' => 1],
+                        ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
                     ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
                     ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
                     ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
-                ]);
+                    ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
+                    ]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             $base = static::find()
                 ->joinWith('types')
@@ -137,7 +140,7 @@ class Banner extends ActiveRecord
             2 => 'только белому',
             3 => 'только черному',
             4 => 'только нейтральному',
-            5 => 'только синему'
+            5 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

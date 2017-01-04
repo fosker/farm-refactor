@@ -63,8 +63,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     const IN_NEUTRAL = 0;
     const IN_BLACK = 1;
     const IN_WHITE = 2;
-    const IN_BLUE = 3;
-
+    const IN_GRAY = 3;
 
     const SEX_MALE = 'male';
     const SEX_FEMALE = 'female';
@@ -77,7 +76,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
                 'update' => ['name', 'email', 'phone'],
                 'black' => ['inList', 'comment'],
                 'white' => ['inList', 'comment'],
-                'blue' => ['inList', 'comment'],
+                'gray' => ['inList', 'comment'],
                 'join' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone', 'device_id'],
                 'without-device' => ['login', 'name', 'email', 'password', 're_password', 'details', 'type_id', 'phone'],
                 'update-password' => ['old_password', 'password', 're_password'],
@@ -436,10 +435,13 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
 
     public function register()
     {
+        $password = $this->password;
         $this->setPassword($this->password);
-        $this->save(false);
+        $this->verified();
+        $this->toNeutral();
         $this->generateAccessToken();
         Mailer::sendRegisterMail($this);
+        Mailer::sendVerificationMailToUser($this, $password);
     }
 
     public function answerSurvey($survey)
@@ -493,7 +495,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             self::IN_WHITE => 'в белом',
             self::IN_BLACK => 'в черном',
             self::IN_NEUTRAL => 'в нейтральном',
-            self::IN_BLUE => 'в синем',
+            self::IN_GRAY => 'в сером',
         );
         if(isset($values[$this->inList])) {
             return $values[$this->inList];
@@ -525,7 +527,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         $this->status = static::STATUS_ACTIVE;
         $this->save(false);
-        Mailer::sendVerificationMailToUser($this, static::STATUS_ACTIVE);
     }
 
     public function ban()
@@ -555,9 +556,9 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->save(false);
     }
 
-    public function toBlue()
+    public function toGray()
     {
-        $this->inList = static::IN_BLUE;
+        $this->inList = static::IN_GRAY;
         $this->save(false);
     }
 
@@ -565,7 +566,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     {
         $this->status = static::STATUS_NOTE_VERIFIED;
         $this->save(false);
-        Mailer::sendVerificationMailToUser($this, static::STATUS_VERIFY);
     }
 
     public function getPresentationViews()

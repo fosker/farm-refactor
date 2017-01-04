@@ -23,7 +23,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
     </br>
     </br>
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=>'survey-form']]); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id' => 'survey-form']]); ?>
 
     <?php
     Modal::begin([
@@ -121,24 +121,24 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
 
     <?= $form->field($model, 'views_limit')->textInput() ?>
 
-    <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[
+    <?= $form->field($model, 'imageFile')->widget(FileInput::classname(), [
         'pluginOptions' => [
-            'initialPreview'=> $model->image ? Html::img($model->imagePath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
+            'initialPreview' => $model->image ? Html::img($model->imagePath, ['class' => 'file-preview-image', 'alt' => 'image', 'title' => 'Image']) : '',
             'showUpload' => false,
             'showRemove' => false,
         ]
     ]); ?>
 
-    <?= $form->field($model, 'thumbFile')->widget(FileInput::classname(),[
+    <?= $form->field($model, 'thumbFile')->widget(FileInput::classname(), [
         'pluginOptions' => [
-            'initialPreview'=> $model->thumbnail ? Html::img($model->thumbPath, ['class'=>'file-preview-image', 'alt'=>'thumb', 'title'=>'thumb']) : '',
+            'initialPreview' => $model->thumbnail ? Html::img($model->thumbPath, ['class' => 'file-preview-image', 'alt' => 'thumb', 'title' => 'thumb']) : '',
             'showUpload' => false,
             'showRemove' => false,
         ]
     ]); ?>
 
     <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
-        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только синему'])?>
+        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только серому']) ?>
 
     <!-- The Questions on the Survey -->
     <div class="row panel-body">
@@ -172,9 +172,10 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
 
                 <tr class="question-item"><!-- widgetBody -->
                     <td>
-                        <button type="button" class="del-question btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
+                        <button type="button" class="del-question btn btn-danger btn-xs"><i
+                                class="glyphicon glyphicon-minus"></i></button>
                         <?php
-                        if (! $question->isNewRecord) {
+                        if (!$question->isNewRecord) {
                             echo Html::activeHiddenInput($question, "[{$i}]id");
                         }
                         ?>
@@ -183,7 +184,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                         <?php
                         echo $form->field($question, "[{$i}]question")->begin();
                         echo Html::activeTextInput($question, "[{$i}]question", ['maxlength' => true, 'class' => 'form-control']); //Field
-                        echo Html::error($question,"[{$i}]question", ['class' => 'help-block']); //error
+                        echo Html::error($question, "[{$i}]question", ['class' => 'help-block']); //error
                         echo $form->field($question, "[{$i}]question")->end();
                         ?>
                     </td>
@@ -193,7 +194,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                             <tr>
                                 <td>
                                     <?php
-                                        echo $form->field($question, "[{$i}]right_answers")->textInput();
+                                    echo $form->field($question, "[{$i}]right_answers")->textInput();
                                     ?>
                                 </td>
                             </tr>
@@ -216,7 +217,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                             'widgetItem' => '.option-item', // required: css class
                             'insertButton' => '.add-option', // css class
                             'deleteButton' => '.del-option', // css class
-                            'min'=>0,
+                            'min' => 0,
                             'model' => $options[$i][0],
                             'formId' => 'survey-form',
                             'formFields' => [
@@ -237,10 +238,11 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                             <?php foreach ($options[$i] as $ix => $option): ?>
                                 <tr class="option-item"><!-- widgetBody -->
                                     <td>
-                                        <button type="button" class="del-option btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
+                                        <button type="button" class="del-option btn btn-danger btn-xs"><i
+                                                class="glyphicon glyphicon-minus"></i></button>
                                         <?php
                                         // necessary for update action.
-                                        if (! $option->isNewRecord) {
+                                        if (!$option->isNewRecord) {
                                             echo Html::activeHiddenInput($option, "[{$i}][{$ix}]id");
                                         }
                                         ?>
@@ -248,11 +250,11 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
 
                                     <td>
                                         <?php
-                                            echo $form->field($option, "[{$i}][{$ix}]value")->begin();
-                                            echo Html::activeTextInput($option, "[{$i}][{$ix}]value", ['maxlength' => true, 'class' => 'form-control']); //Field
-                                            echo Html::error($option,"[{$i}][{$ix}]value", ['class' => 'help-block']); //error
-                                            echo $form->field($option, "[{$i}][{$ix}]value")->end();
-                                            echo $form->field($option, "[{$i}][{$ix}]isValid")->checkbox();
+                                        echo $form->field($option, "[{$i}][{$ix}]value")->begin();
+                                        echo Html::activeTextInput($option, "[{$i}][{$ix}]value", ['maxlength' => true, 'class' => 'form-control']); //Field
+                                        echo Html::error($option, "[{$i}][{$ix}]value", ['class' => 'help-block']); //error
+                                        echo $form->field($option, "[{$i}][{$ix}]value")->end();
+                                        echo $form->field($option, "[{$i}][{$ix}]isValid")->checkbox();
                                         ?>
                                     </td>
 
@@ -260,18 +262,23 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                             <?php endforeach; // end of options loop ?>
                             </tbody>
                             <tfoot>
-                            <td colspan="5" class="active"><button type="button" class="add-option btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button></td>
+                            <td colspan="5" class="active">
+                                <button type="button" class="add-option btn btn-success btn-xs"><i
+                                        class="glyphicon glyphicon-plus"></i></button>
+                            </td>
                             </tfoot>
                         </table>
                         <?php DynamicFormWidget::end(); // end of options widget ?>
 
-                    </td> <!-- options sub column -->
+                    </td>
+                    <!-- options sub column -->
                 </tr><!-- question -->
             <?php endforeach; // end of questions loop ?>
             </tbody>
             <tfoot>
             <td colspan="5" class="active">
-                <button type="button" class="add-question btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
+                <button type="button" class="add-question btn btn-success btn-xs"><i
+                        class="glyphicon glyphicon-plus"></i></button>
             </td>
             </tfoot>
         </table>

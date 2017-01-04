@@ -147,6 +147,11 @@ class PushGroupsController extends Controller
                 );
             }
 
+            echo '<pre>';
+            var_dump($users);
+            echo '</pre>';
+            die();
+
             $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['in', 'user_id', $users])
                 ->andWhere(['not',['push_token' => null]])
                 ->andWhere(['type' => 1])

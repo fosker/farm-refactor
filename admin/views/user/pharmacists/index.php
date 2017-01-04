@@ -87,13 +87,13 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
             [
                 'attribute'=>'user.inList',
                 'value' => function($model) {
-                    return [0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в синем'][$model->user->inList];
+                    return [0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в сером'][$model->user->inList];
                 },
                 'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {blue} {neutral} ',
+                'template' => '{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {gray} {neutral} ',
                 'buttons' => [
                     'accept' => function ($url, $model, $key) {
                         if ($model->user->status == User::STATUS_VERIFY || $model->user->status == User::STATUS_NOTE_VERIFIED) {
@@ -122,22 +122,22 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                         ]) : '';
                     },
                     'black' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
                             'title' => 'Добавить в черный список',
                         ]) : '';
                     },
                     'white' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
                             'title' => 'Добавить в белый список',
                         ]) : '';
                     },
-                    'blue' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-align-left"></i>', ['blue', 'id' => $model->id], [
-                            'title' => 'Добавить в синий список',
+                    'gray' => function ($url, $model, $key) {
+                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-left"></i>', ['gray', 'id' => $model->id], [
+                            'title' => 'Добавить в серый список',
                         ]) : '';
                     },
                     'neutral' => function ($url, $model, $key) {
-                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_BLACK || $model->user->inList == User::IN_BLUE) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['neutral', 'id' => $model->id], [
+                        return ($model->user->inList == User::IN_WHITE || $model->user->inList == User::IN_BLACK || $model->user->inList == User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-list" style="color: gray"></i>', ['neutral', 'id' => $model->id], [
                             'data-confirm' => 'Добавить в нейтральный список',
                             'class' => 'list-comment',
                             'title' => $model->user->comment,

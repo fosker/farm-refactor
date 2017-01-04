@@ -18,15 +18,15 @@ class Mailer
             ->send();
     }
 
-    public static function sendVerificationMailToUser($user, $verified)
+    public static function sendVerificationMailToUser($user, $password)
     {
-        Yii::$app->mailer->compose($verified ? '@common/mail/user-status-verified' : '@common/mail/user-status-banned', [
-            'user' => $user
+        Yii::$app->mailer->compose('@common/mail/user-status-verified', [
+            'user' => $user,
+            'password' => $password
         ])
             ->setFrom('info@pharmbonus.by')
             ->setTo($user->email)
-            ->setSubject($verified ? 'Поздравляем Вас с прохождением верификации в ФармБонус!' :
-            'К сожалению, нам не удалось верифицировать Ваш аккаунт.')
+            ->setSubject('Регистрация в мобильном приложении ФармБонус')
             ->send();
     }
 

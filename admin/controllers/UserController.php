@@ -287,12 +287,12 @@ class UserController extends Controller
         }
     }
 
-    public function actionBlue($id)
+    public function actionGray($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'blue';
+        $model->scenario = 'gray';
         if ($model->load(Yii::$app->request->post())) {
-            $model->toBlue();
+            $model->toGray();
             switch ($model->type_id) {
                 case 1:
                     return $this->redirect(['pharmacists']);
@@ -300,7 +300,7 @@ class UserController extends Controller
                     return $this->redirect(['agents']);
             }
         } else {
-            return $this->render('blue', [
+            return $this->render('gray', [
                 'model' => $model,
                 'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
             ]);

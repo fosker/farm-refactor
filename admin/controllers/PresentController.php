@@ -72,7 +72,6 @@ class PresentController extends Controller
         $model = new Item();
         $model->scenario = 'create';
 
-
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');

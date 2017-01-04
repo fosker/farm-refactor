@@ -161,7 +161,7 @@ class Presentation extends ActiveRecord
             2 => 'только белому',
             3 => 'только черному',
             4 => 'только нейтральному',
-            5 => 'только синему'
+            5 => 'только серому'
         );
         if(isset($values[$this->forList])) {
             return $values[$this->forList];

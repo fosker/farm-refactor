@@ -6,7 +6,8 @@ use Yii;
 
 use common\models\Item;
 use common\models\User;
-use common\models\Mailer;
+use common\helpers\FoodService;
+
 /**
  * This is the model class for table "user_presents".
  *
@@ -38,27 +39,41 @@ class Present extends \yii\db\ActiveRecord
         );
     }
 
-    public function usePromo() {
-        $this->promo = null;
-        $this->save(false);
+    public function usePromo()
+    {
+        if ($this->item->vendor_id == Item::VENDOR_SUSHI) {
+            $service = new FoodService();
+            if ($this->item_id == Item::PHARMSET1) {
+                $service->present_id = FoodService::PHARMSET1;
+            }
+            if ($this->item_id == Item::PHARMSET2) {
+                $service->present_id = FoodService::PHARMSET2;
+            }
+            $service->user = $this->user;
+            $service->sendRequest();
+        }
+        //$this->promo = null;
+        //$this->save(false);
     }
 
-    public function fields() {
+    public function fields()
+    {
         return [
             'id', 'item', 'count',
-            'date_buy'=>function($model) {
+            'date_buy' => function ($model) {
                 return strtotime($model->date_buy);
             }
         ];
     }
 
-    public function extraFields() {
+    public function extraFields()
+    {
         return [
-            'promo','user',
-            'date_buy'=>function($model) {
+            'promo', 'user',
+            'date_buy' => function ($model) {
                 return strtotime($model->date_buy);
             },
-            'description'=>function($model) {
+            'description' => function ($model) {
                 return $model->item->description;
             }
         ];
@@ -72,7 +87,7 @@ class Present extends \yii\db\ActiveRecord
         return [
             [['item_id', 'count', 'user_id'], 'required'],
             [['date_buy', 'comment'], 'string'],
-            [['count'], 'integer','min'=>1],
+            [['count'], 'integer', 'min' => 1],
             [['count'], 'validatePoints'],
             [['item_id'], 'isAvailable'],
         ];
@@ -82,7 +97,7 @@ class Present extends \yii\db\ActiveRecord
     {
         if (!$this->hasErrors()) {
             $item = Item::findOne($this->item_id);
-            if ($this->count*$item->points > Yii::$app->user->identity->points) {
+            if ($this->count * $item->points > Yii::$app->user->identity->points) {
                 $this->addError($attribute, 'У вас недостаточно баллов.');
             }
         }
@@ -111,32 +126,33 @@ class Present extends \yii\db\ActiveRecord
             'item_id' => 'Подарок',
             'count' => 'Количество',
             'promo' => 'Промо-код',
-            'date_buy'=>'Дата покупки',
-            'comment'=>'Комментарий'
+            'date_buy' => 'Дата покупки',
+            'comment' => 'Комментарий'
         ];
     }
 
     public static function getForCurrentUser()
     {
-        return static::find()->where(['user_id'=>Yii::$app->user->id])->orderBy(['date_buy'=>SORT_DESC]);
+        return static::find()->where(['user_id' => Yii::$app->user->id])->orderBy(['date_buy' => SORT_DESC]);
     }
 
     public static function findByPromo($promo)
     {
-        return static::findOne(['promo'=>$promo]);
+        return static::findOne(['promo' => $promo]);
     }
 
     public static function findBoughtToday()
     {
-        return static::find()->where('date_buy > CURDATE()')->andWhere(['not', ['promo'=>""]]);
+        return static::find()->where('date_buy > CURDATE()')->andWhere(['not', ['promo' => ""]]);
     }
 
-    public function getItem() {
-        return $this->hasOne(Item::className(), ['id'=>'item_id']);
+    public function getItem()
+    {
+        return $this->hasOne(Item::className(), ['id' => 'item_id']);
     }
 
-    public function getUser() {
-        return $this->hasOne(User::className(),['id'=>'user_id']);
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-
 }

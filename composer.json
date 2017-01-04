@@ -20,7 +20,8 @@
         "bryglen/yii2-apns-gcm": "1.0.3",
         "kartik-v/yii2-nav-x": "*",
         "scotthuangzl/yii2-google-chart": "dev-master",
-        "phpoffice/phpword": "^0.13.0"
+        "phpoffice/phpword": "^0.13.0",
+        "yiisoft/yii2-httpclient": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

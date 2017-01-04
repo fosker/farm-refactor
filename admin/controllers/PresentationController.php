@@ -93,10 +93,10 @@ class PresentationController extends Controller
         $model = new Presentation();
         $model->scenario = 'create';
 
-        if($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if($model->load(Yii::$app->request->post())) {
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
-            if ($model->save(false)) {
+            if ($model->save()) {
                 $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
                 $model->loadEducation(Yii::$app->request->post('education'));
                 $model->loadTypes(Yii::$app->request->post('types'));
