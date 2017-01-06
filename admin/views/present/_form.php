@@ -41,8 +41,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
         Modal::end();
 
         Modal::begin([
-            'header' => '<h2>Выберите компании</h2>',
-            'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary company'],
+            'header' => '<h2>Выберите организацию</h2>',
+            'toggleButton' => ['label' => 'Для организаций', 'class' => 'btn btn-primary company'],
             'id' => 'companies'
         ]);
 

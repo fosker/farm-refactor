@@ -19,7 +19,7 @@ use kartik\widgets\DatePicker;
 
     <?= $form->field($model, 'company_id')->widget(Select2::classname(), [
         'data' => $companies,
-        'options' => ['placeholder' => 'Выберите компанию ...'],
+        'options' => ['placeholder' => 'Выберите организацию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

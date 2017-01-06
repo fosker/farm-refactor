@@ -90,7 +90,7 @@ class Presentation extends ActiveRecord
             'home' => 'Отображать на главной',
             'home_priority' => 'Приоритет',
             'views_limit' => 'Ограничение просмотров',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'forList' => 'Показывать списку',
             'date_added' => 'Дата и время публикации'
         ];

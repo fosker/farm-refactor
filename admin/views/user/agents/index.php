@@ -48,7 +48,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                 'contentOptions' => ['style' => 'width: 300px;'],
             ],
             [
-                'label' => 'Фабрика',
+                'label' => 'Компания',
                 'attribute' => 'factory_id',
                 'value' => function ($model) {
                     return Factory::find()->where(['id' => $model->factory_id])->exists() ?

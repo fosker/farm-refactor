@@ -56,7 +56,7 @@ class Factory extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Название фабрики',
+            'title' => 'Название компании',
             'description' => 'Описание',
             'image' => 'Изображение',
             'logo' => 'Лого',

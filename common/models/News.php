@@ -82,7 +82,7 @@ class News extends \yii\db\ActiveRecord
             'date' => 'Дата публикации',
             'views' => 'Уникальных просмотров',
             'views_added' => 'Добавленные просмотры',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'forList' => 'Показывать списку',
             'priority' => 'Приоритет'
         ];

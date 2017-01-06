@@ -48,7 +48,7 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
 
     <?= $form->field($type, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,
-        'options' => ['placeholder' => 'Выберите фабрику ...'],
+        'options' => ['placeholder' => 'Выберите компанию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
@@ -57,7 +57,7 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
     <?php if (!Factory::find()->where(['id' => $type->factory_id])->exists()) {
         echo "<div class='row'>
                 <div class='col-md-4'>
-                    <p class='text-success'>Новая фабрика: ".$type->factory_id."</p>
+                    <p class='text-success'>Новая компания: ".$type->factory_id."</p>
                 </div>
               </div>";
     } ?>
@@ -66,7 +66,7 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
     <?php if ($update->factory_id != $type->factory_id && $update->factory_id) {
         echo "<div class='row'>
                 <div class='col-md-4'>
-                    <p class='text-success'>Новая фабрика: ".$update->factory->title."</p>
+                    <p class='text-success'>Новая компания: ".$update->factory->title."</p>
                 </div>
               </div>";
     } ?>

@@ -32,8 +32,8 @@ class Item extends ActiveRecord
 {
     const VENDOR_SUSHI = 20;
 
-    const PHARMSET1 = 38;
-    const PHARMSET2 = 37;
+    const PHARMSET1 = 48;
+    const PHARMSET2 = 49;
 
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 0;

@@ -105,7 +105,7 @@ class CompanyController extends Controller
         if (($model = Company::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Компания не найдена.');
+            throw new NotFoundHttpException('Организация не найдена.');
         }
     }
 } 

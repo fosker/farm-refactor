@@ -62,7 +62,7 @@ class Stock extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'title' => 'Название акции',
             'description' => 'Описание',
             'image' => 'Изображение',

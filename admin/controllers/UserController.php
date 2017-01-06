@@ -240,12 +240,7 @@ class UserController extends Controller
         $model->scenario = 'black';
         if ($model->load(Yii::$app->request->post())) {
             $model->toBlack();
-            switch ($model->type_id) {
-                case 1:
-                    return $this->redirect(['pharmacists']);
-                case 2:
-                    return $this->redirect(['agents']);
-            }
+            return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('black', [
                 'model' => $model,
@@ -256,16 +251,12 @@ class UserController extends Controller
 
     public function actionWhite($id)
     {
+        $url = Yii::$app->request->referrer;
         $model = $this->findModel($id);
         $model->scenario = 'white';
         if ($model->load(Yii::$app->request->post())) {
             $model->toWhite();
-            switch ($model->type_id) {
-                case 1:
-                    return $this->redirect(['pharmacists']);
-                case 2:
-                    return $this->redirect(['agents']);
-            }
+            return Yii::$app->getResponse()->redirect($url);
         } else {
             return $this->render('white', [
                 'model' => $model,
@@ -279,12 +270,7 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $model->toNeutral();
-        switch ($model->type_id) {
-            case 1:
-                return $this->redirect(['pharmacists']);
-            case 2:
-                return $this->redirect(['agents']);
-        }
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     public function actionGray($id)
@@ -293,12 +279,7 @@ class UserController extends Controller
         $model->scenario = 'gray';
         if ($model->load(Yii::$app->request->post())) {
             $model->toGray();
-            switch ($model->type_id) {
-                case 1:
-                    return $this->redirect(['pharmacists']);
-                case 2:
-                    return $this->redirect(['agents']);
-            }
+            return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('gray', [
                 'model' => $model,

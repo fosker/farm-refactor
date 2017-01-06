@@ -83,7 +83,7 @@ class Seminar extends \yii\db\ActiveRecord
             'image' => 'Изображение',
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'forList' => 'Показывать списку'
         ];
     }

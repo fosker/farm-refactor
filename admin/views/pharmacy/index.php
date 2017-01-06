@@ -53,7 +53,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                     'model' => $searchModel,
                     'attribute' => 'company_id',
                     'data' => $companies,
-                    'options' => ['placeholder' => 'Выберите компанию ...'],
+                    'options' => ['placeholder' => 'Выберите организацию ...'],
                     'pluginOptions' => [
                         'allowClear' => true,
                         'width' => '200px'

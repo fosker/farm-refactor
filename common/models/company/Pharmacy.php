@@ -53,7 +53,7 @@ class Pharmacy extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название аптеки',
             'address' => 'Адрес',
-            'company_id' => 'Компания',
+            'company_id' => 'Организация',
             'city_id' => 'Город',
             'phone' => 'Телефон',
             'date_visit' => 'Дата посещения',

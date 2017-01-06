@@ -65,7 +65,7 @@ class AgentUpdateRequest extends \yii\db\ActiveRecord
             'agent_id' => 'ID',
             'name' => 'Имя Фамилия',
             'email' => 'Email',
-            'factory_id' => 'Фабрика',
+            'factory_id' => 'Компания',
             'city_id' => 'Город',
             'details'=>'Дополнительные сведения',
             'date_add'=>'Дата запроса',

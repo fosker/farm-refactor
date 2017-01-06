@@ -46,14 +46,14 @@ $this->title = 'Подарки';
                 ])
             ],
             [
-                'label'=>'Для компаний',
+                'label'=>'Для организаций',
                 'value'=>'companyView',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $companies,
                     'attribute'=>'company_id',
                     'options' => [
-                        'placeholder' => 'Выберите компании ...',
+                        'placeholder' => 'Выберите организации ...',
                         'multiple' => true,
                     ],
                     'pluginOptions' => [

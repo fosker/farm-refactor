@@ -69,7 +69,7 @@ class Banner extends ActiveRecord
             'imageFile' => 'Изображение',
             'image' => 'Изображение',
             'position' => 'Позиция',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'forList' => 'Показывать списку',
         ];
     }

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 
-$this->title = 'Добавить компанию';
+$this->title = 'Добавить организацию';
 ?>
 <div class="company-create">
 

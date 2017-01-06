@@ -28,7 +28,7 @@ $this->title = $model->title;
             'id',
             'title',
             [
-                'label' => 'Фабрика Автор',
+                'label' => 'Компания Автор',
                 'attribute' => 'factory.title',
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',

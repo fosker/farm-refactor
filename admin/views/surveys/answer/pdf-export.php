@@ -10,7 +10,7 @@
             <h3><?=$answer->view->user->name;?></h3>
             <p>Регион/Город: <?=$answer->view->user->pharmacist->pharmacy->city->region->name. '/'.
                 $answer->view->user->pharmacist->pharmacy->city->name?></p>
-            <p>Компания/Аптека: <?=$answer->view->user->pharmacist->pharmacy->company->title. '/'.
+            <p>Организация/Аптека: <?=$answer->view->user->pharmacist->pharmacy->company->title. '/'.
                 $answer->view->user->pharmacist->pharmacy->name .
                 ' (' . $answer->view->user->pharmacist->pharmacy->address . ')'?></p>
             <p>Дата: <?=substr($answer->view->added,0,10)?></p>

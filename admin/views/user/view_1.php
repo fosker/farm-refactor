@@ -79,6 +79,7 @@ $this->title = 'Фармацевт: '.$model->name;
             ],
             'login',
             'name',
+            'pharmacist.date_birth:date',
             [
                 'attribute'=>'pharmacist.sex',
                 'value'=>$model->pharmacist->sex == User::SEX_MALE ? 'мужской' : 'женский',
@@ -96,7 +97,7 @@ $this->title = 'Фармацевт: '.$model->name;
                 'attribute' => 'pharmacist.region.name',
             ],
             [
-                'label' => 'Компания',
+                'label' => 'Организация',
                 'attribute' => 'pharmacist.company.title',
                 'value'=>Html::a($model->pharmacist->company->title,['/company/view','id'=>$model->pharmacist->company->id]),
                 'format'=>'html',

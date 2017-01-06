@@ -50,8 +50,8 @@ $url = Url::to(['/banner/link-list']);
         Modal::end();
 
         Modal::begin([
-            'header' => '<h2>Выберите компании</h2>',
-            'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary company'],
+            'header' => '<h2>Выберите организации</h2>',
+            'toggleButton' => ['label' => 'Для организаций', 'class' => 'btn btn-primary company'],
             'id' => 'companies'
         ]);
 
@@ -111,7 +111,7 @@ $url = Url::to(['/banner/link-list']);
 
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,
-        'options' => ['placeholder' => 'Выберите фабрику ...'],
+        'options' => ['placeholder' => 'Выберите компанию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

@@ -119,7 +119,7 @@ class Admin extends \yii\db\ActiveRecord
             'name' => 'Имя Фамилия',
             'email' => 'Email',
             'password' => 'Пароль',
-            'company_id' => 'Компания',
+            'company_id' => 'Организация',
             're_password' => 'Повтор пароля',
             'status' => 'Статус',
             'avatar' => 'Аватар',

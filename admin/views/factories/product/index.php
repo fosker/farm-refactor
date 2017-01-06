@@ -47,7 +47,7 @@ $this->title = 'Продукты';
                     'data' => $factories,
                     'attribute'=>'factory_id',
                     'options' => [
-                        'placeholder' => 'Выберите фабрику ...',
+                        'placeholder' => 'Выберите компанию ...',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

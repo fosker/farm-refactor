@@ -52,8 +52,8 @@ class Present extends \yii\db\ActiveRecord
             $service->user = $this->user;
             $service->sendRequest();
         }
-        //$this->promo = null;
-        //$this->save(false);
+        $this->promo = null;
+        $this->save(false);
     }
 
     public function fields()

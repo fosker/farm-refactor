@@ -34,7 +34,7 @@ $this->title = $model->title;
             ],
             'title',
             [
-                'label' => 'Фабрика',
+                'label' => 'Компания',
                 'attribute' => 'factory.title',
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
                 'format'=>'html',
@@ -48,7 +48,7 @@ $this->title = $model->title;
                 'value'=>$model->getEducationsView(true)
             ],
             [
-                'label'=>'Для компаний',
+                'label'=>'Для организаций',
                 'value'=>$model->getCompanyView(true)
             ],
             [

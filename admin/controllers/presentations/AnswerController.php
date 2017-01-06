@@ -104,7 +104,7 @@ class AnswerController extends Controller
         $sheet->setTitle('Результаты по презентации');
         $sheet->setCellValue("A1",'Результаты по презентации "'.$answers[0]->question->presentation->title.'"');
         $sheet->setCellValue("C1",'Регион/Город');
-        $sheet->setCellValue("D1",'Компания/Аптека');
+        $sheet->setCellValue("D1",'Организация/Аптека');
         $sheet->setCellValue("E1",'Дата/Время');
         $sheet->setCellValue("F1",'Образование');
         $sheet->getColumnDimension('A')->setWidth(30);

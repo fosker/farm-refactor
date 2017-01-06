@@ -16,7 +16,7 @@ $this->title = $model->title;
         <?= Html::a('Экспорт xls', ['presentations/answer/export-xls', 'presentation_id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
     <div class="row">
         <?= Html::a('Экспорт статистики (по регионам)', ['export-regions', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
-        <?= Html::a('Экспорт статистики (по компаниям)', ['export-companies', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
+        <?= Html::a('Экспорт статистики (по организациям)', ['export-companies', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Экспорт свободных вопросов', ['export-docx', 'id' => $model->id], ['class' => 'btn btn-danger'.(!$model->devidedQuestions['free'] ? ' disabled':''),'target'=>'_blank']) ?>
         <?= Html::a('Экспорт изображений статистики', ['export-images', 'id' => $model->id], ['class' => 'btn btn-danger'.($model->answersCount == 0 ? ' disabled':''),'target'=>'_blank']) ?>
     </div>
@@ -66,7 +66,7 @@ $this->title = $model->title;
             ],
             'title',
             [
-                'label' => 'Фабрика',
+                'label' => 'Компания',
                 'attribute' => 'factory.title',
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory->id]),
                 'format'=>'html',
@@ -80,7 +80,7 @@ $this->title = $model->title;
                 'value'=>$model->getEducationsView(true)
             ],
             [
-                'label'=>'Для компаний',
+                'label'=>'Для организаций',
                 'value'=>$model->getCompanyView(true)
             ],
             [

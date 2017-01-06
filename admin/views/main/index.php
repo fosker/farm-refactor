@@ -197,7 +197,7 @@ $this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\Jquery
                 <div class="row">
                     <div class="col-md-6">
                         <div class="has-feedback text-right">
-                            <input type="text" class="form-control company-query" placeholder="Поиск компаний"/>
+                            <input type="text" class="form-control company-query" placeholder="Поиск организаций"/>
                         </div>
                     </div>
                     <div class="col-md-6">

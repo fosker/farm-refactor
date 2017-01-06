@@ -72,10 +72,10 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'city')
                             ],
                             [
-                                'label' => 'Компании',
+                                'label' => 'Организации',
                                 'items' => [
                                     [
-                                        'label' => 'Компании',
+                                        'label' => 'Организации',
                                         'url' => ['/company'],
                                         'visible' => Right::HasAdmin(Yii::$app->admin->id, 'company')
                                     ],
@@ -87,10 +87,10 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 ]
                             ],
                             [
-                                'label' => 'Фабрики',
+                                'label' => 'Компании',
                                 'items' => [
                                     [
-                                        'label' => 'Фабрики',
+                                        'label' => 'Компании',
                                         'url' => ['/factory'],
                                         'visible' => Right::HasAdmin(Yii::$app->admin->id, 'factory')
                                     ],
@@ -201,7 +201,7 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/factory-admin')
                             ],
                             [
-                                'label' => 'Администраторы компаний',
+                                'label' => 'Администраторы организаций',
                                 'url' => ['/users/company-admin'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'users/company-admin')
                             ],

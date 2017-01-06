@@ -61,7 +61,7 @@ use kartik\widgets\Select2;
         'pluginOptions' => [
             'allowClear' => true,
         ],
-    ])->label('Компания'); ?>
+    ])->label('Организация'); ?>
 
     <?= $form->field($model, 'pharmacy.city.id')->widget(Select2::classname(), [
         'data' => $cities,

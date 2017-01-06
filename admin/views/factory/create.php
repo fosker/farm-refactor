@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 
-$this->title = 'Добавить фабрику';
+$this->title = 'Добавить компанию';
 ?>
 <div class="factory-create">
 

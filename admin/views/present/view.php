@@ -50,7 +50,7 @@ $this->title = $model->title;
                 'value'=>$model->getPharmaciesView(false)
             ],
             [
-                'label'=>'Для компаний',
+                'label'=>'Для организаций',
                 'value'=>$model->getCompanyView(true)
             ],
             'points',

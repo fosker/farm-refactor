@@ -30,7 +30,7 @@ class Callback extends Model
     {
         return [
             'name' => 'Фамилия Имя',
-            'company' => 'Компания',
+            'company' => 'Организация',
             'email' => 'Email',
             'phone' => 'Номер телефона',
         ];

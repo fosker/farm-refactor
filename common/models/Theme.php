@@ -65,7 +65,7 @@ class Theme extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'email' => 'Email',
             'description' => 'Описание',
             'form_id' => 'Форма'

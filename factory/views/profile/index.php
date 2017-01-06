@@ -35,7 +35,7 @@ echo DetailView::widget([
         'name',
         'email',
         [
-            'label' => 'Фабрика',
+            'label' => 'Компания',
             'attribute'=>'factory_id',
             'value'=>$model->factory->title,
             'displayOnly' => true,

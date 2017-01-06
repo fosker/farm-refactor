@@ -46,7 +46,7 @@ $this->title = 'Администраторы производителей';
                 ]),
             ],
             [
-                'label' => 'Компания',
+                'label' => 'Организация',
                 'attribute' => 'company_id',
                 'value' => 'company.title',
                 'format' => 'html',

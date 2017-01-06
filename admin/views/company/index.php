@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\widgets\Select2;
 
-$this->title = 'Компании';
+$this->title = 'Организации';
 ?>
 <div class="company-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Добавить компанию', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить организацию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,7 +29,7 @@ $this->title = 'Компании';
                     'data' => $titles,
                     'attribute'=>'title',
                     'options' => [
-                        'placeholder' => 'Выберите компанию ...',
+                        'placeholder' => 'Выберите организацию ...',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

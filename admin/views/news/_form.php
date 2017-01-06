@@ -47,8 +47,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     Modal::end();
 
     Modal::begin([
-        'header' => '<h2>Выберите компании</h2>',
-        'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary company'],
+        'header' => '<h2>Выберите организации</h2>',
+        'toggleButton' => ['label' => 'Для организаций', 'class' => 'btn btn-primary company'],
         'id' => 'companies'
     ]);
 
@@ -110,7 +110,7 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,
-        'options' => ['placeholder' => 'Выберите фабрику ...'],
+        'options' => ['placeholder' => 'Выберите компанию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

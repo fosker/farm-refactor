@@ -53,7 +53,7 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                 'contentOptions'=>['style'=>'width: 200px;'],
             ],
             [
-                'label' => 'Компания',
+                'label' => 'Организация',
                 'attribute' => 'pharmacy.company.id',
                 'value'=>function($model) {
                     return Html::a($model->pharmacy->company->title, ['/company/view', 'id' => $model->pharmacy->company_id]);

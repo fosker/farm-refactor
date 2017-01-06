@@ -83,8 +83,8 @@ endif;
     );
 
     Modal::begin([
-        'header' => '<h2>Выберите фабрики</h2>',
-        'toggleButton' => ['label' => 'Для фабрик', 'class' => 'btn btn-primary factory'],
+        'header' => '<h2>Выберите компании</h2>',
+        'toggleButton' => ['label' => 'Для компаний', 'class' => 'btn btn-primary factory'],
         'id' => 'factories'
     ]);
 

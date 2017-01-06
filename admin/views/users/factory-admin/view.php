@@ -56,7 +56,7 @@ $this->title = 'Администратор: '.$model->name;
             ],
             'email:email',
             [
-                'label' => 'Производитель',
+                'label' => 'Компания',
                 'attribute' => 'factory.title',
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',

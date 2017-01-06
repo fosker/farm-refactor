@@ -42,8 +42,9 @@ class FoodService extends Model
 
         if ($response->isOk) {
             $cookie = $response->getCookies()->get('SESSd2ec49ca5e7e7506c542e4aceab7101a');
-            var_dump($cookie);
             $this->sendDeliveryRequest($cookie);
+        } else {
+            return false;
         }
     }
 
@@ -77,12 +78,5 @@ class FoodService extends Model
             ])
             ->setData($data)
             ->send();
-
-        if ($response->isOk) {
-            echo '<pre>';
-            var_dump($response->getData());
-            echo '</pre>';
-            die();
-        }
     }
 }

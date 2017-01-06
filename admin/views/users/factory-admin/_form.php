@@ -20,7 +20,7 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,
-        'options' => ['placeholder' => 'Выберите фабрику ...'],
+        'options' => ['placeholder' => 'Выберите компанию ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

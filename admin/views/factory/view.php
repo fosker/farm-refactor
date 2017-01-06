@@ -15,7 +15,7 @@ $this->title = $model->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Удалить фабрику?',
+                'confirm' => 'Удалить компанию?',
                 'method' => 'post',
             ],
         ]) ?>

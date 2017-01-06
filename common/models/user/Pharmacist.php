@@ -74,7 +74,7 @@ class Pharmacist extends \yii\db\ActiveRecord
             'position_id' => 'Должность',
             'region_id' => 'Регион',
             'city_id' => 'Город',
-            'company_id' => 'Компания',
+            'company_id' => 'Организация',
             'mail_address' => 'Почтовый адрес',
             'date_birth' => 'Дата рождения',
             'pharmacy_phone_number' => 'Телефонный номер аптеки'

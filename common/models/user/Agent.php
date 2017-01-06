@@ -45,7 +45,7 @@ class Agent extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'factory_id' => 'Фабрика',
+            'factory_id' => 'Компания',
             'city_id' => 'Город'
         ];
     }

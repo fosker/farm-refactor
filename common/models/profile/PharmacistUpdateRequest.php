@@ -87,7 +87,7 @@ class PharmacistUpdateRequest extends \yii\db\ActiveRecord
             'education_id' => 'Образование',
             'pharmacy_id' => 'Аптека',
             'position_id' => 'Должность',
-            'company_id' => 'Компания',
+            'company_id' => 'Организация',
             'city_id' => 'Город',
             'region_id' => 'Область',
             'details'=>'Дополнительные сведения',

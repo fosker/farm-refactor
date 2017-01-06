@@ -46,7 +46,7 @@ $this->title = 'Администраторы производителей';
                 ]),
             ],
             [
-                'label' => 'Фабрика',
+                'label' => 'Компания',
                 'attribute' => 'factory_id',
                 'value' => 'factory.title',
                 'format' => 'html',
@@ -55,7 +55,7 @@ $this->title = 'Администраторы производителей';
                     'data' => $factories,
                     'attribute'=>'factory_id',
                     'options' => [
-                        'placeholder' => 'Выберите фабрику ...',
+                        'placeholder' => 'Выберите компанию ...',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,

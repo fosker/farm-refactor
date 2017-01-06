@@ -29,7 +29,7 @@ $this->title = 'Акции';
                     'data' => $factories,
                     'attribute'=>'factory_id',
                     'options' => [
-                        'placeholder' => 'Выберите фабрику ...',
+                        'placeholder' => 'Выберите компанию ...',
                     ],
                     'pluginOptions' => [
                         'allowClear' => true,
@@ -53,14 +53,14 @@ $this->title = 'Акции';
                 ])
             ],
             [
-                'label'=>'Для компаний',
+                'label'=>'Для организаций',
                 'value'=>'companyView',
                 'filter'=>Select2::widget([
                     'model' => $searchModel,
                     'data' => $companies,
                     'attribute'=>'company_id',
                     'options' => [
-                        'placeholder' => 'Выберите компании ...',
+                        'placeholder' => 'Выберите организации ...',
                         'multiple' => true,
                     ],
                     'pluginOptions' => [

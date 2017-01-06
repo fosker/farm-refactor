@@ -55,7 +55,7 @@ class Product extends ActiveRecord
             'thumbnail' => 'Превью',
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
-            'factory_id' => 'Фабрика'
+            'factory_id' => 'Компания'
         ];
     }
 

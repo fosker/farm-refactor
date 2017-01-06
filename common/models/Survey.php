@@ -84,7 +84,7 @@ class Survey extends ActiveRecord
             'imageFile' => 'Изображение',
             'thumbFile' => 'Превью',
             'views_limit' => 'Ограничение просмотров',
-            'factory_id' => 'Фабрика Автор',
+            'factory_id' => 'Компания Автор',
             'forList' => 'Показывать списку',
             'date_added' => 'Дата и время публикации'
         ];
