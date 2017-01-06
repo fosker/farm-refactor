@@ -366,4 +366,25 @@ class UserController extends Controller
         echo Json::encode(['output' => '', 'selected' => '']);
     }
 
+    public function actionMultipleDelete()
+    {
+        $pk = Yii::$app->request->post('row_id');
+        foreach ($pk as $key => $value) {
+            $type = User::findOne($value)->type_id;
+            switch ($type) {
+                case Type::TYPE_PHARMACIST:
+                    Pharmacist::findOne($value)->delete();
+                    break;
+                case Type::TYPE_AGENT:
+                    Agent::findOne($value)->delete();
+                    break;
+            }
+        }
+        switch ($type) {
+            case 1:
+                return $this->redirect(['pharmacists']);
+            case 2:
+                return $this->redirect(['agents']);
+        }
+    }
 }

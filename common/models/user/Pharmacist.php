@@ -54,10 +54,10 @@ class Pharmacist extends \yii\db\ActiveRecord
         return [
             [['education_id', 'region_id', 'sex', 'pharmacy_id', 'company_id', 'city_id'], 'required'],
             [['education_id', 'pharmacy_id', 'position_id', 'region_id', 'company_id', 'city_id'], 'integer'],
-            [['sex'], 'string', 'max' => 6],
+            [['sex', 'pharmacy_phone_number'], 'string', 'max' => 6],
             [['mail_address'], 'string', 'max' => 100],
-            [['date_birth', 'pharmacy_phone_number'], 'required'],
-            [['pharmacy_phone_number'], 'date']
+            [['date_birth'], 'required'],
+            [['date_birth'], 'string']
         ];
     }
 

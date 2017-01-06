@@ -39,6 +39,8 @@ use kartik\widgets\Select2;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'user.comment')->textInput() ?>
+
     <?= $form->field($model, 'position_id')->widget(Select2::classname(), [
         'data' => $positions,
         'options' => ['placeholder' => 'Выберите должность ...'],

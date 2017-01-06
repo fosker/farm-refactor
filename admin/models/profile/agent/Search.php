@@ -15,13 +15,13 @@ class Search extends Agent
     {
         return [
             [['user.status', 'id', 'factory_id', 'user.inList', 'user.points', 'points_from', 'points_to'], 'integer'],
-            [['user.name', 'user.login', 'user.email'], 'string'],
+            [['user.name', 'user.login', 'user.email', 'user.comment'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points','user.inList', 'points_from', 'points_to', 'user.login']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points','user.inList', 'points_from', 'points_to', 'user.login', 'user.comment']);
     }
 
     public function scenarios()
@@ -82,6 +82,7 @@ class Search extends Agent
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
             ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')])
             ->andFilterWhere(['like', User::tableName() . '.login', $this->getAttribute('user.login')])
+            ->andFilterWhere(['like', User::tableName() . '.comment', $this->getAttribute('user.comment')])
             ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
             ->andFilterWhere(['<=', 'points', $this->getAttribute('points_to')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);

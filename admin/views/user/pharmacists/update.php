@@ -6,6 +6,8 @@ use kartik\widgets\Select2;
 use kartik\widgets\DepDrop;
 use yii\helpers\Url;
 
+use kartik\date\DatePicker;
+
 $this->title = 'Редактирование данных: ' . ' ' . $model->name;
 ?>
 
@@ -46,6 +48,14 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
                 </div>
               </div>";
     } ?>
+
+    <?= $form->field($type, 'date_birth')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату рождения ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ]) ?>
 
     <?= $form->field($type, 'mail_address')->textInput(['maxlength' => true]) ?>
 

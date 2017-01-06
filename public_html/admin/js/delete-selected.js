@@ -23,4 +23,16 @@ $( document ).ready(function() {
             }
         });
     });
+
+    $('#delete-user').click(function(){
+        var ids = $('#w1').yiiGridView('getSelectedRows');
+        $.ajax({
+            type: 'POST',
+            url : 'index.php?r=user/multiple-delete',
+            data : {row_id: ids},
+            success : function() {
+                $(this).closest('tr').remove();
+            }
+        });
+    });
 });

@@ -7,6 +7,7 @@ use common\models\Factory;
 
 $this->title = 'Представители';
 $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="agent-index">
 
@@ -23,6 +24,8 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
         <?= Html::a('Создать представителя', ['create-agent'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <input type="button" class="btn btn-danger pull-right" value="Удалить" id="delete-user" data-confirm="Удалить пользователей?">
+    </br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'rowOptions' => function ($model) {
@@ -85,6 +88,13 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                 'contentOptions'=>['style'=>'width: 150px;'],
             ],
             [
+                'class' => 'yii\grid\CheckboxColumn',
+                'header' => Html::checkBox('selection_all', false, [
+                    'class' => 'select-on-check-all',
+                    'label' => 'Все',
+                ]),
+            ],
+            [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{ban} {accept} {view} {delete} {update} {not-verify} {black} {white} {gray} {neutral} ',
                 'buttons' => [
@@ -115,17 +125,17 @@ $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset:
                         ]) : '';
                     },
                     'black' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_BLACK) ? Html::a('<i class="glyphicon glyphicon-list"></i>', ['black', 'id' => $model->id], [
                             'title' => 'Добавить в черный список',
                         ]) : '';
                     },
                     'white' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_WHITE) ? Html::a('<i class="glyphicon glyphicon-align-center"></i>', ['white', 'id' => $model->id], [
                             'title' => 'Добавить в белый список',
                         ]) : '';
                     },
                     'gray' => function ($url, $model, $key) {
-                        return ($model->user->inList != User::IN_WHITE && $model->user->inList != User::IN_BLACK && $model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-left"></i>', ['gray', 'id' => $model->id], [
+                        return ($model->user->inList != User::IN_GRAY) ? Html::a('<i class="glyphicon glyphicon-align-left"></i>', ['gray', 'id' => $model->id], [
                             'title' => 'Добавить в серый список',
                         ]) : '';
                     },
