@@ -106,6 +106,8 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'priority')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,
         'options' => ['placeholder' => 'Выберите фабрику ...'],

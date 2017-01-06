@@ -94,6 +94,7 @@ $this->title = 'Новости';
                     return $model->countUniqueViews() . ' (' . $model->countRealViews() . ')';
                 },
             ],
+            'priority',
             [
                 'attribute' => 'date',
                 'filter' => DatePicker::widget([

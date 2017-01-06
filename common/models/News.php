@@ -28,6 +28,7 @@ use common\models\news\ForList;
  * @property string $date
  * @property integer $views_added
  * @property integer $factory_id
+ * @property integer $priority
  * @property integer $forList
  */
 class News extends \yii\db\ActiveRecord
@@ -51,8 +52,8 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'text', 'factory_id', 'forList'], 'required'],
-            [['views_added', 'factory_id'], 'integer'],
+            [['title', 'text', 'factory_id', 'forList', 'priority'], 'required'],
+            [['views_added', 'factory_id', 'priority'], 'integer'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create'],
             [['title', 'text', 'date'], 'string'],
         ];
@@ -83,6 +84,7 @@ class News extends \yii\db\ActiveRecord
             'views_added' => 'Добавленные просмотры',
             'factory_id' => 'Фабрика Автор',
             'forList' => 'Показывать списку',
+            'priority' => 'Приоритет'
         ];
     }
 
@@ -153,22 +155,22 @@ class News extends \yii\db\ActiveRecord
                 ->andFilterWhere(['in', static::tableName() . '.id', $education])
                 ->andFilterWhere(['in', static::tableName() . '.id', $types])
                 ->andFilterWhere(['in', static::tableName() . '.id', $pharmacies])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
-                    ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList . '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList . '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList . '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList . '=0'],
+                    ['and', ['forList' => 5], Yii::$app->user->identity->inList . '=3']
                 ])
-                ->orderBy(['date' => SORT_DESC]);
+                ->orderBy(["priority" => SORT_DESC, 'date' => SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
             return static::find()
                 ->andFilterWhere(['or', ['factory_id' => 10], ['factory_id' => Yii::$app->user->identity->agent->factory_id]])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
+                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList . '<> 1'],
+                    ['and', ['forList' => 2], Yii::$app->user->identity->inList . '=2'],
+                    ['and', ['forList' => 3], Yii::$app->user->identity->inList . '=1'],
+                    ['and', ['forList' => 4], Yii::$app->user->identity->inList . '=0'],
                 ])
-                ->orderBy(['date' => SORT_DESC])
+                ->orderBy(["priority" => SORT_DESC, 'date' => SORT_DESC])
                 ->groupBy(static::tableName() . '.id');
         }
     }
@@ -183,7 +185,7 @@ class News extends \yii\db\ActiveRecord
             4 => 'только нейтральному',
             5 => 'только серому'
         );
-        if(isset($values[$this->forList])) {
+        if (isset($values[$this->forList])) {
             return $values[$this->forList];
         }
     }

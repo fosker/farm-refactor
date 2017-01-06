@@ -38,6 +38,7 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             'title',
+            'priority',
             [
                 'label' => 'Фабрика',
                 'attribute' => 'factory.title',

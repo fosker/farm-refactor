@@ -18,7 +18,7 @@ class Search extends News
     public function rules()
     {
         return [
-            [['id', 'views'], 'integer'],
+            [['id', 'views', 'priority'], 'integer'],
             [['title', 'text', 'date'], 'string'],
             [['company_id', 'education_id', 'type_id', 'pharmacy_id'], 'safe'],
         ];
@@ -61,6 +61,7 @@ class Search extends News
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'priority' => $this->priority
         ]);
 
         if($this->views) {
