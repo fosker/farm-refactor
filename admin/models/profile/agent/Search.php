@@ -40,6 +40,9 @@ class Search extends Agent
                     'id' => SORT_DESC
                 ],
             ],
+            'pagination' => [
+                'pageSizeLimit' => [0, 10000],
+            ],
         ]);
 
         $dataProvider->sort->attributes['user.status'] = [

@@ -11,9 +11,9 @@ use common\models\User;
 use backend\models\admin\Right;
 
 $this->title = 'Главная';
-$this->registerJsFile('admin/js/search.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('admin/js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile('admin/js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/search.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/hide-show.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
     <div class="main-index">

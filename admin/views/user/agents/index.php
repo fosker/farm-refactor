@@ -4,6 +4,7 @@ use common\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use common\models\Factory;
+use yii\helpers\Url;
 
 $this->title = 'Представители';
 $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
@@ -24,10 +25,25 @@ $this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAss
         <?= Html::a('Создать представителя', ['create-agent'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php
+    $links = "<span class='user-links' style='margin-left: 20px;'>"
+        .
+        Html::a('25', Url::to(Yii::$app->request->getUrl().'&per-page=25'), ['style' => 'color:red;'])
+        .
+        Html::a('   50', Url::to(Yii::$app->request->getUrl().'&per-page=50'), ['style' => 'color:red;'])
+        .
+        Html::a('   100', Url::to(Yii::$app->request->getUrl().'&per-page=100'), ['style' => 'color:red;'])
+        .
+        Html::a('   все', Url::to(Yii::$app->request->getUrl().'&per-page=10000'), ['style' => 'color:red;'])
+        .
+        "</span>"
+    ?>
+
     <input type="button" class="btn btn-danger pull-right" value="Удалить" id="delete-user" data-confirm="Удалить пользователей?">
     </br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'summary' => "<div class='summary'>Показаны записи <b>{begin, number}-{end, number}</b> из <b>{totalCount, number}</b>" . $links . "</div>",
         'rowOptions' => function ($model) {
             if ($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];

@@ -3,6 +3,7 @@
 use common\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 $this->title = 'Фармацевты';
 $this->registerJsFile('js/show-comment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
@@ -22,61 +23,77 @@ $this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAss
         'logins' => $logins
     ]); ?>
 
-    <input type="button" class="btn btn-danger pull-right" value="Удалить" id="delete-user" data-confirm="Удалить пользователей?">
+    <?php
+    $links = "<span class='user-links' style='margin-left: 20px;'>"
+        .
+        Html::a('25', Url::to(Yii::$app->request->getUrl().'&per-page=25'), ['style' => 'color:red;'])
+        .
+        Html::a('   50', Url::to(Yii::$app->request->getUrl().'&per-page=50'), ['style' => 'color:red;'])
+        .
+        Html::a('   100', Url::to(Yii::$app->request->getUrl().'&per-page=100'), ['style' => 'color:red;'])
+        .
+        Html::a('   все', Url::to(Yii::$app->request->getUrl().'&per-page=10000'), ['style' => 'color:red;'])
+        .
+        "</span>"
+    ?>
+
+    <input type="button" class="btn btn-danger pull-right" value="Удалить" id="delete-user"
+           data-confirm="Удалить пользователей?">
     </br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'rowOptions' => function($model) {
-            if($model->user->status == 0 || $model->user->status == 2) {
+        'summary' => "<div class='summary'>Показаны записи <b>{begin, number}-{end, number}</b> из <b>{totalCount, number}</b>" . $links . "</div>",
+        'rowOptions' => function ($model) {
+            if ($model->user->status == 0 || $model->user->status == 2) {
                 return ['class' => 'danger'];
             };
         },
         'columns' => [
             [
                 'attribute' => 'id',
-                'contentOptions'=>['style'=>'width: 100px;'],
+                'contentOptions' => ['style' => 'width: 100px;'],
             ],
             [
                 'label' => 'Логин',
                 'attribute' => 'user.login',
-                'value'=>'user.login',
-                'contentOptions'=>['style'=>'width: 200px;'],
+                'value' => 'user.login',
+                'contentOptions' => ['style' => 'width: 200px;'],
             ],
             [
                 'label' => 'Имя',
                 'attribute' => 'user.name',
-                'contentOptions'=>['style'=>'width: 200px;'],
+                'contentOptions' => ['style' => 'width: 200px;'],
             ],
             [
                 'attribute' => 'pharmacy_id',
-                'value'=>function($model) {
+                'value' => function ($model) {
                     return Html::a($model->pharmacy->name, ['/pharmacy/view', 'id' => $model->pharmacy_id]);
                 },
-                'format'=>'html',
-                'contentOptions'=>['style'=>'width: 200px;'],
+                'format' => 'html',
+                'contentOptions' => ['style' => 'width: 200px;'],
             ],
             [
                 'label' => 'Организация',
                 'attribute' => 'pharmacy.company.id',
-                'value'=>function($model) {
+                'value' => function ($model) {
                     return Html::a($model->pharmacy->company->title, ['/company/view', 'id' => $model->pharmacy->company_id]);
                 },
-                'format'=>'html',
-                'contentOptions'=>['style'=>'width: 200px;'],
+                'format' => 'html',
+                'contentOptions' => ['style' => 'width: 200px;'],
             ],
             [
                 'label' => 'Город',
                 'attribute' => 'pharmacy.city.id',
-                'value'=>'pharmacy.city.name',
+                'value' => 'pharmacy.city.name',
             ],
             [
                 'attribute' => 'user.points',
-                'value'=>'user.points',
+                'value' => 'user.points',
             ],
             [
-                'attribute'=>'user.status',
-                'value' => function($model) {
-                    switch($model->user->status) {
+                'attribute' => 'user.status',
+                'value' => function ($model) {
+                    switch ($model->user->status) {
                         case User::STATUS_ACTIVE:
                             return 'активен';
                         case User::STATUS_VERIFY:
@@ -85,14 +102,14 @@ $this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAss
                             return 'не прошёл верификацию';
                     }
                 },
-                'contentOptions'=>['style'=>'width: 150px;'],
+                'contentOptions' => ['style' => 'width: 150px;'],
             ],
             [
-                'attribute'=>'user.inList',
-                'value' => function($model) {
+                'attribute' => 'user.inList',
+                'value' => function ($model) {
                     return [0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в сером'][$model->user->inList];
                 },
-                'contentOptions'=>['style'=>'width: 150px;'],
+                'contentOptions' => ['style' => 'width: 150px;'],
             ],
             [
                 'class' => 'yii\grid\CheckboxColumn',

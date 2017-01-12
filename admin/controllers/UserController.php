@@ -240,8 +240,9 @@ class UserController extends Controller
         $model->scenario = 'black';
         if ($model->load(Yii::$app->request->post())) {
             $model->toBlack();
-            return $this->redirect(['view', 'id' => $id]);
+            return Yii::$app->getResponse()->redirect(Yii::$app->admin->getReturnUrl());
         } else {
+            Yii::$app->admin->returnUrl = Yii::$app->request->referrer;
             return $this->render('black', [
                 'model' => $model,
                 'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
@@ -251,13 +252,13 @@ class UserController extends Controller
 
     public function actionWhite($id)
     {
-        $url = Yii::$app->request->referrer;
         $model = $this->findModel($id);
         $model->scenario = 'white';
         if ($model->load(Yii::$app->request->post())) {
             $model->toWhite();
-            return Yii::$app->getResponse()->redirect($url);
+            return Yii::$app->getResponse()->redirect(Yii::$app->admin->getReturnUrl());
         } else {
+            Yii::$app->admin->returnUrl = Yii::$app->request->referrer;
             return $this->render('white', [
                 'model' => $model,
                 'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),
@@ -268,9 +269,10 @@ class UserController extends Controller
 
     public function actionNeutral($id)
     {
+        Yii::$app->admin->returnUrl = Yii::$app->request->referrer;
         $model = $this->findModel($id);
         $model->toNeutral();
-        return $this->redirect(['view', 'id' => $id]);
+        return Yii::$app->getResponse()->redirect(Yii::$app->admin->getReturnUrl());
     }
 
     public function actionGray($id)
@@ -279,8 +281,9 @@ class UserController extends Controller
         $model->scenario = 'gray';
         if ($model->load(Yii::$app->request->post())) {
             $model->toGray();
-            return $this->redirect(['view', 'id' => $id]);
+            return Yii::$app->getResponse()->redirect(Yii::$app->admin->getReturnUrl());
         } else {
+            Yii::$app->admin->returnUrl = Yii::$app->request->referrer;
             return $this->render('gray', [
                 'model' => $model,
                 'users' => ArrayHelper::map(User::find()->asArray()->all(), 'id', 'name'),

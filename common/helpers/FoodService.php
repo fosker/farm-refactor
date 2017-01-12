@@ -8,8 +8,8 @@ use yii\httpclient\Client;
 
 class FoodService extends Model
 {
-    const ORDER_CHECK = 'http://dev.sushivesla.by/api/order/checking';
-    const ORDER_DELIVERY = 'http://dev.sushivesla.by/api/order/delivery';
+    const ORDER_CHECK = 'http://sushivesla.by/api/order/checking';
+    const ORDER_DELIVERY = 'http://sushivesla.by/api/order/delivery';
 
     const PHARMSET1 = 805;
     const PHARMSET2 = 807;
@@ -50,14 +50,17 @@ class FoodService extends Model
 
     private function sendDeliveryRequest($cookie)
     {
+        $address = explode(',', $this->user->pharmacist->pharmacy->address);
+        $code = substr($this->user->phone, 4, 2);
+        $number = substr($this->user->phone, 6);
         $data = [
             'delivery-type' => 0,
-            'street' => $this->user->pharmacist->pharmacy->address,
-            'building_number' => 1,
+            'street' => $address[0],
+            'building_number' => $address[1],
             'apartment' => 1,
             'customer' => $this->user->name,
-            'phone_code' => 0,
-            'phone_number' => $this->user->phone,
+            'phone_code' => $code,
+            'phone_number' => $number,
             'email' => $this->user->email,
             'terms_accepted' => 1,
             'order_payment' => 0

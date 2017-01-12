@@ -43,8 +43,7 @@ class Pharmacist extends \yii\db\ActiveRecord
         return array_merge(
             parent::scenarios(),
             [
-                'update' => ['pharmacy_id', 'education_id', 'sex', 'position_id', 'mail_address', 'date_birth',
-                'pharmacy_phone_number'],
+                'update' => ['pharmacy_id', 'education_id', 'sex', 'position_id', 'mail_address', 'date_birth'],
             ]
         );
     }
