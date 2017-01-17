@@ -143,8 +143,19 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
-        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только серому'])?>
+    <label class="control-label">Показывать спискам</label>
+
+    <div>
+
+        <?= Html::checkbox('forList[]', in_array(0, $old_lists), ['value' => 0]) . 'нейтральному' ?>
+
+        <?= Html::checkbox('forList[]', in_array(1, $old_lists), ['value' => 1]) . 'черному' ?>
+
+        <?= Html::checkbox('forList[]', in_array(2, $old_lists), ['value' => 2]) . 'белому' ?>
+
+        <?= Html::checkbox('forList[]', in_array(3, $old_lists), ['value' => 3]) . 'серому' ?>
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

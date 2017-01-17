@@ -105,6 +105,9 @@ class NewsController extends Controller
         $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
             if ($model->save()) {
@@ -140,8 +143,12 @@ class NewsController extends Controller
         $old_education = News_Education::find()->select('education_id')->where(['news_id' => $id])->asArray()->all();
         $old_types = News_Type::find()->select('type_id')->where(['news_id' => $id])->asArray()->all();
         $old_relations = ArrayHelper::map(News::findOne($model->id)->recommended, 'id', 'title');
+        $old_lists = explode(',', $model->forList);
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
             if ($model->save()) {
@@ -173,6 +180,7 @@ class NewsController extends Controller
                 'old_companies' => $old_companies,
                 'old_education' => $old_education,
                 'old_relations' => $old_relations,
+                'old_lists' => $old_lists
             ]);
         }
     }

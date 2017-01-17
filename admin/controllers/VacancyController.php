@@ -78,6 +78,9 @@ class VacancyController extends Controller
         $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
             if ($model->save()) {
@@ -103,8 +106,12 @@ class VacancyController extends Controller
             ->where(['vacancy_id' => $id])->asArray()->all();
         $old_companies = Pharmacy::find()->select('company_id')->joinWith('vacancyPharmacies')
             ->where(['vacancy_id' => $id])->asArray()->all();
+        $old_lists = explode(',', $model->forList);
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model, 'thumbFile');
             if ($model->save()) {
@@ -124,6 +131,7 @@ class VacancyController extends Controller
                 'companies'=>Company::find()->asArray()->all(),
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
+                'old_lists' => $old_lists
             ]);
         }
     }

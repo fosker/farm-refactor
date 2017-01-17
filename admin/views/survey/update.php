@@ -24,7 +24,8 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->tit
         'old_cities'=>$old_cities,
         'old_companies'=>$old_companies,
         'old_types' => $old_types,
-        'old_education' => $old_education
+        'old_education' => $old_education,
+        'old_lists' => $old_lists
     ]) ?>
 
 </div>

@@ -26,6 +26,7 @@ $this->title = 'Изменить новость: ' . ' ' . $model->title;
         'old_types' => $old_types,
         'old_education' => $old_education,
         'old_relations' => $old_relations,
+        'old_lists' => $old_lists
     ]) ?>
 
 </div>

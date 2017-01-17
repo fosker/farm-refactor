@@ -99,7 +99,9 @@ class SurveyController extends Controller
         $options = [[new Option]];
 
         if ($model->load(Yii::$app->request->post())) {
-
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $questions = Model::createMultiple(Question::className());
             Model::loadMultiple($questions, Yii::$app->request->post());
 
@@ -148,6 +150,7 @@ class SurveyController extends Controller
             ->where(['survey_id' => $id])->asArray()->all();
         $old_education = Survey_Education::find()->select('education_id')->where(['survey_id' => $id])->asArray()->all();
         $old_types = Survey_Type::find()->select('type_id')->where(['survey_id' => $id])->asArray()->all();
+        $old_lists = explode(',', $model->forList);
 
         $oldQuestionIds = Question::find()->select('id')
             ->where(['survey_id' => $id])->asArray()->all();
@@ -165,6 +168,9 @@ class SurveyController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $questions = Model::createMultiple(Question::classname(), $questions);
             Model::loadMultiple($questions, Yii::$app->request->post());
             $newQuestionIds = ArrayHelper::getColumn($questions,'id');
@@ -221,7 +227,8 @@ class SurveyController extends Controller
             'old_types' => $old_types,
             'old_cities' => $old_cities,
             'old_companies' => $old_companies,
-            'old_education' => $old_education
+            'old_education' => $old_education,
+            'old_lists' => $old_lists
         ]);
 
     }

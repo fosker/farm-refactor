@@ -80,6 +80,9 @@ class StockController extends Controller
         $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save()) {
                 $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
@@ -110,8 +113,12 @@ class StockController extends Controller
             ->where(['stock_id' => $id])->asArray()->all();
         $old_education = Stock_Education::find()->select('education_id')->where(['stock_id' => $id])->asArray()->all();
         $old_types = Stock_Type::find()->select('type_id')->where(['stock_id' => $id])->asArray()->all();
+        $old_lists = explode(',', $model->forList);
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save()) {
                 if (!Yii::$app->request->post('companies') || !Yii::$app->request->post('cities')) {
@@ -135,7 +142,8 @@ class StockController extends Controller
                 'old_types' => $old_types,
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
-                'old_education' => $old_education
+                'old_education' => $old_education,
+                'old_lists' => $old_lists
             ]);
         }
     }

@@ -16,7 +16,7 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 
 $this->title = 'Push-уведомления для групп';
-$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $url = Url::to(['/users/push-groups/link-list']);
 
@@ -126,9 +126,11 @@ endif;
     ]);
     Modal::end();
 
-    echo $form->field($model, 'grayList')->checkbox(['value' => 3]);
-
     ?>
+
+    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
+        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только серому', 6 => 'серому и белому'])?>
+
     <?= $form->field($model, 'type')->radioList([
         1=>'Переход на определенный экран в приложение (со списка) (без подробного экрана о уведомлении)',
         2=>'Переход на подробный экран уведомления без кнопки ознакомился',

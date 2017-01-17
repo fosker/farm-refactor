@@ -21,6 +21,7 @@ $this->title = 'Редактировать подарок: ' . ' ' . $model->tit
         'companies'=>$companies,
         'old_cities'=>$old_cities,
         'old_companies'=>$old_companies,
+        'old_lists' => $old_lists
     ]) ?>
 
 </div>

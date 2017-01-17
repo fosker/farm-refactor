@@ -121,12 +121,7 @@ class Survey extends ActiveRecord
                 ->andFilterWhere(['in', static::tableName().'.id', $education])
                 ->andFilterWhere(['in', static::tableName().'.id', $types])
                 ->andFilterWhere(['in', static::tableName().'.id', $pharmacies])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
-                    ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
-                ])
+                ->andFilterWhere(['like', 'forList', Yii::$app->user->identity->inList])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
@@ -145,11 +140,7 @@ class Survey extends ActiveRecord
                     Survey_Type::tableName().'.type_id'=> Type::TYPE_AGENT,
                     'factory_id'=>[Yii::$app->user->identity->agent->factory_id, '1']
                 ])
-                ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                    ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                    ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
-                    ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
-                ])
+                ->andFilterWhere(['like', 'forList', Yii::$app->user->identity->inList])
                 ->andWhere(['!=', 'views_limit', '0'])
                 ->andWhere([
                     'not exists',
@@ -173,21 +164,6 @@ class Survey extends ActiveRecord
     public function getFactory()
     {
         return $this->hasOne(Factory::className(),['id'=>'factory_id']);
-    }
-
-    public function getLists()
-    {
-        $values = array(
-            0 => 'нейтральному и белому',
-            1 => 'всем',
-            2 => 'только белому',
-            3 => 'только черному',
-            4 => 'только нейтральному',
-            5 => 'только серому'
-        );
-        if(isset($values[$this->forList])) {
-            return $values[$this->forList];
-        }
     }
 
     public function getTypes()

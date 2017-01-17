@@ -8,8 +8,11 @@ use yii\httpclient\Client;
 
 class FoodService extends Model
 {
-    const ORDER_CHECK = 'http://sushivesla.by/api/order/checking';
-    const ORDER_DELIVERY = 'http://sushivesla.by/api/order/delivery';
+    const ORDER_CHECK = 'http://dev.sushivesla.by/api/order/checking';
+    const ORDER_DELIVERY = 'http://dev.sushivesla.by/api/order/delivery';
+
+    const DEV_COOKIE = 'SESSd2ec49ca5e7e7506c542e4aceab7101a';
+    const PROD_COOKIE = 'SESSe6e55b740931d7b6afa222824bc2aeb4';
 
     const PHARMSET1 = 805;
     const PHARMSET2 = 807;
@@ -23,13 +26,12 @@ class FoodService extends Model
     public function sendRequest()
     {
         $this->client = new Client();
-        $client = new Client();
         $data = [
             'id' => [$this->present_id],
             'amount' => [1],
             'half' => [0]
         ];
-        $response = $client->createRequest()
+        $response = $this->client->createRequest()
             ->setFormat(Client::FORMAT_JSON)
             ->setMethod('post')
             ->setUrl(static::ORDER_CHECK)
@@ -41,10 +43,8 @@ class FoodService extends Model
             ->send();
 
         if ($response->isOk) {
-            $cookie = $response->getCookies()->get('SESSd2ec49ca5e7e7506c542e4aceab7101a');
+            $cookie = $response->getCookies()->get(static::DEV_COOKIE);
             $this->sendDeliveryRequest($cookie);
-        } else {
-            return false;
         }
     }
 
@@ -53,6 +53,7 @@ class FoodService extends Model
         $address = explode(',', $this->user->pharmacist->pharmacy->address);
         $code = substr($this->user->phone, 4, 2);
         $number = substr($this->user->phone, 6);
+
         $data = [
             'delivery-type' => 0,
             'street' => $address[0],

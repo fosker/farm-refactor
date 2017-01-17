@@ -19,14 +19,14 @@ class Search extends Pharmacist
         return [
             [['user.status', 'id', 'user.points', 'education_id', 'pharmacy_id', 'position_id',
                 'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to'], 'integer'],
-            [['user.name', 'user.login', 'user.email', 'user.comment'], 'string'],
+            [['user.name', 'user.login', 'user.email', 'user.comment', 'user.phone'], 'string'],
         ];
     }
 
     public function attributes()
     {
         return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points',
-            'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to', 'user.login', 'user.comment']);
+            'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to', 'user.login', 'user.comment', 'user.phone']);
     }
 
     public function scenarios()
@@ -106,6 +106,7 @@ class Search extends Pharmacist
             ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
             ->andFilterWhere(['<=', 'points', $this->getAttribute('points_to')])
             ->andFilterWhere(['like', User::tableName() . '.login', $this->getAttribute('user.login')])
+            ->andFilterWhere(['like', User::tableName() . '.phone', $this->getAttribute('user.phone')])
             ->andFilterWhere(['like', User::tableName() . '.comment', $this->getAttribute('user.comment')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
             ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')]);

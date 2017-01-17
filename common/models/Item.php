@@ -32,7 +32,7 @@ class Item extends ActiveRecord
 {
     const VENDOR_SUSHI = 20;
 
-    const PHARMSET1 = 48;
+    const PHARMSET1 = 38;
     const PHARMSET2 = 49;
 
     const STATUS_ACTIVE = 1;
@@ -112,28 +112,9 @@ class Item extends ActiveRecord
             ->andWhere([Item_Pharmacy::tableName().'.pharmacy_id'=>Yii::$app->user->identity->pharmacist->pharmacy_id])
             ->andWhere(['status'=>static::STATUS_ACTIVE])
             ->andWhere(['>', 'count', '0'])
-            ->andFilterWhere(['or', ['forList' => 1], ['and', ['forList' => 0], Yii::$app->user->identity->inList. '<> 1'],
-                ['and', ['forList' => 2], Yii::$app->user->identity->inList. '=2'],
-                ['and', ['forList' => 3], Yii::$app->user->identity->inList. '=1'],
-                ['and', ['forList' => 4], Yii::$app->user->identity->inList. '=0'],
-                ['and', ['forList' => 5], Yii::$app->user->identity->inList. '=3']
-            ])
+            ->andFilterWhere(['like', 'forList', Yii::$app->user->identity->inList])
             ->orderBy(["priority"=>SORT_DESC,static::tableName().".id"=>SORT_DESC])
             ->groupBy(static::tableName().'.id');
-    }
-
-    public function getLists()
-    {
-        $values = array(
-            0 => 'серому и белому',
-            1 => 'всем',
-            2 => 'только белому',
-            3 => 'только черному',
-            4 => 'только серому'
-        );
-        if(isset($values[$this->forList])) {
-            return $values[$this->forList];
-        }
     }
 
     public static function getOneForCurrentUser($id)

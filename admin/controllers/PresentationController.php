@@ -94,6 +94,9 @@ class PresentationController extends Controller
         $model->scenario = 'create';
 
         if($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
             if ($model->save()) {
@@ -125,8 +128,12 @@ class PresentationController extends Controller
             ->where(['presentation_id' => $id])->asArray()->all();
         $old_education = Presentation_Education::find()->select('education_id')->where(['presentation_id' => $id])->asArray()->all();
         $old_types = Presentation_Type::find()->select('type_id')->where(['presentation_id' => $id])->asArray()->all();
+        $old_lists = explode(',', $model->forList);
 
         if($model->load(Yii::$app->request->getBodyParams())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model,'imageFile');
             $model->thumbFile = UploadedFile::getInstance($model,'thumbFile');
             if ($model->save()) {
@@ -151,7 +158,8 @@ class PresentationController extends Controller
                 'old_types' => $old_types,
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
-                'old_education' => $old_education
+                'old_education' => $old_education,
+                'old_lists' => $old_lists
             ]);
         }
 

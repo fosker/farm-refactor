@@ -87,6 +87,9 @@ class BannerController extends Controller
         $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save(false)) {
                 $model->loadPharmacies(Yii::$app->request->post('pharmacies'));
@@ -117,8 +120,12 @@ class BannerController extends Controller
             ->where(['banner_id' => $id])->asArray()->all();
         $old_education = Banner_Education::find()->select('education_id')->where(['banner_id' => $id])->asArray()->all();
         $old_types = Banner_Type::find()->select('type_id')->where(['banner_id' => $id])->asArray()->all();
+        $old_lists = explode(',', $model->forList);
 
         if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             if ($model->save()) {
                 $model->hide();
@@ -143,7 +150,8 @@ class BannerController extends Controller
                 'old_types' => $old_types,
                 'old_cities' => $old_cities,
                 'old_companies' => $old_companies,
-                'old_education' => $old_education
+                'old_education' => $old_education,
+                'old_lists' => $old_lists
             ]);
         }
     }
