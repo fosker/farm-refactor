@@ -120,6 +120,9 @@ class PushGroupsController extends Controller
             $pharmacies = Yii::$app->request->post('pharmacies') ?  Yii::$app->request->post('pharmacies') : [];
 
             $model->load(Yii::$app->request->post());
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
 
             if($factories && !$pharmacies && !$educations) {
                 $users = ArrayHelper::map(
@@ -127,7 +130,7 @@ class PushGroupsController extends Controller
                         ->select(User::tableName().'.id')
                         ->joinWith('agent')
                         ->andWhere(['in', 'factory_id', $factories])
-                        ->andFilterWhere(['or', ['inList' => 0], ['inList' => $model->grayList]])
+                        ->andFilterWhere(['in', 'inList', explode(',',$model->forList)])
                         ->asArray()
                         ->all(), 'id', 'id'
                 );
@@ -136,21 +139,16 @@ class PushGroupsController extends Controller
                     User::find()
                         ->select(User::tableName().'.id')
                         ->joinWith('pharmacist')
+                        ->join('LEFT JOIN', Pharmacy::tableName(),
+                            'pharmacy_id = '.Pharmacy::tableName().'.id')
                         ->where(['in', 'city_id', $cities])
                         ->orWhere(['in', 'education_id', $educations])
                         ->orWhere(['in', 'pharmacy_id', $pharmacies])
-                        ->andFilterWhere(['or', ['inList' => 0], ['inList' => $model->grayList]])
-                        ->join('LEFT JOIN', Pharmacy::tableName(),
-                            'pharmacy_id = '.Pharmacy::tableName().'.id')
+                        ->andFilterWhere(['in', 'inList', explode(',',$model->forList)])
                         ->asArray()
                         ->all(), 'id', 'id'
                 );
             }
-
-            echo '<pre>';
-            var_dump($users);
-            echo '</pre>';
-            die();
 
             $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['in', 'user_id', $users])
                 ->andWhere(['not',['push_token' => null]])

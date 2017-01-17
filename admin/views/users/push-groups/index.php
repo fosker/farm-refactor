@@ -16,11 +16,11 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 
 $this->title = 'Push-уведомления для групп';
-$this->registerJsFile('admin/js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $url = Url::to(['/users/push-groups/link-list']);
 
-if(Yii::$app->session->hasFlash('PushMessage')) :
+if (Yii::$app->session->hasFlash('PushMessage')) :
     echo Growl::widget([
         'type' => Growl::TYPE_SUCCESS,
         'title' => 'Успешно',
@@ -128,16 +128,28 @@ endif;
 
     ?>
 
-    <?= $form->field($model, 'forList')->radioList([0 => 'нейтральному и белому', 1 => 'всем', 2 => 'только белому',
-        3 => 'только черному', 4 => 'только нейтральному', 5 => 'только серому', 6 => 'серому и белому'])?>
+    <div>
+        <label class="control-label">Отправлять спискам</label>
+        <div>
+            <?= Html::checkbox('forList[]', true, ['value' => 0]) . 'нейтральному' ?>
+
+            <?= Html::checkbox('forList[]', true, ['value' => 1]) . 'черному' ?>
+
+            <?= Html::checkbox('forList[]', true, ['value' => 2]) . 'белому' ?>
+
+            <?= Html::checkbox('forList[]', true, ['value' => 3]) . 'серому' ?>
+        </div>
+    </div>
 
     <?= $form->field($model, 'type')->radioList([
-        1=>'Переход на определенный экран в приложение (со списка) (без подробного экрана о уведомлении)',
-        2=>'Переход на подробный экран уведомления без кнопки ознакомился',
-        3=>'Переход на подробный экран уведомления с кнопкой ознакомился'
+        1 => 'Переход на определенный экран в приложение (со списка) (без подробного экрана о уведомлении)',
+        2 => 'Переход на подробный экран уведомления без кнопки ознакомился',
+        3 => 'Переход на подробный экран уведомления с кнопкой ознакомился'
     ]); ?>
 
+
     <p></p>
+
     <div class="form-group">
         <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
     </div>

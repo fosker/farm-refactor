@@ -43,8 +43,8 @@ class Push extends \yii\db\ActiveRecord
     {
         return [
             [['message', 'users', 'type'], 'required'],
-            [['message', 'date_send'], 'string'],
-            [['device_count', 'views', 'forList', 'type'], 'integer'],
+            [['message', 'date_send', 'forList'], 'string'],
+            [['device_count', 'views', 'type'], 'integer'],
             [['link'], 'string', 'max' => 255],
         ];
     }
@@ -66,7 +66,7 @@ class Push extends \yii\db\ActiveRecord
             'link' => 'Ссылка',
             'views' => 'Количество просмотров',
             'date_send' => 'Дата отправки',
-            'forList' => 'Отправлять списку',
+            'forList' => 'Отправлять спискам',
             'type' => 'Тип'
         ];
     }
