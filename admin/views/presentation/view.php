@@ -100,10 +100,6 @@ $this->title = $model->title;
                 'value'=>$model::getHomeStatusList()[$model->home],
             ],
             [
-                'attribute'=>'forList',
-                'value'=>$model->lists,
-            ],
-            [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],

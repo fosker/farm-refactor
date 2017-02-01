@@ -13,6 +13,7 @@ $this->title = $model->title;
 
     <p>
         <?= Html::a('Список', ['index'],['class'=>'btn btn-info']) ?>
+        <?=Html::a($model->status == $model::STATUS_HIDDEN ? 'Утвердить' : 'Скрыть', [$model->status == $model::STATUS_HIDDEN ? 'approve' : 'hide' , 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -38,12 +39,17 @@ $this->title = $model->title;
                 'format'=>'html',
             ],
             'title',
+            'priority',
             [
                 'attribute'=>'factory_id',
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',
             ],
             'description:html',
+            [
+                'attribute'=>'status',
+                'value'=>$model::getStatusList()[$model->status],
+            ],
         ],
     ]) ?>
 

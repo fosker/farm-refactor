@@ -73,7 +73,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         return array_merge(
             parent::scenarios(),
             [
-                'update' => ['name', 'email', 'phone'],
+                'update' => ['name', 'email', 'phone', 'comment'],
                 'black' => ['inList', 'comment'],
                 'white' => ['inList', 'comment'],
                 'gray' => ['inList', 'comment'],
@@ -215,6 +215,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             'type_id' => 'Тип пользователя',
             'inList' => 'В списке',
             'comment' => 'Комментарий',
+            'image' => 'Аватар'
         ];
     }
 

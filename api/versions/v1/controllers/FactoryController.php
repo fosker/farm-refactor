@@ -54,17 +54,27 @@ class FactoryController extends Controller
 
     public function actionThemes()
     {
-        $ids = Theme::find()->select('factory_id')->asArray();
-        return Factory::find()->where(['in', 'id', $ids])->all();
+        if (Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
+            $ids = Theme::find()->select('factory_id')->asArray();
+            return Factory::find()
+                ->where(['in', 'id', $ids])
+                ->andWhere(['is_shown' => 1])
+                ->all();
+        } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
+            return Factory::find()->where(['id' => Yii::$app->user->identity->agent->factory_id])->all();
+        }
     }
 
     public function actionAll() {
         if (Yii::$app->user->identity->type_id == Type::TYPE_PHARMACIST) {
             $query = Factory::find()->where(['!=', 'id', 10])
                 ->andWhere(['is_shown' => 1])
-                ->andWhere(Yii::$app->user->identity->inList.'=2');
+                ->andWhere(Yii::$app->user->identity->inList.'=2')
+                ->orderBy([Factory::tableName().'.priority' => SORT_DESC]);
         } elseif (Yii::$app->user->identity->type_id == Type::TYPE_AGENT) {
-            $query = Factory::find()->where(['id' => Yii::$app->user->identity->agent->factory_id]);
+            $query = Factory::find()
+                ->where(['id' => Yii::$app->user->identity->agent->factory_id])
+                ->orderBy([Factory::tableName().'.priority' => SORT_DESC]);
         }
         return new ActiveDataProvider([
             'query' => $query

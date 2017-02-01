@@ -78,7 +78,7 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
 
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
-        'preset' => 'click'
+        'preset' => 'basic'
     ]); ?>
 
     <?= $form->field($model, 'imageFile')->widget(FileInput::classname(),[

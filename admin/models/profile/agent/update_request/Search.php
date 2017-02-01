@@ -15,7 +15,7 @@ class Search extends AgentUpdateRequest
     {
         return [
             [['agent_id'], 'integer'],
-            [['name', 'date_add'], 'string'],
+            [['name', 'date_add', 'user.inList'], 'string'],
         ];
     }
     public function scenarios()
@@ -23,9 +23,14 @@ class Search extends AgentUpdateRequest
         return Model::scenarios();
     }
 
+    public function attributes()
+    {
+        return array_merge(parent::attributes(),['user.inList']);
+    }
+
     public function search($params)
     {
-        $query = AgentUpdateRequest::find();
+        $query = AgentUpdateRequest::find()->joinWith('user');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -48,7 +53,8 @@ class Search extends AgentUpdateRequest
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'date_add', $this->date_add]);
+            ->andFilterWhere(['like', 'date_add', $this->date_add])
+            ->andFilterWhere(['like', User::tableName().'.inList', $this->getAttribute('user.inList')]);
 
 
         return $dataProvider;

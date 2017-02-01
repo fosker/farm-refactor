@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-
 $this->title = $model->title;
 ?>
 <div class="theme-view">
@@ -41,7 +40,10 @@ $this->title = $model->title;
                 'value'=> $model->form_id == 0 ? 'Свободная тема' : $model->form->title,
                 'format'=>'html',
             ],
-
+            [
+                'attribute'=>'status',
+                'value'=>$model::getStatusList()[$model->status],
+            ],
         ],
     ]) ?>
 

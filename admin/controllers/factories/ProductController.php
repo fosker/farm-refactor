@@ -103,6 +103,20 @@ class ProductController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionApprove($id)
+    {
+        $this->findModel($id)->approve();
+
+        return $this->redirect(['index']);
+    }
+
+    public function actionHide($id)
+    {
+        $this->findModel($id)->hide();
+
+        return $this->redirect(['index']);
+    }
+
     protected function findModel($id)
     {
         if (($model = Product::findOne($id)) !== null) {

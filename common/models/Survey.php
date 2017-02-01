@@ -34,7 +34,6 @@ use common\models\Factory;
  */
 class Survey extends ActiveRecord
 {
-
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 0;
 
@@ -173,7 +172,7 @@ class Survey extends ActiveRecord
 
     public function getQuestions()
     {
-        return $this->hasMany(Question::className(), ['survey_id' => 'id']);
+        return $this->hasMany(Question::className(), ['survey_id' => 'id'])->orderBy(['priority' => SORT_DESC]);
     }
 
     public function getEducation()

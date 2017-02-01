@@ -52,7 +52,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'text', 'factory_id', 'forList', 'priority'], 'required'],
+            [['title', 'text', 'factory_id', 'forList', 'priority', 'date'], 'required'],
             [['views_added', 'factory_id', 'priority'], 'integer'],
             [['imageFile', 'thumbFile'], 'required', 'on' => 'create'],
             [['title', 'text', 'date'], 'string'],
@@ -62,7 +62,7 @@ class News extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added', 'forList'];
+        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added', 'forList', 'date'];
         return $scenarios;
     }
 

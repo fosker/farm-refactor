@@ -13,6 +13,8 @@ use backend\components\Editor;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'priority')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
         'preset' => 'basic'

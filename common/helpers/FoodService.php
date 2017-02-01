@@ -8,14 +8,14 @@ use yii\httpclient\Client;
 
 class FoodService extends Model
 {
-    const ORDER_CHECK = 'http://dev.sushivesla.by/api/order/checking';
-    const ORDER_DELIVERY = 'http://dev.sushivesla.by/api/order/delivery';
+    const ORDER_CHECK = 'http://sushivesla.by/api/order/checking';
+    const ORDER_DELIVERY = 'http://sushivesla.by/api/order/delivery';
 
     const DEV_COOKIE = 'SESSd2ec49ca5e7e7506c542e4aceab7101a';
     const PROD_COOKIE = 'SESSe6e55b740931d7b6afa222824bc2aeb4';
 
-    const PHARMSET1 = 805;
-    const PHARMSET2 = 807;
+    const PHARMSET1 = 816;
+    const PHARMSET2 = 818;
 
     /** @var  Client $client*/
     private $client;
@@ -43,16 +43,20 @@ class FoodService extends Model
             ->send();
 
         if ($response->isOk) {
-            $cookie = $response->getCookies()->get(static::DEV_COOKIE);
-            $this->sendDeliveryRequest($cookie);
+            $cookie = $response->getCookies()->get(static::PROD_COOKIE);
+            if ($this->sendDeliveryRequest($cookie)) {
+                return true;
+            }
         }
+
+        return false;
     }
 
     private function sendDeliveryRequest($cookie)
     {
         $address = explode(',', $this->user->pharmacist->pharmacy->address);
-        $code = substr($this->user->phone, 4, 2);
-        $number = substr($this->user->phone, 6);
+        $code = substr($this->user->phone, 0, 4);
+        $number = substr($this->user->phone, 4);
 
         $data = [
             'delivery-type' => 0,
@@ -82,5 +86,11 @@ class FoodService extends Model
             ])
             ->setData($data)
             ->send();
+
+        if ($response->data['code'] != 17) {
+            return true;
+        }
+
+        return false;
     }
 }

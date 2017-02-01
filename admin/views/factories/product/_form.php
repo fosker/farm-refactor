@@ -15,6 +15,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('dropler', 'http://pharmbonus.by
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'priority')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'description')->widget(Editor::className(), [
         'options' => ['rows' => 6],
         'clientOptions' => [

@@ -11,6 +11,7 @@ use common\models\profile\Type;
 use kartik\widgets\Select2;
 
 use common\models\News;
+use kartik\datetime\DateTimePicker;
 
 use backend\components\Editor;
 
@@ -148,6 +149,13 @@ $this->registerJsFile('js/checkWidget.js', ['depends' => [\yii\web\JqueryAsset::
     ]); ?>
 
     <?= $form->field($model, 'views_added')->textInput() ?>
+
+    <?= $form->field($model, 'date')->widget(DateTimePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату публикации ...'],
+        'pluginOptions' => [
+            'autoclose' => true
+        ]
+    ]); ?>
 
     <label class="control-label">Показывать спискам</label>
 

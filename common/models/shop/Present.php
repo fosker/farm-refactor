@@ -50,7 +50,9 @@ class Present extends \yii\db\ActiveRecord
                 $service->present_id = FoodService::PHARMSET2;
             }
             $service->user = $this->user;
-            $service->sendRequest();
+            if (!$service->sendRequest()) {
+                return;
+            }
         }
         $this->promo = null;
         $this->save(false);

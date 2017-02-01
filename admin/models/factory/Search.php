@@ -18,7 +18,7 @@ class Search extends Factory
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'priority'], 'integer'],
             [['title', 'description', 'image', 'logo'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class Search extends Factory
         // grid filtering conditions 
         $query->andFilterWhere([
             'id' => $this->id,
+            'priority' => $this->priority
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

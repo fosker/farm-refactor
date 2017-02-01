@@ -70,7 +70,10 @@ class ThemeController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if(!$model->form_id)
                 $model->form_id = 0;
-            $model->save();
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -84,15 +87,21 @@ class ThemeController extends Controller
     {
         $model = $this->findModel($id);
 
+        $old_lists = explode(',', $model->forList);
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if(!$model->form_id)
                 $model->form_id = 0;
-            $model->save();
+            if (Yii::$app->request->post('forList')) {
+                $model->forList = implode(',',Yii::$app->request->post('forList'));
+            }
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
                 'factories'=> ArrayHelper::map(Factory::find()->asArray()->all(),'id','title'),
+                'old_lists' => $old_lists
             ]);
         }
     }
@@ -103,7 +112,6 @@ class ThemeController extends Controller
 
         return $this->redirect(['index']);
     }
-
 
     protected function findModel($id)
     {

@@ -14,6 +14,8 @@ $this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAss
     <h1><?= Html::encode($this->title) ?></h1>
     <?php echo $this->render('_search', [
         'model' => $searchModel,
+        'ids' => $ids,
+        'phones' => $phones,
         'names' => $names,
         'pharmacies' => $pharmacies,
         'cities' => $cities,

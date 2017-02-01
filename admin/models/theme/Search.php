@@ -15,7 +15,7 @@ class Search extends Theme
     {
         return [
             [['title', 'email'], 'string'],
-            [['id', 'factory_id', 'form_id'], 'integer'],
+            [['id', 'factory_id', 'form_id', 'status'], 'integer'],
         ];
     }
 
@@ -53,7 +53,8 @@ class Search extends Theme
         $query->andFilterWhere([
             'id' => $this->id,
             'factory_id' => $this->factory_id,
-            'form_id' => $this->form_id
+            'form_id' => $this->form_id,
+            'status' => $this->status
         ]);
 
         $query->andFilterWhere(['like', Theme::tableName().'.title', $this->title]);

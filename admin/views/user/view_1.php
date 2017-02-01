@@ -67,6 +67,11 @@ $this->title = 'Фармацевт: '.$model->name;
             ],
         ]) ?>
     </p>
+    <p>
+        <?= Html::a('Управление Bon', ['edit-bon', 'id' => $model->id], [
+            'class' => 'btn btn-info',
+        ]) ?>
+    </p>
 
     <?= DetailView::widget([
         'model' => $model,

@@ -6,6 +6,7 @@ use kartik\widgets\Select2;
 use kartik\widgets\DepDrop;
 use yii\helpers\Url;
 
+use kartik\widgets\FileInput;
 use kartik\date\DatePicker;
 
 $this->title = 'Редактирование данных: ' . ' ' . $model->name;
@@ -15,7 +16,16 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php $form = ActiveForm::begin([]); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+    <?= $form->field($model, 'image')->widget(FileInput::classname(),[
+        'pluginOptions' => [
+            'initialPreview'=> $model->avatar ? Html::img($model->avatarPath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
+            'showUpload' => false,
+            'showRemove' => false,
+        ]
+    ]);
+    ?>
 
     <?= $form->field($model, 'name')->textInput([
         'maxlength' => true,
@@ -57,6 +67,8 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
         ]
     ]) ?>
 
+    <?= $form->field($model, 'comment')->textInput() ?>
+
     <?= $form->field($type, 'mail_address')->textInput(['maxlength' => true]) ?>
 
     <?php if ($update->mail_address != $type->mail_address && $update->mail_address) {
@@ -83,41 +95,47 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
               </div>";
     } ?>
 
-    <?= $form->field($type, 'region_id')->widget(Select2::classname(), [
+    <label class="control-label">Регион</label>
+    <?= Select2::widget([
+        'name' => 'Type[region_id]',
+        'value' => $type->city->region_id,
         'data' => $regions,
-        'options' => ['placeholder' => 'Выберите регион ...', 'id' => 'region-id'],
-        'pluginOptions' => [
-            'allowClear' => true
+        'options' => [
+            'id' => 'region-id',
+            'placeholder' => 'Выберите регион ...',
         ],
     ]); ?>
 
-    <?= $form->field($type, 'city_id')->widget(DepDrop::classname(), [
-        'type' => 2,
-        'options'=>['id'=>'city-id'],
-        'pluginOptions'=>[
-            'depends'=>['region-id'],
-            'placeholder'=>'Выберите город...',
-            'url'=>Url::to(['/user/city-list'])
-        ]
+    <label class="control-label">Город</label>
+    <?= Select2::widget([
+        'name' => 'Type[city_id]',
+        'value' => $type->city->id,
+        'data' => $cities,
+        'options' => [
+            'id' => 'city-id',
+            'placeholder' => 'Выберите город ...',
+        ],
     ]); ?>
 
-    <?= $form->field($type, 'company_id')->widget(Select2::classname(), [
+    <label class="control-label">Организация</label>
+    <?= Select2::widget([
+        'name' => 'Type[company_id]',
+        'value' => $type->company->id,
         'data' => $companies,
-        'options' => ['placeholder' => 'Выберите компанию ...', 'id' => 'company-id'],
-        'pluginOptions' => [
-            'allowClear' => true
+        'options' => [
+            'id' => 'company-id',
+            'placeholder' => 'Выберите организацию ...',
         ],
     ]); ?>
-
 
     <?= $form->field($type, 'pharmacy_id')->widget(DepDrop::classname(), [
         'data' => $pharmacies,
-        'type' => 2,
-        'options'=>['id'=>'pharmacy-id'],
-        'pluginOptions'=>[
-            'depends'=>['company-id', 'city-id'],
-            'placeholder'=>'Выберите аптеку...',
-            'url'=>Url::to(['/user/pharmacy-list'])
+        'type' => DepDrop::TYPE_SELECT2,
+        'options' => ['id' => 'pharmacy-id'],
+        'pluginOptions' => [
+            'depends' => ['company-id', 'city-id'],
+            'placeholder' => 'Выберите аптеку...',
+            'url' => Url::to(['pharmacy-list'])
         ]
     ]); ?>
 

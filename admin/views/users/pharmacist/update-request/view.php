@@ -41,6 +41,10 @@ $this->title = 'Фармацевт: '.$model->name;
                 'value'=>Html::a($model->pharmacy->name,['/pharmacy/view','id'=>$model->pharmacy_id]),
                 'format'=>'html',
             ],
+            [
+                'attribute'=>'user.inList',
+                'value'=> $model->user->comment ? $model->user->lists . " (".$model->user->comment.")" : $model->user->lists
+            ],
             'position.name',
             'details',
             'date_add:datetime'

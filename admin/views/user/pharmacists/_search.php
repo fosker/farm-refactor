@@ -1,9 +1,8 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
-
+use kartik\date\DatePicker;
 ?>
 
 <div class="user-search">
@@ -74,6 +73,38 @@ use kartik\widgets\Select2;
             'allowClear' => true,
         ],
     ])->label('Город'); ?>
+
+    <?= $form->field($model, 'date_birth_from')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату рождения (от) ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ])->label('Дата рождения (от)'); ?>
+
+    <?= $form->field($model, 'date_birth_to')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату рождения (до) ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ])->label('Дата рождения (до)'); ?>
+
+    <?= $form->field($model, 'date_reg_from')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату регистрации (от) ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ])->label('Дата регистрации (от)'); ?>
+
+    <?= $form->field($model, 'date_reg_to')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Выберите дату регистрации (до) ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ])->label('Дата регистрации (до)'); ?>
 
     <?= $form->field($model, 'points_from')->textInput()->label('Количество бонусов (от)')?>
 

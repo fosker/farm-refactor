@@ -93,10 +93,6 @@ $this->title = $model->title;
             'views_limit',
             'points',
             [
-                'attribute'=>'forList',
-                'value'=>$model->lists,
-            ],
-            [
                 'attribute'=>'status',
                 'value'=>$model::getStatusList()[$model->status],
             ],
@@ -107,7 +103,7 @@ $this->title = $model->title;
     <h2>Вопросы</h2>
 
     <table class="table">
-        <tr><th>Вопрос</th><th>Варианты ответа</th><th>Количество правильных ответов</th></tr>
+        <tr><th>Вопрос</th><th>Варианты ответа</th><th>Количество правильных ответов</th><th>Приоритет</th></tr>
         <?php foreach($model->questions as $question) : ?>
             <tr><td><?=$question->question?></td>
                 <td>
@@ -118,6 +114,7 @@ $this->title = $model->title;
                 </table>
                 </td>
                 <td><?=$question->right_answers?></td>
+                <td><?=$question->priority?></td>
             </tr>
         <?php endforeach; ?>
     </table>

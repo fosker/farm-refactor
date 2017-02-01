@@ -22,6 +22,7 @@ use common\models\company\Pharmacy as Common_Pharmacy;
  * @property integer $survey_id
  * @property integer $right_answers
  * @property integer $validAnswer
+ * @property integer $priority
  */
 class Question extends ActiveRecord
 {
@@ -39,9 +40,9 @@ class Question extends ActiveRecord
     public function rules()
     {
         return [
-            [['question', 'right_answers'], 'required'],
+            [['question', 'right_answers', 'priority'], 'required'],
             [['question', 'validAnswer'], 'string'],
-            ['right_answers', 'integer']
+            [['right_answers', 'priority'], 'integer']
         ];
     }
 
@@ -53,7 +54,8 @@ class Question extends ActiveRecord
         return [
             'question' => 'Вопрос',
             'right_answers' => 'Количество правильных ответов',
-            'validAnswer' => 'Правильный ответ'
+            'validAnswer' => 'Правильный ответ',
+            'priority' => 'Приоритет'
         ];
     }
 

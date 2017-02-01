@@ -36,6 +36,12 @@ $this->title = 'Представители, ожидающие подтверж�
                 'contentOptions'=>['style'=>'width: 250px;'],
             ],
             [
+                'attribute' => 'user.inList',
+                'value' => function ($model) {
+                    return [0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в сером'][$model->user->inList];
+                }
+            ],
+            [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{accept} {view} {delete}',
                 'buttons'=>[

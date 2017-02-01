@@ -174,6 +174,7 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                 <td></td>
                 <td><?= Html::activeLabel($questions[0], 'question'); ?></td>
                 <td><label class="control-label">Количество правильных ответов</label></td>
+                <td><label class="control-label">Приоритет</label></td>
                 <td><label class="control-label">Варианты ответа</label></td>
             </tr>
             </thead>
@@ -217,6 +218,15 @@ $this->registerJsFile('js/answer.js', ['depends' => [\yii\web\JqueryAsset::class
                                 </td>
                             </tr>
                         </table>
+                    </td>
+
+                    <td>
+                        <?php
+                        echo $form->field($question, "[{$i}]priority")->begin();
+                        echo Html::activeTextInput($question, "[{$i}]priority", ['maxlength' => true, 'class' => 'form-control']); //Field
+                        echo Html::error($question, "[{$i}]priority", ['class' => 'help-block']); //error
+                        echo $form->field($question, "[{$i}]priority")->end();
+                        ?>
                     </td>
 
                     <!-- The Options on the Question -->

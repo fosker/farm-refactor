@@ -26,6 +26,7 @@ use common\models\Theme;
  * @property string $image
  * @property string $logo
  * @property integer $is_shown
+ * @property integer $priority
  */
 class Factory extends ActiveRecord
 {
@@ -40,7 +41,7 @@ class Factory extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'is_shown'], 'required'],
+            [['title', 'description', 'is_shown', 'priority'], 'required'],
             [['imageFile','logoFile'], 'required', 'on' => 'create'],
         ];
     }
@@ -48,7 +49,7 @@ class Factory extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'description', 'imageFile','logoFile', 'is_shown'];
+        $scenarios['create'] = ['title', 'description', 'imageFile','logoFile', 'is_shown', 'priority'];
         return $scenarios;
     }
 
@@ -62,7 +63,8 @@ class Factory extends ActiveRecord
             'logo' => 'Лого',
             'logoFile' => 'Лого',
             'imageFile' => 'Изображение',
-            'is_shown' => 'Показывать'
+            'is_shown' => 'Показывать',
+            'priority' => 'Приоритет'
         ];
     }
 
@@ -135,12 +137,15 @@ class Factory extends ActiveRecord
 
     public function getProducts()
     {
-        return $this->hasMany(Product::className(),['factory_id'=>'id']);
+        return $this->hasMany(Product::className(),['factory_id'=>'id'])
+            ->andWhere(['status'=>Product::STATUS_ACTIVE])
+            ->orderBy([Product::tableName().'.priority' => SORT_DESC]);
     }
 
     public function getThemes()
     {
-        return $this->hasMany(Theme::className(),['factory_id'=>'id']);
+        return $this->hasMany(Theme::className(),['factory_id'=>'id'])
+            ->andFilterWhere(['like', 'forList', Yii::$app->user->identity->inList]);
     }
 
     public function getStocks()

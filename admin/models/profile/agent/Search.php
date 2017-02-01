@@ -15,13 +15,14 @@ class Search extends Agent
     {
         return [
             [['user.status', 'id', 'factory_id', 'user.inList', 'user.points', 'points_from', 'points_to'], 'integer'],
-            [['user.name', 'user.login', 'user.email', 'user.comment', 'user.phone'], 'string'],
+            [['user.name', 'user.login', 'user.email', 'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to', 'date_birth_from', 'date_birth_to'], 'string'],
         ];
     }
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points','user.inList', 'points_from', 'points_to', 'user.login', 'user.comment', 'user.phone']);
+        return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points','user.inList', 'points_from',
+            'points_to', 'user.login', 'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to', 'date_birth_from', 'date_birth_to']);
     }
 
     public function scenarios()
@@ -89,6 +90,10 @@ class Search extends Agent
             ->andFilterWhere(['like', User::tableName() . '.phone', $this->getAttribute('user.phone')])
             ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
             ->andFilterWhere(['<=', 'points', $this->getAttribute('points_to')])
+            ->andFilterWhere(['>=', 'date_reg', $this->getAttribute('date_reg_from')])
+            ->andFilterWhere(['<=', 'date_reg', $this->getAttribute('date_reg_to')])
+            ->andFilterWhere(['>=', 'date_birth', $this->getAttribute('date_birth_from')])
+            ->andFilterWhere(['<=', 'date_birth', $this->getAttribute('date_birth_to')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);
 
         return $dataProvider;

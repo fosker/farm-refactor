@@ -37,6 +37,7 @@ $this->title = 'Компании';
                     ],
                 ]),
             ],
+            'priority',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

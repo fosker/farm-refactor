@@ -82,6 +82,14 @@ $this->title = 'Темы';
                     ],
                 ]),
             ],
+            [
+                'attribute'=>'status',
+                'value'=>function($model) {
+                    return $model::getStatusList()[$model->status];
+                },
+                'filter'=>$searchModel::getStatusList(),
+                'contentOptions'=>['style'=>'width: 125px;'],
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -14,9 +14,14 @@ use yii\helpers\ArrayHelper;
  * @property string $description
  * @property string $title
  * @property string $form_id
+ * @property string $forList
+ * @property integer $status
  */
 class Theme extends \yii\db\ActiveRecord
 {
+    const STATUS_HIDDEN = 0;
+    const STATUS_AVAILABLE = 1;
+    const STATUS_NOT_AVAILABLE = 2;
 
     /**
      * @inheritdoc
@@ -32,9 +37,9 @@ class Theme extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['factory_id', 'email', 'description','title'], 'required'],
-            [['factory_id', 'form_id'], 'integer'],
-            [['description', 'title'], 'string'],
+            [['factory_id', 'email', 'description','title', 'status'], 'required'],
+            [['factory_id', 'form_id', 'status'], 'integer'],
+            [['description', 'title', 'forList'], 'string'],
             [['email'], 'string', 'max' => 255],
             ['email', 'email']
         ];
@@ -46,6 +51,7 @@ class Theme extends \yii\db\ActiveRecord
             'id',
             'title',
             'factory',
+            'status'
         ];
     }
 
@@ -68,7 +74,9 @@ class Theme extends \yii\db\ActiveRecord
             'factory_id' => 'Компания Автор',
             'email' => 'Email',
             'description' => 'Описание',
-            'form_id' => 'Форма'
+            'form_id' => 'Форма',
+            'forList' => 'Показывать списку',
+            'status' => 'Статус'
         ];
     }
 
@@ -87,5 +95,10 @@ class Theme extends \yii\db\ActiveRecord
     public function getForm()
     {
         return $this->hasOne(Form::className(),['id'=>'form_id']);
+    }
+
+    public static function getStatusList()
+    {
+        return [static::STATUS_AVAILABLE=>'доступна',static::STATUS_NOT_AVAILABLE=>'не доступна',static::STATUS_HIDDEN=>'не видна'];
     }
 }

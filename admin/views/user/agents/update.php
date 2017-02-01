@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
 use common\models\Factory;
 
+use kartik\widgets\FileInput;
+
 $this->title = 'Редактирование данных: ' . ' ' . $model->name;
 ?>
 
@@ -12,7 +14,16 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php $form = ActiveForm::begin([]); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+    <?= $form->field($model, 'image')->widget(FileInput::classname(),[
+        'pluginOptions' => [
+            'initialPreview'=> $model->avatar ? Html::img($model->avatarPath, ['class'=>'file-preview-image', 'alt'=>'image', 'title'=>'Image']) : '',
+            'showUpload' => false,
+            'showRemove' => false,
+        ]
+    ]);
+    ?>
 
     <?= $form->field($model, 'name')->textInput([
         'maxlength' => true,
@@ -45,6 +56,8 @@ $this->title = 'Редактирование данных: ' . ' ' . $model->nam
                 </div>
               </div>";
     } ?>
+
+    <?= $form->field($model, 'comment')->textInput() ?>
 
     <?= $form->field($type, 'factory_id')->widget(Select2::classname(), [
         'data' => $factories,

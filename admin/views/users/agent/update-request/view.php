@@ -35,6 +35,10 @@ $this->title = 'Представитель: '.$model->name;
                 'value'=>Html::a($model->factory->title,['/factory/view','id'=>$model->factory_id]),
                 'format'=>'html',
             ],
+            [
+                'attribute'=>'user.inList',
+                'value'=> $model->user->comment ? $model->user->lists . " (".$model->user->comment.")" : $model->user->lists
+            ],
             'details',
             'date_add:datetime'
 

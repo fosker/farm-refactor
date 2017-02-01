@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\forms\EditBonForm;
 use common\models\profile\Position;
 use Yii;
 
@@ -26,6 +27,7 @@ use common\models\location\Region;
 use common\models\profile\Type;
 use backend\models\profile\agent\Search as Agent_Search;
 use backend\models\profile\pharmacist\Search as Pharmacist_Search;
+use yii\web\UploadedFile;
 
 
 class UserController extends Controller
@@ -83,6 +85,8 @@ class UserController extends Controller
         return $this->render('pharmacists/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'ids' => ArrayHelper::map(Pharmacist::find()->asArray()->all(), 'id', 'id'),
+            'phones' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'phone', 'phone'),
             'positions' => ArrayHelper::map(Position::find()->asArray()->all(), 'id', 'name'),
             'names' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'name', 'name'),
             'logins' => ArrayHelper::map(User::find()->where(['type_id' => 1])->asArray()->all(), 'login', 'login'),
@@ -129,6 +133,8 @@ class UserController extends Controller
         if (($model->load(Yii::$app->request->post()) && $type->load(Yii::$app->request->post()) &&
             ($model->validate() && $type->validate()))
         ) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $model->saveImage();
             if ($model->save(false) && $type->save(false))
                 if ($update_id) {
                     switch ($model->type_id) {
@@ -192,7 +198,6 @@ class UserController extends Controller
 
     public function actionAccept($id)
     {
-
         $model = $this->findModel($id);
         $model->verified();
 
@@ -273,6 +278,53 @@ class UserController extends Controller
         $model = $this->findModel($id);
         $model->toNeutral();
         return Yii::$app->getResponse()->redirect(Yii::$app->admin->getReturnUrl());
+    }
+
+    public function actionEditBon($id)
+    {
+        $user = $this->findModel($id);
+        $model = new EditBonForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user->points += $model->amount;
+            $user->save(false);
+
+            if ($model->message) {
+                $android_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
+                    ->andWhere(['not', ['push_token' => null]])
+                    ->andWhere(['type' => 1])
+                    ->asArray()
+                    ->all(), 'id', 'push_token');
+
+                $ios_tokens = ArrayHelper::map(Device::find()->select('id, push_token')->where(['user_id' => $id])
+                    ->andWhere(['not', ['push_token' => null]])
+                    ->andWhere(['type' => 2])
+                    ->asArray()
+                    ->all(), 'id', 'push_token');
+
+                $android_tokens = array_values($android_tokens);
+                $android_tokens = array_values(array_filter(array_unique($android_tokens)));
+                $ios_tokens = array_values($ios_tokens);
+                $ios_tokens = array_values(array_filter(array_unique($ios_tokens)));
+
+                if ($ios_tokens) {
+                    Yii::$app->apns->sendMulti($ios_tokens, $model->message, [], [
+                        'sound' => 'default',
+                        'badge' => 0
+                    ]);
+                }
+
+                if ($android_tokens) {
+                    Yii::$app->gcm->sendMulti($android_tokens, $model->message);
+                }
+            }
+
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
+        return $this->render('edit-bon', [
+            'model' => $model
+        ]);
     }
 
     public function actionGray($id)

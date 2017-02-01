@@ -49,24 +49,26 @@ class ThemeController extends Controller
     public function actionFactory($factory_id)
     {
         return new ActiveDataProvider([
-            'query' => Theme::find()->where(['factory_id' => $factory_id]),
+            'query' => Theme::find()->where(['factory_id' => $factory_id])
+                ->andWhere(['or', ['status' => Theme::STATUS_AVAILABLE], ['status' => Theme::STATUS_NOT_AVAILABLE]])
+                ->andWhere(['like', 'forList', Yii::$app->user->identity->inList])
         ]);
     }
 
     public function actionView($id)
     {
-        return  Theme::find()->where(['id' => $id])->one();
+        return Theme::find()->where(['id' => $id])->andFilterWhere(['like', 'forList', Yii::$app->user->identity->inList])->one();
     }
 
     public function actionSend()
     {
         $reply = new Reply();
         $reply->scenario = 'free';
-        if($reply->load(Yii::$app->request->post(),'')) {
+        if ($reply->load(Yii::$app->request->post(), '')) {
             $reply->image = UploadedFile::getInstance($reply, 'image');
             $reply->user_id = Yii::$app->user->id;
             $reply->saveImage();
-            if($reply->validate()) {
+            if ($reply->validate()) {
                 $user = User::findOne($reply->user_id);
                 $theme = Theme::findOne($reply->theme_id);
                 $this->sendPdf($user, $theme, null, $reply);
@@ -131,26 +133,26 @@ class ThemeController extends Controller
 
     private function sendPdf($user, $theme, $form = null, $reply = null)
     {
-        $filename = 'Answer-'.Yii::$app->security->generateRandomString(5).'.pdf';
+        $filename = 'Answer-' . Yii::$app->security->generateRandomString(5) . '.pdf';
         $pdf = new Pdf([
             'content' => $this->renderPartial($theme->form ? 'pdf-form-export' : 'pdf-free-export', ['user' => $user, 'reply' => $reply, 'form' => $form]),
             'options' => [
                 'title' => 'Ответ на тему',
                 'subject' => 'Ответ на тему',
-                'defaultfooterline'=>false,
-                'margin_footer'=>0,
+                'defaultfooterline' => false,
+                'margin_footer' => 0,
             ],
-            'cssInline'=>file_get_contents('../admin/css/pdf-export.css'),
-            'marginLeft'=>10,
-            'marginTop'=>10,
-            'marginRight'=>10,
-            'marginBottom'=>10,
-            'filename' => Yii::getAlias('@uploads/temp/'.$filename),
+            'cssInline' => file_get_contents('../admin/css/pdf-export.css'),
+            'marginLeft' => 10,
+            'marginTop' => 10,
+            'marginRight' => 10,
+            'marginBottom' => 10,
+            'filename' => Yii::getAlias('@uploads/temp/' . $filename),
             'destination' => Pdf::DEST_FILE,
         ]);
         $pdf->render();
-        Mailer::sendThemeAnswer(Yii::getAlias('@uploads_view/temp/'.$filename), $theme->email);
-        @unlink(Yii::getAlias('@uploads/temp/'.$filename));
+        Mailer::sendThemeAnswer(Yii::getAlias('@uploads_view/temp/' . $filename), $theme->email);
+        @unlink(Yii::getAlias('@uploads/temp/' . $filename));
     }
 
 }
