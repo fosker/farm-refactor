@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
 use kartik\date\DatePicker;
+use common\models\profile\Device;
 ?>
 
 <div class="user-search">
@@ -116,6 +117,13 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'user.inList')->dropDownList([0 => 'в нейтральном', 1 => 'в черном', 2 => 'в белом', 3 => 'в сером'],
         ['prompt' => 'Выберите список']); ?>
+
+    <hr>
+    <?= $form->field($model, 'device.type')->dropDownList([Device::TYPE_ANDROID => 'Android', Device::TYPE_IOS => 'Ios'], ['prompt' => 'Выберите тип устройства'])->label('Тип устройства') ?>
+
+    <?= $form->field($model, 'device.version_from')->textInput()->label('Версия (от)') ?>
+
+    <?= $form->field($model, 'device.version_to')->textInput()->label('Версия (до)') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>

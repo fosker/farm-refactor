@@ -52,8 +52,9 @@ $this->registerJsFile('js/delete-selected.js', ['depends' => [\yii\web\JqueryAss
         },
         'columns' => [
             [
-                'attribute' => 'id',
-                'contentOptions' => ['style' => 'width: 100px;'],
+                'label' => 'Устройства',
+                'value' => 'deviceLabels',
+                'format' => 'html'
             ],
             [
                 'label' => 'Логин',

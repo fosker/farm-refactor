@@ -7,6 +7,8 @@ use common\models\company\Pharmacy;
 use common\models\profile\Position;
 use common\models\profile\Education;
 use common\models\User;
+use common\models\profile\Device;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "pharmacists".
@@ -119,6 +121,18 @@ class Pharmacist extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id']);
+    }
+
+    public function getDeviceLabels()
+    {
+        $string = '';
+        foreach ($this->user->devices as $device) {
+            if ($device->version) {
+                $string .= Html::tag('p', ($device->type == Device::TYPE_ANDROID ? 'Android' : 'Ios') . ': ' . $device->version);
+            }
+        }
+
+        return $string;
     }
 
     public function verified()

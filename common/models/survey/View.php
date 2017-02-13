@@ -83,7 +83,10 @@ class View extends ActiveRecord
         $view->time_answer = strtotime("now") - strtotime($start->date_start);
         $view->save(false);
 
-        $start->delete();
+        if ($start) {
+            $start->delete();
+        }
+
         $survey = Survey::findOne($view->survey_id);
         $survey->updateCounters(['views_limit' => -1]);
         foreach($answers as $answer) {

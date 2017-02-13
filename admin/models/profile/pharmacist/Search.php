@@ -1,5 +1,7 @@
 <?php
+
 namespace backend\models\profile\pharmacist;
+
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -7,6 +9,8 @@ use common\models\user\Pharmacist;
 use common\models\User;
 use common\models\Company;
 use common\models\company\Pharmacy;
+use common\models\profile\Device;
+
 class Search extends Pharmacist
 {
     public function rules()
@@ -15,14 +19,15 @@ class Search extends Pharmacist
             [['user.status', 'id', 'user.points', 'education_id', 'pharmacy_id', 'position_id',
                 'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to'], 'integer'],
             [['user.name', 'user.login', 'user.email', 'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to',
-                'date_birth_from', 'date_birth_to'], 'string'],
+                'date_birth_from', 'date_birth_to', 'device.type', 'device.version_from', 'device.version_to'], 'string'],
         ];
     }
     public function attributes()
     {
         return array_merge(parent::attributes(), ['user.status', 'user.name', 'user.email', 'user.points',
             'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to', 'user.login',
-            'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to', 'date_birth_from', 'date_birth_to']);
+            'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to', 'date_birth_from', 'date_birth_to',
+            'device.type', 'device.version_from', 'device.version_to']);
     }
     public function scenarios()
     {
@@ -30,7 +35,7 @@ class Search extends Pharmacist
     }
     public function search($params)
     {
-        $query = Pharmacist::find()->joinWith(['user', 'pharmacy']);
+        $query = Pharmacist::find()->joinWith(['user', 'pharmacy', 'user.devices']);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
@@ -81,7 +86,8 @@ class Search extends Pharmacist
             'position_id' => $this->position_id,
             User::tableName().'.inList' => $this->getAttribute('user.inList'),
             Pharmacy::tableName().'.city_id' => $this->getAttribute('pharmacy.city.id'),
-            Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id')
+            Pharmacy::tableName().'.company_id' => $this->getAttribute('pharmacy.company.id'),
+            Device::tableName().'.type' => $this->getAttribute('device.type')
         ]);
         $query->andFilterWhere(['like', User::tableName() . '.name', $this->getAttribute('user.name')])
             ->andFilterWhere(['>=', 'points', $this->getAttribute('points_from')])
@@ -94,7 +100,9 @@ class Search extends Pharmacist
             ->andFilterWhere(['like', User::tableName() . '.phone', $this->getAttribute('user.phone')])
             ->andFilterWhere(['like', User::tableName() . '.comment', $this->getAttribute('user.comment')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
-            ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')]);
+            ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')])
+            ->andFilterWhere(['>=', 'version', $this->getAttribute('device.version_from')])
+            ->andFilterWhere(['<=', 'version', $this->getAttribute('device.version_to')]);
         return $dataProvider;
     }
 }

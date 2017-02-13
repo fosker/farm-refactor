@@ -62,7 +62,7 @@ class News extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added', 'forList', 'date'];
+        $scenarios['create'] = ['title', 'text', 'imageFile', 'thumbFile', 'factory_id', 'views_added', 'forList', 'date', 'priority'];
         return $scenarios;
     }
 

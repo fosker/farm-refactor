@@ -44,6 +44,7 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET v1/is-up-to-date' => 'v1/version/index',
                 'OPTIONS v1/<route>' => 'v1/auth/options',
                 'OPTIONS v1/<route1>/<route2>' => 'v1/auth/options',
                 'POST v1/login' => 'v1/auth/login',
@@ -71,8 +72,6 @@ return [
                 'POST v1/user/photo' => 'v1/user/update-photo',
                 'POST v1/user/message' => 'v1/user/send-message',
                 'PUT v1/user/password' => 'v1/user/update-password',
-                'PUT v1/user/notifications' => 'v1/user/notifications',
-                'GET v1/user/notifications' => 'v1/user/get-notifications',
 
                 'GET v1/banners' => 'v1/banner/index',
                 'GET v1/banner/<id>' => 'v1/banner/view',

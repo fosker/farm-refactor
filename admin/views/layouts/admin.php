@@ -56,6 +56,19 @@ $count_pharmacists = PharmacistUpdateRequest::find()->count();
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'admin')
                             ],
                             [
+                                'label' => 'Версии приложений',
+                                'items' => [
+                                    [
+                                        'label' => 'Версии Android',
+                                        'url' => ['/app/android'],
+                                    ],
+                                    [
+                                        'label' => 'Версии Ios',
+                                        'url' => ['/app/ios'],
+                                    ],
+                                ],
+                            ],
+                            [
                                 'label' => 'Обратная связь',
                                 'url' => ['/contact-form'],
                                 'visible' => Right::HasAdmin(Yii::$app->admin->id, 'contact-form')

@@ -13,6 +13,7 @@ use yii\db\ActiveRecord;
  * @property string $access_token
  * @property string $push_token
  * @property integer $type
+ * @property string $version
  */
 class Device extends ActiveRecord
 {
@@ -34,7 +35,7 @@ class Device extends ActiveRecord
     {
         return [
             [['type'], 'required'],
-            [['push_token'],'string'],
+            [['push_token', 'version'],'string'],
             ['user_id', 'integer'],
             [['type'],'in','range'=>[static::TYPE_ANDROID, static::TYPE_IOS]],
         ];
