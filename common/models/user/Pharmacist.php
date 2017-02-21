@@ -21,15 +21,16 @@ use yii\helpers\Html;
  * @property string $mail_address
  * @property string $date_birth
  * @property string $pharmacy_phone_number
+ * @property integer $city_id
  */
 class Pharmacist extends \yii\db\ActiveRecord
 {
     const STATUS_VERIFY = 0;
     const STATUS_ACTIVE = 1;
 
+    public $city_id;
     public $region_id;
     public $company_id;
-    public $city_id;
 
     public static function tableName()
     {
@@ -53,10 +54,10 @@ class Pharmacist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['education_id', 'region_id', 'sex', 'pharmacy_id', 'company_id', 'city_id'], 'required'],
+            [['education_id', 'region_id', 'sex', 'city_id', 'company_id', 'pharmacy_id'], 'required'],
             [['education_id', 'pharmacy_id', 'position_id', 'region_id', 'company_id', 'city_id'], 'integer'],
-            [['sex', 'pharmacy_phone_number'], 'string', 'max' => 6],
-            [['mail_address'], 'string', 'max' => 100],
+            [['sex'], 'string', 'max' => 6],
+            [['mail_address', 'pharmacy_phone_number'], 'string', 'max' => 100],
             [['date_birth'], 'required'],
             [['date_birth'], 'string']
         ];

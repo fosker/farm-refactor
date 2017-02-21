@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /* @var $model common\models\generated\app\Android */
 
 $this->title = 'Изменить версию: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Версии Android', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="android-update">
 

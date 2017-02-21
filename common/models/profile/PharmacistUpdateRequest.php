@@ -50,13 +50,13 @@ class PharmacistUpdateRequest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'region_id', 'education_id', 'sex', 'pharmacy_id', 'region_id', 'city_id', 'company_id'], 'required'],
+            [['name', 'region_id', 'education_id', 'sex', 'region_id', 'city_id'], 'required'],
             [['name','email', 'mail_address'], 'string', 'max'=>255],
             [['sex'], 'string', 'max' => 6],
             [['phone'], 'string', 'max' => 30],
             [['email'],'email'],
             ['email', 'customUnique'],
-            [['position_id'], 'integer'],
+            [['position_id', 'company_id', 'pharmacy_id'], 'integer'],
             [['details'],'string'],
         ];
     }

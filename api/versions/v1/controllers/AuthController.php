@@ -104,7 +104,6 @@ class AuthController extends Controller
         } else return $model;
     }
 
-
     public function actionResetPassword()
     {
         $model = new User(['scenario'=>'reset-password']);

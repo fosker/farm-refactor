@@ -7,8 +7,6 @@ use yii\helpers\Html;
 /* @var $model common\models\generated\app\Ios */
 
 $this->title = 'Создать версию';
-$this->params['breadcrumbs'][] = ['label' => 'Версии Ios', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ios-create">
 

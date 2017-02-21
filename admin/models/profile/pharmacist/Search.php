@@ -102,7 +102,8 @@ class Search extends Pharmacist
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
             ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')])
             ->andFilterWhere(['>=', 'version', $this->getAttribute('device.version_from')])
-            ->andFilterWhere(['<=', 'version', $this->getAttribute('device.version_to')]);
+            ->andFilterWhere(['<=', 'version', $this->getAttribute('device.version_to')])
+            ->groupBy(User::tableName().'.id');
         return $dataProvider;
     }
 }

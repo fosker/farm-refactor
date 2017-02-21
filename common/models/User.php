@@ -111,12 +111,12 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
     public function rules()
     {
         return [
-            [['login', 'name', 'password', 're_password', 'reset_token', 'old_password', 'device_id', 'type_id', 'email'], 'required'],
+            [['login', 'name', 'phone', 'password', 're_password', 'reset_token', 'old_password', 'device_id', 'type_id', 'email'], 'required'],
             [['device_id'], 'exist', 'targetClass' => Device::className(), 'targetAttribute'=>'id'],
             [['login'], 'string', 'max' => 100],
             [['name','email'], 'string', 'max'=>255],
             [['email'],'email'],
-            [['phone'], 'string', 'max' => 30],
+            [['phone'], 'string', 'min' => 13],
             [['login'], 'unique'],
             [['re_password'], 'compare', 'compareAttribute' => 'password'],
             [['password', 'old_password', 're_password'], 'string', 'min' => 8,'max' => 100],
@@ -215,7 +215,7 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
             'type_id' => 'Тип пользователя',
             'inList' => 'В списке',
             'comment' => 'Комментарий',
-            'image' => 'Аватар'
+            'image' => 'Аватар',
         ];
     }
 
@@ -441,7 +441,6 @@ class User extends ActiveRecord implements IdentityInterface , RateLimitInterfac
         $this->verified();
         $this->toNeutral();
         $this->generateAccessToken();
-        Mailer::sendRegisterMail($this);
         Mailer::sendVerificationMailToUser($this, $password);
     }
 

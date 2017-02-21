@@ -94,7 +94,8 @@ class Search extends Agent
             ->andFilterWhere(['<=', 'date_reg', $this->getAttribute('date_reg_to')])
             ->andFilterWhere(['>=', 'date_birth', $this->getAttribute('date_birth_from')])
             ->andFilterWhere(['<=', 'date_birth', $this->getAttribute('date_birth_to')])
-            ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')]);
+            ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
+            ->groupBy(User::tableName().'.id');
 
         return $dataProvider;
     }

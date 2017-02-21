@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /* @var $model common\models\generated\app\Android */
 
 $this->title = $model->version;
-$this->params['breadcrumbs'][] = ['label' => 'Версии Android', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="android-view">
 

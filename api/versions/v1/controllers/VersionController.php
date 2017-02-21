@@ -17,38 +17,38 @@ class VersionController extends Controller
         $upToDate = false;
         $forceUpdate = false;
 
-        $appAndroidVersion = Yii::$app->request->get('app-android-version');
+        $clientAndroidVersion = Yii::$app->request->get('app-android-version');
         $appAndroidLastVersion = Android::find()->orderBy(['version' => SORT_DESC])->one();
 
-        $appIosVersion = Yii::$app->request->get('app-ios-version');
+        $clientIosVersion = Yii::$app->request->get('app-ios-version');
         $appIosLastVersion = Ios::find()->orderBy(['version' => SORT_DESC])->one();
 
         if ($device = Device::findOne(['access_token' => Yii::$app->request->get('access-token')])) {
-            if ($device->type == Device::TYPE_ANDROID && $appAndroidVersion) {
-                $device->version = $appAndroidVersion;
+            if ($device->type == Device::TYPE_ANDROID && $clientAndroidVersion) {
+                $device->version = $clientAndroidVersion;
                 $device->save(false);
             }
-            if ($device->type == Device::TYPE_IOS && $appIosVersion) {
-                $device->version = $appIosVersion;
+            if ($device->type == Device::TYPE_IOS && $clientIosVersion) {
+                $device->version = $clientIosVersion;
                 $device->save(false);
             }
         }
-        if ($appAndroidVersion) {
-            if ($appAndroidLastVersion->version == $appAndroidVersion) {
+        if ($clientAndroidVersion) {
+            if ($appAndroidLastVersion->version <= $clientAndroidVersion) {
                 $upToDate = true;
             }
             $forceUpdate = Android::find()
-                ->where(['>', Android::tableName().'.version', $appAndroidVersion])
+                ->where(['>', Android::tableName().'.version', $clientAndroidVersion])
                 ->andWhere(['is_forced' => 1])
                 ->exists();
             $message = $appAndroidLastVersion->message;
         }
-        if ($appIosVersion) {
-            if ($appIosLastVersion->version == $appIosVersion) {
+        if ($clientIosVersion) {
+            if ($appIosLastVersion->version <= $clientIosVersion) {
                 $upToDate = true;
             }
             $forceUpdate = Ios::find()
-                ->where(['>', Ios::tableName().'.version', $appIosVersion])
+                ->where(['>', Ios::tableName().'.version', $clientIosVersion])
                 ->andWhere(['is_forced' => 1])
                 ->exists();
             $message = $appIosLastVersion->message;

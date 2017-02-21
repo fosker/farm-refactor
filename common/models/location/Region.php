@@ -50,12 +50,12 @@ class Region extends \yii\db\ActiveRecord
     {
         $cityCount = Pharmacist::find()
             ->from([Pharmacist::tableName(), Pharmacy::tableName(), City::tableName(), Region::tableName()])
-            ->select('count('.Pharmacist::tableName().'.id'.') as count, city_id')
+            ->select('count('.Pharmacist::tableName().'.id'.') as count,'. Pharmacy::tableName().'.city_id')
             ->where(Pharmacist::tableName().'.pharmacy_id = '.Pharmacy::tableName().'.id')
             ->andWhere(Pharmacy::tableName().'.city_id ='.City::tableName().'.id')
             ->andWhere(City::tableName().'.region_id ='.Region::tableName().'.id')
             ->andWhere([Region::tableName().'.id'=>$this->id])
-            ->groupBy('city_id');
+            ->groupBy(Pharmacy::tableName().'.city_id');
         return $this->hasMany(City::className(), ['region_id' => 'id'])
             ->leftJoin(['cityCount' => $cityCount], 'cityCount.city_id = id')
             ->orderBy(['cityCount.count' => SORT_DESC]);

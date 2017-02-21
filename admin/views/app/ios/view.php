@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /* @var $model common\models\app\Ios */
 
 $this->title = $model->version;
-$this->params['breadcrumbs'][] = ['label' => 'Версии Ios', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ios-view">
 
@@ -20,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы действительно хотите удалить версию Ios?',
+                'confirm' => 'Вы действительно хотите удалить версию IOS?',
                 'method' => 'post',
             ],
         ]) ?>

@@ -7,8 +7,6 @@ use yii\helpers\Html;
 /* @var $model common\models\generated\app\Android */
 
 $this->title = 'Создать версию';
-$this->params['breadcrumbs'][] = ['label' => 'Версии Android', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="android-create">
 

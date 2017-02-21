@@ -7,8 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\app\Ios */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Версии Ios';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Версии IOS';
 ?>
 <div class="ios-index">
 
