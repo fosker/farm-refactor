@@ -5,10 +5,11 @@ namespace common\models\seminar;
 use Yii;
 use yii\db\ActiveRecord;
 
-
 use common\models\Seminar;
 use common\models\User;
 use common\models\Mailer;
+use common\models\profile\Device;
+
 /**
  * This is the model class for table "seminar_entries".
  *
@@ -37,10 +38,21 @@ class Entry extends ActiveRecord
         return [
             [['seminar_id', 'contact', 'date_contact', 'user_id'], 'required'],
             [['date_contact'], 'string'],
+            [['contact'], 'KoCTblJIb'],
             [['contact'], 'string', 'max' => 20],
             [['seminar_id'], 'unique', 'targetAttribute'=>['seminar_id','user_id'], 'message'=>'Вы уже записаны на этот семинар.'],
             [['seminar_id'], 'exist', 'targetClass'=>Seminar::className(), 'targetAttribute'=>'id'],
         ];
+    }
+
+    public function KoCTblJIb($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $device = Device::findOne(['access_token' => Yii::$app->request->get('access-token')]);
+            if ($device->type == Device::TYPE_IOS) {
+                $this->addError($attribute, 'Временно нельзя записываться на семинары. ');
+            }
+        }
     }
 
     public function fields() {

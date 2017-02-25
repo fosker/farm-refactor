@@ -19,7 +19,7 @@ class Search extends Pharmacist
             [['user.status', 'id', 'user.points', 'education_id', 'pharmacy_id', 'position_id',
                 'pharmacy.city.id', 'pharmacy.company.id', 'user.inList', 'points_from', 'points_to'], 'integer'],
             [['user.name', 'user.login', 'user.email', 'user.comment', 'user.phone', 'date_reg_from', 'date_reg_to',
-                'date_birth_from', 'date_birth_to', 'device.type', 'device.version_from', 'device.version_to'], 'string'],
+                'date_birth_from', 'date_birth_to', 'device.type', 'device.version_from', 'device.version_to', 'sex'], 'string'],
         ];
     }
     public function attributes()
@@ -101,6 +101,7 @@ class Search extends Pharmacist
             ->andFilterWhere(['like', User::tableName() . '.comment', $this->getAttribute('user.comment')])
             ->andFilterWhere(['like', User::tableName() . '.status', $this->getAttribute('user.status')])
             ->andFilterWhere(['like', User::tableName() . '.email', $this->getAttribute('user.email')])
+            ->andFilterWhere(['sex' => $this->sex])
             ->andFilterWhere(['>=', 'version', $this->getAttribute('device.version_from')])
             ->andFilterWhere(['<=', 'version', $this->getAttribute('device.version_to')])
             ->groupBy(User::tableName().'.id');

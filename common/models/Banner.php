@@ -204,8 +204,8 @@ class Banner extends ActiveRecord
                 $item = Seminar::findOne($path[1]);
                 $name = 'Семинар: ';
                 break;
-            case 'stock':
-                $item = Stock::findOne($path[1]);
+            case 'factory':
+                $item = Stock::findOne($path[2]);
                 $name = 'Акция: ';
                 break;
             case 'news':

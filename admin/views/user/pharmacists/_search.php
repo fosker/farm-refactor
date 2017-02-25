@@ -39,6 +39,8 @@ use common\models\profile\Device;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'sex')->dropDownList(['female' => 'женщина', 'male' => 'мужчина'], ['prompt' => 'Выберите пол']); ?>
+
     <?= $form->field($model, 'user.comment')->textInput() ?>
 
     <?= $form->field($model, 'user.phone')->textInput() ?>

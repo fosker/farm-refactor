@@ -185,7 +185,7 @@ class BannerController extends Controller
 
             $presentation = Presentation::find()->select('CONCAT("presentation/",`id`) as id, CONCAT("Презентация: ",`title`) as text')->where(['like','CONCAT("Презентация: ",title)',$q])->asArray();
 
-            $stock = Stock::find()->select('CONCAT("stock/",`id`) as id, CONCAT("Акция: ",`title`) as text')->where(['like','CONCAT("Акция: ",title)',$q])->asArray();
+            $stock = Stock::find()->select('CONCAT("factory/stock/",`id`) as id, CONCAT("Акция: ",`title`) as text')->where(['like','CONCAT("Акция: ",title)',$q])->asArray();
 
             $news = News::find()->select('CONCAT("news/",`id`) as id, CONCAT("Новость: ",`title`) as text')->where(['like','CONCAT("Новость: ",title)',$q])->asArray();
 
@@ -211,7 +211,7 @@ class BannerController extends Controller
                 case 'news':
                     $item = News::findOne($path[1]);
                     break;
-                case 'stock':
+                case 'factory/stock':
                     $item = Stock::findOne($path[1]);
                     break;
             }
